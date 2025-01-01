@@ -1,10 +1,10 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>lt.techin.example</groupId>
-  <artifactId>coingateWixDemoShopSelenium</artifactId>
+  <groupId>io.studio_demo.shop_shopware</groupId>
+  <artifactId>shopWareDemoShopSelenium</artifactId>
   <version>1.0-SNAPSHOT</version>
-  <name>Archetype - coingateWixDemoShopSelenium</name>
+  <name>Archetype - shopWareWixDemoShopSelenium</name>
   <url>http://maven.apache.org</url>
 
   <dependencies>
@@ -58,7 +58,7 @@
             <include>**/*Test.java</include>
             <include>**/*Tests.java</include>
           </includes>
-          <testSourceDirectory>src/test/java/com/tricentis/demowebshop</testSourceDirectory>
+          <testSourceDirectory>src/test/java/io/studio_demo/shop_shopware</testSourceDirectory>
         </configuration>
       </plugin>
     </plugins>
