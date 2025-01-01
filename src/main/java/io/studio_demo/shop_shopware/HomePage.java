@@ -21,7 +21,9 @@ public class HomePage extends BasePage{
     @FindBy(xpath = "//button[@class='btn header-search-btn']")
     private WebElement homePageSearchButton;
     @FindBy(xpath = "//button[@class='btn account-menu-btn header-actions-btn']")
-    private WebElement homePageUserAccountIconButtonDropdownMenu;
+    private WebElement homePageUserAccountDropdownMenu;
+    @FindBy(xpath = "//div[@class='dropdown-menu dropdown-menu-end account-menu-dropdown js-account-menu-dropdown show']//div[@class='account-menu-register']/a")
+    private WebElement homePageSignUpLink;
     @FindBy(xpath = "//a[@class='btn header-cart-btn header-actions-btn']")
     private WebElement homePageShoppingCartIconButton;
     //navbar elements
@@ -47,11 +49,24 @@ public class HomePage extends BasePage{
     private WebElement footerVATDescription;
     @FindBy(xpath = "//footer//div[@class='footer-vat']//a")
     private WebElement footerVATLink;
-    @FindBy(xpath = "//footer//div[@class='footer-copyright']/span")
+    @FindBy(xpath = "//footer//div[@class='footer-copyright']")
     private WebElement footerDesignText;
+    //technical cookies button element
+    @FindBy(xpath = "//div[@class='cookie-permission-container']//span[@class='cookie-permission-button js-cookie-permission-button']/button")
+    private WebElement acceptTechnicalCookiesButton;
+
 
     public HomePage(WebDriver driver) {super(driver);}
 
+
+    //click navbar user account dropdown menu method
+    public void clickUserAccountDropdownMenu(){homePageUserAccountDropdownMenu.click();}
+
+    //click 'Sign Up' link
+    public void clickSignUpLink(){homePageSignUpLink.click();}
+
+    //click 'Accept Technical Cookies' button method
+    public void clickAcceptTechnicalCookies(){acceptTechnicalCookiesButton.click();}
 
     //home page shop section title getter
     public String getShopServiceHotlineTitle() {
@@ -64,12 +79,6 @@ public class HomePage extends BasePage{
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(600));
         wait.until(ExpectedConditions.visibilityOf(shopServiceHotlineDescription));
         return shopServiceHotlineDescription.getText();
-    }
-    //home page shop section phone number link getter
-    public String getShopServiceNumberLink() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(600));
-        wait.until(ExpectedConditions.visibilityOf(shopServiceHotlineNumberLink));
-        return shopServiceHotlineNumberLink.getText();
     }
     //home page footer VAT description getter
     public String getVATDescription() {
@@ -90,16 +99,16 @@ public class HomePage extends BasePage{
     public boolean isHomePageLogoDisplayed(){return homePageLogo.isDisplayed();}
     public boolean isHomePageSearchBarDisplayed(){return homePageSearchBar.isDisplayed();}
     public boolean isHomePageSearchButtonDisplayed(){return homePageSearchButton.isDisplayed();}
-    public boolean isHomePageUserAccountButtonDisplayed(){return homePageUserAccountIconButtonDropdownMenu.isDisplayed();}
+    public boolean isHomePageUserAccountDropdownMenuDisplayed(){return homePageUserAccountDropdownMenu.isDisplayed();}
     public boolean isHomePageShoppingCartIconButtonDisplayed() {return homePageShoppingCartIconButton.isDisplayed();}
     public boolean isHomePageNavLinkDisplayed() {return homePageNavLink.isDisplayed();}
     public boolean isHomePageClothingLinkDisplayed() {return homePageClothingLink.isDisplayed();}
     public boolean isHomePageFreeTimeElectronicsLinkDisplayed() {return homePageFreeTimeElectronicsLink.isDisplayed();}
     public boolean isHomePageLogoImageDisplayed() {return homePageLogoImage.isDisplayed();}
-    public boolean isHomePageShopServiceTitleDisplayed() {return shopServiceHotlineTitle.isDisplayed();}
-    public boolean isHomePageShopServiceDescriptionDisplayed(){return shopServiceHotlineDescription.isDisplayed();}
-    public boolean isHomePageShopServiceNumberLinkDisplayed(){return shopServiceHotlineNumberLink.isDisplayed();}
-    public boolean isHomePageShopServiceContactFormLinkDisplayed(){return shopServiceHotlineContactFormLink.isDisplayed();}
+    public boolean isShopServiceTitleDisplayed() {return shopServiceHotlineTitle.isDisplayed();}
+    public boolean isShopServiceDescriptionDisplayed(){return shopServiceHotlineDescription.isDisplayed();}
+    public boolean isShopServiceNumberLinkDisplayed(){return shopServiceHotlineNumberLink.isDisplayed();}
+    public boolean isShopServiceContactFormLinkDisplayed(){return shopServiceHotlineContactFormLink.isDisplayed();}
     public boolean isFooterVATDescriptionDisplayed() {return footerVATDescription.isDisplayed();}
     public boolean isFooterVATLinkDisplayed() {return footerVATLink.isDisplayed();}
     public boolean isFooterDesignTextDisplayed() {return footerDesignText.isDisplayed();}
