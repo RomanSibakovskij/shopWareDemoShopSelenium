@@ -2,27 +2,10 @@ package io.studio_demo.shop_shopware;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.*;
 
-import java.time.Duration;
+public class LoginRegisterDashboardRegisterSectionPage extends BasePage{
 
-public class LoginRegisterDashboardPage extends BasePage{
 
-    //login section web elements
-    @FindBy(xpath = "//div[@class='card login-card mb-3']//h1")
-    private WebElement loginSectionTitle;
-    @FindBy(xpath = "//div[@class='card login-card mb-3']//p")
-    private WebElement loginSectionDescription;
-    @FindBy(xpath = "//div[@class='card login-card mb-3']//input[@id='loginMail']")
-    private WebElement loginSectionEmailInputField;
-    @FindBy(xpath = "//div[@class='card login-card mb-3']//input[@id='loginPassword']")
-    private WebElement loginSectionPasswordInputField;
-    @FindBy(xpath = "//div[@class='card login-card mb-3']//a")
-    private WebElement loginSectionForgotPasswordLink;
-    @FindBy(xpath = "//div[@class='card login-card mb-3']//button")
-    private WebElement loginSectionButton;
-    @FindBy(xpath = "//div[@class='login-advantages d-none d-lg-block']")
-    private WebElement loginAdvantagesDescription;
     //register section web elements
     @FindBy(xpath = "//div[@class='card register-card']//h1")
     private WebElement registerSectionTitle;
@@ -36,7 +19,7 @@ public class LoginRegisterDashboardPage extends BasePage{
     private WebElement registerSectionEmailInputField;
     @FindBy(xpath = "//div[@class='card register-card']//input[@id='personalPassword']")
     private WebElement registerSectionPasswordInputField;
-    @FindBy(xpath = "")
+    @FindBy(xpath = "//div[@class='card register-card']//small")
     private WebElement registerSectionPasswordHint;
     @FindBy(xpath = "//div[@class='card register-card']//legend")
     private WebElement registerSectionAddressTitle;
@@ -61,17 +44,10 @@ public class LoginRegisterDashboardPage extends BasePage{
 
 
 
-    public LoginRegisterDashboardPage(WebDriver driver) {super(driver);}
+    public LoginRegisterDashboardRegisterSectionPage(WebDriver driver) {super(driver);}
 
 
-    //login and register dashboard web element assert method
-    public boolean isLoginSectionTitleDisplayed(){return loginSectionTitle.isDisplayed();}
-    public boolean isLoginSectionDescriptionDisplayed(){return loginSectionDescription.isDisplayed();}
-    public boolean isLoginSectionEmailInputFieldDisplayed(){return loginSectionEmailInputField.isDisplayed();}
-    public boolean isLoginSectionPasswordInputFieldDisplayed(){return loginSectionPasswordInputField.isDisplayed();}
-    public boolean isLoginSectionForgotPasswordLinkDisplayed(){return loginSectionForgotPasswordLink.isDisplayed();}
-    public boolean isLoginSectionButtonDisplayed(){return loginSectionButton.isDisplayed();}
-    public boolean isLoginAdvantagesDescriptionDisplayed(){return loginAdvantagesDescription.isDisplayed();}
+    //register section web element assert method
     public boolean isRegisterSectionTitleDisplayed(){return registerSectionTitle.isDisplayed();}
     public boolean isRegisterSectionSalutationDropdownMenuDisplayed(){return registerSectionSalutationDropdownMenu.isDisplayed();}
     public boolean isRegisterSectionFirstNameInputDisplayed(){return registerSectionFirstNameInputField.isDisplayed();}
