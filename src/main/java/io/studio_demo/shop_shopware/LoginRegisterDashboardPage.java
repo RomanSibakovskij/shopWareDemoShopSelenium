@@ -8,7 +8,9 @@ import java.time.Duration;
 
 public class LoginRegisterDashboardPage extends BasePage{
 
+
+
     public LoginRegisterDashboardPage(WebDriver driver) {super(driver);}
 
-    
+
 }
