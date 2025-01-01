@@ -2,6 +2,10 @@ package io.studio_demo.shop_shopware;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public class LoginRegisterDashboardRegisterSectionPage extends BasePage{
 
@@ -21,7 +25,7 @@ public class LoginRegisterDashboardRegisterSectionPage extends BasePage{
     private WebElement registerSectionPasswordInputField;
     @FindBy(xpath = "//div[@class='card register-card']//small")
     private WebElement registerSectionPasswordHint;
-    @FindBy(xpath = "//div[@class='card register-card']//legend")
+    @FindBy(xpath = "//div[@class='card register-card']//fieldset[@class='register-billing']/legend[@class='card-title']")
     private WebElement registerSectionAddressTitle;
     @FindBy(xpath = "//div[@class='card register-card']//input[@id='billingAddressAddressStreet']")
     private WebElement registerSectionAddressInputField;
@@ -46,12 +50,36 @@ public class LoginRegisterDashboardRegisterSectionPage extends BasePage{
 
     public LoginRegisterDashboardRegisterSectionPage(WebDriver driver) {super(driver);}
 
+    //register section title getter
+    public String getRegisterSectionTitle() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(600));
+        wait.until(ExpectedConditions.visibilityOf(registerSectionTitle));
+        return registerSectionTitle.getText();
+    }
+    //register section password hint getter
+    public String getPasswordHint() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(600));
+        wait.until(ExpectedConditions.visibilityOf(registerSectionPasswordHint));
+        return registerSectionPasswordHint.getText();
+    }
+    //register section address subsection getter
+    public String getAddressSubsectionTitle() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(600));
+        wait.until(ExpectedConditions.visibilityOf(registerSectionAddressTitle));
+        return registerSectionAddressTitle.getText();
+    }
+    //register section privacy policy description getter
+    public String getPrivacyPolicyDescription() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(600));
+        wait.until(ExpectedConditions.visibilityOf(registerSectionPrivacyPolicyDescription));
+        return registerSectionPrivacyPolicyDescription.getText();
+    }
 
     //register section web element assert method
     public boolean isRegisterSectionTitleDisplayed(){return registerSectionTitle.isDisplayed();}
     public boolean isRegisterSectionSalutationDropdownMenuDisplayed(){return registerSectionSalutationDropdownMenu.isDisplayed();}
-    public boolean isRegisterSectionFirstNameInputDisplayed(){return registerSectionFirstNameInputField.isDisplayed();}
-    public boolean isRegisterSectionLastNameInputDisplayed(){return registerSectionLastNameInputField.isDisplayed();}
+    public boolean isRegisterSectionFirstNameInputFieldDisplayed(){return registerSectionFirstNameInputField.isDisplayed();}
+    public boolean isRegisterSectionLastNameInputFieldDisplayed(){return registerSectionLastNameInputField.isDisplayed();}
     public boolean isRegisterSectionEmailInputFieldDisplayed(){return registerSectionEmailInputField.isDisplayed();}
     public boolean isRegisterSectionPasswordInputFieldDisplayed(){return registerSectionPasswordInputField.isDisplayed();}
     public boolean isRegisterSectionPasswordHintDisplayed(){return registerSectionPasswordHint.isDisplayed();}

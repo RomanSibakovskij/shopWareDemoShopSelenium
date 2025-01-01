@@ -2,6 +2,10 @@ package io.studio_demo.shop_shopware;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public class LoginRegisterDashBoardLoginSectionPage extends BasePage{
 
@@ -22,6 +26,25 @@ public class LoginRegisterDashBoardLoginSectionPage extends BasePage{
     private WebElement loginAdvantagesDescription;
 
     public LoginRegisterDashBoardLoginSectionPage(WebDriver driver) {super(driver);}
+
+    //login section title getter
+    public String getLoginTitle() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(600));
+        wait.until(ExpectedConditions.visibilityOf(loginSectionTitle));
+        return loginSectionTitle.getText();
+    }
+    //login section description getter
+    public String getLoginDescription() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(600));
+        wait.until(ExpectedConditions.visibilityOf(loginSectionDescription));
+        return loginSectionDescription.getText();
+    }
+    //login section login advantages description getter
+    public String getLoginAdvantagesDescription() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(600));
+        wait.until(ExpectedConditions.visibilityOf(loginAdvantagesDescription));
+        return loginAdvantagesDescription.getText();
+    }
 
     //login section web element assert methods
     public boolean isLoginSectionTitleDisplayed(){return loginSectionTitle.isDisplayed();}

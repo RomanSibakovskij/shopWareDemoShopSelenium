@@ -14,6 +14,7 @@ public class TestMethods extends BaseTest{
 
     //user navigation to login & register dashboard page test method
     protected void navigateToLoginAndRegisterDashboardPageTest(HomePage homePage){
+        LoginRegisterDashBoardLoginSectionPage loginRegisterDashBoardLoginSectionPage = new LoginRegisterDashBoardLoginSectionPage(driver);
         //general page web element assert
         isGeneralPageWebElementDisplayed(homePage);
         //home page web element assert
@@ -28,8 +29,27 @@ public class TestMethods extends BaseTest{
         homePage.clickUserAccountDropdownMenu();
         //click 'Sign Up' link
         homePage.clickSignUpLink();
+        //assert the user gets onto login and register dashboard page
+        assertEquals("I'm a customer already!", loginRegisterDashBoardLoginSectionPage.getLoginTitle(), "The login section title doesn't match expectations");
         //capture screenshot of the test result
         captureScreenshot(driver, "User Navigation To Login And Register Dashboard Page Result");
+    }
+
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    //valid user account creation test method
+    protected void validUserAccountCreationTest(LoginRegisterDashboardRegisterSectionPage loginRegisterDashboardRegisterSectionPage){
+        HomePage homePage = new HomePage(driver);
+        LoginRegisterDashBoardLoginSectionPage loginRegisterDashBoardLoginSectionPage = new LoginRegisterDashBoardLoginSectionPage(driver);
+        //general page web element assert
+        isGeneralPageWebElementDisplayed(homePage);
+        //general page text element assert
+        isGeneralPageTextElementAsExpected(homePage);
+        //login and register dashboard page web element assert
+        isLoginRegisterDashboardPageWebElementDisplayed();
+        //login and register dashboard page text element assert
+        isLoginRegisterDashboardPageTextElementMatchExpectations();
+
     }
 
 
@@ -81,6 +101,61 @@ public class TestMethods extends BaseTest{
         assertTrue(homePage.isHomePageLogoImageDisplayed(), "The home page logo image isn't displayed");
     }
 
+    //login and register page web element assert test method
+    protected void isLoginRegisterDashboardPageWebElementDisplayed(){
+        LoginRegisterDashBoardLoginSectionPage loginRegisterDashBoardLoginSectionPage = new LoginRegisterDashBoardLoginSectionPage(driver);
+        LoginRegisterDashboardRegisterSectionPage loginRegisterDashboardRegisterSectionPage = new LoginRegisterDashboardRegisterSectionPage(driver);
+        //assert login section title is displayed
+        assertTrue(loginRegisterDashBoardLoginSectionPage.isLoginSectionTitleDisplayed(), "The login section title isn't displayed");
+        //assert login section description is displayed
+        assertTrue(loginRegisterDashBoardLoginSectionPage.isLoginSectionDescriptionDisplayed(), "The login section description isn't displayed");
+        //assert login section email input field is displayed
+        assertTrue(loginRegisterDashBoardLoginSectionPage.isLoginSectionEmailInputFieldDisplayed(), "The login section email input field isn't displayed");
+        //assert login section password input field is displayed
+        assertTrue(loginRegisterDashBoardLoginSectionPage.isLoginSectionPasswordInputFieldDisplayed(), "The login section password input field isn't displayed");
+        //assert login section forgot password link is displayed
+        assertTrue(loginRegisterDashBoardLoginSectionPage.isLoginSectionForgotPasswordLinkDisplayed(), "The login section forgot password link isn't displayed");
+        //assert login section login button is displayed
+        assertTrue(loginRegisterDashBoardLoginSectionPage.isLoginSectionButtonDisplayed(), "The login section 'login' button isn't displayed");
+        //assert login section login advantages description is displayed
+        assertTrue(loginRegisterDashBoardLoginSectionPage.isLoginAdvantagesDescriptionDisplayed(), "The login section login advantages description isn't displayed");
+        //assert register section title is displayed
+        assertTrue(loginRegisterDashboardRegisterSectionPage.isRegisterSectionTitleDisplayed(), "The register section title isn't displayed");
+        //assert register section salutation dropdown menu is displayed
+        assertTrue(loginRegisterDashboardRegisterSectionPage.isRegisterSectionSalutationDropdownMenuDisplayed(), "The register section salutation dropdown menu isn't displayed");
+        //assert register section first name input field is displayed
+        assertTrue(loginRegisterDashboardRegisterSectionPage.isRegisterSectionFirstNameInputFieldDisplayed(), "The register section first name input field isn't displayed");
+        //assert register section last name input field is displayed
+        assertTrue(loginRegisterDashboardRegisterSectionPage.isRegisterSectionLastNameInputFieldDisplayed(), "The register section last name input field isn't displayed");
+        //assert register section email input field is displayed
+        assertTrue(loginRegisterDashboardRegisterSectionPage.isRegisterSectionEmailInputFieldDisplayed(), "The register section email input field isn't displayed");
+        //assert register section password input field is displayed
+        assertTrue(loginRegisterDashboardRegisterSectionPage.isRegisterSectionPasswordInputFieldDisplayed(), "The register section first name input field isn't displayed");
+        //assert register section password input hint is displayed
+        assertTrue(loginRegisterDashboardRegisterSectionPage.isRegisterSectionPasswordHintDisplayed(), "The register section password input hint isn't displayed");
+        //assert register section address title is displayed
+        assertTrue(loginRegisterDashboardRegisterSectionPage.isRegisterSectionAddressTitleDisplayed(), "The register section address title isn't displayed");
+        //assert register section address input field is displayed
+        assertTrue(loginRegisterDashboardRegisterSectionPage.isRegisterSectionAddressInputFieldDisplayed(), "The register section address input field isn't displayed");
+        //assert register section city input field is displayed
+        assertTrue(loginRegisterDashboardRegisterSectionPage.isRegisterSectionCityInputFieldDisplayed(), "The register section city input field isn't displayed");
+        //assert register section postal code input field is displayed
+        assertTrue(loginRegisterDashboardRegisterSectionPage.isRegisterSectionPostalCodeInputFieldDisplayed(), "The register section postal code input field isn't displayed");
+        //assert register section country dropdown menu is displayed
+        assertTrue(loginRegisterDashboardRegisterSectionPage.isRegisterSectionCountryDropdownMenuDisplayed(), "The register section country dropdown menu isn't displayed");
+        //assert register section address shipping/billing address mismatch checkbox is displayed
+        assertTrue(loginRegisterDashboardRegisterSectionPage.isRegisterSectionShippingCheckboxDisplayed(), "The register section shipping/billing address mismatch checkbox isn't displayed");
+        //assert register section privacy policy description is displayed
+        assertTrue(loginRegisterDashboardRegisterSectionPage.isRegisterSectionPrivacyPolicyDescriptionDisplayed(), "The register section privacy policy description isn't displayed");
+        //assert register section data protection link is displayed
+        assertTrue(loginRegisterDashboardRegisterSectionPage.isRegisterSectionDataProtectionLinkDisplayed(), "The register section data protection link isn't displayed");
+        //assert register section general terms link is displayed
+        assertTrue(loginRegisterDashboardRegisterSectionPage.isRegisterSectionGeneralTermsLinkDisplayed(), "The register section general terms link isn't displayed");
+        //assert register section continue button is displayed
+        assertTrue(loginRegisterDashboardRegisterSectionPage.isRegisterSectionContinueButtonDisplayed(), "The register section continue button isn't displayed");
+    }
+
+
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     //general page text element assert method
@@ -95,6 +170,26 @@ public class TestMethods extends BaseTest{
         assertEquals("* All prices incl. VAT plus shipping costs and possible delivery charges, if not stated otherwise.", homePage.getVATDescription(), "The footer VAT description doesn't match expectations");
         //assert footer design text matches expectations
         assertEquals("Realised with Shopware", homePage.getDesignText(), "The footer design text doesn't match expectations");
+    }
+
+    //login and register dashboard page text element assert method
+    protected void isLoginRegisterDashboardPageTextElementMatchExpectations(){
+        LoginRegisterDashBoardLoginSectionPage loginRegisterDashBoardLoginSectionPage = new LoginRegisterDashBoardLoginSectionPage(driver);
+        LoginRegisterDashboardRegisterSectionPage loginRegisterDashboardRegisterSectionPage = new LoginRegisterDashboardRegisterSectionPage(driver);
+        //assert login section title matches expectations
+        assertEquals("I'm a customer already!", loginRegisterDashBoardLoginSectionPage.getLoginTitle(), "The login section title doesn't match expectations");
+        //assert login section description matches expectations
+        assertEquals("Log in with email address and password", loginRegisterDashBoardLoginSectionPage.getLoginDescription(), "The login section description doesn't match expectations");
+        //assert login advantages description matches expectations
+        assertEquals("Login advantages:\n" + "Express shopping\n" + "Save your data and settings\n" + "Order overview and shipping information\n" + "Manage your newsletter subscription", loginRegisterDashBoardLoginSectionPage.getLoginAdvantagesDescription(), "The login advantages description doesn't match expectations");
+        //assert register section title matches expectations
+        assertEquals("I'm a new customer!", loginRegisterDashboardRegisterSectionPage.getRegisterSectionTitle(), "The register section title doesn't match expectations");
+        //assert register section password hint matches expectations
+        assertEquals("Passwords must have a minimum length of 8 characters.", loginRegisterDashboardRegisterSectionPage.getPasswordHint(), "The register section password hint doesn't match expectations");
+        //assert register section address subsection title matches expectations
+        assertEquals("Your address", loginRegisterDashboardRegisterSectionPage.getAddressSubsectionTitle(), "The address subsection title doesn't match expectations");
+        //assert register section privacy policy description matches expectations
+        assertEquals("Privacy\n" + "\n" + "By selecting continue you confirm that you have read our data protection information and accepted our general terms and conditions.", loginRegisterDashboardRegisterSectionPage.getPrivacyPolicyDescription(), "The privacy policy description doesn't match expectations");
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
