@@ -1,1 +1,1 @@
-# coingateWixDemoShopSelenium
+# shopwareDemoShopSelenium
