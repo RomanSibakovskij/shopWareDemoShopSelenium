@@ -49,7 +49,42 @@ public class TestMethods extends BaseTest{
         isLoginRegisterDashboardPageWebElementDisplayed();
         //login and register dashboard page text element assert
         isLoginRegisterDashboardPageTextElementMatchExpectations();
-
+        //valid user register input data getter
+        loginRegisterDashboardRegisterSectionPage.getValidUserInputData();
+        //capture screenshot before valid data input
+        captureScreenshot(driver, "Valid User Account Creation Before Data Input");
+        //click 'Salutations' dropdown menu
+        loginRegisterDashboardRegisterSectionPage.clickSalutationDropdownMenu();
+        //select 'Mr.' option
+        loginRegisterDashboardRegisterSectionPage.selectMrSalutation();
+        //input valid first name
+        loginRegisterDashboardRegisterSectionPage.inputFirstNameIntoFirstNameInputField();
+        //input valid last name
+        loginRegisterDashboardRegisterSectionPage.inputLastNameIntoLastNameInputField();
+        //input valid email address
+        loginRegisterDashboardRegisterSectionPage.inputEmailIntoEmailInputField();
+        //input valid password
+        loginRegisterDashboardRegisterSectionPage.inputPasswordIntoPasswordInputField();
+        //input valid address
+        loginRegisterDashboardRegisterSectionPage.inputAddressIntoAddressInputField();
+        //input valid city
+        loginRegisterDashboardRegisterSectionPage.inputCityIntoCityInputField();
+        //input valid postal code
+        loginRegisterDashboardRegisterSectionPage.inputPostalCodeIntoPostCodeInputField();
+        //click country dropdown method
+        loginRegisterDashboardRegisterSectionPage.clickCountryDropdownMenu();
+        //select 'United States' option
+        loginRegisterDashboardRegisterSectionPage.selectUSOption();
+        //click state dropdown menu (appears after country selection)
+        loginRegisterDashboardRegisterSectionPage.clickStateDropdownMenu();
+        //select 'Illinois' state option
+        loginRegisterDashboardRegisterSectionPage.selectIllinoisOption();
+        //capture screenshot after valid data input
+        captureScreenshot(driver, "Valid Male User Account Creation Data Input");
+        //click 'Continue' button
+        loginRegisterDashboardRegisterSectionPage.clickContinueButton();
+        //capture screenshot after valid user account creation
+        captureScreenshot(driver, "Valid Male User Account Creation Test Result");
     }
 
 

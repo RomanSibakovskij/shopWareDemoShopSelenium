@@ -15,6 +15,10 @@ public class LoginRegisterDashboardRegisterSectionPage extends BasePage{
     private WebElement registerSectionTitle;
     @FindBy(xpath = "//div[@class='card register-card']//select[@id='personalSalutation']")
     private WebElement registerSectionSalutationDropdownMenu;
+    @FindBy(xpath = "//select[@id='personalSalutation']/option[@value='ed782347cdec4e82a78f0eaf864b6725']")
+    private WebElement salutationMrsOption;
+    @FindBy(xpath = "//select[@id='personalSalutation']/option[@value='350f9afcc8fe42d887c17221531e0ff4']")
+    private WebElement salutationMrOption;
     @FindBy(xpath = "//div[@class='card register-card']//input[@id='personalFirstName']")
     private WebElement registerSectionFirstNameInputField;
     @FindBy(xpath = "//div[@class='card register-card']//input[@id='personalLastName']")
@@ -35,6 +39,12 @@ public class LoginRegisterDashboardRegisterSectionPage extends BasePage{
     private WebElement registerSectionPostalCodeInputField;
     @FindBy(xpath = "//div[@class='card register-card']//select[@id='billingAddressAddressCountry']")
     private WebElement registerSectionCountryDropdownMenu;
+    @FindBy(xpath = "//select[@id='billingAddressAddressCountry']/option[@value='16b9ff986274403a9d8a6a74e5898687']")
+    private WebElement usCountryOption;
+    @FindBy(xpath = "//div[@class='card register-card']//select[@id='billingAddressAddressCountryState']")
+    private WebElement registerSectionStateDropdownMenu;
+    @FindBy(xpath = "//select[@id='billingAddressAddressCountryState']/option[@value='e1071de80a9d491d9a24f1667a0fa483']")
+    private WebElement illinoisStateOption;
     @FindBy(xpath = "//div[@class='card register-card']//input[@id='differentShippingAddress']")
     private WebElement registerSectionShippingBillingAddressMismatchCheckbox;
     @FindBy(xpath = "//div[@class='card register-card']//fieldset[@class='form-text privacy-notice']")
@@ -46,9 +56,98 @@ public class LoginRegisterDashboardRegisterSectionPage extends BasePage{
     @FindBy(xpath = "//div[@class='card register-card']//button")
     private WebElement registerSectionContinueButton;
 
+    //valid register data variables
+    private String firstName;
+    private String lastName;
+    private String email;
+    private String password;
+    private String address;
+    private String city;
+    private int postalCode;
 
 
     public LoginRegisterDashboardRegisterSectionPage(WebDriver driver) {super(driver);}
+
+    //valid user input data getter
+    public void getValidUserInputData(){
+
+        firstName = TestDataGenerator.getRandomFirstName();
+        lastName = TestDataGenerator.getRandomLastName();
+        email = TestDataGenerator.generateRandomEmailAddress(8);
+        password = TestDataGenerator.generateRandomPassword();
+        address = TestDataGenerator.generateRandomAddress(6);
+        city = TestDataGenerator.getRandomCity();
+        postalCode = TestDataGenerator.getRandomPostalCode();
+
+        System.out.println("Valid generated user register input data: " + "\n");
+
+        logger.info("Valid user first name: " + firstName);
+        logger.info("Valid user last name: " + lastName);
+        logger.info("Valid user email: " + email);
+        logger.info("Valid user password: " + password);
+        logger.info("Valid user address: " + address);
+        logger.info("Valid user city: " + city);
+        logger.info("Valid user postal code: " + postalCode);
+    }
+
+    //valid user register data input methods
+    public void inputFirstNameIntoFirstNameInputField(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(650));
+        wait.until(ExpectedConditions.visibilityOf(registerSectionFirstNameInputField));
+        registerSectionFirstNameInputField.sendKeys(firstName);
+    }
+    public void inputLastNameIntoLastNameInputField(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(650));
+        wait.until(ExpectedConditions.visibilityOf(registerSectionLastNameInputField));
+        registerSectionLastNameInputField.sendKeys(lastName);
+    }
+    public void inputEmailIntoEmailInputField(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(650));
+        wait.until(ExpectedConditions.visibilityOf(registerSectionEmailInputField));
+        registerSectionEmailInputField.sendKeys(email);
+    }
+    public void inputPasswordIntoPasswordInputField(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(650));
+        wait.until(ExpectedConditions.visibilityOf(registerSectionPasswordInputField));
+        registerSectionPasswordInputField.sendKeys(email);
+    }
+    public void inputAddressIntoAddressInputField(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(650));
+        wait.until(ExpectedConditions.visibilityOf(registerSectionAddressInputField));
+        registerSectionAddressInputField.sendKeys(address);
+    }
+    public void inputCityIntoCityInputField(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(650));
+        wait.until(ExpectedConditions.visibilityOf(registerSectionCityInputField));
+        registerSectionCityInputField.sendKeys(city);
+    }
+    public void inputPostalCodeIntoPostCodeInputField(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(650));
+        wait.until(ExpectedConditions.visibilityOf(registerSectionPostalCodeInputField));
+        registerSectionPostalCodeInputField.sendKeys(String.valueOf(postalCode));
+    }
+
+    //click 'Salutation' dropdown menu method
+    public void clickSalutationDropdownMenu(){registerSectionSalutationDropdownMenu.click();}
+    //select 'Mr.' option method
+    public void selectMrSalutation(){salutationMrOption.click();}
+
+    //click country dropdown menu method
+    public void clickCountryDropdownMenu(){registerSectionCountryDropdownMenu.click();}
+    //select 'United States' option method
+    public void selectUSOption(){usCountryOption.click();}
+
+    //click state dropdown menu method
+    public void clickStateDropdownMenu(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(1100));
+        wait.until(ExpectedConditions.elementToBeClickable(registerSectionStateDropdownMenu));
+        registerSectionStateDropdownMenu.click();
+    }
+    //select 'Illinois' option method
+    public void selectIllinoisOption(){illinoisStateOption.click();}
+
+    //click 'Continue' button
+    public void clickContinueButton(){registerSectionContinueButton.click();}
 
     //register section title getter
     public String getRegisterSectionTitle() {
