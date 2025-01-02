@@ -464,7 +464,7 @@ public class TestMethods extends BaseTest{
         //capture screenshot after invalid user account creation (no postal code)
         captureScreenshot(driver, "Invalid Male User Account Creation Test Result - No Postal Code");
     }
-    //invalid user account creation test method - no user country
+    //invalid user account creation test method - no user country (the form has no input display errors so the screenshots are being used as proof of the test run)
     protected void invalidUserAccountNoCountryCreationTest(LoginRegisterDashboardRegisterSectionPage loginRegisterDashboardRegisterSectionPage){
         HomePage homePage = new HomePage(driver);
         //general page web element assert
@@ -501,6 +501,48 @@ public class TestMethods extends BaseTest{
         loginRegisterDashboardRegisterSectionPage.clickContinueButton();
         //capture screenshot after invalid user account creation (no country)
         captureScreenshot(driver, "Invalid Male User Account Creation Test Result - No Country");
+    }
+    //invalid user account creation test method - no user state (the form has no input display errors so the screenshots are being used as proof of the test run) (user account gets created)
+    protected void invalidUserAccountNoStateCreationTest(LoginRegisterDashboardRegisterSectionPage loginRegisterDashboardRegisterSectionPage){
+        HomePage homePage = new HomePage(driver);
+        //general page web element assert
+        isGeneralPageWebElementDisplayed(homePage);
+        //general page text element assert
+        isGeneralPageTextElementAsExpected(homePage);
+        //login and register dashboard page web element assert
+        isLoginRegisterDashboardPageWebElementDisplayed();
+        //login and register dashboard page text element assert
+        isLoginRegisterDashboardPageTextElementMatchExpectations();
+        //valid user register input data getter
+        loginRegisterDashboardRegisterSectionPage.getValidUserInputData();
+        //click 'Salutations' dropdown menu
+        loginRegisterDashboardRegisterSectionPage.clickSalutationDropdownMenu();
+        //select 'Mr.' option
+        loginRegisterDashboardRegisterSectionPage.selectMrSalutation();
+        //input valid first name
+        loginRegisterDashboardRegisterSectionPage.inputFirstNameIntoFirstNameInputField();
+        //input valid last name
+        loginRegisterDashboardRegisterSectionPage.inputLastNameIntoLastNameInputField();
+        //input valid email address
+        loginRegisterDashboardRegisterSectionPage.inputEmailIntoEmailInputField();
+        //input valid password
+        loginRegisterDashboardRegisterSectionPage.inputPasswordIntoPasswordInputField();
+        //input valid address
+        loginRegisterDashboardRegisterSectionPage.inputAddressIntoAddressInputField();
+        //input valid city
+        loginRegisterDashboardRegisterSectionPage.inputCityIntoCityInputField();
+        //input valid postal code
+        loginRegisterDashboardRegisterSectionPage.inputPostalCodeIntoPostCodeInputField();
+        //click country dropdown method
+        loginRegisterDashboardRegisterSectionPage.clickCountryDropdownMenu();
+        //select 'United States' option
+        loginRegisterDashboardRegisterSectionPage.selectUSOption();
+        //capture screenshot of the invalid data input
+        captureScreenshot(driver, "Invalid User Account Creation - No State");
+        //click 'Continue' button
+        loginRegisterDashboardRegisterSectionPage.clickContinueButton();
+        //capture screenshot after invalid user account creation (no state)
+        captureScreenshot(driver, "Invalid Male User Account Creation Test Result - No State");
     }
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
