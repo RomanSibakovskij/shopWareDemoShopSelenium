@@ -381,7 +381,7 @@ public class TestMethods extends BaseTest{
         try {
             Thread.sleep(1500);//apply wait time for the right time to get the screenshot (WebDriverWait doesn't work here)
             File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-            File destination = new File("D:\\IntelliJ Selenium projects\\shopWareDemoShopSelenium\\src\\test\\resources\\" + " " +  fileName + ".png");
+            File destination = new File("E:\\IntelliJ Selenium projects\\shopWareDemoShopSelenium\\src\\test\\resources\\" + " " +  fileName + ".png");
             Files.copy(screenshot.toPath(), destination.toPath(), StandardCopyOption.REPLACE_EXISTING);
             logger.info("Screenshot saved at: " + destination.getAbsolutePath());
         } catch (Exception e) {
