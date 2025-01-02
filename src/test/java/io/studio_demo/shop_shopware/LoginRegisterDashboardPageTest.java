@@ -17,4 +17,17 @@ public class LoginRegisterDashboardPageTest extends TestMethods{
         validUserAccountCreationTest(loginRegisterDashboardRegisterSectionPage);
     }
 
+    //Test 002a -> valid user account creation test (female)
+    @Test
+    @DisplayName("Valid User Account Creation Test (female)")
+    @Tag("Valid_User_Account_Creation")
+    void validFemaleAccountCreationTest(){
+        HomePage homePage = new HomePage(driver);
+        LoginRegisterDashboardRegisterSectionPage loginRegisterDashboardRegisterSectionPage = new LoginRegisterDashboardRegisterSectionPage(driver);
+        //navigate to login & register dashboard page
+        navigateToLoginAndRegisterDashboardPageTest(homePage);
+        //valid user account creation test (female)
+        validFemaleUserAccountCreationTest(loginRegisterDashboardRegisterSectionPage);
+    }
+
 }

@@ -131,6 +131,8 @@ public class LoginRegisterDashboardRegisterSectionPage extends BasePage{
     public void clickSalutationDropdownMenu(){registerSectionSalutationDropdownMenu.click();}
     //select 'Mr.' option method
     public void selectMrSalutation(){salutationMrOption.click();}
+    //select 'Mrs.' option method
+    public void selectMrsSalutation(){salutationMrsOption.click();}
 
     //click country dropdown menu method
     public void clickCountryDropdownMenu(){registerSectionCountryDropdownMenu.click();}
