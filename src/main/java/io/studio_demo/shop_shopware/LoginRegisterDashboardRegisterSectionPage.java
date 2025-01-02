@@ -69,6 +69,7 @@ public class LoginRegisterDashboardRegisterSectionPage extends BasePage{
     private String noFirstName;
     private String noLastName;
     private String noEmail;
+    private String noPassword;
 
 
     public LoginRegisterDashboardRegisterSectionPage(WebDriver driver) {super(driver);}
@@ -146,12 +147,12 @@ public class LoginRegisterDashboardRegisterSectionPage extends BasePage{
         System.out.println("Generated user register input data (no first name): " + "\n");
 
         logger.info("No first name: " + noFirstName);
-        logger.info("Valid user last name(no first name): " + lastName);
-        logger.info("Valid user email(no first name): " + email);
-        logger.info("Valid user password(no first name): " + password);
-        logger.info("Valid user address(no first name): " + address);
-        logger.info("Valid user city(no first name): " + city);
-        logger.info("Valid user postal code(no first name): " + postalCode);
+        logger.info("Valid user last name (no first name): " + lastName);
+        logger.info("Valid user email (no first name): " + email);
+        logger.info("Valid user password (no first name): " + password);
+        logger.info("Valid user address (no first name): " + address);
+        logger.info("Valid user city (no first name): " + city);
+        logger.info("Valid user postal code (no first name): " + postalCode);
     }
     //invalid user register data input method - no first name
     public void inputNoFirstNameIntoFirstNameInputField(){
@@ -172,13 +173,13 @@ public class LoginRegisterDashboardRegisterSectionPage extends BasePage{
 
         System.out.println("Generated user register input data(no last name): " + "\n");
 
-        logger.info("Valid user first name(no last name): " + firstName);
+        logger.info("Valid user first name (no last name): " + firstName);
         logger.info("No last name: " + noLastName);
-        logger.info("Valid user email(no last name): " + email);
-        logger.info("Valid user password(no last name): " + password);
-        logger.info("Valid user address(no last name): " + address);
-        logger.info("Valid user city(no last name): " + city);
-        logger.info("Valid user postal code(no last name): " + postalCode);
+        logger.info("Valid user email (no last name): " + email);
+        logger.info("Valid user password (no last name): " + password);
+        logger.info("Valid user address (no last name): " + address);
+        logger.info("Valid user city (no last name): " + city);
+        logger.info("Valid user postal code (no last name): " + postalCode);
     }
     //invalid user register data input method - no last name
     public void inputNoLastNameIntoLastNameInputField(){
@@ -199,18 +200,44 @@ public class LoginRegisterDashboardRegisterSectionPage extends BasePage{
 
         System.out.println("Generated user register input data (no email address): " + "\n");
 
-        logger.info("Valid user first name(no email address): " + firstName);
-        logger.info("Valid user last name(no email address): " + lastName);
+        logger.info("Valid user first name (no email address): " + firstName);
+        logger.info("Valid user last name (no email address): " + lastName);
         logger.info("No user email: " + noEmail);
-        logger.info("Valid user password(no email address): " + password);
-        logger.info("Valid user address(no email address): " + address);
-        logger.info("Valid user city(no email address): " + city);
-        logger.info("Valid user postal code(no email address): " + postalCode);
+        logger.info("Valid user password (no email address): " + password);
+        logger.info("Valid user address (no email address): " + address);
+        logger.info("Valid user city (no email address): " + city);
+        logger.info("Valid user postal code (no email address): " + postalCode);
     }
     public void inputNoEmailIntoEmailInputField(){
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(650));
         wait.until(ExpectedConditions.visibilityOf(registerSectionEmailInputField));
         registerSectionEmailInputField.sendKeys(noEmail);
+    }
+
+    //valid user input data getter - no password
+    public void getInvalidUserInputNoPasswordData(){
+        firstName = TestDataGenerator.getRandomFirstName();
+        lastName = TestDataGenerator.getRandomLastName();
+        email = TestDataGenerator.generateRandomEmailAddress(8);
+        noPassword = "";
+        address = TestDataGenerator.generateRandomAddress(6);
+        city = TestDataGenerator.getRandomCity();
+        postalCode = TestDataGenerator.getRandomPostalCode();
+
+        System.out.println("Generated user register input data (no password): " + "\n");
+
+        logger.info("Valid user first name (no password): " + firstName);
+        logger.info("Valid user last name (no password): " + lastName);
+        logger.info("Valid user email (no password): " + email);
+        logger.info("No password: " + noPassword);
+        logger.info("Valid user address (no password): " + address);
+        logger.info("Valid user city (no password): " + city);
+        logger.info("Valid user postal code (no password): " + postalCode);
+    }
+    public void inputNoPasswordIntoPasswordInputField(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(650));
+        wait.until(ExpectedConditions.visibilityOf(registerSectionPasswordInputField));
+        registerSectionPasswordInputField.sendKeys(noPassword);
     }
 
     //click 'Salutation' dropdown menu method
