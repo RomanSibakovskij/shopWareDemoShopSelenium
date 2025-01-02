@@ -70,6 +70,7 @@ public class LoginRegisterDashboardRegisterSectionPage extends BasePage{
     private String noEmail;
     private String noPassword;
     private String noAddress;
+    private String noCity;
 
 
     public LoginRegisterDashboardRegisterSectionPage(WebDriver driver) {super(driver);}
@@ -264,6 +265,32 @@ public class LoginRegisterDashboardRegisterSectionPage extends BasePage{
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(650));
         wait.until(ExpectedConditions.visibilityOf(registerSectionAddressInputField));
         registerSectionAddressInputField.sendKeys(noAddress);
+    }
+
+    //invalid user input data getter - no city
+    public void getInvalidUserInputNoCityData(){
+        firstName = TestDataGenerator.getRandomFirstName();
+        lastName = TestDataGenerator.getRandomLastName();
+        email = TestDataGenerator.generateRandomEmailAddress(8);
+        password = TestDataGenerator.generateRandomPassword();
+        address = TestDataGenerator.generateRandomAddress(6);
+        noCity = "";
+        postalCode = TestDataGenerator.getRandomPostalCode();
+
+        System.out.println("Generated user register input data (no city): " + "\n");
+
+        logger.info("Valid user first name (no city): " + firstName);
+        logger.info("Valid user last name (no city): " + lastName);
+        logger.info("Valid user email (no city): " + email);
+        logger.info("Valid user password (no city): " + password);
+        logger.info("Valid user address (no city): " + address);
+        logger.info("No city: " + noCity);
+        logger.info("Valid user postal code (no city): " + postalCode);
+    }
+    public void inputNoCityIntoCityInputField(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(650));
+        wait.until(ExpectedConditions.visibilityOf(registerSectionCityInputField));
+        registerSectionCityInputField.sendKeys(noCity);
     }
 
     //click 'Salutation' dropdown menu method
