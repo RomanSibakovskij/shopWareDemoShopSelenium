@@ -48,4 +48,18 @@ public class LoginRegisterDashboardPageTest extends TestMethods{
         invalidUserAccountNoFirstNameCreationTest(loginRegisterDashboardRegisterSectionPage);
     }
 
+    //Test 002c -> invalid user account creation test - no last name
+    @Test
+    @DisplayName("Invalid User Account Creation Test - No Last Name")
+    @Tag("Invalid_User_Account_Creation")
+    @Tag("No_Singular_Input")
+    void invalidAccountCreationNoLastNameTest(){
+        HomePage homePage = new HomePage(driver);
+        LoginRegisterDashboardRegisterSectionPage loginRegisterDashboardRegisterSectionPage = new LoginRegisterDashboardRegisterSectionPage(driver);
+        //navigate to login & register dashboard page
+        navigateToLoginAndRegisterDashboardPageTest(homePage);
+        //invalid user account creation test - no last name
+        invalidUserAccountNoLastNameCreationTest(loginRegisterDashboardRegisterSectionPage);
+    }
+
 }

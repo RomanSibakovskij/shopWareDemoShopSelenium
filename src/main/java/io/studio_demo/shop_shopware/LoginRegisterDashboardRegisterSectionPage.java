@@ -67,13 +67,13 @@ public class LoginRegisterDashboardRegisterSectionPage extends BasePage{
 
     //missing singular input
     private String noFirstName;
+    private String noLastName;
 
 
     public LoginRegisterDashboardRegisterSectionPage(WebDriver driver) {super(driver);}
 
     //valid user input data getter
     public void getValidUserInputData(){
-
         firstName = TestDataGenerator.getRandomFirstName();
         lastName = TestDataGenerator.getRandomLastName();
         email = TestDataGenerator.generateRandomEmailAddress(8);
@@ -134,7 +134,6 @@ public class LoginRegisterDashboardRegisterSectionPage extends BasePage{
 
     //invalid user input data getter - no first name
     public void getInvalidUserInputNoFirstNameData(){
-
         noFirstName = "";
         lastName = TestDataGenerator.getRandomLastName();
         email = TestDataGenerator.generateRandomEmailAddress(8);
@@ -145,7 +144,7 @@ public class LoginRegisterDashboardRegisterSectionPage extends BasePage{
 
         System.out.println("Generated user register input data (no first name): " + "\n");
 
-        logger.info("No first name: " + firstName);
+        logger.info("No first name: " + noFirstName);
         logger.info("Valid user last name(no first name): " + lastName);
         logger.info("Valid user email(no first name): " + email);
         logger.info("Valid user password(no first name): " + password);
@@ -153,14 +152,39 @@ public class LoginRegisterDashboardRegisterSectionPage extends BasePage{
         logger.info("Valid user city(no first name): " + city);
         logger.info("Valid user postal code(no first name): " + postalCode);
     }
-
-    //valid user register data input methods
+    //invalid user register data input method - no first name
     public void inputNoFirstNameIntoFirstNameInputField(){
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(650));
         wait.until(ExpectedConditions.visibilityOf(registerSectionFirstNameInputField));
         registerSectionFirstNameInputField.sendKeys(noFirstName);
     }
 
+    //invalid user input data getter
+    public void getInvalidUserInputNoLastNameData(){
+        firstName = TestDataGenerator.getRandomFirstName();
+        noLastName = "";
+        email = TestDataGenerator.generateRandomEmailAddress(8);
+        password = TestDataGenerator.generateRandomPassword();
+        address = TestDataGenerator.generateRandomAddress(6);
+        city = TestDataGenerator.getRandomCity();
+        postalCode = TestDataGenerator.getRandomPostalCode();
+
+        System.out.println("Generated user register input data(no last name): " + "\n");
+
+        logger.info("Valid user first name(no last name): " + firstName);
+        logger.info("No last name: " + noLastName);
+        logger.info("Valid user email(no last name): " + email);
+        logger.info("Valid user password(no last name): " + password);
+        logger.info("Valid user address(no last name): " + address);
+        logger.info("Valid user city(no last name): " + city);
+        logger.info("Valid user postal code(no last name): " + postalCode);
+    }
+    //invalid user register data input method - no last name
+    public void inputNoLastNameIntoLastNameInputField(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(650));
+        wait.until(ExpectedConditions.visibilityOf(registerSectionLastNameInputField));
+        registerSectionLastNameInputField.sendKeys(noLastName);
+    }
 
 
     //click 'Salutation' dropdown menu method
