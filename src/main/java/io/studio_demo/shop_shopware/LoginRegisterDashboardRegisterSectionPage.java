@@ -68,6 +68,7 @@ public class LoginRegisterDashboardRegisterSectionPage extends BasePage{
     //missing singular input
     private String noFirstName;
     private String noLastName;
+    private String noEmail;
 
 
     public LoginRegisterDashboardRegisterSectionPage(WebDriver driver) {super(driver);}
@@ -112,7 +113,7 @@ public class LoginRegisterDashboardRegisterSectionPage extends BasePage{
     public void inputPasswordIntoPasswordInputField(){
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(650));
         wait.until(ExpectedConditions.visibilityOf(registerSectionPasswordInputField));
-        registerSectionPasswordInputField.sendKeys(email);
+        registerSectionPasswordInputField.sendKeys(password);
     }
     public void inputAddressIntoAddressInputField(){
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(650));
@@ -186,6 +187,31 @@ public class LoginRegisterDashboardRegisterSectionPage extends BasePage{
         registerSectionLastNameInputField.sendKeys(noLastName);
     }
 
+    //invalid user input data getter - no email address
+    public void getInvalidUserInputNoEmailAddressData(){
+        firstName = TestDataGenerator.getRandomFirstName();
+        lastName = TestDataGenerator.getRandomLastName();
+        noEmail = "";
+        password = TestDataGenerator.generateRandomPassword();
+        address = TestDataGenerator.generateRandomAddress(6);
+        city = TestDataGenerator.getRandomCity();
+        postalCode = TestDataGenerator.getRandomPostalCode();
+
+        System.out.println("Generated user register input data (no email address): " + "\n");
+
+        logger.info("Valid user first name(no email address): " + firstName);
+        logger.info("Valid user last name(no email address): " + lastName);
+        logger.info("No user email: " + noEmail);
+        logger.info("Valid user password(no email address): " + password);
+        logger.info("Valid user address(no email address): " + address);
+        logger.info("Valid user city(no email address): " + city);
+        logger.info("Valid user postal code(no email address): " + postalCode);
+    }
+    public void inputNoEmailIntoEmailInputField(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(650));
+        wait.until(ExpectedConditions.visibilityOf(registerSectionEmailInputField));
+        registerSectionEmailInputField.sendKeys(noEmail);
+    }
 
     //click 'Salutation' dropdown menu method
     public void clickSalutationDropdownMenu(){registerSectionSalutationDropdownMenu.click();}
@@ -195,7 +221,13 @@ public class LoginRegisterDashboardRegisterSectionPage extends BasePage{
     public void selectMrsSalutation(){salutationMrsOption.click();}
 
     //click country dropdown menu method
-    public void clickCountryDropdownMenu(){registerSectionCountryDropdownMenu.click();}
+    public void clickCountryDropdownMenu(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(1100));
+        wait.until(ExpectedConditions.elementToBeClickable(registerSectionCountryDropdownMenu));
+        JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
+        jsExecutor.executeScript("arguments[0].scrollIntoView(true);", registerSectionCountryDropdownMenu);
+        registerSectionCountryDropdownMenu.click();
+    }
     //select 'United States' option method
     public void selectUSOption(){usCountryOption.click();}
 
@@ -209,7 +241,18 @@ public class LoginRegisterDashboardRegisterSectionPage extends BasePage{
     public void selectIllinoisOption(){illinoisStateOption.click();}
 
     //click 'Continue' button
-    public void clickContinueButton(){registerSectionContinueButton.click();}
+    public void clickContinueButton(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(700));
+        wait.until(ExpectedConditions.elementToBeClickable(registerSectionContinueButton));
+        JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
+        try {
+            jsExecutor.executeScript("arguments[0].scrollIntoView(true);", registerSectionContinueButton);
+            registerSectionContinueButton.click(); //first click attempt
+        } catch (ElementClickInterceptedException e) {
+            logger.warn("ElementClickInterceptedException caught. Retrying with JavaScript click.");
+            jsExecutor.executeScript("arguments[0].click();", registerSectionContinueButton); //js click if common click fails
+        }
+    }
 
     //register section title getter
     public String getRegisterSectionTitle() {
@@ -235,6 +278,10 @@ public class LoginRegisterDashboardRegisterSectionPage extends BasePage{
         wait.until(ExpectedConditions.visibilityOf(registerSectionPrivacyPolicyDescription));
         return registerSectionPrivacyPolicyDescription.getText();
     }
+
+    //login data private getters
+    public String getEmail() {return email;}
+    public String getPassword() {return password;}
 
     //register section web element assert method
     public boolean isRegisterSectionTitleDisplayed(){return registerSectionTitle.isDisplayed();}

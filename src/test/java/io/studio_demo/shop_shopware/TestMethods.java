@@ -234,6 +234,52 @@ public class TestMethods extends BaseTest{
         //capture screenshot after invalid user account creation (no last name)
         captureScreenshot(driver, "Invalid Male User Account Creation Test Result - No Last Name");
     }
+    //invalid user creation test method - no email address (the form has no input display errors so the screenshots are being used as proof of the test run)
+    protected void invalidUserAccountNoEmailCreationTest(LoginRegisterDashboardRegisterSectionPage loginRegisterDashboardRegisterSectionPage){
+        HomePage homePage = new HomePage(driver);
+        //general page web element assert
+        isGeneralPageWebElementDisplayed(homePage);
+        //general page text element assert
+        isGeneralPageTextElementAsExpected(homePage);
+        //login and register dashboard page web element assert
+        isLoginRegisterDashboardPageWebElementDisplayed();
+        //login and register dashboard page text element assert
+        isLoginRegisterDashboardPageTextElementMatchExpectations();
+        //invalid user register input data getter (no email address)
+        loginRegisterDashboardRegisterSectionPage.getInvalidUserInputNoEmailAddressData();
+        //click 'Salutations' dropdown menu
+        loginRegisterDashboardRegisterSectionPage.clickSalutationDropdownMenu();
+        //select 'Mr.' option
+        loginRegisterDashboardRegisterSectionPage.selectMrSalutation();
+        //input valid first name
+        loginRegisterDashboardRegisterSectionPage.inputFirstNameIntoFirstNameInputField();
+        //input valid last name
+        loginRegisterDashboardRegisterSectionPage.inputLastNameIntoLastNameInputField();
+        //don't input email address
+        loginRegisterDashboardRegisterSectionPage.inputNoEmailIntoEmailInputField();
+        //capture screenshot of the invalid data input
+        captureScreenshot(driver, "Invalid User Account Creation - No Email Address");
+        //input valid password
+        loginRegisterDashboardRegisterSectionPage.inputPasswordIntoPasswordInputField();
+        //input valid address
+        loginRegisterDashboardRegisterSectionPage.inputAddressIntoAddressInputField();
+        //input valid city
+        loginRegisterDashboardRegisterSectionPage.inputCityIntoCityInputField();
+        //input valid postal code
+        loginRegisterDashboardRegisterSectionPage.inputPostalCodeIntoPostCodeInputField();
+        //click country dropdown method
+        loginRegisterDashboardRegisterSectionPage.clickCountryDropdownMenu();
+        //select 'United States' option
+        loginRegisterDashboardRegisterSectionPage.selectUSOption();
+        //click state dropdown menu (appears after country selection)
+        loginRegisterDashboardRegisterSectionPage.clickStateDropdownMenu();
+        //select 'Illinois' state option
+        loginRegisterDashboardRegisterSectionPage.selectIllinoisOption();
+        //click 'Continue' button
+        loginRegisterDashboardRegisterSectionPage.clickContinueButton();
+        //capture screenshot after invalid user account creation (no email address)
+        captureScreenshot(driver, "Invalid Male User Account Creation Test Result - No Email Address");
+    }
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
