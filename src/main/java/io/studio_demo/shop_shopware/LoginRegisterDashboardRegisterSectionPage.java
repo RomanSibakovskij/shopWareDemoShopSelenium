@@ -210,6 +210,7 @@ public class LoginRegisterDashboardRegisterSectionPage extends BasePage{
         logger.info("Valid user city (no email address): " + city);
         logger.info("Valid user postal code (no email address): " + postalCode);
     }
+    //invalid user register data input method - no email address
     public void inputNoEmailIntoEmailInputField(){
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(650));
         wait.until(ExpectedConditions.visibilityOf(registerSectionEmailInputField));
@@ -236,6 +237,7 @@ public class LoginRegisterDashboardRegisterSectionPage extends BasePage{
         logger.info("Valid user city (no password): " + city);
         logger.info("Valid user postal code (no password): " + postalCode);
     }
+    //invalid user register data input method - no password
     public void inputNoPasswordIntoPasswordInputField(){
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(650));
         wait.until(ExpectedConditions.visibilityOf(registerSectionPasswordInputField));
@@ -262,6 +264,7 @@ public class LoginRegisterDashboardRegisterSectionPage extends BasePage{
         logger.info("Valid user city (no street address): " + city);
         logger.info("Valid user postal code (no street address): " + postalCode);
     }
+    //invalid user register data input method - no street address
     public void inputNoAddressIntoAddressInputField(){
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(650));
         wait.until(ExpectedConditions.visibilityOf(registerSectionAddressInputField));
@@ -288,6 +291,7 @@ public class LoginRegisterDashboardRegisterSectionPage extends BasePage{
         logger.info("No city: " + noCity);
         logger.info("Valid user postal code (no city): " + postalCode);
     }
+    //invalid user register data input method - no city
     public void inputNoCityIntoCityInputField(){
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(650));
         wait.until(ExpectedConditions.visibilityOf(registerSectionCityInputField));
@@ -314,6 +318,7 @@ public class LoginRegisterDashboardRegisterSectionPage extends BasePage{
         logger.info("Valid user city (no postal code): " + city);
         logger.info("No postal code: " + noPostalCode);
     }
+    //invalid user register data input method - no postal code
     public void inputNoPostalCodeIntoPostCodeInputField(){
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(650));
         wait.until(ExpectedConditions.visibilityOf(registerSectionPostalCodeInputField));
@@ -352,13 +357,8 @@ public class LoginRegisterDashboardRegisterSectionPage extends BasePage{
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(700));
         wait.until(ExpectedConditions.elementToBeClickable(registerSectionContinueButton));
         JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
-        try {
-            jsExecutor.executeScript("arguments[0].scrollIntoView(true);", registerSectionContinueButton);
-            registerSectionContinueButton.click(); //first click attempt
-        } catch (ElementClickInterceptedException e) {
-            logger.warn("ElementClickInterceptedException caught. Retrying with JavaScript click.");
-            jsExecutor.executeScript("arguments[0].click();", registerSectionContinueButton); //js click if common click fails
-        }
+        jsExecutor.executeScript("arguments[0].click();", registerSectionContinueButton); //js click (common click fails throws ElementClickInterceptedException for some reason)
+
     }
 
     //register section title getter

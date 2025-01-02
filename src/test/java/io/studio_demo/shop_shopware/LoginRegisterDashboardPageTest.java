@@ -160,4 +160,20 @@ public class LoginRegisterDashboardPageTest extends TestMethods{
         invalidUserAccountNoStateCreationTest(loginRegisterDashboardRegisterSectionPage);
     }
 
+    //too short singular input
+
+    //Test 002k -> invalid user account creation test - too short first name (1 char) (user account has been created - the test has failed)
+    @Test
+    @DisplayName("Invalid User Account Creation Test - Too Short First Name")
+    @Tag("Invalid_User_Account_Creation")
+    @Tag("Too_Short_Singular_Input")
+    void invalidAccountCreationTooShortFirstNameTest(){
+        HomePage homePage = new HomePage(driver);
+        RegisterSectionTooShortLongInputPage registerSectionTooShortLongInputPage = new RegisterSectionTooShortLongInputPage(driver);
+        //navigate to login & register dashboard page
+        navigateToLoginAndRegisterDashboardPageTest(homePage);
+        //invalid user account creation test - too short first name (1 char)
+        invalidUserAccountTooShortFirstNameCreationTest(registerSectionTooShortLongInputPage);
+    }
+
 }
