@@ -2,8 +2,7 @@ package io.studio_demo.shop_shopware;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.support.ui.*;
 
 import java.time.Duration;
 
@@ -70,6 +69,7 @@ public class LoginRegisterDashboardRegisterSectionPage extends BasePage{
     private String noLastName;
     private String noEmail;
     private String noPassword;
+    private String noAddress;
 
 
     public LoginRegisterDashboardRegisterSectionPage(WebDriver driver) {super(driver);}
@@ -238,6 +238,32 @@ public class LoginRegisterDashboardRegisterSectionPage extends BasePage{
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(650));
         wait.until(ExpectedConditions.visibilityOf(registerSectionPasswordInputField));
         registerSectionPasswordInputField.sendKeys(noPassword);
+    }
+
+    //invalid user input data getter - no street address
+    public void getInvalidUserInputNoAddressData(){
+        firstName = TestDataGenerator.getRandomFirstName();
+        lastName = TestDataGenerator.getRandomLastName();
+        email = TestDataGenerator.generateRandomEmailAddress(8);
+        password = TestDataGenerator.generateRandomPassword();
+        noAddress = "";
+        city = TestDataGenerator.getRandomCity();
+        postalCode = TestDataGenerator.getRandomPostalCode();
+
+        System.out.println("Generated user register input data (no street address): " + "\n");
+
+        logger.info("Valid user first name (no street address): " + firstName);
+        logger.info("Valid user last name (no street address): " + lastName);
+        logger.info("Valid user email (no street address): " + email);
+        logger.info("Valid user password (no street address): " + password);
+        logger.info("No address (no street address): " + noAddress);
+        logger.info("Valid user city (no street address): " + city);
+        logger.info("Valid user postal code (no street address): " + postalCode);
+    }
+    public void inputNoAddressIntoAddressInputField(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(650));
+        wait.until(ExpectedConditions.visibilityOf(registerSectionAddressInputField));
+        registerSectionAddressInputField.sendKeys(noAddress);
     }
 
     //click 'Salutation' dropdown menu method

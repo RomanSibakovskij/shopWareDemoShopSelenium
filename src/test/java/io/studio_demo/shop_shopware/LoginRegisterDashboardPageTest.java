@@ -90,4 +90,18 @@ public class LoginRegisterDashboardPageTest extends TestMethods{
         invalidUserAccountNoPasswordCreationTest(loginRegisterDashboardRegisterSectionPage);
     }
 
+    //Test 002f -> invalid user account creation test - no street address
+    @Test
+    @DisplayName("Invalid User Account Creation Test - No Address")
+    @Tag("Invalid_User_Account_Creation")
+    @Tag("No_Singular_Input")
+    void invalidAccountCreationNoAddressTest(){
+        HomePage homePage = new HomePage(driver);
+        LoginRegisterDashboardRegisterSectionPage loginRegisterDashboardRegisterSectionPage = new LoginRegisterDashboardRegisterSectionPage(driver);
+        //navigate to login & register dashboard page
+        navigateToLoginAndRegisterDashboardPageTest(homePage);
+        //invalid user account creation test - no street address
+        invalidUserAccountNoAddressCreationTest(loginRegisterDashboardRegisterSectionPage);
+    }
+
 }
