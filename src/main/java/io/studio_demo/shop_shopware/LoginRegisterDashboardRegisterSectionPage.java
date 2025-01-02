@@ -71,6 +71,7 @@ public class LoginRegisterDashboardRegisterSectionPage extends BasePage{
     private String noPassword;
     private String noAddress;
     private String noCity;
+    private String noPostalCode;
 
 
     public LoginRegisterDashboardRegisterSectionPage(WebDriver driver) {super(driver);}
@@ -291,6 +292,32 @@ public class LoginRegisterDashboardRegisterSectionPage extends BasePage{
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(650));
         wait.until(ExpectedConditions.visibilityOf(registerSectionCityInputField));
         registerSectionCityInputField.sendKeys(noCity);
+    }
+
+    //invalid user input data getter - no postal code
+    public void getInvalidUserInputNoPostalCodeData(){
+        firstName = TestDataGenerator.getRandomFirstName();
+        lastName = TestDataGenerator.getRandomLastName();
+        email = TestDataGenerator.generateRandomEmailAddress(8);
+        password = TestDataGenerator.generateRandomPassword();
+        address = TestDataGenerator.generateRandomAddress(6);
+        city = TestDataGenerator.getRandomCity();
+        noPostalCode = "";
+
+        System.out.println("Generated user register input data (no postal code): " + "\n");
+
+        logger.info("Valid user first name (no postal code): " + firstName);
+        logger.info("Valid user last name (no postal code): " + lastName);
+        logger.info("Valid user email (no postal code): " + email);
+        logger.info("Valid user password (no postal code): " + password);
+        logger.info("Valid user address (no postal code): " + address);
+        logger.info("Valid user city (no postal code): " + city);
+        logger.info("No postal code: " + noPostalCode);
+    }
+    public void inputNoPostalCodeIntoPostCodeInputField(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(650));
+        wait.until(ExpectedConditions.visibilityOf(registerSectionPostalCodeInputField));
+        registerSectionPostalCodeInputField.sendKeys(noPostalCode);
     }
 
     //click 'Salutation' dropdown menu method
