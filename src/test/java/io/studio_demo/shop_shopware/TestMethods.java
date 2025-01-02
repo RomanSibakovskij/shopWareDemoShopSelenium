@@ -40,7 +40,6 @@ public class TestMethods extends BaseTest{
     //valid user account creation test method
     protected void validUserAccountCreationTest(LoginRegisterDashboardRegisterSectionPage loginRegisterDashboardRegisterSectionPage){
         HomePage homePage = new HomePage(driver);
-        LoginRegisterDashBoardLoginSectionPage loginRegisterDashBoardLoginSectionPage = new LoginRegisterDashBoardLoginSectionPage(driver);
         //general page web element assert
         isGeneralPageWebElementDisplayed(homePage);
         //general page text element assert
@@ -89,7 +88,6 @@ public class TestMethods extends BaseTest{
     //valid user account creation test method (female)
     protected void validFemaleUserAccountCreationTest(LoginRegisterDashboardRegisterSectionPage loginRegisterDashboardRegisterSectionPage){
         HomePage homePage = new HomePage(driver);
-        LoginRegisterDashBoardLoginSectionPage loginRegisterDashBoardLoginSectionPage = new LoginRegisterDashBoardLoginSectionPage(driver);
         //general page web element assert
         isGeneralPageWebElementDisplayed(homePage);
         //general page text element assert
@@ -135,7 +133,62 @@ public class TestMethods extends BaseTest{
         //capture screenshot after valid user account creation
         captureScreenshot(driver, "Valid Female User Account Creation Test Result");
     }
-    
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    //invalid user creation tests
+
+    //no singular input
+
+    //invalid user creation test method - no first name (the form has no input display errors so the screenshots are being used as proof of the test run)
+    protected void invalidUserAccountNoFirstNameCreationTest(LoginRegisterDashboardRegisterSectionPage loginRegisterDashboardRegisterSectionPage){
+        HomePage homePage = new HomePage(driver);
+        //general page web element assert
+        isGeneralPageWebElementDisplayed(homePage);
+        //general page text element assert
+        isGeneralPageTextElementAsExpected(homePage);
+        //login and register dashboard page web element assert
+        isLoginRegisterDashboardPageWebElementDisplayed();
+        //login and register dashboard page text element assert
+        isLoginRegisterDashboardPageTextElementMatchExpectations();
+        //invalid user register input data getter (no first name)
+        loginRegisterDashboardRegisterSectionPage.getInvalidUserInputNoFirstNameData();
+        //capture screenshot before invalid data input
+        captureScreenshot(driver, "Invalid User Account Creation Before Data Input");
+        //click 'Salutations' dropdown menu
+        loginRegisterDashboardRegisterSectionPage.clickSalutationDropdownMenu();
+        //select 'Mr.' option
+        loginRegisterDashboardRegisterSectionPage.selectMrSalutation();
+        //don't input first name
+        loginRegisterDashboardRegisterSectionPage.inputNoFirstNameIntoFirstNameInputField();
+        //input valid last name
+        loginRegisterDashboardRegisterSectionPage.inputLastNameIntoLastNameInputField();
+        //input valid email address
+        loginRegisterDashboardRegisterSectionPage.inputEmailIntoEmailInputField();
+        //input valid password
+        loginRegisterDashboardRegisterSectionPage.inputPasswordIntoPasswordInputField();
+        //input valid address
+        loginRegisterDashboardRegisterSectionPage.inputAddressIntoAddressInputField();
+        //input valid city
+        loginRegisterDashboardRegisterSectionPage.inputCityIntoCityInputField();
+        //input valid postal code
+        loginRegisterDashboardRegisterSectionPage.inputPostalCodeIntoPostCodeInputField();
+        //click country dropdown method
+        loginRegisterDashboardRegisterSectionPage.clickCountryDropdownMenu();
+        //select 'United States' option
+        loginRegisterDashboardRegisterSectionPage.selectUSOption();
+        //click state dropdown menu (appears after country selection)
+        loginRegisterDashboardRegisterSectionPage.clickStateDropdownMenu();
+        //select 'Illinois' state option
+        loginRegisterDashboardRegisterSectionPage.selectIllinoisOption();
+        //capture screenshot after invalid data input
+        captureScreenshot(driver, "Invalid Male User Account Creation Data Input - No First Name");
+        //click 'Continue' button
+        loginRegisterDashboardRegisterSectionPage.clickContinueButton();
+        //capture screenshot after invalid user account creation (no first name)
+        captureScreenshot(driver, "Invalid Male User Account Creation Test Result - No First Name");
+    }
+
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     //general page web element assert test method(all pages have the (header/footer) same ones except for checkout page)

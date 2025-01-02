@@ -65,6 +65,9 @@ public class LoginRegisterDashboardRegisterSectionPage extends BasePage{
     private String city;
     private int postalCode;
 
+    //missing singular input
+    private String noFirstName;
+
 
     public LoginRegisterDashboardRegisterSectionPage(WebDriver driver) {super(driver);}
 
@@ -126,6 +129,39 @@ public class LoginRegisterDashboardRegisterSectionPage extends BasePage{
         wait.until(ExpectedConditions.visibilityOf(registerSectionPostalCodeInputField));
         registerSectionPostalCodeInputField.sendKeys(String.valueOf(postalCode));
     }
+
+    //no singular input
+
+    //invalid user input data getter - no first name
+    public void getInvalidUserInputNoFirstNameData(){
+
+        noFirstName = "";
+        lastName = TestDataGenerator.getRandomLastName();
+        email = TestDataGenerator.generateRandomEmailAddress(8);
+        password = TestDataGenerator.generateRandomPassword();
+        address = TestDataGenerator.generateRandomAddress(6);
+        city = TestDataGenerator.getRandomCity();
+        postalCode = TestDataGenerator.getRandomPostalCode();
+
+        System.out.println("Generated user register input data (no first name): " + "\n");
+
+        logger.info("No first name: " + firstName);
+        logger.info("Valid user last name(no first name): " + lastName);
+        logger.info("Valid user email(no first name): " + email);
+        logger.info("Valid user password(no first name): " + password);
+        logger.info("Valid user address(no first name): " + address);
+        logger.info("Valid user city(no first name): " + city);
+        logger.info("Valid user postal code(no first name): " + postalCode);
+    }
+
+    //valid user register data input methods
+    public void inputNoFirstNameIntoFirstNameInputField(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(650));
+        wait.until(ExpectedConditions.visibilityOf(registerSectionFirstNameInputField));
+        registerSectionFirstNameInputField.sendKeys(noFirstName);
+    }
+
+
 
     //click 'Salutation' dropdown menu method
     public void clickSalutationDropdownMenu(){registerSectionSalutationDropdownMenu.click();}
