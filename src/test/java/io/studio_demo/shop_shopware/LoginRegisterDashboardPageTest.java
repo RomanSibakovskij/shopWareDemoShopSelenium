@@ -132,4 +132,18 @@ public class LoginRegisterDashboardPageTest extends TestMethods{
         invalidUserAccountNoPostalCodeCreationTest(loginRegisterDashboardRegisterSectionPage);
     }
 
+    //Test 002i -> invalid user account creation test - no user country
+    @Test
+    @DisplayName("Invalid User Account Creation Test - No Country")
+    @Tag("Invalid_User_Account_Creation")
+    @Tag("No_Singular_Input")
+    void invalidAccountCreationNoCountryTest(){
+        HomePage homePage = new HomePage(driver);
+        LoginRegisterDashboardRegisterSectionPage loginRegisterDashboardRegisterSectionPage = new LoginRegisterDashboardRegisterSectionPage(driver);
+        //navigate to login & register dashboard page
+        navigateToLoginAndRegisterDashboardPageTest(homePage);
+        //invalid user account creation test - no user country
+        invalidUserAccountNoCountryCreationTest(loginRegisterDashboardRegisterSectionPage);
+    }
+
 }

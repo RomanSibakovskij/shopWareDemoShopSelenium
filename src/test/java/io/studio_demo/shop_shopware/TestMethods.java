@@ -461,8 +461,46 @@ public class TestMethods extends BaseTest{
         loginRegisterDashboardRegisterSectionPage.selectIllinoisOption();
         //click 'Continue' button
         loginRegisterDashboardRegisterSectionPage.clickContinueButton();
-        //capture screenshot after invalid user account creation (no city)
+        //capture screenshot after invalid user account creation (no postal code)
         captureScreenshot(driver, "Invalid Male User Account Creation Test Result - No Postal Code");
+    }
+    //invalid user account creation test method - no user country
+    protected void invalidUserAccountNoCountryCreationTest(LoginRegisterDashboardRegisterSectionPage loginRegisterDashboardRegisterSectionPage){
+        HomePage homePage = new HomePage(driver);
+        //general page web element assert
+        isGeneralPageWebElementDisplayed(homePage);
+        //general page text element assert
+        isGeneralPageTextElementAsExpected(homePage);
+        //login and register dashboard page web element assert
+        isLoginRegisterDashboardPageWebElementDisplayed();
+        //login and register dashboard page text element assert
+        isLoginRegisterDashboardPageTextElementMatchExpectations();
+        //valid user register input data getter
+        loginRegisterDashboardRegisterSectionPage.getValidUserInputData();
+        //click 'Salutations' dropdown menu
+        loginRegisterDashboardRegisterSectionPage.clickSalutationDropdownMenu();
+        //select 'Mr.' option
+        loginRegisterDashboardRegisterSectionPage.selectMrSalutation();
+        //input valid first name
+        loginRegisterDashboardRegisterSectionPage.inputFirstNameIntoFirstNameInputField();
+        //input valid last name
+        loginRegisterDashboardRegisterSectionPage.inputLastNameIntoLastNameInputField();
+        //input valid email address
+        loginRegisterDashboardRegisterSectionPage.inputEmailIntoEmailInputField();
+        //input valid password
+        loginRegisterDashboardRegisterSectionPage.inputPasswordIntoPasswordInputField();
+        //input valid address
+        loginRegisterDashboardRegisterSectionPage.inputAddressIntoAddressInputField();
+        //input valid city
+        loginRegisterDashboardRegisterSectionPage.inputCityIntoCityInputField();
+        //input valid postal code
+        loginRegisterDashboardRegisterSectionPage.inputPostalCodeIntoPostCodeInputField();
+        //capture screenshot of the invalid data input
+        captureScreenshot(driver, "Invalid User Account Creation - No Country");
+        //click 'Continue' button
+        loginRegisterDashboardRegisterSectionPage.clickContinueButton();
+        //capture screenshot after invalid user account creation (no country)
+        captureScreenshot(driver, "Invalid Male User Account Creation Test Result - No Country");
     }
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
