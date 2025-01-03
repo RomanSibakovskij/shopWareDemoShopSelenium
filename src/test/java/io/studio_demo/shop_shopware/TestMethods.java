@@ -1937,6 +1937,37 @@ public class TestMethods extends BaseTest{
         assertTrue(accountOverviewPage.isAccountDefaultShippingAddressDisplayed(), "The account default shipping address isn't displayed");
     }
 
+    //product dashboard page web element assert test method
+    protected void isProductDashboardPageWebElementDisplayed(){
+        ProductsDashboardPage productsDashboardPage = new ProductsDashboardPage(driver);
+        //assert product dashboard title link is displayed
+        assertTrue(productsDashboardPage.isProductsDashboardTitleLinkDisplayed(), "The product dashboard title link isn't displayed");
+        //assert product dashboard manufacturer dropdown menu is displayed
+        assertTrue(productsDashboardPage.isProductsDashboardManufacturerDropdownMenuDisplayed(), "The manufacturer dropdown menu isn't displayed");
+        //assert product dashboard materials dropdown menu is displayed
+        assertTrue(productsDashboardPage.isProductsDashboardMaterialsDropdownMenuDisplayed(), "The materials dropdown menu isn't displayed");
+        //assert product dashboard target group dropdown menu is displayed
+        assertTrue(productsDashboardPage.isProductsDashboardTargetGroupDropdownMenuDisplayed(), "The target group dropdown menu isn't displayed");
+        //assert product dashboard price dropdown menu is displayed
+        assertTrue(productsDashboardPage.isProductsDashboardPriceDropdownMenuDisplayed(), "The price dropdown menu isn't displayed");
+        //assert product dashboard free shipping checkbox is displayed
+        assertTrue(productsDashboardPage.isProductsDashboardFreeShippingCheckboxDisplayed(), "The free shipping checkbox isn't displayed");
+        //assert product dashboard sort by dropdown menu is displayed
+        assertTrue(productsDashboardPage.isProductsDashboardSortByDropdownMenuDisplayed(), "The sort by dropdown menu isn't displayed");
+        //assert product dashboard product card (as a list) is displayed
+        assertTrue(productsDashboardPage.isProductCardDisplayed(), "The product card isn't displayed");
+        //assert product dashboard product image placeholder (as a list) is displayed
+        assertTrue(productsDashboardPage.isProductCardImagePlaceholderDisplayed(), "The product image placeholder isn't displayed");
+        //assert product dashboard product title link (as a list) is displayed
+        assertTrue(productsDashboardPage.isProductTitleLinkDisplayed(), "The product title link isn't displayed");
+        //assert product dashboard product description (as a list) is displayed
+        assertTrue(productsDashboardPage.isProductDescriptionDisplayed(), "The product description isn't displayed");
+        //assert product dashboard product unit price(as a list) is displayed
+        assertTrue(productsDashboardPage.isProductCardUnitPriceDisplayed(), "The product unit price isn't displayed");
+        //assert product dashboard product 'Add to Cart' button (as a list) is displayed
+        assertTrue(productsDashboardPage.isProductCardAddToCartButtonDisplayed(), "The product 'Add to Cart' button isn't displayed");
+    }
+
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     //general page text element assert method
