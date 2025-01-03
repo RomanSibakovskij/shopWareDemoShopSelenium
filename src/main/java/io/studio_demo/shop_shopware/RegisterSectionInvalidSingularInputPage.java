@@ -41,6 +41,7 @@ public class RegisterSectionInvalidSingularInputPage extends BasePage{
     private String invalidLastNameFormat;
     private String invalidEmailFormat;
     private String invalidAddressFormat;
+    private String invalidCityFormat;
 
     //existing email variable (sed beforehand in manual testing)
     private String existingEmail;
@@ -218,6 +219,33 @@ public class RegisterSectionInvalidSingularInputPage extends BasePage{
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(650));
         wait.until(ExpectedConditions.visibilityOf(registerSectionAddressInputField));
         registerSectionAddressInputField.sendKeys(invalidAddressFormat);
+    }
+
+    //invalid user input data getter - invalid city format (special symbols only)
+    public void getInvalidUserInputInvalidCityFormatData(){
+        firstName = TestDataGenerator.getRandomFirstName();
+        lastName = TestDataGenerator.getRandomLastName();
+        email = TestDataGenerator.generateRandomEmailAddress(8);
+        password = TestDataGenerator.generateRandomPassword();
+        address = TestDataGenerator.generateRandomAddress(6);
+        invalidCityFormat = "!@$%#$^*&(*&%$^%#$@#!$#%$^%";
+        postalCode = TestDataGenerator.getRandomPostalCode();
+
+        System.out.println("Generated user register input data (too long city): " + "\n");
+
+        logger.info("Valid user first name (too long city): " + firstName);
+        logger.info("Valid user last name (too long city): " + lastName);
+        logger.info("Valid user email (too long city): " + email);
+        logger.info("Valid user password (too long city): " + password);
+        logger.info("Valid user address (too long city): " + address);
+        logger.info("Invalid user city format: " + invalidCityFormat);
+        logger.info("Valid user postal code (too long city): " + postalCode);
+    }
+    //invalid user register data input method - invalid city format (special symbols only)
+    public void inputInvalidCityFormatIntoCityInputField(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(650));
+        wait.until(ExpectedConditions.visibilityOf(registerSectionCityInputField));
+        registerSectionCityInputField.sendKeys(invalidCityFormat);
     }
 
     //used email error bar text getter

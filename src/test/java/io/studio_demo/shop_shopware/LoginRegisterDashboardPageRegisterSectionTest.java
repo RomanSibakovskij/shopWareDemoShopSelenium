@@ -419,7 +419,7 @@ public class LoginRegisterDashboardPageRegisterSectionTest extends TestMethods{
         invalidUserAccountExistingEmailCreationTest(registerSectionInvalidSingularInputPage);
     }
 
-    //Test 002ac -> invalid user account creation test - invalid address format (special symbols only)
+    //Test 002ac -> invalid user account creation test - invalid address format (special symbols only) (user account has been created - test has failed)
     @Test
     @DisplayName("Invalid User Account Creation Test - Invalid Address Format")
     @Tag("Invalid_User_Account_Creation")
@@ -431,6 +431,20 @@ public class LoginRegisterDashboardPageRegisterSectionTest extends TestMethods{
         navigateToLoginAndRegisterDashboardPageTest(homePage);
         //invalid user account creation test - invalid address format (special symbols only)
         invalidUserAccountInvalidAddressFormatCreationTest(registerSectionInvalidSingularInputPage);
+    }
+
+    //Test 002ad -> invalid user account creation test - invalid city format (special symbols only) (user account has been created - test has failed)
+    @Test
+    @DisplayName("Invalid User Account Creation Test - Invalid City Format")
+    @Tag("Invalid_User_Account_Creation")
+    @Tag("Invalid_Singular_Input_Format")
+    void invalidAccountCreationInvalidCityFormatTest(){
+        HomePage homePage = new HomePage(driver);
+        RegisterSectionInvalidSingularInputPage registerSectionInvalidSingularInputPage = new RegisterSectionInvalidSingularInputPage(driver);
+        //navigate to login & register dashboard page
+        navigateToLoginAndRegisterDashboardPageTest(homePage);
+        //invalid user account creation test - invalid city format (special symbols only)
+        invalidUserAccountInvalidCityFormatCreationTest(registerSectionInvalidSingularInputPage);
     }
 
 }
