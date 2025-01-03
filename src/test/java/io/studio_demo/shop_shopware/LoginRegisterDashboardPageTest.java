@@ -259,4 +259,20 @@ public class LoginRegisterDashboardPageTest extends TestMethods{
         //invalid user account creation test - too short postal code (2 digits)
         invalidUserAccountTooShortPostalCodeCreationTest(registerSectionTooShortLongInputPage);
     }
+
+    //too long singular input
+
+    //Test 002r -> invalid user account creation test - too long first name (100 chars)
+    @Test
+    @DisplayName("Invalid User Account Creation Test - Too Long First Name")
+    @Tag("Invalid_User_Account_Creation")
+    @Tag("Too_Long_Singular_Input")
+    void invalidAccountCreationTooLongFirstNameTest(){
+        HomePage homePage = new HomePage(driver);
+        RegisterSectionTooShortLongInputPage registerSectionTooShortLongInputPage = new RegisterSectionTooShortLongInputPage(driver);
+        //navigate to login & register dashboard page
+        navigateToLoginAndRegisterDashboardPageTest(homePage);
+        //invalid user account creation test - too long first name (100 chars)
+        invalidUserAccountTooLongFirstNameCreationTest(registerSectionTooShortLongInputPage);
+    }
 }

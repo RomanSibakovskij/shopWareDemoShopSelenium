@@ -23,6 +23,8 @@ public class RegisterSectionTooShortLongInputPage extends BasePage{
     private WebElement registerSectionCityInputField;
     @FindBy(xpath = "//div[@class='card register-card']//input[@id='billingAddressAddressZipcode']")
     private WebElement registerSectionPostalCodeInputField;
+    @FindBy(xpath = "//div[@role='alert']")
+    private WebElement accountCreationErrorBar;
 
     //valid register data variables
     private String firstName;
@@ -41,6 +43,9 @@ public class RegisterSectionTooShortLongInputPage extends BasePage{
     private String tooShortAddress;
     private String tooShortCity;
     private int tooShortPostalCode;
+
+    //too long singular input data
+    private String tooLongFirstName;
 
     public RegisterSectionTooShortLongInputPage(WebDriver driver) {super(driver);}
 
@@ -81,6 +86,8 @@ public class RegisterSectionTooShortLongInputPage extends BasePage{
         registerSectionPostalCodeInputField.sendKeys(String.valueOf(postalCode));
     }
 
+    //too short singular input
+
     //invalid user input data getter - too short first name (1 char)
     public void getInvalidUserInputTooShortFirstNameData(){
         tooShortFirstName = "Q";
@@ -108,7 +115,7 @@ public class RegisterSectionTooShortLongInputPage extends BasePage{
         registerSectionFirstNameInputField.sendKeys(tooShortFirstName);
     }
 
-    //invalid user input data getter - too short first name (3 chars)
+    //invalid user input data getter - too short last name (3 chars)
     public void getInvalidUserInputTooShortLastNameData(){
         firstName = TestDataGenerator.getRandomFirstName();
         tooShortLastName = "Kgr";
@@ -268,5 +275,41 @@ public class RegisterSectionTooShortLongInputPage extends BasePage{
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(650));
         wait.until(ExpectedConditions.visibilityOf(registerSectionPostalCodeInputField));
         registerSectionPostalCodeInputField.sendKeys(String.valueOf(tooShortPostalCode));
+    }
+
+    //too long singular input
+
+    //invalid user input data getter - too long first name (100 chars)
+    public void getInvalidUserInputTooLongFirstNameData(){
+        tooLongFirstName = "Rsfssdfsdfsretrjyuloipvlmjhkjhnxvdfsadfsdfhjyuooipkuyjhtgrfsdeghfgjjlhjnbfbvddfhggkjuiuyfdrtyujgdffg";
+        lastName = TestDataGenerator.getRandomLastName();
+        email = TestDataGenerator.generateRandomEmailAddress(8);
+        password = TestDataGenerator.generateRandomPassword();
+        address = TestDataGenerator.generateRandomAddress(6);
+        city = TestDataGenerator.getRandomCity();
+        postalCode = TestDataGenerator.getRandomPostalCode();
+
+        System.out.println("Generated user register input data (too long first name): " + "\n");
+
+        logger.info("Too long user first name: " + tooLongFirstName);
+        logger.info("Valid user last name (too long first name): " + lastName);
+        logger.info("Valid user email (too long first name): " + email);
+        logger.info("Valid user password (too long first name): " + password);
+        logger.info("Valid user address (too long first name): " + address);
+        logger.info("Valid user city (too long first name): " + city);
+        logger.info("Valid user postal code (too long first name): " + postalCode);
+    }
+    //invalid user register data input method - too short first name (100 char is usually too long)
+    public void inputTooLongFirstNameIntoFirstNameInputField(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(650));
+        wait.until(ExpectedConditions.visibilityOf(registerSectionFirstNameInputField));
+        registerSectionFirstNameInputField.sendKeys(tooLongFirstName);
+    }
+
+    //account creation error bar text getter
+    public String getAccountCreationErrorText(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(650));
+        wait.until(ExpectedConditions.visibilityOf(accountCreationErrorBar));
+        return accountCreationErrorBar.getText();
     }
 }
