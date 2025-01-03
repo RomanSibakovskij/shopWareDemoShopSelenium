@@ -40,6 +40,7 @@ public class TestMethods extends BaseTest{
     //valid user account creation test method
     protected void validUserAccountCreationTest(LoginRegisterDashboardRegisterSectionPage loginRegisterDashboardRegisterSectionPage){
         HomePage homePage = new HomePage(driver);
+        AccountOverviewPage accountOverviewPage = new AccountOverviewPage(driver);
         //general page web element assert
         isGeneralPageWebElementDisplayed(homePage);
         //general page text element assert
@@ -82,12 +83,25 @@ public class TestMethods extends BaseTest{
         captureScreenshot(driver, "Valid Male User Account Creation Data Input");
         //click 'Continue' button
         loginRegisterDashboardRegisterSectionPage.clickContinueButton();
+        //assert user gets onto account overview
+        assertEquals("Overview", accountOverviewPage.getAccountOverviewTitle(), "The account overview page title doesn't match expectations");
+        //general page web element assert
+        isGeneralPageWebElementDisplayed(homePage);
+        //general page text element assert
+        isGeneralPageTextElementAsExpected(homePage);
+        //account overview web element assert
+        isAccountOverviewPageWebElementDisplayed();
+        //account overview page text element assert
+        isAccountOverviewPageTextElementAsExpected();
+        //log user account displayed data
+        logAccountOverviewData();
         //capture screenshot after valid user account creation
         captureScreenshot(driver, "Valid Male User Account Creation Test Result");
     }
     //valid user account creation test method (female)
     protected void validFemaleUserAccountCreationTest(LoginRegisterDashboardRegisterSectionPage loginRegisterDashboardRegisterSectionPage){
         HomePage homePage = new HomePage(driver);
+        AccountOverviewPage accountOverviewPage = new AccountOverviewPage(driver);
         //general page web element assert
         isGeneralPageWebElementDisplayed(homePage);
         //general page text element assert
@@ -130,6 +144,18 @@ public class TestMethods extends BaseTest{
         captureScreenshot(driver, "Valid Female User Account Creation Data Input");
         //click 'Continue' button
         loginRegisterDashboardRegisterSectionPage.clickContinueButton();
+        //assert user gets onto account overview
+        assertEquals("Overview", accountOverviewPage.getAccountOverviewTitle(), "The account overview page title doesn't match expectations");
+        //general page web element assert
+        isGeneralPageWebElementDisplayed(homePage);
+        //general page text element assert
+        isGeneralPageTextElementAsExpected(homePage);
+        //account overview web element assert
+        isAccountOverviewPageWebElementDisplayed();
+        //account overview page text element assert
+        isAccountOverviewPageTextElementAsExpected();
+        //log user account displayed data
+        logAccountOverviewData();
         //capture screenshot after valid user account creation
         captureScreenshot(driver, "Valid Female User Account Creation Test Result");
     }
@@ -1697,6 +1723,53 @@ public class TestMethods extends BaseTest{
         assertTrue(loginRegisterDashboardRegisterSectionPage.isRegisterSectionContinueButtonDisplayed(), "The register section continue button isn't displayed");
     }
 
+    //account overview page web element assert test method
+    protected void isAccountOverviewPageWebElementDisplayed(){
+        AccountOverviewPage accountOverviewPage = new AccountOverviewPage(driver);
+        //assert aside section title is displayed
+        assertTrue(accountOverviewPage.isAsideSectionTitleDisplayed(), "The aside section title isn't displayed");
+        //assert aside overview link is displayed
+        assertTrue(accountOverviewPage.isAsideOverviewLinkDisplayed(), "The aside overview link isn't displayed");
+        //assert aside profile link is displayed
+        assertTrue(accountOverviewPage.isAsideProfileLinkDisplayed(), "The aside profile link isn't displayed");
+        //assert aside addresses link is displayed
+        assertTrue(accountOverviewPage.isAsideAddressesLinkDisplayed(), "The aside addresses link isn't displayed");
+        //assert aside payment methods link is displayed
+        assertTrue(accountOverviewPage.isAsidePaymentMethodsLinkDisplayed(), "The aside payment methods link isn't displayed");
+        //assert aside orders link is displayed
+        assertTrue(accountOverviewPage.isAsideOrdersLinkDisplayed(), "The aside orders link isn't displayed");
+        //assert aside logout link is displayed
+        assertTrue(accountOverviewPage.isAsideLogOutLinkDisplayed(), "The aside logout link isn't displayed");
+        //assert account overview title is displayed
+        assertTrue(accountOverviewPage.isAccountOverviewTitleDisplayed(), "The account overview title isn't displayed");
+        //assert account overview description is displayed
+        assertTrue(accountOverviewPage.isAccountOverviewDescriptionDisplayed(), "The account overview description isn't displayed");
+        //assert account personal data subsection title is displayed
+        assertTrue(accountOverviewPage.isAccountPersonalDataSubsectionTitleDisplayed(), "The account personal data subsection title isn't displayed");
+        //assert account personal data is displayed
+        assertTrue(accountOverviewPage.isAccountPersonalDataDisplayed(), "The account personal data isn't displayed");
+        //assert account default payment method subsection title is displayed
+        assertTrue(accountOverviewPage.isAccountDefaultPaymentMethodSubsectionTitleDisplayed(), "The account default payment method subsection title isn't displayed");
+        //assert account default payment method is displayed
+        assertTrue(accountOverviewPage.isAccountDefaultPaymentMethodDisplayed(), "The account default payment method isn't displayed");
+        //assert account default payment description is displayed
+        assertTrue(accountOverviewPage.isAccountDefaultPaymentDescriptionDisplayed(), "The account default payment description isn't displayed");
+        //assert account newsletter subsection title is displayed
+        assertTrue(accountOverviewPage.isAccountNewsletterSubsectionTitleDisplayed(), "The account newsletter subsection title isn't displayed");
+        //assert account newsletter checkbox is displayed
+        assertTrue(accountOverviewPage.isAccountNewsletterCheckboxDisplayed(), "The account newsletter checkbox isn't displayed");
+        //assert account newsletter checkbox description is displayed
+        assertTrue(accountOverviewPage.isAccountNewsletterCheckboxDescriptionDisplayed(), "The account newsletter checkbox description isn't displayed");
+        //assert account default billing address subsection title is displayed
+        assertTrue(accountOverviewPage.isAccountDefaultBillingAddressSubsectionTitleDisplayed(), "The account default billing address subsection title isn't displayed");
+        //assert account default billing address is displayed
+        assertTrue(accountOverviewPage.isAccountDefaultBillingAddressDisplayed(), "The account default billing address isn't displayed");
+        //assert account default shipping address subsection title is displayed
+        assertTrue(accountOverviewPage.isAccountDefaultShippingAddressSubsectionTitleDisplayed(), "The account default shipping address subsection title isn't displayed");
+        //assert account default shipping address is displayed
+        assertTrue(accountOverviewPage.isAccountDefaultShippingAddressDisplayed(), "The account default shipping address isn't displayed");
+    }
+
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     //general page text element assert method
@@ -1733,7 +1806,42 @@ public class TestMethods extends BaseTest{
         assertEquals("Privacy\n" + "\n" + "By selecting continue you confirm that you have read our data protection information and accepted our general terms and conditions.", loginRegisterDashboardRegisterSectionPage.getPrivacyPolicyDescription(), "The privacy policy description doesn't match expectations");
     }
 
+    //account overview page text element assert test method
+    protected void isAccountOverviewPageTextElementAsExpected(){
+        AccountOverviewPage accountOverviewPage = new AccountOverviewPage(driver);
+        //assert account overview title matches expectations
+        assertEquals("Overview", accountOverviewPage.getAccountOverviewTitle(), "The account overview page title doesn't match expectations");
+        //assert account overview description matches expectations
+        assertEquals("Directly access your profile information, the default payment method and given addresses.", accountOverviewPage.getAccountOverviewDescription(), "The account overview page description doesn't match expectations");
+        //assert personal data subsection title matches expectations
+        assertEquals("Personal data", accountOverviewPage.getPersonalDataSubsectionTitle(), "The personal data subsection title doesn't match expectations");
+        //assert default payment method subsection title matches expectations
+        assertEquals("Default payment method", accountOverviewPage.getDefaultPaymentMethodSubsectionTitle(), "The default payment method subsection title doesn't match expectations");
+        //assert default payment method description matches expectations
+        assertEquals("Payment upon receipt of goods.", accountOverviewPage.getDefaultPaymentMethodDescription(), "The default payment method description doesn't match expectations");
+        //assert newsletter subsection title matches expectations
+        assertEquals("Newsletter subscription", accountOverviewPage.getNewsletterSubsectionTitle(), "The newsletter subsection title doesn't match expectations");
+        //assert newsletter checkbox description matches expectations
+        assertEquals("Yes, I would like to subscribe to the free Shopware 6 Demo newsletter. (I may unsubscribe at any time.)", accountOverviewPage.getNewsletterCheckboxDescription(), "The newsletter checkbox description doesn't match expectations");
+        //assert default billing address subsection title matches expectations
+        assertEquals("Default billing address", accountOverviewPage.getDefaultBillingAddressSubsectionTitle(), "The default billing address subsection title doesn't match expectations");
+        //assert default shipping address subsection title matches expectations
+        assertEquals("Default shipping address", accountOverviewPage.getDefaultShippingAddressSubsectionTitle(), "The default shipping address subsection title doesn't match expectations");
+    }
+
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    //account overview data logger method
+    protected void logAccountOverviewData(){
+        AccountOverviewPage accountOverviewPage = new AccountOverviewPage(driver);
+        System.out.println("Account overview displayed data:" + "\n");
+        logger.info("Personal account data: " + accountOverviewPage.getPersonalData() + "\n");
+        logger.info("Default billing address: " + accountOverviewPage.getDefaultBillingAddress() + "\n");
+        logger.info("Default shipping address: " + accountOverviewPage.getDefaultShippingAddress() + "\n");
+        logger.info("Default payment method: " + accountOverviewPage.getDefaultPaymentMethod() + "\n");
+    }
+
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     //test result screenshot method
     public void captureScreenshot(WebDriver driver, String fileName) {

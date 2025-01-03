@@ -4,6 +4,8 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.*;
 
+import java.time.Duration;
+
 public class AccountOverviewPage extends BasePage{
 
     //account aside page elements
@@ -53,6 +55,92 @@ public class AccountOverviewPage extends BasePage{
 
     public AccountOverviewPage(WebDriver driver) {super(driver);}
 
+    //account overview page aside section title getter method
+    public String getAsideSubsectionTitle() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(600));
+        wait.until(ExpectedConditions.visibilityOf(asideSectionTitle));
+        return asideSectionTitle.getText();
+    }
+    //account overview page account overview title getter method
+    public String getAccountOverviewTitle() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(600));
+        wait.until(ExpectedConditions.visibilityOf(accountOverviewTitle));
+        return accountOverviewTitle.getText();
+    }
+    //account overview page account overview description getter method
+    public String getAccountOverviewDescription() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(600));
+        wait.until(ExpectedConditions.visibilityOf(accountOverviewDescription));
+        return accountOverviewDescription.getText();
+    }
+    //account overview page personal data subsection title getter method
+    public String getPersonalDataSubsectionTitle() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(600));
+        wait.until(ExpectedConditions.visibilityOf(accountPersonalDataSubsectionTitle));
+        return accountPersonalDataSubsectionTitle.getText();
+    }
+    //account overview page default payment method subsection title getter method
+    public String getDefaultPaymentMethodSubsectionTitle() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(600));
+        wait.until(ExpectedConditions.visibilityOf(accountDefaultPaymentMethodSubsectionTitle));
+        return accountDefaultPaymentMethodSubsectionTitle.getText();
+    }
+    //account overview page default payment method description getter method
+    public String getDefaultPaymentMethodDescription() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(600));
+        wait.until(ExpectedConditions.visibilityOf(accountDefaultPaymentDescription));
+        return accountDefaultPaymentDescription.getText();
+    }
+    //account overview page newsletter subsection title getter method
+    public String getNewsletterSubsectionTitle() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(600));
+        wait.until(ExpectedConditions.visibilityOf(accountNewsletterSubsectionTitle));
+        return accountNewsletterSubsectionTitle.getText();
+    }
+    //account overview page newsletter checkbox description getter method
+    public String getNewsletterCheckboxDescription() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(600));
+        wait.until(ExpectedConditions.visibilityOf(accountNewsletterCheckboxDescription));
+        return accountNewsletterCheckboxDescription.getText();
+    }
+    //account overview page billing address subsection title getter method
+    public String getDefaultBillingAddressSubsectionTitle() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(600));
+        wait.until(ExpectedConditions.visibilityOf(accountDefaultBillingAddressSubsectionTitle));
+        return accountDefaultBillingAddressSubsectionTitle.getText();
+    }
+    //account overview page default shipping address subsection title getter method
+    public String getDefaultShippingAddressSubsectionTitle() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(600));
+        wait.until(ExpectedConditions.visibilityOf(accountDefaultShippingAddressSubsectionTitle));
+        return accountDefaultShippingAddressSubsectionTitle.getText();
+    }
+
+    //account overview page personal data getter method
+    public String getPersonalData() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(600));
+        wait.until(ExpectedConditions.visibilityOf(accountPersonalData));
+        return accountPersonalData.getText();
+    }
+    //account overview page default billing address getter method
+    public String getDefaultBillingAddress() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(600));
+        wait.until(ExpectedConditions.visibilityOf(accountDefaultBillingAddress));
+        return accountDefaultBillingAddress.getText();
+    }
+    //account overview page default shipping address getter method
+    public String getDefaultShippingAddress() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(600));
+        wait.until(ExpectedConditions.visibilityOf(accountDefaultShippingAddress));
+        return accountDefaultShippingAddress.getText();
+    }
+    //account overview page default payment method getter method
+    public String getDefaultPaymentMethod() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(600));
+        wait.until(ExpectedConditions.visibilityOf(accountDefaultPaymentMethod));
+        return accountDefaultPaymentMethod.getText();
+    }
+
     //account overview page web element assert methods
     public boolean isAsideSectionTitleDisplayed() {return asideSectionTitle.isDisplayed();}
     public boolean isAsideOverviewLinkDisplayed() {return asideOverviewLink.isDisplayed();}
@@ -63,12 +151,12 @@ public class AccountOverviewPage extends BasePage{
     public boolean isAsideLogOutLinkDisplayed() {return asideLogOutLink.isDisplayed();}
     public boolean isAccountOverviewTitleDisplayed() {return accountOverviewTitle.isDisplayed();}
     public boolean isAccountOverviewDescriptionDisplayed() {return accountOverviewDescription.isDisplayed();}
-    public boolean isAccountOverviewPersonalDataSubsectionTitleDisplayed() {return accountPersonalDataSubsectionTitle.isDisplayed();}
+    public boolean isAccountPersonalDataSubsectionTitleDisplayed() {return accountPersonalDataSubsectionTitle.isDisplayed();}
     public boolean isAccountPersonalDataDisplayed() {return accountPersonalData.isDisplayed();}
     public boolean isAccountDefaultPaymentMethodSubsectionTitleDisplayed() {return accountDefaultPaymentMethodSubsectionTitle.isDisplayed();}
     public boolean isAccountDefaultPaymentMethodDisplayed() {return accountDefaultPaymentMethod.isDisplayed();}
     public boolean isAccountDefaultPaymentDescriptionDisplayed() {return accountDefaultPaymentDescription.isDisplayed();}
-    public boolean isAccountNewsletterDisplayed() {return accountNewsletterSubsectionTitle.isDisplayed();}
+    public boolean isAccountNewsletterSubsectionTitleDisplayed() {return accountNewsletterSubsectionTitle.isDisplayed();}
     public boolean isAccountNewsletterCheckboxDisplayed() {return accountNewsletterCheckbox.isDisplayed();}
     public boolean isAccountNewsletterCheckboxDescriptionDisplayed() {return accountNewsletterCheckboxDescription.isDisplayed();}
     public boolean isAccountDefaultBillingAddressSubsectionTitleDisplayed() {return accountDefaultBillingAddressSubsectionTitle.isDisplayed();}
