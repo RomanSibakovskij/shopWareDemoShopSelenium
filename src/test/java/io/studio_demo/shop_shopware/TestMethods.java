@@ -1806,6 +1806,10 @@ public class TestMethods extends BaseTest{
         assertTrue(homePage.isHomePageShoppingCartIconButtonDisplayed(), "The header shopping cart icon button isn't displayed");
         //assert home page nav link is displayed
         assertTrue(homePage.isHomePageNavLinkDisplayed(), "The home page nav link isn't displayed");
+        //assert home page sweets nav link is displayed
+        assertTrue(homePage.isHomePageSweetsLinkDisplayed(), "The sweets page nav link isn't displayed");
+        //assert home page bakery nav link is displayed
+        assertTrue(homePage.isHomePageBakeryLinkDisplayed(), "The bakery page nav link isn't displayed");
         //assert clothing nav link is displayed
         assertTrue(homePage.isHomePageClothingLinkDisplayed(), "The clothing nav link isn't displayed");
         //assert free time & electronics nav link is displayed

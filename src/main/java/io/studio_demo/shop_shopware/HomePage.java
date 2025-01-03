@@ -30,8 +30,12 @@ public class HomePage extends BasePage{
     @FindBy(xpath = "//nav[@class='nav main-navigation-menu']/a[1]")
     private WebElement homePageNavLink;
     @FindBy(xpath = "//nav[@class='nav main-navigation-menu']/a[2]")
-    private WebElement homePageClothingLink;
+    private WebElement homePageSweetsLink;
     @FindBy(xpath = "//nav[@class='nav main-navigation-menu']/a[3]")
+    private WebElement homePageBakeryLink;
+    @FindBy(xpath = "//nav[@class='nav main-navigation-menu']/a[4]")
+    private WebElement homePageClothingLink;
+    @FindBy(xpath = "//nav[@class='nav main-navigation-menu']/a[5]")
     private WebElement homePageFreeTimeElectronicsLink;
     //main page elements
     @FindBy(xpath = "//div[@class='cms-sections']//img")
@@ -102,6 +106,8 @@ public class HomePage extends BasePage{
     public boolean isHomePageUserAccountDropdownMenuDisplayed(){return homePageUserAccountDropdownMenu.isDisplayed();}
     public boolean isHomePageShoppingCartIconButtonDisplayed() {return homePageShoppingCartIconButton.isDisplayed();}
     public boolean isHomePageNavLinkDisplayed() {return homePageNavLink.isDisplayed();}
+    public boolean isHomePageSweetsLinkDisplayed() {return homePageSweetsLink.isDisplayed();}
+    public boolean isHomePageBakeryLinkDisplayed() {return homePageBakeryLink.isDisplayed();}
     public boolean isHomePageClothingLinkDisplayed() {return homePageClothingLink.isDisplayed();}
     public boolean isHomePageFreeTimeElectronicsLinkDisplayed() {return homePageFreeTimeElectronicsLink.isDisplayed();}
     public boolean isHomePageLogoImageDisplayed() {return homePageLogoImage.isDisplayed();}
