@@ -1,10 +1,8 @@
 package io.studio_demo.shop_shopware;
 
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.support.ui.*;
 
 import java.time.Duration;
 
@@ -25,6 +23,9 @@ public class RegisterSectionInvalidSingularInputPage extends BasePage{
     private WebElement registerSectionCityInputField;
     @FindBy(xpath = "//div[@class='card register-card']//input[@id='billingAddressAddressZipcode']")
     private WebElement registerSectionPostalCodeInputField;
+    //used email error element
+    @FindBy(xpath = "//div[@class='invalid-feedback']")
+    private WebElement usedEmailError;
 
     //valid register data variables
     private String firstName;
@@ -39,6 +40,9 @@ public class RegisterSectionInvalidSingularInputPage extends BasePage{
     private String invalidFirstNameFormat;
     private String invalidLastNameFormat;
     private String invalidEmailFormat;
+
+    //existing email variable (sed beforehand in manual testing)
+    private String existingEmail;
 
     public RegisterSectionInvalidSingularInputPage(WebDriver driver) {super(driver);}
 
@@ -160,5 +164,38 @@ public class RegisterSectionInvalidSingularInputPage extends BasePage{
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(650));
         wait.until(ExpectedConditions.visibilityOf(registerSectionEmailInputField));
         registerSectionEmailInputField.sendKeys(invalidEmailFormat);
+    }
+    //invalid user input data getter - existing email address (the one already used in manual testing)
+    public void getInvalidUserInputExistingEmailData(){
+        firstName = TestDataGenerator.getRandomFirstName();
+        lastName = TestDataGenerator.getRandomLastName();
+        existingEmail = "m0@example.com";
+        password = TestDataGenerator.generateRandomPassword();
+        address = TestDataGenerator.generateRandomAddress(6);
+        city = TestDataGenerator.getRandomCity();
+        postalCode = TestDataGenerator.getRandomPostalCode();
+
+        System.out.println("Generated user register input data (existing email): " + "\n");
+
+        logger.info("Valid user first name (existing email): " + firstName);
+        logger.info("Valid user last name (existing email): " + lastName);
+        logger.info("Existing user email: " + existingEmail);
+        logger.info("Valid user password (existing email): " + password);
+        logger.info("Valid user address (existing email): " + address);
+        logger.info("Valid user city (existing email): " + city);
+        logger.info("Valid user postal code (existing email): " + postalCode);
+    }
+    //invalid user register data input method - existing email address (th one used beforehand in manual testing)
+    public void inputExistingEmailIntoEmailInputField(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(650));
+        wait.until(ExpectedConditions.visibilityOf(registerSectionEmailInputField));
+        registerSectionEmailInputField.sendKeys(existingEmail);
+    }
+
+    //used email error bar text getter
+    public String getUsedEmailErrorText(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(650));
+        wait.until(ExpectedConditions.visibilityOf(usedEmailError));
+        return usedEmailError.getText();
     }
 }

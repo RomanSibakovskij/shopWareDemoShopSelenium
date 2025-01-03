@@ -404,4 +404,19 @@ public class LoginRegisterDashboardPageRegisterSectionTest extends TestMethods{
         invalidUserAccountInvalidEmailFormatCreationTest(registerSectionInvalidSingularInputPage);
     }
 
+    //Test 002ab -> invalid user account creation test - existing email address (already used beforehand)
+    @Test
+    @DisplayName("Invalid User Account Creation Test - Existing Email")
+    @Tag("Invalid_User_Account_Creation")
+    @Tag("Invalid_Singular_Input_Format")
+    @Tag("Existing_Singular_Input")
+    void invalidAccountCreationExistingEmailTest(){
+        HomePage homePage = new HomePage(driver);
+        RegisterSectionInvalidSingularInputPage registerSectionInvalidSingularInputPage = new RegisterSectionInvalidSingularInputPage(driver);
+        //navigate to login & register dashboard page
+        navigateToLoginAndRegisterDashboardPageTest(homePage);
+        //invalid user account creation test - existing email address format (already used beforehand)
+        invalidUserAccountExistingEmailCreationTest(registerSectionInvalidSingularInputPage);
+    }
+
 }

@@ -1396,6 +1396,57 @@ public class TestMethods extends BaseTest{
         //capture screenshot after invalid user account creation (invalid email address format)
         captureScreenshot(driver, "Invalid Male User Account Creation Test Result - Invalid Email Format");
     }
+    //invalid user creation test method - existing email address format (used before in manual testing) (the form has no input display errors so the screenshots are being used as proof of the test run)
+    protected void invalidUserAccountExistingEmailCreationTest(RegisterSectionInvalidSingularInputPage registerSectionInvalidSingularInputPage){
+        HomePage homePage = new HomePage(driver);
+        LoginRegisterDashboardRegisterSectionPage loginRegisterDashboardRegisterSectionPage = new LoginRegisterDashboardRegisterSectionPage(driver);
+        //general page web element assert
+        isGeneralPageWebElementDisplayed(homePage);
+        //general page text element assert
+        isGeneralPageTextElementAsExpected(homePage);
+        //login and register dashboard page web element assert
+        isLoginRegisterDashboardPageWebElementDisplayed();
+        //login and register dashboard page text element assert
+        isLoginRegisterDashboardPageTextElementMatchExpectations();
+        //invalid user register input data getter (existing email address)
+        registerSectionInvalidSingularInputPage.getInvalidUserInputExistingEmailData();
+        //click 'Salutations' dropdown menu
+        loginRegisterDashboardRegisterSectionPage.clickSalutationDropdownMenu();
+        //select 'Mr.' option
+        loginRegisterDashboardRegisterSectionPage.selectMrSalutation();
+        //input valid first name
+        registerSectionInvalidSingularInputPage.inputFirstNameIntoFirstNameInputField();
+        //input valid last name
+        registerSectionInvalidSingularInputPage.inputLastNameIntoLastNameInputField();
+        //input existing email address (the one used in manual testing)
+        registerSectionInvalidSingularInputPage.inputExistingEmailIntoEmailInputField();
+        //capture screenshot of the invalid data input
+        captureScreenshot(driver, "Invalid User Account Creation - Existing Email");
+        //input valid password
+        registerSectionInvalidSingularInputPage.inputPasswordIntoPasswordInputField();
+        //input valid address
+        registerSectionInvalidSingularInputPage.inputAddressIntoAddressInputField();
+        //input valid city
+        registerSectionInvalidSingularInputPage.inputCityIntoCityInputField();
+        //input valid postal code
+        registerSectionInvalidSingularInputPage.inputPostalCodeIntoPostCodeInputField();
+        //click country dropdown method
+        loginRegisterDashboardRegisterSectionPage.clickCountryDropdownMenu();
+        //select 'United States' option
+        loginRegisterDashboardRegisterSectionPage.selectUSOption();
+        //click state dropdown menu (appears after country selection)
+        loginRegisterDashboardRegisterSectionPage.clickStateDropdownMenu();
+        //select 'Illinois' state option
+        loginRegisterDashboardRegisterSectionPage.selectIllinoisOption();
+        //capture screenshot after invalid data input
+        captureScreenshot(driver, "Invalid Male User Account Creation Data Input - Existing Email");
+        //click 'Continue' button
+        loginRegisterDashboardRegisterSectionPage.clickContinueButton();
+        //assert the expected error is displayed
+        assertEquals("This email address has already been registered.", registerSectionInvalidSingularInputPage.getUsedEmailErrorText(), "The already used email error text doesn't match expectations");
+        //capture screenshot after invalid user account creation (existing email address)
+        captureScreenshot(driver, "Invalid Male User Account Creation Test Result - Existing Email");
+    }
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
