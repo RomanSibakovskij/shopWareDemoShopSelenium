@@ -1621,6 +1621,28 @@ public class TestMethods extends BaseTest{
         captureScreenshot(driver, "Invalid Male User Account Creation Test Result - Invalid Postal Code Format");
     }
 
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    //valid logout test method
+    protected void userLogoutTest(){
+        HomePage homePage = new HomePage(driver);
+        AccountOverviewPage accountOverviewPage = new AccountOverviewPage(driver);
+        //general page web element assert
+        isGeneralPageWebElementDisplayed(homePage);
+        //general page text element assert
+        isGeneralPageTextElementAsExpected(homePage);
+        //account overview web element assert
+        isAccountOverviewPageWebElementDisplayed();
+        //account overview page text element assert
+        isAccountOverviewPageTextElementAsExpected();
+        //click aside 'Logout' link
+        accountOverviewPage.clickAsideLogoutLink();
+        //assert the user gets the expected success message
+        assertEquals("Successfully logged out.", accountOverviewPage.getLogoutSuccessMessage(), "The logout success message doesn't match expectations or the user failed to log out.");
+        //capture screenshot of the test result
+        captureScreenshot(driver, "User Logout Test Result");
+    }
+
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     //general page web element assert test method(all pages have the (header/footer) same ones except for checkout page)
@@ -1835,6 +1857,8 @@ public class TestMethods extends BaseTest{
     protected void logAccountOverviewData(){
         AccountOverviewPage accountOverviewPage = new AccountOverviewPage(driver);
         System.out.println("Account overview displayed data:" + "\n");
+
+        logger.info("Aside subsection title: " + accountOverviewPage.getAsideSubsectionTitle() + "\n");
         logger.info("Personal account data: " + accountOverviewPage.getPersonalData() + "\n");
         logger.info("Default billing address: " + accountOverviewPage.getDefaultBillingAddress() + "\n");
         logger.info("Default shipping address: " + accountOverviewPage.getDefaultShippingAddress() + "\n");

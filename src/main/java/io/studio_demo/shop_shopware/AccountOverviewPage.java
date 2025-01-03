@@ -52,6 +52,9 @@ public class AccountOverviewPage extends BasePage{
     private WebElement accountDefaultShippingAddressSubsectionTitle;
     @FindBy(xpath = "//div[@class='col-lg-6 card-col account-overview-card overview-shipping-address']//p")
     private WebElement accountDefaultShippingAddress;
+    //logout success message web element
+    @FindBy(xpath = "//div[@role='alert']")
+    private WebElement userLogoutSuccessMessage;
 
     public AccountOverviewPage(WebDriver driver) {super(driver);}
 
@@ -139,6 +142,16 @@ public class AccountOverviewPage extends BasePage{
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(600));
         wait.until(ExpectedConditions.visibilityOf(accountDefaultPaymentMethod));
         return accountDefaultPaymentMethod.getText();
+    }
+
+    //aside 'Logout' link click method
+    public void clickAsideLogoutLink(){asideLogOutLink.click();}
+
+    //account logout success message getter method
+    public String getLogoutSuccessMessage() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(600));
+        wait.until(ExpectedConditions.visibilityOf(userLogoutSuccessMessage));
+        return userLogoutSuccessMessage.getText();
     }
 
     //account overview page web element assert methods
