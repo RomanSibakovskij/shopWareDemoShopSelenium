@@ -1245,6 +1245,60 @@ public class TestMethods extends BaseTest{
         captureScreenshot(driver, "Invalid Male User Account Creation Test Result - Too Long Postal Code");
     }
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    //invalid singular input format tests
+
+    //invalid user creation test method - invalid first name format (numbers and special symbols)
+    protected void invalidUserAccountInvalidFirstNameCreationTest(RegisterSectionInvalidSingularInputPage registerSectionInvalidSingularInputPage){
+        HomePage homePage = new HomePage(driver);
+        LoginRegisterDashboardRegisterSectionPage loginRegisterDashboardRegisterSectionPage = new LoginRegisterDashboardRegisterSectionPage(driver);
+        //general page web element assert
+        isGeneralPageWebElementDisplayed(homePage);
+        //general page text element assert
+        isGeneralPageTextElementAsExpected(homePage);
+        //login and register dashboard page web element assert
+        isLoginRegisterDashboardPageWebElementDisplayed();
+        //login and register dashboard page text element assert
+        isLoginRegisterDashboardPageTextElementMatchExpectations();
+        //invalid user register input data getter (invalid first name format)
+        registerSectionInvalidSingularInputPage.getInvalidUserInputInvalidFirstNameData();
+        //click 'Salutations' dropdown menu
+        loginRegisterDashboardRegisterSectionPage.clickSalutationDropdownMenu();
+        //select 'Mrs.' option
+        loginRegisterDashboardRegisterSectionPage.selectMrsSalutation();
+        //input invalid first name format (numbers and special symbols)
+        registerSectionInvalidSingularInputPage.inputInvalidFirstNameFormatIntoFirstNameInputField();
+        //capture screenshot of the invalid data input
+        captureScreenshot(driver, "Invalid User Account Creation - Invalid First Name Format");
+        //input valid last name
+        registerSectionInvalidSingularInputPage.inputLastNameIntoLastNameInputField();
+        //input valid email address
+        registerSectionInvalidSingularInputPage.inputEmailIntoEmailInputField();
+        //input valid password
+        registerSectionInvalidSingularInputPage.inputPasswordIntoPasswordInputField();
+        //input valid address
+        registerSectionInvalidSingularInputPage.inputAddressIntoAddressInputField();
+        //input valid city
+        registerSectionInvalidSingularInputPage.inputCityIntoCityInputField();
+        //input valid postal code
+        registerSectionInvalidSingularInputPage.inputPostalCodeIntoPostCodeInputField();
+        //click country dropdown method
+        loginRegisterDashboardRegisterSectionPage.clickCountryDropdownMenu();
+        //select 'United States' option
+        loginRegisterDashboardRegisterSectionPage.selectUSOption();
+        //click state dropdown menu (appears after country selection)
+        loginRegisterDashboardRegisterSectionPage.clickStateDropdownMenu();
+        //select 'Illinois' state option
+        loginRegisterDashboardRegisterSectionPage.selectIllinoisOption();
+        //capture screenshot after invalid data input
+        captureScreenshot(driver, "Invalid Male User Account Creation Data Input - Invalid First Name Format");
+        //click 'Continue' button
+        loginRegisterDashboardRegisterSectionPage.clickContinueButton();
+        //capture screenshot after invalid user account creation (invalid first name format)
+        captureScreenshot(driver, "Invalid Male User Account Creation Test Result - Invalid First Name Format");
+    }
+
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     //general page web element assert test method(all pages have the (header/footer) same ones except for checkout page)
