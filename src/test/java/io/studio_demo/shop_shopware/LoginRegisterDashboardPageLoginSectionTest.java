@@ -40,6 +40,8 @@ public class LoginRegisterDashboardPageLoginSectionTest extends TestMethods{
 
     //invalid logout tests
 
+    //no singular input
+
     //Test 004a -> invalid user account login test - no login email
     @Test
     @DisplayName("Invalid User Login Test - No Email")
@@ -74,6 +76,26 @@ public class LoginRegisterDashboardPageLoginSectionTest extends TestMethods{
         userLogoutTest();
         //invalid user login test - no login password
         invalidUserAccountNoPasswordLoginTest(loginRegisterDashboardRegisterSectionPage);
+    }
+
+    //invalid singular input
+
+    //Test 004c -> invalid user account login test - invalid login email
+    @Test
+    @DisplayName("Invalid User Login Test - Invalid Email")
+    @Tag("Invalid_User_Login")
+    @Tag("Invalid_Singular_Input")
+    void invalidAccountLoginInvalidEmailTest(){
+        HomePage homePage = new HomePage(driver);
+        LoginRegisterDashboardRegisterSectionPage loginRegisterDashboardRegisterSectionPage = new LoginRegisterDashboardRegisterSectionPage(driver);
+        //navigate to login & register dashboard page
+        navigateToLoginAndRegisterDashboardPageTest(homePage);
+        //valid user account creation test
+        validUserAccountCreationTest(loginRegisterDashboardRegisterSectionPage);
+        //valid user logout test
+        userLogoutTest();
+        //invalid user login test - invalid login email
+        invalidUserAccountInvalidEmailLoginTest(loginRegisterDashboardRegisterSectionPage);
     }
 
 }

@@ -1680,7 +1680,6 @@ public class TestMethods extends BaseTest{
     protected void invalidUserAccountNoEmailLoginTest(LoginRegisterDashboardRegisterSectionPage loginRegisterDashboardRegisterSectionPage){
         HomePage homePage = new HomePage(driver);
         LoginRegisterDashBoardLoginSectionPage loginRegisterDashBoardLoginSectionPage = new LoginRegisterDashBoardLoginSectionPage(driver);
-        AccountOverviewPage accountOverviewPage = new AccountOverviewPage(driver);
         //general page web element assert
         isGeneralPageWebElementDisplayed(homePage);
         //general page text element assert
@@ -1706,7 +1705,6 @@ public class TestMethods extends BaseTest{
     protected void invalidUserAccountNoPasswordLoginTest(LoginRegisterDashboardRegisterSectionPage loginRegisterDashboardRegisterSectionPage){
         HomePage homePage = new HomePage(driver);
         LoginRegisterDashBoardLoginSectionPage loginRegisterDashBoardLoginSectionPage = new LoginRegisterDashBoardLoginSectionPage(driver);
-        AccountOverviewPage accountOverviewPage = new AccountOverviewPage(driver);
         //general page web element assert
         isGeneralPageWebElementDisplayed(homePage);
         //general page text element assert
@@ -1727,6 +1725,36 @@ public class TestMethods extends BaseTest{
         loginRegisterDashBoardLoginSectionPage.clickLoginButton();
         //capture screenshot after invalid login attempt
         captureScreenshot(driver, "Invalid User Login Test Result - No Password");
+    }
+
+    //invalid singular input
+
+    //invalid user login test method - invalid login email
+    protected void invalidUserAccountInvalidEmailLoginTest(LoginRegisterDashboardRegisterSectionPage loginRegisterDashboardRegisterSectionPage){
+        HomePage homePage = new HomePage(driver);
+        LoginRegisterDashBoardLoginSectionPage loginRegisterDashBoardLoginSectionPage = new LoginRegisterDashBoardLoginSectionPage(driver);
+        //general page web element assert
+        isGeneralPageWebElementDisplayed(homePage);
+        //general page text element assert
+        isGeneralPageTextElementAsExpected(homePage);
+        //login and register dashboard page web element assert
+        isLoginRegisterDashboardPageWebElementDisplayed();
+        //login and register dashboard page text element assert
+        isLoginRegisterDashboardPageTextElementMatchExpectations();
+        //invalid user login input data getter - invalid login email
+        loginRegisterDashBoardLoginSectionPage.getInvalidUserLoginInvalidEmailInputData(loginRegisterDashboardRegisterSectionPage);
+        //capture screenshot of the pre-input stage
+        captureScreenshot(driver, "Invalid User Login Test - Before Data Input");
+        //input invalid login email
+        loginRegisterDashBoardLoginSectionPage.inputInvalidEmailIntoLoginEmailInputField();
+        //input valid login password
+        loginRegisterDashBoardLoginSectionPage.inputPasswordIntoLoginPasswordInputField();
+        //input 'Login' button
+        loginRegisterDashBoardLoginSectionPage.clickLoginButton();
+        //assert the expected error is displayed
+        assertEquals("Could not find an account that matches the given credentials.", loginRegisterDashBoardLoginSectionPage.getInvalidCredentialsError(), "The invalid credentials error doesn't match expectations");
+        //capture screenshot after invalid login attempt
+        captureScreenshot(driver, "Invalid User Login Test Result - Invalid Email");
     }
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

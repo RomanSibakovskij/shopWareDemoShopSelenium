@@ -25,7 +25,7 @@ public class LoginRegisterDashBoardLoginSectionPage extends BasePage{
     @FindBy(xpath = "//div[@class='login-advantages d-none d-lg-block']")
     private WebElement loginAdvantagesDescription;
     //invalid credentials error
-    @FindBy(xpath = "")
+    @FindBy(xpath = "//div[@role='alert']")
     private WebElement invalidCredentialsError;
 
     //valid login data
@@ -35,6 +35,9 @@ public class LoginRegisterDashBoardLoginSectionPage extends BasePage{
     //no singular login input data
     private String noLoginEmail;
     private String noLoginPassword;
+
+    //invalid singular login data
+    private String invalidLoginEmail;
 
     public LoginRegisterDashBoardLoginSectionPage(WebDriver driver) {super(driver);}
 
@@ -124,6 +127,28 @@ public class LoginRegisterDashBoardLoginSectionPage extends BasePage{
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(650));
         wait.until(ExpectedConditions.visibilityOf(loginSectionPasswordInputField));
         loginSectionPasswordInputField.sendKeys(noLoginPassword);
+    }
+
+    //invalid singular input methods
+
+    //invalid login data input getter - invalid email
+    public void getInvalidUserLoginInvalidEmailInputData(LoginRegisterDashboardRegisterSectionPage loginRegisterDashboardRegisterSectionPage) {
+        invalidLoginEmail = "k89w2@yahoo.org";
+        loginPassword = loginRegisterDashboardRegisterSectionPage.getPassword();
+
+        System.out.println("Invalid user login input data (invalid email): " + "\n");
+
+        logger.info("Invalid login email: " + invalidLoginEmail);
+        logger.info("Valid user login password (invalid email): " + loginPassword);
+
+        System.out.println("\n");
+    }
+
+    //invalid user login data input method - invalid login email
+    public void inputInvalidEmailIntoLoginEmailInputField(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(650));
+        wait.until(ExpectedConditions.visibilityOf(loginSectionEmailInputField));
+        loginSectionEmailInputField.sendKeys(invalidLoginEmail);
     }
 
     //click 'Login' button
