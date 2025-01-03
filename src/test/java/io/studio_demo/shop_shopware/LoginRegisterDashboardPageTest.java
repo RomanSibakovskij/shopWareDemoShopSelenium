@@ -218,7 +218,7 @@ public class LoginRegisterDashboardPageTest extends TestMethods{
         invalidUserAccountTooShortPasswordCreationTest(registerSectionTooShortLongInputPage);
     }
 
-    //Test 002o -> invalid user account creation test - too short address (1 char)
+    //Test 002o -> invalid user account creation test - too short address (1 char) (user account has been created - test has failed)
     @Test
     @DisplayName("Invalid User Account Creation Test - Too Short Address")
     @Tag("Invalid_User_Account_Creation")
@@ -232,4 +232,17 @@ public class LoginRegisterDashboardPageTest extends TestMethods{
         invalidUserAccountTooShortAddressCreationTest(registerSectionTooShortLongInputPage);
     }
 
+    //Test 002p -> invalid user account creation test - too short city (1 char) (user account has been created - test has failed)
+    @Test
+    @DisplayName("Invalid User Account Creation Test - Too Short City")
+    @Tag("Invalid_User_Account_Creation")
+    @Tag("Too_Short_Singular_Input")
+    void invalidAccountCreationTooShortCityTest(){
+        HomePage homePage = new HomePage(driver);
+        RegisterSectionTooShortLongInputPage registerSectionTooShortLongInputPage = new RegisterSectionTooShortLongInputPage(driver);
+        //navigate to login & register dashboard page
+        navigateToLoginAndRegisterDashboardPageTest(homePage);
+        //invalid user account creation test - too short city (1 char)
+        invalidUserAccountTooShortCityCreationTest(registerSectionTooShortLongInputPage);
+    }
 }

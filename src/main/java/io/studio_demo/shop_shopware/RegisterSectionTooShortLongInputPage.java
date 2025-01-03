@@ -39,6 +39,7 @@ public class RegisterSectionTooShortLongInputPage extends BasePage{
     private String tooShortEmail;
     private String tooShortPassword;
     private String tooShortAddress;
+    private String tooShortCity;
 
     public RegisterSectionTooShortLongInputPage(WebDriver driver) {super(driver);}
 
@@ -212,6 +213,33 @@ public class RegisterSectionTooShortLongInputPage extends BasePage{
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(650));
         wait.until(ExpectedConditions.visibilityOf(registerSectionAddressInputField));
         registerSectionAddressInputField.sendKeys(tooShortAddress);
+    }
+
+    //invalid user input data getter - too short city (1 char)
+    public void getInvalidUserInputTooShortCityData(){
+        firstName = TestDataGenerator.getRandomFirstName();
+        lastName = TestDataGenerator.getRandomLastName();
+        email = TestDataGenerator.generateRandomEmailAddress(8);
+        password = TestDataGenerator.generateRandomPassword();
+        address = TestDataGenerator.generateRandomAddress(6);
+        tooShortCity = "Z";
+        postalCode = TestDataGenerator.getRandomPostalCode();
+
+        System.out.println("Generated user register input data (too short city): " + "\n");
+
+        logger.info("Valid user first name (too short city): " + firstName);
+        logger.info("Valid user last name (too short city): " + lastName);
+        logger.info("Valid user email (too short city): " + email);
+        logger.info("Valid user password (too short city): " + password);
+        logger.info("Valid user address (too short city): " + address);
+        logger.info("Too short user city: " + tooShortCity);
+        logger.info("Valid user postal code (too short city): " + postalCode);
+    }
+    //invalid user register data input method - too short city (1 char)
+    public void inputTooShortCityIntoCityInputField(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(650));
+        wait.until(ExpectedConditions.visibilityOf(registerSectionCityInputField));
+        registerSectionCityInputField.sendKeys(tooShortCity);
     }
 
 }
