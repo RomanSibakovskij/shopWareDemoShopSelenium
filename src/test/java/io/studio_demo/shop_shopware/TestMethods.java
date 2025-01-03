@@ -911,8 +911,8 @@ public class TestMethods extends BaseTest{
         registerSectionTooShortLongInputPage.getInvalidUserInputTooLongFirstNameData();
         //click 'Salutations' dropdown menu
         loginRegisterDashboardRegisterSectionPage.clickSalutationDropdownMenu();
-        //select 'Mrs.' option
-        loginRegisterDashboardRegisterSectionPage.selectMrsSalutation();
+        //select 'Mr.' option
+        loginRegisterDashboardRegisterSectionPage.selectMrSalutation();
         //input too long first name (100 chars)
         registerSectionTooShortLongInputPage.inputTooLongFirstNameIntoFirstNameInputField();
         //capture screenshot of the invalid data input
@@ -1265,8 +1265,8 @@ public class TestMethods extends BaseTest{
         registerSectionInvalidSingularInputPage.getInvalidUserInputInvalidFirstNameData();
         //click 'Salutations' dropdown menu
         loginRegisterDashboardRegisterSectionPage.clickSalutationDropdownMenu();
-        //select 'Mrs.' option
-        loginRegisterDashboardRegisterSectionPage.selectMrsSalutation();
+        //select 'Mr.' option
+        loginRegisterDashboardRegisterSectionPage.selectMrSalutation();
         //input invalid first name format (numbers and special symbols)
         registerSectionInvalidSingularInputPage.inputInvalidFirstNameFormatIntoFirstNameInputField();
         //capture screenshot of the invalid data input
@@ -1314,8 +1314,8 @@ public class TestMethods extends BaseTest{
         registerSectionInvalidSingularInputPage.getInvalidUserInputInvalidLastNameData();
         //click 'Salutations' dropdown menu
         loginRegisterDashboardRegisterSectionPage.clickSalutationDropdownMenu();
-        //select 'Mrs.' option
-        loginRegisterDashboardRegisterSectionPage.selectMrsSalutation();
+        //select 'Mr.' option
+        loginRegisterDashboardRegisterSectionPage.selectMrSalutation();
         //input valid first name
         registerSectionInvalidSingularInputPage.inputFirstNameIntoFirstNameInputField();
         //input invalid last name format (numbers and special symbols)
@@ -1363,8 +1363,8 @@ public class TestMethods extends BaseTest{
         registerSectionInvalidSingularInputPage.getInvalidUserInputInvalidEmailFormatData();
         //click 'Salutations' dropdown menu
         loginRegisterDashboardRegisterSectionPage.clickSalutationDropdownMenu();
-        //select 'Mrs.' option
-        loginRegisterDashboardRegisterSectionPage.selectMrsSalutation();
+        //select 'Mr.' option
+        loginRegisterDashboardRegisterSectionPage.selectMrSalutation();
         //input valid first name
         registerSectionInvalidSingularInputPage.inputFirstNameIntoFirstNameInputField();
         //input valid last name
@@ -1396,7 +1396,7 @@ public class TestMethods extends BaseTest{
         //capture screenshot after invalid user account creation (invalid email address format)
         captureScreenshot(driver, "Invalid Male User Account Creation Test Result - Invalid Email Format");
     }
-    //invalid user creation test method - existing email address format (used before in manual testing) (the form has no input display errors so the screenshots are being used as proof of the test run)
+    //invalid user creation test method - existing email address format (used before in manual testing)
     protected void invalidUserAccountExistingEmailCreationTest(RegisterSectionInvalidSingularInputPage registerSectionInvalidSingularInputPage){
         HomePage homePage = new HomePage(driver);
         LoginRegisterDashboardRegisterSectionPage loginRegisterDashboardRegisterSectionPage = new LoginRegisterDashboardRegisterSectionPage(driver);
@@ -1446,6 +1446,55 @@ public class TestMethods extends BaseTest{
         assertEquals("This email address has already been registered.", registerSectionInvalidSingularInputPage.getUsedEmailErrorText(), "The already used email error text doesn't match expectations");
         //capture screenshot after invalid user account creation (existing email address)
         captureScreenshot(driver, "Invalid Male User Account Creation Test Result - Existing Email");
+    }
+    //invalid user creation test method - invalid address format (special symbols only) (the form has no input display errors so the screenshots are being used as proof of the test run)
+    protected void invalidUserAccountInvalidAddressFormatCreationTest(RegisterSectionInvalidSingularInputPage registerSectionInvalidSingularInputPage){
+        HomePage homePage = new HomePage(driver);
+        LoginRegisterDashboardRegisterSectionPage loginRegisterDashboardRegisterSectionPage = new LoginRegisterDashboardRegisterSectionPage(driver);
+        //general page web element assert
+        isGeneralPageWebElementDisplayed(homePage);
+        //general page text element assert
+        isGeneralPageTextElementAsExpected(homePage);
+        //login and register dashboard page web element assert
+        isLoginRegisterDashboardPageWebElementDisplayed();
+        //login and register dashboard page text element assert
+        isLoginRegisterDashboardPageTextElementMatchExpectations();
+        //invalid user register input data getter (invalid address format)
+        registerSectionInvalidSingularInputPage.getInvalidUserInputInvalidAddressFormatData();
+        //click 'Salutations' dropdown menu
+        loginRegisterDashboardRegisterSectionPage.clickSalutationDropdownMenu();
+        //select 'Mr.' option
+        loginRegisterDashboardRegisterSectionPage.selectMrSalutation();
+        //input valid first name
+        registerSectionInvalidSingularInputPage.inputFirstNameIntoFirstNameInputField();
+        //input valid last name
+        registerSectionInvalidSingularInputPage.inputLastNameIntoLastNameInputField();
+        //input valid email
+        registerSectionInvalidSingularInputPage.inputEmailIntoEmailInputField();
+        //input valid password
+        registerSectionInvalidSingularInputPage.inputPasswordIntoPasswordInputField();
+        //input invalid address format (special symbols only)
+        registerSectionInvalidSingularInputPage.inputInvalidAddressFormatIntoAddressInputField();
+        //capture screenshot of the invalid data input
+        captureScreenshot(driver, "Invalid User Account Creation - Invalid Address Format");
+        //input valid city
+        registerSectionInvalidSingularInputPage.inputCityIntoCityInputField();
+        //input valid postal code
+        registerSectionInvalidSingularInputPage.inputPostalCodeIntoPostCodeInputField();
+        //click country dropdown method
+        loginRegisterDashboardRegisterSectionPage.clickCountryDropdownMenu();
+        //select 'United States' option
+        loginRegisterDashboardRegisterSectionPage.selectUSOption();
+        //click state dropdown menu (appears after country selection)
+        loginRegisterDashboardRegisterSectionPage.clickStateDropdownMenu();
+        //select 'Illinois' state option
+        loginRegisterDashboardRegisterSectionPage.selectIllinoisOption();
+        //capture screenshot after invalid data input
+        captureScreenshot(driver, "Invalid Male User Account Creation Data Input - Invalid Address Format");
+        //click 'Continue' button
+        loginRegisterDashboardRegisterSectionPage.clickContinueButton();
+        //capture screenshot after invalid user account creation (invalid address format)
+        captureScreenshot(driver, "Invalid Male User Account Creation Test Result - Invalid Address Format");
     }
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

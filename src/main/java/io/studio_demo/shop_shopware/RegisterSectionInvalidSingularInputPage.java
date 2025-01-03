@@ -40,6 +40,7 @@ public class RegisterSectionInvalidSingularInputPage extends BasePage{
     private String invalidFirstNameFormat;
     private String invalidLastNameFormat;
     private String invalidEmailFormat;
+    private String invalidAddressFormat;
 
     //existing email variable (sed beforehand in manual testing)
     private String existingEmail;
@@ -190,6 +191,33 @@ public class RegisterSectionInvalidSingularInputPage extends BasePage{
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(650));
         wait.until(ExpectedConditions.visibilityOf(registerSectionEmailInputField));
         registerSectionEmailInputField.sendKeys(existingEmail);
+    }
+
+    //invalid user input data getter - invalid address format (special symbols only)
+    public void getInvalidUserInputInvalidAddressFormatData(){
+        firstName = TestDataGenerator.getRandomFirstName();
+        lastName = TestDataGenerator.getRandomLastName();
+        email = TestDataGenerator.generateRandomEmailAddress(8);
+        password = TestDataGenerator.generateRandomPassword();
+        invalidAddressFormat = "!@!@$##%%&&^(&)*()(&*^%^$%#@$#@!#!@$@#$%&^*&(*)(&*^&%";
+        city = TestDataGenerator.getRandomCity();
+        postalCode = TestDataGenerator.getRandomPostalCode();
+
+        System.out.println("Generated user register input data (invalid address format): " + "\n");
+
+        logger.info("Valid user first name (invalid address format): " + firstName);
+        logger.info("Valid user last name (invalid address format): " + lastName);
+        logger.info("Valid user email (invalid address format): " + email);
+        logger.info("Valid user password (invalid address format): " + password);
+        logger.info("Invalid user address format: " + invalidAddressFormat);
+        logger.info("Valid user city (invalid address format): " + city);
+        logger.info("Valid user postal code (invalid address format): " + postalCode);
+    }
+    //invalid user register data input method - invalid address format (special symbols only)
+    public void inputInvalidAddressFormatIntoAddressInputField(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(650));
+        wait.until(ExpectedConditions.visibilityOf(registerSectionAddressInputField));
+        registerSectionAddressInputField.sendKeys(invalidAddressFormat);
     }
 
     //used email error bar text getter
