@@ -19,4 +19,21 @@ public class LoginRegisterDashboardPageLoginSectionTest extends TestMethods{
         userLogoutTest();
     }
 
+    //Test 004 -> valid user account login test
+    @Test
+    @DisplayName("Valid User Login Test")
+    @Tag("Valid_User_Login")
+    void validAccountLoginTest(){
+        HomePage homePage = new HomePage(driver);
+        LoginRegisterDashboardRegisterSectionPage loginRegisterDashboardRegisterSectionPage = new LoginRegisterDashboardRegisterSectionPage(driver);
+        //navigate to login & register dashboard page
+        navigateToLoginAndRegisterDashboardPageTest(homePage);
+        //valid user account creation test
+        validUserAccountCreationTest(loginRegisterDashboardRegisterSectionPage);
+        //valid user logout test
+        userLogoutTest();
+        //valid user login test
+        validUserAccountLoginTest(loginRegisterDashboardRegisterSectionPage);
+    }
+
 }

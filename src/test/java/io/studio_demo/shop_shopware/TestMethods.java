@@ -1643,6 +1643,35 @@ public class TestMethods extends BaseTest{
         captureScreenshot(driver, "User Logout Test Result");
     }
 
+    //valid user login test method
+    protected void validUserAccountLoginTest(LoginRegisterDashboardRegisterSectionPage loginRegisterDashboardRegisterSectionPage){
+        HomePage homePage = new HomePage(driver);
+        LoginRegisterDashBoardLoginSectionPage loginRegisterDashBoardLoginSectionPage = new LoginRegisterDashBoardLoginSectionPage(driver);
+        AccountOverviewPage accountOverviewPage = new AccountOverviewPage(driver);
+        //general page web element assert
+        isGeneralPageWebElementDisplayed(homePage);
+        //general page text element assert
+        isGeneralPageTextElementAsExpected(homePage);
+        //login and register dashboard page web element assert
+        isLoginRegisterDashboardPageWebElementDisplayed();
+        //login and register dashboard page text element assert
+        isLoginRegisterDashboardPageTextElementMatchExpectations();
+        //valid user login input data getter
+        loginRegisterDashBoardLoginSectionPage.getValidUserLoginInputData(loginRegisterDashboardRegisterSectionPage);
+        //capture screenshot of the pre-input stage
+        captureScreenshot(driver, "Valid User Login Test - Before Data Input");
+        //input valid login email
+        loginRegisterDashBoardLoginSectionPage.inputEmailIntoLoginEmailInputField();
+        //input valid login password
+        loginRegisterDashBoardLoginSectionPage.inputPasswordIntoLoginPasswordInputField();
+        //input 'Login' button
+        loginRegisterDashBoardLoginSectionPage.clickLoginButton();
+        //assert the user gets onto account overview page after successful login
+        assertEquals("Overview", accountOverviewPage.getAccountOverviewTitle(), "The account overview page title doesn't match expectations");
+        //capture screenshot after test completion
+        captureScreenshot(driver, "Valid User Login Test Result");
+    }
+
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     //general page web element assert test method(all pages have the (header/footer) same ones except for checkout page)

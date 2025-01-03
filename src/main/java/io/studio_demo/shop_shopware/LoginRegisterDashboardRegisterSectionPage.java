@@ -95,6 +95,8 @@ public class LoginRegisterDashboardRegisterSectionPage extends BasePage{
         logger.info("Valid user address: " + address);
         logger.info("Valid user city: " + city);
         logger.info("Valid user postal code: " + postalCode);
+
+        System.out.println("\n");
     }
 
     //valid user register data input methods

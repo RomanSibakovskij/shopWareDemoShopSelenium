@@ -25,6 +25,10 @@ public class LoginRegisterDashBoardLoginSectionPage extends BasePage{
     @FindBy(xpath = "//div[@class='login-advantages d-none d-lg-block']")
     private WebElement loginAdvantagesDescription;
 
+    //valid login data
+    private String loginEmail;
+    private String loginPassword;
+
     public LoginRegisterDashBoardLoginSectionPage(WebDriver driver) {super(driver);}
 
     //login section title getter
@@ -45,6 +49,34 @@ public class LoginRegisterDashBoardLoginSectionPage extends BasePage{
         wait.until(ExpectedConditions.visibilityOf(loginAdvantagesDescription));
         return loginAdvantagesDescription.getText();
     }
+
+    //valid login data input getter
+    public void getValidUserLoginInputData(LoginRegisterDashboardRegisterSectionPage loginRegisterDashboardRegisterSectionPage) {
+        loginEmail = loginRegisterDashboardRegisterSectionPage.getEmail();
+        loginPassword = loginRegisterDashboardRegisterSectionPage.getPassword();
+
+        System.out.println("Valid user login input data: " + "\n");
+
+        logger.info("Valid user login email: " + loginEmail);
+        logger.info("Valid user login password: " + loginPassword);
+
+        System.out.println("\n");
+    }
+
+    //valid user login data input methods
+    public void inputEmailIntoLoginEmailInputField(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(650));
+        wait.until(ExpectedConditions.visibilityOf(loginSectionEmailInputField));
+        loginSectionEmailInputField.sendKeys(loginEmail);
+    }
+    public void inputPasswordIntoLoginPasswordInputField(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(650));
+        wait.until(ExpectedConditions.visibilityOf(loginSectionPasswordInputField));
+        loginSectionPasswordInputField.sendKeys(loginPassword);
+    }
+
+    //click 'Login' button
+    public void clickLoginButton(){loginSectionButton.click();}
 
     //login section web element assert methods
     public boolean isLoginSectionTitleDisplayed(){return loginSectionTitle.isDisplayed();}
