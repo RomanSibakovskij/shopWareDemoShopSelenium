@@ -2,7 +2,7 @@ package io.studio_demo.shop_shopware;
 
 import org.junit.jupiter.api.*;
 
-public class LoginRegisterDashboardPageTest extends TestMethods{
+public class LoginRegisterDashboardPageRegisterSectionTest extends TestMethods{
 
     //Test 002 -> valid user account creation test
     @Test
