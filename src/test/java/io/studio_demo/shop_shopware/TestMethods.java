@@ -1783,7 +1783,7 @@ public class TestMethods extends BaseTest{
         //capture screenshot after invalid login attempt
         captureScreenshot(driver, "Invalid User Login Test Result - Invalid Password");
     }
-
+    
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     //general page web element assert test method(all pages have the (header/footer) same ones except for checkout page)

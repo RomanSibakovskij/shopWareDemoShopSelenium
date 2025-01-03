@@ -2,7 +2,10 @@ package io.studio_demo.shop_shopware;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
 import java.util.*;
 
 public class ProductsDashboardPage extends BasePage{
@@ -40,6 +43,12 @@ public class ProductsDashboardPage extends BasePage{
 
     public ProductsDashboardPage(WebDriver driver) {super(driver);}
 
+    //product dashboard page title getter
+    public String getProjectDashboardPageTitle() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(600));
+        wait.until(ExpectedConditions.visibilityOf(productsDashboardTitleLink));
+        return productsDashboardTitleLink.getText();
+    }
 
     //products dashboard page web element assert methods
     public boolean isProductsDashboardTitleLinkDisplayed() {return productsDashboardTitleLink.isDisplayed();}

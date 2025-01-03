@@ -72,6 +72,9 @@ public class HomePage extends BasePage{
     //click 'Accept Technical Cookies' button method
     public void clickAcceptTechnicalCookies(){acceptTechnicalCookiesButton.click();}
 
+    //click 'Free Time & Electronics nav link method
+    public void clickFreeTimeElectronicsLink(){homePageFreeTimeElectronicsLink.click();}
+
     //home page shop section title getter
     public String getShopServiceHotlineTitle() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(600));
