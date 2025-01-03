@@ -37,6 +37,7 @@ public class RegisterSectionInvalidSingularInputPage extends BasePage{
 
     //invalid singular input data variables
     private String invalidFirstNameFormat;
+    private String invalidLastNameFormat;
 
     public RegisterSectionInvalidSingularInputPage(WebDriver driver) {super(driver);}
 
@@ -104,6 +105,33 @@ public class RegisterSectionInvalidSingularInputPage extends BasePage{
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(650));
         wait.until(ExpectedConditions.visibilityOf(registerSectionFirstNameInputField));
         registerSectionFirstNameInputField.sendKeys(invalidFirstNameFormat);
+    }
+
+    //invalid user input data getter - invalid last name format (numbers and special symbols)
+    public void getInvalidUserInputInvalidLastNameData(){
+        firstName = TestDataGenerator.getRandomFirstName();
+        invalidLastNameFormat = "65756%^^$%$%^$2312312313&%^&*()*(";
+        email = TestDataGenerator.generateRandomEmailAddress(8);
+        password = TestDataGenerator.generateRandomPassword();
+        address = TestDataGenerator.generateRandomAddress(6);
+        city = TestDataGenerator.getRandomCity();
+        postalCode = TestDataGenerator.getRandomPostalCode();
+
+        System.out.println("Generated user register input data (invalid last name format): " + "\n");
+
+        logger.info("Valid user first name (invalid last name format): " + firstName);
+        logger.info("Invalid user last name format: " + invalidLastNameFormat);
+        logger.info("Valid user email (invalid last name format): " + email);
+        logger.info("Valid user password (invalid last name format): " + password);
+        logger.info("Valid user address (invalid last name format): " + address);
+        logger.info("Valid user city (invalid last name format): " + city);
+        logger.info("Valid user postal code (invalid last name format): " + postalCode);
+    }
+    //invalid user register data input method - invalid last name format (numbers and special symbols)
+    public void inputInvalidLastNameFormatIntoLastNameInputField(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(650));
+        wait.until(ExpectedConditions.visibilityOf(registerSectionLastNameInputField));
+        registerSectionLastNameInputField.sendKeys(invalidLastNameFormat);
     }
 
 }

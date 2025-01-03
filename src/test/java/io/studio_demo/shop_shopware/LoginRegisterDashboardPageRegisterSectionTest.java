@@ -376,4 +376,18 @@ public class LoginRegisterDashboardPageRegisterSectionTest extends TestMethods{
         invalidUserAccountInvalidFirstNameCreationTest(registerSectionInvalidSingularInputPage);
     }
 
+    //Test 002z -> invalid user account creation test - invalid last name format (numbers and special symbols) (user account has been created - test has failed)
+    @Test
+    @DisplayName("Invalid User Account Creation Test - Invalid Last Name Format")
+    @Tag("Invalid_User_Account_Creation")
+    @Tag("Invalid_Singular_Input_Format")
+    void invalidAccountCreationInvalidLastNameTest(){
+        HomePage homePage = new HomePage(driver);
+        RegisterSectionInvalidSingularInputPage registerSectionInvalidSingularInputPage = new RegisterSectionInvalidSingularInputPage(driver);
+        //navigate to login & register dashboard page
+        navigateToLoginAndRegisterDashboardPageTest(homePage);
+        //invalid user account creation test - invalid last name format (numbers and special symbols)
+        invalidUserAccountInvalidLastNameCreationTest(registerSectionInvalidSingularInputPage);
+    }
+
 }
