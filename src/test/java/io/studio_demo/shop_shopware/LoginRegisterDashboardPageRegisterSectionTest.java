@@ -390,4 +390,18 @@ public class LoginRegisterDashboardPageRegisterSectionTest extends TestMethods{
         invalidUserAccountInvalidLastNameCreationTest(registerSectionInvalidSingularInputPage);
     }
 
+    //Test 002aa -> invalid user account creation test - invalid email address format (missing '@')
+    @Test
+    @DisplayName("Invalid User Account Creation Test - Invalid Email Format")
+    @Tag("Invalid_User_Account_Creation")
+    @Tag("Invalid_Singular_Input_Format")
+    void invalidAccountCreationInvalidEmailFormatTest(){
+        HomePage homePage = new HomePage(driver);
+        RegisterSectionInvalidSingularInputPage registerSectionInvalidSingularInputPage = new RegisterSectionInvalidSingularInputPage(driver);
+        //navigate to login & register dashboard page
+        navigateToLoginAndRegisterDashboardPageTest(homePage);
+        //invalid user account creation test - invalid email address format (missing '@')
+        invalidUserAccountInvalidEmailFormatCreationTest(registerSectionInvalidSingularInputPage);
+    }
+
 }

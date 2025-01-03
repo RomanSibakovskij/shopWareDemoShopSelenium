@@ -38,6 +38,7 @@ public class RegisterSectionInvalidSingularInputPage extends BasePage{
     //invalid singular input data variables
     private String invalidFirstNameFormat;
     private String invalidLastNameFormat;
+    private String invalidEmailFormat;
 
     public RegisterSectionInvalidSingularInputPage(WebDriver driver) {super(driver);}
 
@@ -134,4 +135,30 @@ public class RegisterSectionInvalidSingularInputPage extends BasePage{
         registerSectionLastNameInputField.sendKeys(invalidLastNameFormat);
     }
 
+    //invalid user input data getter - invalid email format (missing '@')
+    public void getInvalidUserInputInvalidEmailFormatData(){
+        firstName = TestDataGenerator.getRandomFirstName();
+        lastName = TestDataGenerator.getRandomLastName();
+        invalidEmailFormat = "checkerfakemail.com";
+        password = TestDataGenerator.generateRandomPassword();
+        address = TestDataGenerator.generateRandomAddress(6);
+        city = TestDataGenerator.getRandomCity();
+        postalCode = TestDataGenerator.getRandomPostalCode();
+
+        System.out.println("Generated user register input data (invalid email format): " + "\n");
+
+        logger.info("Valid user first name (invalid email format): " + firstName);
+        logger.info("Valid user last name (invalid email format): " + lastName);
+        logger.info("Invalid user email format: " + invalidEmailFormat);
+        logger.info("Valid user password (invalid email format): " + password);
+        logger.info("Valid user address (invalid email format): " + address);
+        logger.info("Valid user city (invalid email format): " + city);
+        logger.info("Valid user postal code (invalid email format): " + postalCode);
+    }
+    //invalid user register data input method - invalid email format (missing '@')
+    public void inputInvalidEmailFormatIntoEmailInputField(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(650));
+        wait.until(ExpectedConditions.visibilityOf(registerSectionEmailInputField));
+        registerSectionEmailInputField.sendKeys(invalidEmailFormat);
+    }
 }
