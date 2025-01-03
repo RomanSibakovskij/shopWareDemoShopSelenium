@@ -24,10 +24,16 @@ public class LoginRegisterDashBoardLoginSectionPage extends BasePage{
     private WebElement loginSectionButton;
     @FindBy(xpath = "//div[@class='login-advantages d-none d-lg-block']")
     private WebElement loginAdvantagesDescription;
+    //invalid credentials error
+    @FindBy(xpath = "")
+    private WebElement invalidCredentialsError;
 
     //valid login data
     private String loginEmail;
     private String loginPassword;
+
+    //no singular login input data
+    private String noLoginEmail;
 
     public LoginRegisterDashBoardLoginSectionPage(WebDriver driver) {super(driver);}
 
@@ -75,8 +81,39 @@ public class LoginRegisterDashBoardLoginSectionPage extends BasePage{
         loginSectionPasswordInputField.sendKeys(loginPassword);
     }
 
+    //invalid login methods
+
+    //no singular input
+
+    //invalid login data input getter - no email
+    public void getInvalidUserLoginNoEmailInputData(LoginRegisterDashboardRegisterSectionPage loginRegisterDashboardRegisterSectionPage) {
+        noLoginEmail = "";
+        loginPassword = loginRegisterDashboardRegisterSectionPage.getPassword();
+
+        System.out.println("Invalid user login input data (no email): " + "\n");
+
+        logger.info("No login email: " + noLoginEmail);
+        logger.info("Valid user login password (no email): " + loginPassword);
+
+        System.out.println("\n");
+    }
+
+    //invalid user login data input method - no login email
+    public void inputNoEmailIntoLoginEmailInputField(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(650));
+        wait.until(ExpectedConditions.visibilityOf(loginSectionEmailInputField));
+        loginSectionEmailInputField.sendKeys(noLoginEmail);
+    }
+
     //click 'Login' button
     public void clickLoginButton(){loginSectionButton.click();}
+
+    //invalid credentials error getter
+    public String getInvalidCredentialsError() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(600));
+        wait.until(ExpectedConditions.visibilityOf(invalidCredentialsError));
+        return invalidCredentialsError.getText();
+    }
 
     //login section web element assert methods
     public boolean isLoginSectionTitleDisplayed(){return loginSectionTitle.isDisplayed();}

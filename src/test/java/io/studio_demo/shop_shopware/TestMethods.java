@@ -1672,6 +1672,37 @@ public class TestMethods extends BaseTest{
         captureScreenshot(driver, "Valid User Login Test Result");
     }
 
+    //invalid login tests
+
+    //no singular input
+
+    //invalid user login test method - no login email (the form has no singular input display errors so the screenshots are being used as proof of the test run)
+    protected void invalidUserAccountNoEmailLoginTest(LoginRegisterDashboardRegisterSectionPage loginRegisterDashboardRegisterSectionPage){
+        HomePage homePage = new HomePage(driver);
+        LoginRegisterDashBoardLoginSectionPage loginRegisterDashBoardLoginSectionPage = new LoginRegisterDashBoardLoginSectionPage(driver);
+        AccountOverviewPage accountOverviewPage = new AccountOverviewPage(driver);
+        //general page web element assert
+        isGeneralPageWebElementDisplayed(homePage);
+        //general page text element assert
+        isGeneralPageTextElementAsExpected(homePage);
+        //login and register dashboard page web element assert
+        isLoginRegisterDashboardPageWebElementDisplayed();
+        //login and register dashboard page text element assert
+        isLoginRegisterDashboardPageTextElementMatchExpectations();
+        //valid user login input data getter
+        loginRegisterDashBoardLoginSectionPage.getInvalidUserLoginNoEmailInputData(loginRegisterDashboardRegisterSectionPage);
+        //capture screenshot of the pre-input stage
+        captureScreenshot(driver, "Invalid User Login Test - Before Data Input");
+        //don't input login email
+        loginRegisterDashBoardLoginSectionPage.inputNoEmailIntoLoginEmailInputField();
+        //input valid login password
+        loginRegisterDashBoardLoginSectionPage.inputPasswordIntoLoginPasswordInputField();
+        //input 'Login' button
+        loginRegisterDashBoardLoginSectionPage.clickLoginButton();
+        //capture screenshot after invalid login attempt
+        captureScreenshot(driver, "Invalid User Login Test Result - No Email");
+    }
+
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     //general page web element assert test method(all pages have the (header/footer) same ones except for checkout page)
