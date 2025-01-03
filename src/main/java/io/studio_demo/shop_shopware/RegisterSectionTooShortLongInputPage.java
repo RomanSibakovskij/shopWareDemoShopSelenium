@@ -50,6 +50,7 @@ public class RegisterSectionTooShortLongInputPage extends BasePage{
     private String tooLongEmail;
     private String tooLongPassword;
     private String tooLongAddress;
+    private String tooLongCity;
 
     public RegisterSectionTooShortLongInputPage(WebDriver driver) {super(driver);}
 
@@ -415,6 +416,33 @@ public class RegisterSectionTooShortLongInputPage extends BasePage{
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(650));
         wait.until(ExpectedConditions.visibilityOf(registerSectionAddressInputField));
         registerSectionAddressInputField.sendKeys(tooLongAddress);
+    }
+
+    //invalid user input data getter - too long city (100 chars)
+    public void getInvalidUserInputTooLongCityData(){
+        firstName = TestDataGenerator.getRandomFirstName();
+        lastName = TestDataGenerator.getRandomLastName();
+        email = TestDataGenerator.generateRandomEmailAddress(8);
+        password = TestDataGenerator.generateRandomPassword();
+        address = TestDataGenerator.generateRandomAddress(6);
+        tooLongCity = "Dxsdsxhkuiksfssdfsdfsretrjyuloipvlmjhkjhnxvdfsadfsdfhjyuooipkuyjhtgrfsdeghfgjjlhjnbfbvddfhggkjuiuyfd";
+        postalCode = TestDataGenerator.getRandomPostalCode();
+
+        System.out.println("Generated user register input data (too long city): " + "\n");
+
+        logger.info("Valid user first name (too long city): " + firstName);
+        logger.info("Valid user last name (too long city): " + lastName);
+        logger.info("Valid user email (too long city): " + email);
+        logger.info("Valid user password (too long city): " + password);
+        logger.info("Valid user address (too long city): " + address);
+        logger.info("Too long user city: " + tooLongCity);
+        logger.info("Valid user postal code (too long city): " + postalCode);
+    }
+    //invalid user register data input method - too long city (100 chars)
+    public void inputTooLongCityIntoCityInputField(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(650));
+        wait.until(ExpectedConditions.visibilityOf(registerSectionCityInputField));
+        registerSectionCityInputField.sendKeys(tooLongCity);
     }
 
     //account creation error bar text getter
