@@ -245,4 +245,18 @@ public class LoginRegisterDashboardPageTest extends TestMethods{
         //invalid user account creation test - too short city (1 char)
         invalidUserAccountTooShortCityCreationTest(registerSectionTooShortLongInputPage);
     }
+
+    //Test 002q -> invalid user account creation test - too short postal code (2 digits) (user account has been created - test has failed)
+    @Test
+    @DisplayName("Invalid User Account Creation Test - Too Short Postal Code")
+    @Tag("Invalid_User_Account_Creation")
+    @Tag("Too_Short_Singular_Input")
+    void invalidAccountCreationTooShortPostalCodeTest(){
+        HomePage homePage = new HomePage(driver);
+        RegisterSectionTooShortLongInputPage registerSectionTooShortLongInputPage = new RegisterSectionTooShortLongInputPage(driver);
+        //navigate to login & register dashboard page
+        navigateToLoginAndRegisterDashboardPageTest(homePage);
+        //invalid user account creation test - too short postal code (2 digits)
+        invalidUserAccountTooShortPostalCodeCreationTest(registerSectionTooShortLongInputPage);
+    }
 }

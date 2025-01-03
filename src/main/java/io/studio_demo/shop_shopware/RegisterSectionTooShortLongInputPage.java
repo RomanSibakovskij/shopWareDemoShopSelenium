@@ -40,6 +40,7 @@ public class RegisterSectionTooShortLongInputPage extends BasePage{
     private String tooShortPassword;
     private String tooShortAddress;
     private String tooShortCity;
+    private int tooShortPostalCode;
 
     public RegisterSectionTooShortLongInputPage(WebDriver driver) {super(driver);}
 
@@ -242,4 +243,30 @@ public class RegisterSectionTooShortLongInputPage extends BasePage{
         registerSectionCityInputField.sendKeys(tooShortCity);
     }
 
+    //invalid user input data getter - too short postal code (2 digits)
+    public void getInvalidUserInputTooShortPostalCodeData(){
+        firstName = TestDataGenerator.getRandomFirstName();
+        lastName = TestDataGenerator.getRandomLastName();
+        email = TestDataGenerator.generateRandomEmailAddress(8);
+        password = TestDataGenerator.generateRandomPassword();
+        address = TestDataGenerator.generateRandomAddress(6);
+        city = TestDataGenerator.getRandomCity();
+        tooShortPostalCode = 21;
+
+        System.out.println("Generated user register input data (too short postal code): " + "\n");
+
+        logger.info("Valid user first name (too short postal code): " + firstName);
+        logger.info("Valid user last name (too short postal code): " + lastName);
+        logger.info("Valid user email (too short postal code): " + email);
+        logger.info("Valid user password (too short postal code): " + password);
+        logger.info("Valid user address (too short postal code): " + address);
+        logger.info("Valid user city (too short postal code): " + city);
+        logger.info("Too short user postal code: " + tooShortPostalCode);
+    }
+    //invalid user register data input method - too short postal code (2 digits)
+    public void inputTooShortPostalCodeIntoPostCodeInputField(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(650));
+        wait.until(ExpectedConditions.visibilityOf(registerSectionPostalCodeInputField));
+        registerSectionPostalCodeInputField.sendKeys(String.valueOf(tooShortPostalCode));
+    }
 }
