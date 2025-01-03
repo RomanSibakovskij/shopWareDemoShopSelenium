@@ -946,6 +946,57 @@ public class TestMethods extends BaseTest{
         //capture screenshot after invalid user account creation (too long first name)
         captureScreenshot(driver, "Invalid Male User Account Creation Test Result - Too Long First Name");
     }
+    //invalid user creation test method - too long last name (110 chars)
+    protected void invalidUserAccountTooLongLastNameCreationTest(RegisterSectionTooShortLongInputPage registerSectionTooShortLongInputPage){
+        HomePage homePage = new HomePage(driver);
+        LoginRegisterDashboardRegisterSectionPage loginRegisterDashboardRegisterSectionPage = new LoginRegisterDashboardRegisterSectionPage(driver);
+        //general page web element assert
+        isGeneralPageWebElementDisplayed(homePage);
+        //general page text element assert
+        isGeneralPageTextElementAsExpected(homePage);
+        //login and register dashboard page web element assert
+        isLoginRegisterDashboardPageWebElementDisplayed();
+        //login and register dashboard page text element assert
+        isLoginRegisterDashboardPageTextElementMatchExpectations();
+        //invalid user register input data getter (too long first name - 110 chars)
+        registerSectionTooShortLongInputPage.getInvalidUserInputTooLongLastNameData();
+        //click 'Salutations' dropdown menu
+        loginRegisterDashboardRegisterSectionPage.clickSalutationDropdownMenu();
+        //select 'Mr.' option
+        loginRegisterDashboardRegisterSectionPage.selectMrSalutation();
+        //input valid first name
+        registerSectionTooShortLongInputPage.inputFirstNameIntoFirstNameInputField();
+        //input too long last name (110 chars)
+        registerSectionTooShortLongInputPage.inputTooLongLastNameIntoLastNameInputField();
+        //capture screenshot of the invalid data input
+        captureScreenshot(driver, "Invalid User Account Creation - Too Long Last Name");
+        //input valid email address
+        registerSectionTooShortLongInputPage.inputEmailIntoEmailInputField();
+        //input valid password
+        registerSectionTooShortLongInputPage.inputPasswordIntoPasswordInputField();
+        //input valid address
+        registerSectionTooShortLongInputPage.inputAddressIntoAddressInputField();
+        //input valid city
+        registerSectionTooShortLongInputPage.inputCityIntoCityInputField();
+        //input valid postal code
+        registerSectionTooShortLongInputPage.inputPostalCodeIntoPostCodeInputField();
+        //click country dropdown method
+        loginRegisterDashboardRegisterSectionPage.clickCountryDropdownMenu();
+        //select 'United States' option
+        loginRegisterDashboardRegisterSectionPage.selectUSOption();
+        //click state dropdown menu (appears after country selection)
+        loginRegisterDashboardRegisterSectionPage.clickStateDropdownMenu();
+        //select 'Illinois' state option
+        loginRegisterDashboardRegisterSectionPage.selectIllinoisOption();
+        //capture screenshot after invalid data input
+        captureScreenshot(driver, "Invalid Male User Account Creation Data Input - Too Long Last Name");
+        //click 'Continue' button
+        loginRegisterDashboardRegisterSectionPage.clickContinueButton();
+        //assert the expected error is displayed
+        assertEquals("Unfortunately, something went wrong.", registerSectionTooShortLongInputPage.getAccountCreationErrorText(), "The account creation error text doesn't match expectations");
+        //capture screenshot after invalid user account creation (too long last name)
+        captureScreenshot(driver, "Invalid Male User Account Creation Test Result - Too Long Last Name");
+    }
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

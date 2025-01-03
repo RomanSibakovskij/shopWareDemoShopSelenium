@@ -46,6 +46,7 @@ public class RegisterSectionTooShortLongInputPage extends BasePage{
 
     //too long singular input data
     private String tooLongFirstName;
+    private String tooLongLastName;
 
     public RegisterSectionTooShortLongInputPage(WebDriver driver) {super(driver);}
 
@@ -304,6 +305,33 @@ public class RegisterSectionTooShortLongInputPage extends BasePage{
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(650));
         wait.until(ExpectedConditions.visibilityOf(registerSectionFirstNameInputField));
         registerSectionFirstNameInputField.sendKeys(tooLongFirstName);
+    }
+
+    //invalid user input data getter - too long last name (110 chars)
+    public void getInvalidUserInputTooLongLastNameData(){
+        firstName = TestDataGenerator.getRandomFirstName();
+        tooLongLastName = "Vhgghghkuiksfssdfsdfsretrjyuloipvlmjhkjhnxvdfsadfsdfhjyuooipkuyjhtgrfsdeghfgjjlhjnbfbvddfhggkjuiuyfdrtyujgdffg";
+        email = TestDataGenerator.generateRandomEmailAddress(8);
+        password = TestDataGenerator.generateRandomPassword();
+        address = TestDataGenerator.generateRandomAddress(6);
+        city = TestDataGenerator.getRandomCity();
+        postalCode = TestDataGenerator.getRandomPostalCode();
+
+        System.out.println("Generated user register input data (too long last name): " + "\n");
+
+        logger.info("Valid user first name (too long last name): " + firstName);
+        logger.info("Too long user last name: " + tooLongLastName);
+        logger.info("Valid user email (too long last name): " + email);
+        logger.info("Valid user password (too long last name): " + password);
+        logger.info("Valid user address (too long last name): " + address);
+        logger.info("Valid user city (too long last name): " + city);
+        logger.info("Valid user postal code (too long last name): " + postalCode);
+    }
+    //invalid user register data input method - too short last name (110 char is usually too long)
+    public void inputTooLongLastNameIntoLastNameInputField(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(650));
+        wait.until(ExpectedConditions.visibilityOf(registerSectionLastNameInputField));
+        registerSectionLastNameInputField.sendKeys(tooLongLastName);
     }
 
     //account creation error bar text getter

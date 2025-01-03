@@ -176,9 +176,9 @@ public class LoginRegisterDashboardPageTest extends TestMethods{
         invalidUserAccountTooShortFirstNameCreationTest(registerSectionTooShortLongInputPage);
     }
 
-    //Test 002l -> invalid user account creation test - too last name (user account has been created - test has failed)
+    //Test 002l -> invalid user account creation test - too short last name (3 chars) (user account has been created - test has failed)
     @Test
-    @DisplayName("Invalid User Account Creation Test - Too Last Name")
+    @DisplayName("Invalid User Account Creation Test - Too Short Last Name")
     @Tag("Invalid_User_Account_Creation")
     @Tag("Too_Short_Singular_Input")
     void invalidAccountCreationTooShortLastNameTest(){
@@ -186,7 +186,7 @@ public class LoginRegisterDashboardPageTest extends TestMethods{
         RegisterSectionTooShortLongInputPage registerSectionTooShortLongInputPage = new RegisterSectionTooShortLongInputPage(driver);
         //navigate to login & register dashboard page
         navigateToLoginAndRegisterDashboardPageTest(homePage);
-        //invalid user account creation test - too short last name
+        //invalid user account creation test - too short last name (3 chars)
         invalidUserAccountTooShortLastNameCreationTest(registerSectionTooShortLongInputPage);
     }
 
@@ -274,5 +274,19 @@ public class LoginRegisterDashboardPageTest extends TestMethods{
         navigateToLoginAndRegisterDashboardPageTest(homePage);
         //invalid user account creation test - too long first name (100 chars)
         invalidUserAccountTooLongFirstNameCreationTest(registerSectionTooShortLongInputPage);
+    }
+
+    //Test 002s -> invalid user account creation test - too long last name (110 chars)
+    @Test
+    @DisplayName("Invalid User Account Creation Test - Too Long Last Name")
+    @Tag("Invalid_User_Account_Creation")
+    @Tag("Too_Long_Singular_Input")
+    void invalidAccountCreationTooLongLastNameTest(){
+        HomePage homePage = new HomePage(driver);
+        RegisterSectionTooShortLongInputPage registerSectionTooShortLongInputPage = new RegisterSectionTooShortLongInputPage(driver);
+        //navigate to login & register dashboard page
+        navigateToLoginAndRegisterDashboardPageTest(homePage);
+        //invalid user account creation test - too long last name (110 chars)
+        invalidUserAccountTooLongLastNameCreationTest(registerSectionTooShortLongInputPage);
     }
 }
