@@ -51,6 +51,7 @@ public class RegisterSectionTooShortLongInputPage extends BasePage{
     private String tooLongPassword;
     private String tooLongAddress;
     private String tooLongCity;
+    private String tooLongPostalCode;
 
     public RegisterSectionTooShortLongInputPage(WebDriver driver) {super(driver);}
 
@@ -443,6 +444,33 @@ public class RegisterSectionTooShortLongInputPage extends BasePage{
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(650));
         wait.until(ExpectedConditions.visibilityOf(registerSectionCityInputField));
         registerSectionCityInputField.sendKeys(tooLongCity);
+    }
+
+    //invalid user input data getter - too short postal code (50 digits)
+    public void getInvalidUserInputTooLongPostalCodeData(){
+        firstName = TestDataGenerator.getRandomFirstName();
+        lastName = TestDataGenerator.getRandomLastName();
+        email = TestDataGenerator.generateRandomEmailAddress(8);
+        password = TestDataGenerator.generateRandomPassword();
+        address = TestDataGenerator.generateRandomAddress(6);
+        city = TestDataGenerator.getRandomCity();
+        tooLongPostalCode = "13234534575868865565342354658798798676435425346756";
+
+        System.out.println("Generated user register input data (too long postal code): " + "\n");
+
+        logger.info("Valid user first name (too long postal code): " + firstName);
+        logger.info("Valid user last name (too long postal code): " + lastName);
+        logger.info("Valid user email (too long postal code): " + email);
+        logger.info("Valid user password (too long postal code): " + password);
+        logger.info("Valid user address (too long postal code): " + address);
+        logger.info("Valid user city (too long postal code): " + city);
+        logger.info("Too long user postal code: " + tooLongPostalCode);
+    }
+    //invalid user register data input method - too long postal code (50 digits)
+    public void inputTooLongPostalCodeIntoPostCodeInputField(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(650));
+        wait.until(ExpectedConditions.visibilityOf(registerSectionPostalCodeInputField));
+        registerSectionPostalCodeInputField.sendKeys(tooLongPostalCode);
     }
 
     //account creation error bar text getter
