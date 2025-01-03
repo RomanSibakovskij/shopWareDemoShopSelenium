@@ -317,4 +317,18 @@ public class LoginRegisterDashboardPageRegisterSectionTest extends TestMethods{
         //invalid user account creation test - too long password (75 chars)
         invalidUserAccountTooLongPasswordCreationTest(registerSectionTooShortLongInputPage);
     }
+
+    //Test 002v -> invalid user account creation test - too long address (100 chars) (user account has been created - test has failed)
+    @Test
+    @DisplayName("Invalid User Account Creation Test - Too Long Address")
+    @Tag("Invalid_User_Account_Creation")
+    @Tag("Too_Long_Singular_Input")
+    void invalidAccountCreationTooLongAddressTest(){
+        HomePage homePage = new HomePage(driver);
+        RegisterSectionTooShortLongInputPage registerSectionTooShortLongInputPage = new RegisterSectionTooShortLongInputPage(driver);
+        //navigate to login & register dashboard page
+        navigateToLoginAndRegisterDashboardPageTest(homePage);
+        //invalid user account creation test - too long address (100 chars)
+        invalidUserAccountTooLongAddressCreationTest(registerSectionTooShortLongInputPage);
+    }
 }

@@ -49,6 +49,7 @@ public class RegisterSectionTooShortLongInputPage extends BasePage{
     private String tooLongLastName;
     private String tooLongEmail;
     private String tooLongPassword;
+    private String tooLongAddress;
 
     public RegisterSectionTooShortLongInputPage(WebDriver driver) {super(driver);}
 
@@ -387,6 +388,33 @@ public class RegisterSectionTooShortLongInputPage extends BasePage{
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(650));
         wait.until(ExpectedConditions.visibilityOf(registerSectionPasswordInputField));
         registerSectionPasswordInputField.sendKeys(tooLongPassword);
+    }
+
+    //invalid user input data getter - too long address (100 chars)
+    public void getInvalidUserInputTooLongAddressData(){
+        firstName = TestDataGenerator.getRandomFirstName();
+        lastName = TestDataGenerator.getRandomLastName();
+        email = TestDataGenerator.generateRandomEmailAddress(8);
+        password = TestDataGenerator.generateRandomPassword();
+        tooLongAddress = TestDataGenerator.generateRandomAddress(100);
+        city = TestDataGenerator.getRandomCity();
+        postalCode = TestDataGenerator.getRandomPostalCode();
+
+        System.out.println("Generated user register input data (too long address): " + "\n");
+
+        logger.info("Valid user first name (too long address): " + firstName);
+        logger.info("Valid user last name (too long address): " + lastName);
+        logger.info("Valid user email (too long address): " + email);
+        logger.info("Valid user password (too long address): " + password);
+        logger.info("Too long user address: " + tooLongAddress);
+        logger.info("Valid user city (too long address): " + city);
+        logger.info("Valid user postal code (too long address): " + postalCode);
+    }
+    //invalid user register data input method - too long address (100 chars)
+    public void inputTooLongAddressIntoAddressInputField(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(650));
+        wait.until(ExpectedConditions.visibilityOf(registerSectionAddressInputField));
+        registerSectionAddressInputField.sendKeys(tooLongAddress);
     }
 
     //account creation error bar text getter
