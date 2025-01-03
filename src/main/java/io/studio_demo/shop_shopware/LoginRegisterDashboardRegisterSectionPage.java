@@ -338,7 +338,7 @@ public class LoginRegisterDashboardRegisterSectionPage extends BasePage{
         wait.until(ExpectedConditions.elementToBeClickable(registerSectionCountryDropdownMenu));
         JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
         jsExecutor.executeScript("arguments[0].scrollIntoView(true);", registerSectionCountryDropdownMenu);
-        registerSectionCountryDropdownMenu.click();
+        jsExecutor.executeScript("arguments[0].click();", registerSectionCountryDropdownMenu); //js click (common click fails throws ElementClickInterceptedException for some reason)
     }
     //select 'United States' option method
     public void selectUSOption(){usCountryOption.click();}
@@ -347,7 +347,8 @@ public class LoginRegisterDashboardRegisterSectionPage extends BasePage{
     public void clickStateDropdownMenu(){
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(1100));
         wait.until(ExpectedConditions.elementToBeClickable(registerSectionStateDropdownMenu));
-        registerSectionStateDropdownMenu.click();
+        JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
+        jsExecutor.executeScript("arguments[0].click();", registerSectionStateDropdownMenu); //js click (common click fails throws ElementClickInterceptedException for some reason)
     }
     //select 'Illinois' option method
     public void selectIllinoisOption(){illinoisStateOption.click();}

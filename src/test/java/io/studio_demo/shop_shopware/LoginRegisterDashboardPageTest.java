@@ -200,7 +200,21 @@ public class LoginRegisterDashboardPageTest extends TestMethods{
         RegisterSectionTooShortLongInputPage registerSectionTooShortLongInputPage = new RegisterSectionTooShortLongInputPage(driver);
         //navigate to login & register dashboard page
         navigateToLoginAndRegisterDashboardPageTest(homePage);
-        //invalid user account creation test - too short email
+        //invalid user account creation test - too short email ( 1 char - name, domain)
         invalidUserAccountTooShortEmailCreationTest(registerSectionTooShortLongInputPage);
+    }
+
+    //Test 002n -> invalid user account creation test - too short password (7 chars) (user account has been created - test has failed)
+    @Test
+    @DisplayName("Invalid User Account Creation Test - Too Short Password")
+    @Tag("Invalid_User_Account_Creation")
+    @Tag("Too_Short_Singular_Input")
+    void invalidAccountCreationTooShortPasswordTest(){
+        HomePage homePage = new HomePage(driver);
+        RegisterSectionTooShortLongInputPage registerSectionTooShortLongInputPage = new RegisterSectionTooShortLongInputPage(driver);
+        //navigate to login & register dashboard page
+        navigateToLoginAndRegisterDashboardPageTest(homePage);
+        //invalid user account creation test - too short password (7 chars)
+        invalidUserAccountTooShortPasswordCreationTest(registerSectionTooShortLongInputPage);
     }
 }

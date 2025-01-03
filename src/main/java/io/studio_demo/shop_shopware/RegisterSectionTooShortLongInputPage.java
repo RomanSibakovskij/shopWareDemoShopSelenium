@@ -9,14 +9,6 @@ import java.time.Duration;
 public class RegisterSectionTooShortLongInputPage extends BasePage{
 
     //register section web elements
-    @FindBy(xpath = "//div[@class='card register-card']//h1")
-    private WebElement registerSectionTitle;
-    @FindBy(xpath = "//div[@class='card register-card']//select[@id='personalSalutation']")
-    private WebElement registerSectionSalutationDropdownMenu;
-    @FindBy(xpath = "//select[@id='personalSalutation']/option[@value='ed782347cdec4e82a78f0eaf864b6725']")
-    private WebElement salutationMrsOption;
-    @FindBy(xpath = "//select[@id='personalSalutation']/option[@value='350f9afcc8fe42d887c17221531e0ff4']")
-    private WebElement salutationMrOption;
     @FindBy(xpath = "//div[@class='card register-card']//input[@id='personalFirstName']")
     private WebElement registerSectionFirstNameInputField;
     @FindBy(xpath = "//div[@class='card register-card']//input[@id='personalLastName']")
@@ -25,10 +17,6 @@ public class RegisterSectionTooShortLongInputPage extends BasePage{
     private WebElement registerSectionEmailInputField;
     @FindBy(xpath = "//div[@class='card register-card']//input[@id='personalPassword']")
     private WebElement registerSectionPasswordInputField;
-    @FindBy(xpath = "//div[@class='card register-card']//small")
-    private WebElement registerSectionPasswordHint;
-    @FindBy(xpath = "//div[@class='card register-card']//fieldset[@class='register-billing']/legend[@class='card-title']")
-    private WebElement registerSectionAddressTitle;
     @FindBy(xpath = "//div[@class='card register-card']//input[@id='billingAddressAddressStreet']")
     private WebElement registerSectionAddressInputField;
     @FindBy(xpath = "//div[@class='card register-card']//input[@id='billingAddressAddressCity']")
@@ -49,6 +37,7 @@ public class RegisterSectionTooShortLongInputPage extends BasePage{
     private String tooShortFirstName;
     private String tooShortLastName;
     private String tooShortEmail;
+    private String tooShortPassword;
 
     public RegisterSectionTooShortLongInputPage(WebDriver driver) {super(driver);}
 
@@ -170,5 +159,31 @@ public class RegisterSectionTooShortLongInputPage extends BasePage{
         registerSectionEmailInputField.sendKeys(tooShortEmail);
     }
 
+    //invalid user input data getter - too short password (7 chars)
+    public void getInvalidUserInputTooShortPasswordData(){
+        firstName = TestDataGenerator.getRandomFirstName();
+        lastName = TestDataGenerator.getRandomLastName();
+        email = TestDataGenerator.generateRandomEmailAddress(8);
+        tooShortPassword = "KjnG67#";
+        address = TestDataGenerator.generateRandomAddress(6);
+        city = TestDataGenerator.getRandomCity();
+        postalCode = TestDataGenerator.getRandomPostalCode();
+
+        System.out.println("Generated user register input data (too short password): " + "\n");
+
+        logger.info("Valid user first name (too short password): " + firstName);
+        logger.info("Valid user last name (too short password): " + lastName);
+        logger.info("Valid user email (too short password): " + email);
+        logger.info("Too short user password: " + tooShortPassword);
+        logger.info("Valid user address (too short password): " + address);
+        logger.info("Valid user city (too short password): " + city);
+        logger.info("Valid user postal code (too short password): " + postalCode);
+    }
+    //invalid user register data input method - too short password (7 chars)
+    public void inputTooShortPasswordIntoPasswordInputField(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(650));
+        wait.until(ExpectedConditions.visibilityOf(registerSectionPasswordInputField));
+        registerSectionPasswordInputField.sendKeys(tooShortPassword);
+    }
 
 }

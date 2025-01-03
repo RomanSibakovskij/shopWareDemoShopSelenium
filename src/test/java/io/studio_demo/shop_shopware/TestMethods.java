@@ -691,8 +691,57 @@ public class TestMethods extends BaseTest{
         captureScreenshot(driver, "Invalid Male User Account Creation Data Input - Too Short Email");
         //click 'Continue' button
         loginRegisterDashboardRegisterSectionPage.clickContinueButton();
-        //capture screenshot after invalid user account creation (too short last name)
+        //capture screenshot after invalid user account creation (too short email)
         captureScreenshot(driver, "Invalid Male User Account Creation Test Result - Too Short Email");
+    }
+    //invalid user creation test method - too short password (7 chars) (the form has no input display errors so the screenshots are being used as proof of the test run)
+    protected void invalidUserAccountTooShortPasswordCreationTest(RegisterSectionTooShortLongInputPage registerSectionTooShortLongInputPage){
+        HomePage homePage = new HomePage(driver);
+        LoginRegisterDashboardRegisterSectionPage loginRegisterDashboardRegisterSectionPage = new LoginRegisterDashboardRegisterSectionPage(driver);
+        //general page web element assert
+        isGeneralPageWebElementDisplayed(homePage);
+        //general page text element assert
+        isGeneralPageTextElementAsExpected(homePage);
+        //login and register dashboard page web element assert
+        isLoginRegisterDashboardPageWebElementDisplayed();
+        //login and register dashboard page text element assert
+        isLoginRegisterDashboardPageTextElementMatchExpectations();
+        //invalid user register input data getter (too short password - 7 chars)
+        registerSectionTooShortLongInputPage.getInvalidUserInputTooShortPasswordData();
+        //click 'Salutations' dropdown menu
+        loginRegisterDashboardRegisterSectionPage.clickSalutationDropdownMenu();
+        //select 'Mr.' option
+        loginRegisterDashboardRegisterSectionPage.selectMrSalutation();
+        //input valid first name
+        registerSectionTooShortLongInputPage.inputFirstNameIntoFirstNameInputField();
+        //input valid last name
+        registerSectionTooShortLongInputPage.inputLastNameIntoLastNameInputField();
+        //input valid email address
+        registerSectionTooShortLongInputPage.inputEmailIntoEmailInputField();
+        //input too short password (7 chars)
+        registerSectionTooShortLongInputPage.inputTooShortPasswordIntoPasswordInputField();
+        //capture screenshot of the invalid data input
+        captureScreenshot(driver, "Invalid User Account Creation - Too Short Password");
+        //input valid address
+        registerSectionTooShortLongInputPage.inputAddressIntoAddressInputField();
+        //input valid city
+        registerSectionTooShortLongInputPage.inputCityIntoCityInputField();
+        //input valid postal code
+        registerSectionTooShortLongInputPage.inputPostalCodeIntoPostCodeInputField();
+        //click country dropdown method
+        loginRegisterDashboardRegisterSectionPage.clickCountryDropdownMenu();
+        //select 'United States' option
+        loginRegisterDashboardRegisterSectionPage.selectUSOption();
+        //click state dropdown menu (appears after country selection)
+        loginRegisterDashboardRegisterSectionPage.clickStateDropdownMenu();
+        //select 'Illinois' state option
+        loginRegisterDashboardRegisterSectionPage.selectIllinoisOption();
+        //capture screenshot after invalid data input
+        captureScreenshot(driver, "Invalid Male User Account Creation Data Input - Too Short Password");
+        //click 'Continue' button
+        loginRegisterDashboardRegisterSectionPage.clickContinueButton();
+        //capture screenshot after invalid user account creation (too short password)
+        captureScreenshot(driver, "Invalid Male User Account Creation Test Result - Too Short Password");
     }
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
