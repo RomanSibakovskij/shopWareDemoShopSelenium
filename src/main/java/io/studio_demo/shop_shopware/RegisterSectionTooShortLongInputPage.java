@@ -38,6 +38,7 @@ public class RegisterSectionTooShortLongInputPage extends BasePage{
     private String tooShortLastName;
     private String tooShortEmail;
     private String tooShortPassword;
+    private String tooShortAddress;
 
     public RegisterSectionTooShortLongInputPage(WebDriver driver) {super(driver);}
 
@@ -184,6 +185,33 @@ public class RegisterSectionTooShortLongInputPage extends BasePage{
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(650));
         wait.until(ExpectedConditions.visibilityOf(registerSectionPasswordInputField));
         registerSectionPasswordInputField.sendKeys(tooShortPassword);
+    }
+
+    //invalid user input data getter - too short address (1 char)
+    public void getInvalidUserInputTooShortAddressData(){
+        firstName = TestDataGenerator.getRandomFirstName();
+        lastName = TestDataGenerator.getRandomLastName();
+        email = TestDataGenerator.generateRandomEmailAddress(8);
+        password = TestDataGenerator.generateRandomPassword();
+        tooShortAddress = "H";
+        city = TestDataGenerator.getRandomCity();
+        postalCode = TestDataGenerator.getRandomPostalCode();
+
+        System.out.println("Generated user register input data (too short address): " + "\n");
+
+        logger.info("Valid user first name (too short address): " + firstName);
+        logger.info("Valid user last name (too short address): " + lastName);
+        logger.info("Valid user email (too short address): " + email);
+        logger.info("Valid user password (too short address): " + password);
+        logger.info("Too short user address: " + tooShortAddress);
+        logger.info("Valid user city (too short address): " + city);
+        logger.info("Valid user postal code (too short address): " + postalCode);
+    }
+    //invalid user register data input method - too short address (1 char)
+    public void inputTooShortAddressIntoAddressInputField(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(650));
+        wait.until(ExpectedConditions.visibilityOf(registerSectionAddressInputField));
+        registerSectionAddressInputField.sendKeys(tooShortAddress);
     }
 
 }
