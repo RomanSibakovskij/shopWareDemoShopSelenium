@@ -48,6 +48,7 @@ public class RegisterSectionTooShortLongInputPage extends BasePage{
     private String tooLongFirstName;
     private String tooLongLastName;
     private String tooLongEmail;
+    private String tooLongPassword;
 
     public RegisterSectionTooShortLongInputPage(WebDriver driver) {super(driver);}
 
@@ -354,11 +355,38 @@ public class RegisterSectionTooShortLongInputPage extends BasePage{
         logger.info("Valid user city (too long email): " + city);
         logger.info("Valid user postal code (too long email): " + postalCode);
     }
-    //invalid user register data input method - too long email (1 char - name, domain)
+    //invalid user register data input method - too long email (100 chars - name)
     public void inputTooLongEmailIntoEmailInputField(){
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(650));
         wait.until(ExpectedConditions.visibilityOf(registerSectionEmailInputField));
         registerSectionEmailInputField.sendKeys(tooLongEmail);
+    }
+
+    //invalid user input data getter - too long password (75 chars)
+    public void getInvalidUserInputTooLongPasswordData(){
+        firstName = TestDataGenerator.getRandomFirstName();
+        lastName = TestDataGenerator.getRandomLastName();
+        email = TestDataGenerator.generateRandomEmailAddress(8);
+        tooLongPassword = "ERrfdsfdsgf@#$$#R^%^$^$#%$#xdfsdfdf464575568657546@#@@#@sfSFSFSfSFSFDSFDGHx";
+        address = TestDataGenerator.generateRandomAddress(6);
+        city = TestDataGenerator.getRandomCity();
+        postalCode = TestDataGenerator.getRandomPostalCode();
+
+        System.out.println("Generated user register input data (too long password): " + "\n");
+
+        logger.info("Valid user first name (too long password): " + firstName);
+        logger.info("Valid user last name (too long password): " + lastName);
+        logger.info("Valid user email (too long password): " + email);
+        logger.info("Too long user password: " + tooLongPassword);
+        logger.info("Valid user address (too long password): " + address);
+        logger.info("Valid user city (too long password): " + city);
+        logger.info("Valid user postal code (too long password): " + postalCode);
+    }
+    //invalid user register data input method - too long password (75 chars)
+    public void inputTooLongPasswordIntoPasswordInputField(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(650));
+        wait.until(ExpectedConditions.visibilityOf(registerSectionPasswordInputField));
+        registerSectionPasswordInputField.sendKeys(tooLongPassword);
     }
 
     //account creation error bar text getter
