@@ -1783,7 +1783,29 @@ public class TestMethods extends BaseTest{
         //capture screenshot after invalid login attempt
         captureScreenshot(driver, "Invalid User Login Test Result - Invalid Password");
     }
-    
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    //add 'Free Time & Electronics' product to cart test method
+    protected void addFreeTimeAndElectronicsProductToCartTest(){
+        HomePage homePage = new HomePage(driver);
+        ProductsDashboardPage productsDashboardPage = new ProductsDashboardPage(driver);
+        //home page web element assert
+        isHomePageWebElementDisplayed(homePage);
+        //general page web element assert
+        isGeneralPageWebElementDisplayed(homePage);
+        //general page text element assert
+        isGeneralPageTextElementAsExpected(homePage);
+        //click 'Technical Cookies' button
+        homePage.clickAcceptTechnicalCookies();
+        //click 'Free time & Electronics' nav link
+        homePage.clickFreeTimeElectronicsLink();
+        //assert the user gets onto correct category page
+        assertEquals("Free time & electronics", productsDashboardPage.getProjectDashboardPageTitle(), "The project dashboard page title doesn't match expectations or the user is on the wrong category page.");
+        //capture screenshot of the dashboard page
+        captureScreenshot(driver, "Free Time Electronics Test - Product Dashboard Page");
+    }
+
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     //general page web element assert test method(all pages have the (header/footer) same ones except for checkout page)
