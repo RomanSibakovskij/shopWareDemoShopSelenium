@@ -1756,6 +1756,33 @@ public class TestMethods extends BaseTest{
         //capture screenshot after invalid login attempt
         captureScreenshot(driver, "Invalid User Login Test Result - Invalid Email");
     }
+    //invalid user login test method - invalid login password
+    protected void invalidUserAccountInvalidPasswordLoginTest(LoginRegisterDashboardRegisterSectionPage loginRegisterDashboardRegisterSectionPage){
+        HomePage homePage = new HomePage(driver);
+        LoginRegisterDashBoardLoginSectionPage loginRegisterDashBoardLoginSectionPage = new LoginRegisterDashBoardLoginSectionPage(driver);
+        //general page web element assert
+        isGeneralPageWebElementDisplayed(homePage);
+        //general page text element assert
+        isGeneralPageTextElementAsExpected(homePage);
+        //login and register dashboard page web element assert
+        isLoginRegisterDashboardPageWebElementDisplayed();
+        //login and register dashboard page text element assert
+        isLoginRegisterDashboardPageTextElementMatchExpectations();
+        //invalid user login input data getter - invalid login password
+        loginRegisterDashBoardLoginSectionPage.getInvalidUserLoginInvalidPasswordInputData(loginRegisterDashboardRegisterSectionPage);
+        //capture screenshot of the pre-input stage
+        captureScreenshot(driver, "Invalid User Login Test - Before Data Input");
+        //input valid login email
+        loginRegisterDashBoardLoginSectionPage.inputEmailIntoLoginEmailInputField();
+        //input invalid login password
+        loginRegisterDashBoardLoginSectionPage.inputInvalidPasswordIntoLoginPasswordInputField();
+        //input 'Login' button
+        loginRegisterDashBoardLoginSectionPage.clickLoginButton();
+        //assert the expected error is displayed
+        assertEquals("Could not find an account that matches the given credentials.", loginRegisterDashBoardLoginSectionPage.getInvalidCredentialsError(), "The invalid credentials error doesn't match expectations");
+        //capture screenshot after invalid login attempt
+        captureScreenshot(driver, "Invalid User Login Test Result - Invalid Password");
+    }
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

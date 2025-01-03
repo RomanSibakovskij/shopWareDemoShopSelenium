@@ -38,6 +38,7 @@ public class LoginRegisterDashBoardLoginSectionPage extends BasePage{
 
     //invalid singular login data
     private String invalidLoginEmail;
+    private String invalidLoginPassword;
 
     public LoginRegisterDashBoardLoginSectionPage(WebDriver driver) {super(driver);}
 
@@ -101,7 +102,6 @@ public class LoginRegisterDashBoardLoginSectionPage extends BasePage{
 
         System.out.println("\n");
     }
-
     //invalid user login data input method - no login email
     public void inputNoEmailIntoLoginEmailInputField(){
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(650));
@@ -121,7 +121,6 @@ public class LoginRegisterDashBoardLoginSectionPage extends BasePage{
 
         System.out.println("\n");
     }
-
     //invalid user login data input method - no login password
     public void inputNoPasswordIntoLoginPasswordInputField(){
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(650));
@@ -143,12 +142,31 @@ public class LoginRegisterDashBoardLoginSectionPage extends BasePage{
 
         System.out.println("\n");
     }
-
     //invalid user login data input method - invalid login email
     public void inputInvalidEmailIntoLoginEmailInputField(){
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(650));
         wait.until(ExpectedConditions.visibilityOf(loginSectionEmailInputField));
         loginSectionEmailInputField.sendKeys(invalidLoginEmail);
+    }
+
+    //invalid login data input getter - invalid login password
+    public void getInvalidUserLoginInvalidPasswordInputData(LoginRegisterDashboardRegisterSectionPage loginRegisterDashboardRegisterSectionPage) {
+        loginEmail = loginRegisterDashboardRegisterSectionPage.getEmail();
+        invalidLoginPassword = "Rfdfsfdsfd";
+
+        System.out.println("Invalid user login input data (invalid password): " + "\n");
+
+        logger.info("Valid user login email (invalid password): " + loginEmail);
+        logger.info("Invalid login password: " + invalidLoginPassword);
+
+        System.out.println("\n");
+    }
+
+    //invalid user login data input method - invalid login password
+    public void inputInvalidPasswordIntoLoginPasswordInputField(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(650));
+        wait.until(ExpectedConditions.visibilityOf(loginSectionPasswordInputField));
+        loginSectionPasswordInputField.sendKeys(invalidLoginPassword);
     }
 
     //click 'Login' button
