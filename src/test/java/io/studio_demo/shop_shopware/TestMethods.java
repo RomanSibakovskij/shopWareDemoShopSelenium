@@ -1689,7 +1689,7 @@ public class TestMethods extends BaseTest{
         isLoginRegisterDashboardPageWebElementDisplayed();
         //login and register dashboard page text element assert
         isLoginRegisterDashboardPageTextElementMatchExpectations();
-        //valid user login input data getter
+        //invalid user login input data getter - no login email
         loginRegisterDashBoardLoginSectionPage.getInvalidUserLoginNoEmailInputData(loginRegisterDashboardRegisterSectionPage);
         //capture screenshot of the pre-input stage
         captureScreenshot(driver, "Invalid User Login Test - Before Data Input");
@@ -1701,6 +1701,32 @@ public class TestMethods extends BaseTest{
         loginRegisterDashBoardLoginSectionPage.clickLoginButton();
         //capture screenshot after invalid login attempt
         captureScreenshot(driver, "Invalid User Login Test Result - No Email");
+    }
+    //invalid user login test method - no login password (the form has no singular input display errors so the screenshots are being used as proof of the test run)
+    protected void invalidUserAccountNoPasswordLoginTest(LoginRegisterDashboardRegisterSectionPage loginRegisterDashboardRegisterSectionPage){
+        HomePage homePage = new HomePage(driver);
+        LoginRegisterDashBoardLoginSectionPage loginRegisterDashBoardLoginSectionPage = new LoginRegisterDashBoardLoginSectionPage(driver);
+        AccountOverviewPage accountOverviewPage = new AccountOverviewPage(driver);
+        //general page web element assert
+        isGeneralPageWebElementDisplayed(homePage);
+        //general page text element assert
+        isGeneralPageTextElementAsExpected(homePage);
+        //login and register dashboard page web element assert
+        isLoginRegisterDashboardPageWebElementDisplayed();
+        //login and register dashboard page text element assert
+        isLoginRegisterDashboardPageTextElementMatchExpectations();
+        //invalid user login input data getter - no login password
+        loginRegisterDashBoardLoginSectionPage.getInvalidUserLoginNoPasswordInputData(loginRegisterDashboardRegisterSectionPage);
+        //capture screenshot of the pre-input stage
+        captureScreenshot(driver, "Invalid User Login Test - Before Data Input");
+        //input valid login email
+        loginRegisterDashBoardLoginSectionPage.inputEmailIntoLoginEmailInputField();
+        //don't input login password
+        loginRegisterDashBoardLoginSectionPage.inputNoPasswordIntoLoginPasswordInputField();
+        //input 'Login' button
+        loginRegisterDashBoardLoginSectionPage.clickLoginButton();
+        //capture screenshot after invalid login attempt
+        captureScreenshot(driver, "Invalid User Login Test Result - No Password");
     }
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

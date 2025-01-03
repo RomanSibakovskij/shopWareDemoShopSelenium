@@ -58,4 +58,22 @@ public class LoginRegisterDashboardPageLoginSectionTest extends TestMethods{
         invalidUserAccountNoEmailLoginTest(loginRegisterDashboardRegisterSectionPage);
     }
 
+    //Test 004b -> invalid user account login test - no login password
+    @Test
+    @DisplayName("Invalid User Login Test - No Password")
+    @Tag("Invalid_User_Login")
+    @Tag("No_Singular_Input")
+    void invalidAccountLoginNoPasswordTest(){
+        HomePage homePage = new HomePage(driver);
+        LoginRegisterDashboardRegisterSectionPage loginRegisterDashboardRegisterSectionPage = new LoginRegisterDashboardRegisterSectionPage(driver);
+        //navigate to login & register dashboard page
+        navigateToLoginAndRegisterDashboardPageTest(homePage);
+        //valid user account creation test
+        validUserAccountCreationTest(loginRegisterDashboardRegisterSectionPage);
+        //valid user logout test
+        userLogoutTest();
+        //invalid user login test - no login password
+        invalidUserAccountNoPasswordLoginTest(loginRegisterDashboardRegisterSectionPage);
+    }
+
 }

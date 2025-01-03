@@ -34,6 +34,7 @@ public class LoginRegisterDashBoardLoginSectionPage extends BasePage{
 
     //no singular login input data
     private String noLoginEmail;
+    private String noLoginPassword;
 
     public LoginRegisterDashBoardLoginSectionPage(WebDriver driver) {super(driver);}
 
@@ -103,6 +104,26 @@ public class LoginRegisterDashBoardLoginSectionPage extends BasePage{
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(650));
         wait.until(ExpectedConditions.visibilityOf(loginSectionEmailInputField));
         loginSectionEmailInputField.sendKeys(noLoginEmail);
+    }
+
+    //invalid login data input getter - no login password
+    public void getInvalidUserLoginNoPasswordInputData(LoginRegisterDashboardRegisterSectionPage loginRegisterDashboardRegisterSectionPage) {
+        loginEmail = loginRegisterDashboardRegisterSectionPage.getEmail();
+        noLoginPassword = "";
+
+        System.out.println("Invalid user login input data (no password): " + "\n");
+
+        logger.info("Valid user login email (no password): " + loginEmail);
+        logger.info("No login password: " + noLoginPassword);
+
+        System.out.println("\n");
+    }
+
+    //invalid user login data input method - no login password
+    public void inputNoPasswordIntoLoginPasswordInputField(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(650));
+        wait.until(ExpectedConditions.visibilityOf(loginSectionPasswordInputField));
+        loginSectionPasswordInputField.sendKeys(noLoginPassword);
     }
 
     //click 'Login' button
