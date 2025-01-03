@@ -47,6 +47,7 @@ public class RegisterSectionTooShortLongInputPage extends BasePage{
     //too long singular input data
     private String tooLongFirstName;
     private String tooLongLastName;
+    private String tooLongEmail;
 
     public RegisterSectionTooShortLongInputPage(WebDriver driver) {super(driver);}
 
@@ -332,6 +333,32 @@ public class RegisterSectionTooShortLongInputPage extends BasePage{
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(650));
         wait.until(ExpectedConditions.visibilityOf(registerSectionLastNameInputField));
         registerSectionLastNameInputField.sendKeys(tooLongLastName);
+    }
+    //invalid user input data getter - too long email (100 chars) (name)
+    public void getInvalidUserInputTooLongEmailData(){
+        firstName = TestDataGenerator.getRandomFirstName();
+        lastName = TestDataGenerator.getRandomLastName();
+        tooLongEmail = TestDataGenerator.generateRandomEmailAddress(100);
+        password = TestDataGenerator.generateRandomPassword();
+        address = TestDataGenerator.generateRandomAddress(6);
+        city = TestDataGenerator.getRandomCity();
+        postalCode = TestDataGenerator.getRandomPostalCode();
+
+        System.out.println("Generated user register input data (too long email): " + "\n");
+
+        logger.info("Valid user first name (too long email): " + firstName);
+        logger.info("Valid user last name (too long email): " + lastName);
+        logger.info("Too long user email: " + tooLongEmail);
+        logger.info("Valid user password (too long email): " + password);
+        logger.info("Valid user address (too long email): " + address);
+        logger.info("Valid user city (too long email): " + city);
+        logger.info("Valid user postal code (too long email): " + postalCode);
+    }
+    //invalid user register data input method - too long email (1 char - name, domain)
+    public void inputTooLongEmailIntoEmailInputField(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(650));
+        wait.until(ExpectedConditions.visibilityOf(registerSectionEmailInputField));
+        registerSectionEmailInputField.sendKeys(tooLongEmail);
     }
 
     //account creation error bar text getter
