@@ -567,7 +567,7 @@ public class TestMethods extends BaseTest{
         loginRegisterDashboardRegisterSectionPage.selectMrSalutation();
         //input too short first name (1 char)
         registerSectionTooShortLongInputPage.inputTooShortFirstNameIntoFirstNameInputField();
-        //capture screenshot before invalid data input
+        //capture screenshot of the invalid data input
         captureScreenshot(driver, "Invalid User Account Creation - Too Short First Name");
         //input valid last name
         registerSectionTooShortLongInputPage.inputLastNameIntoLastNameInputField();
@@ -618,7 +618,7 @@ public class TestMethods extends BaseTest{
         registerSectionTooShortLongInputPage.inputFirstNameIntoFirstNameInputField();
         //input too short last name (3 chars)
         registerSectionTooShortLongInputPage.inputTooShortLastNameIntoLastNameInputField();
-        //capture screenshot before invalid data input
+        //capture screenshot of the invalid data input
         captureScreenshot(driver, "Invalid User Account Creation - Too Short Last Name");
         //input valid email address
         registerSectionTooShortLongInputPage.inputEmailIntoEmailInputField();
@@ -644,6 +644,55 @@ public class TestMethods extends BaseTest{
         loginRegisterDashboardRegisterSectionPage.clickContinueButton();
         //capture screenshot after invalid user account creation (too short last name)
         captureScreenshot(driver, "Invalid Male User Account Creation Test Result - Too Short Last Name");
+    }
+    //invalid user creation test method - too short email (1 char - name and domain) (the form has no input display errors so the screenshots are being used as proof of the test run)
+    protected void invalidUserAccountTooShortEmailCreationTest(RegisterSectionTooShortLongInputPage registerSectionTooShortLongInputPage){
+        HomePage homePage = new HomePage(driver);
+        LoginRegisterDashboardRegisterSectionPage loginRegisterDashboardRegisterSectionPage = new LoginRegisterDashboardRegisterSectionPage(driver);
+        //general page web element assert
+        isGeneralPageWebElementDisplayed(homePage);
+        //general page text element assert
+        isGeneralPageTextElementAsExpected(homePage);
+        //login and register dashboard page web element assert
+        isLoginRegisterDashboardPageWebElementDisplayed();
+        //login and register dashboard page text element assert
+        isLoginRegisterDashboardPageTextElementMatchExpectations();
+        //invalid user register input data getter (too short email - 1 char - name and domain)
+        registerSectionTooShortLongInputPage.getInvalidUserInputTooShortEmailData();
+        //click 'Salutations' dropdown menu
+        loginRegisterDashboardRegisterSectionPage.clickSalutationDropdownMenu();
+        //select 'Mr.' option
+        loginRegisterDashboardRegisterSectionPage.selectMrSalutation();
+        //input valid first name
+        registerSectionTooShortLongInputPage.inputFirstNameIntoFirstNameInputField();
+        //input valid last name
+        registerSectionTooShortLongInputPage.inputLastNameIntoLastNameInputField();
+        //input too short email address (1 char - name and domain)
+        registerSectionTooShortLongInputPage.inputTooShortEmailIntoEmailInputField();
+        //capture screenshot of the invalid data input
+        captureScreenshot(driver, "Invalid User Account Creation - Too Short Email");
+        //input valid password
+        registerSectionTooShortLongInputPage.inputPasswordIntoPasswordInputField();
+        //input valid address
+        registerSectionTooShortLongInputPage.inputAddressIntoAddressInputField();
+        //input valid city
+        registerSectionTooShortLongInputPage.inputCityIntoCityInputField();
+        //input valid postal code
+        registerSectionTooShortLongInputPage.inputPostalCodeIntoPostCodeInputField();
+        //click country dropdown method
+        loginRegisterDashboardRegisterSectionPage.clickCountryDropdownMenu();
+        //select 'United States' option
+        loginRegisterDashboardRegisterSectionPage.selectUSOption();
+        //click state dropdown menu (appears after country selection)
+        loginRegisterDashboardRegisterSectionPage.clickStateDropdownMenu();
+        //select 'Illinois' state option
+        loginRegisterDashboardRegisterSectionPage.selectIllinoisOption();
+        //capture screenshot after invalid data input
+        captureScreenshot(driver, "Invalid Male User Account Creation Data Input - Too Short Email");
+        //click 'Continue' button
+        loginRegisterDashboardRegisterSectionPage.clickContinueButton();
+        //capture screenshot after invalid user account creation (too short last name)
+        captureScreenshot(driver, "Invalid Male User Account Creation Test Result - Too Short Email");
     }
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

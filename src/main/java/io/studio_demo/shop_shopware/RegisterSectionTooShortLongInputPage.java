@@ -48,6 +48,7 @@ public class RegisterSectionTooShortLongInputPage extends BasePage{
     //too short singular input data
     private String tooShortFirstName;
     private String tooShortLastName;
+    private String tooShortEmail;
 
     public RegisterSectionTooShortLongInputPage(WebDriver driver) {super(driver);}
 
@@ -141,5 +142,33 @@ public class RegisterSectionTooShortLongInputPage extends BasePage{
         wait.until(ExpectedConditions.visibilityOf(registerSectionLastNameInputField));
         registerSectionLastNameInputField.sendKeys(tooShortLastName);
     }
+
+    //invalid user input data getter - too short email (1 char) (name and domain)
+    public void getInvalidUserInputTooShortEmailData(){
+        firstName = TestDataGenerator.getRandomFirstName();
+        lastName = TestDataGenerator.getRandomLastName();
+        tooShortEmail = "s@f.org";
+        password = TestDataGenerator.generateRandomPassword();
+        address = TestDataGenerator.generateRandomAddress(6);
+        city = TestDataGenerator.getRandomCity();
+        postalCode = TestDataGenerator.getRandomPostalCode();
+
+        System.out.println("Generated user register input data (too short email): " + "\n");
+
+        logger.info("Valid user first name (too short email): " + firstName);
+        logger.info("Valid user last name (too short email): " + lastName);
+        logger.info("Too short user email: " + tooShortEmail);
+        logger.info("Valid user password (too short email): " + password);
+        logger.info("Valid user address (too short email): " + address);
+        logger.info("Valid user city (too short email): " + city);
+        logger.info("Valid user postal code (too short email): " + postalCode);
+    }
+    //invalid user register data input method - too short email (1 char - name, domain)
+    public void inputTooShortEmailIntoEmailInputField(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(650));
+        wait.until(ExpectedConditions.visibilityOf(registerSectionEmailInputField));
+        registerSectionEmailInputField.sendKeys(tooShortEmail);
+    }
+
 
 }
