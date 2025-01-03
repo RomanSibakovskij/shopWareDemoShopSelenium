@@ -1545,6 +1545,55 @@ public class TestMethods extends BaseTest{
         //capture screenshot after invalid user account creation (invalid city format)
         captureScreenshot(driver, "Invalid Male User Account Creation Test Result - Invalid City Format");
     }
+    //invalid user creation test method - invalid postal code format (special symbols only) (the form has no input display errors so the screenshots are being used as proof of the test run)
+    protected void invalidUserAccountInvalidPostalCodeFormatCreationTest(RegisterSectionInvalidSingularInputPage registerSectionInvalidSingularInputPage){
+        HomePage homePage = new HomePage(driver);
+        LoginRegisterDashboardRegisterSectionPage loginRegisterDashboardRegisterSectionPage = new LoginRegisterDashboardRegisterSectionPage(driver);
+        //general page web element assert
+        isGeneralPageWebElementDisplayed(homePage);
+        //general page text element assert
+        isGeneralPageTextElementAsExpected(homePage);
+        //login and register dashboard page web element assert
+        isLoginRegisterDashboardPageWebElementDisplayed();
+        //login and register dashboard page text element assert
+        isLoginRegisterDashboardPageTextElementMatchExpectations();
+        //invalid user register input data getter (invalid postal code format)
+        registerSectionInvalidSingularInputPage.getInvalidUserInputInvalidPostalCodeFormatData();
+        //click 'Salutations' dropdown menu
+        loginRegisterDashboardRegisterSectionPage.clickSalutationDropdownMenu();
+        //select 'Mr.' option
+        loginRegisterDashboardRegisterSectionPage.selectMrSalutation();
+        //input valid first name
+        registerSectionInvalidSingularInputPage.inputFirstNameIntoFirstNameInputField();
+        //input valid last name
+        registerSectionInvalidSingularInputPage.inputLastNameIntoLastNameInputField();
+        //input valid email
+        registerSectionInvalidSingularInputPage.inputEmailIntoEmailInputField();
+        //input valid password
+        registerSectionInvalidSingularInputPage.inputPasswordIntoPasswordInputField();
+        //input valid address
+        registerSectionInvalidSingularInputPage.inputAddressIntoAddressInputField();
+        //input valid city
+        registerSectionInvalidSingularInputPage.inputCityIntoCityInputField();
+        //input invalid postal code format (special symbols only)
+        registerSectionInvalidSingularInputPage.inputInvalidPostalCodeFormatIntoPostCodeInputField();
+        //capture screenshot of the invalid data input
+        captureScreenshot(driver, "Invalid User Account Creation - Invalid Postal Code Format");
+        //click country dropdown method
+        loginRegisterDashboardRegisterSectionPage.clickCountryDropdownMenu();
+        //select 'United States' option
+        loginRegisterDashboardRegisterSectionPage.selectUSOption();
+        //click state dropdown menu (appears after country selection)
+        loginRegisterDashboardRegisterSectionPage.clickStateDropdownMenu();
+        //select 'Illinois' state option
+        loginRegisterDashboardRegisterSectionPage.selectIllinoisOption();
+        //capture screenshot after invalid data input
+        captureScreenshot(driver, "Invalid Male User Account Creation Data Input - Invalid Postal Code Format");
+        //click 'Continue' button
+        loginRegisterDashboardRegisterSectionPage.clickContinueButton();
+        //capture screenshot after invalid user account creation (invalid postal code format)
+        captureScreenshot(driver, "Invalid Male User Account Creation Test Result - Invalid Postal Code Format");
+    }
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

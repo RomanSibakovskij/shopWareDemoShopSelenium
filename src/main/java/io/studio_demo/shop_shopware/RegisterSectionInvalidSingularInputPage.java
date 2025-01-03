@@ -42,6 +42,7 @@ public class RegisterSectionInvalidSingularInputPage extends BasePage{
     private String invalidEmailFormat;
     private String invalidAddressFormat;
     private String invalidCityFormat;
+    private String invalidPostalCodeFormat;
 
     //existing email variable (sed beforehand in manual testing)
     private String existingEmail;
@@ -246,6 +247,33 @@ public class RegisterSectionInvalidSingularInputPage extends BasePage{
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(650));
         wait.until(ExpectedConditions.visibilityOf(registerSectionCityInputField));
         registerSectionCityInputField.sendKeys(invalidCityFormat);
+    }
+
+    //invalid user input data getter - invalid postal code format (special symbols only)
+    public void getInvalidUserInputInvalidPostalCodeFormatData(){
+        firstName = TestDataGenerator.getRandomFirstName();
+        lastName = TestDataGenerator.getRandomLastName();
+        email = TestDataGenerator.generateRandomEmailAddress(8);
+        password = TestDataGenerator.generateRandomPassword();
+        address = TestDataGenerator.generateRandomAddress(6);
+        city = TestDataGenerator.getRandomCity();
+        invalidPostalCodeFormat = "!#@#%#$%^&%^*&^%^";
+
+        System.out.println("Generated user register input data (invalid postal code format): " + "\n");
+
+        logger.info("Valid user first name (invalid postal code format): " + firstName);
+        logger.info("Valid user last name (invalid postal code format): " + lastName);
+        logger.info("Valid user email (invalid postal code format): " + email);
+        logger.info("Valid user password (invalid postal code format): " + password);
+        logger.info("Valid user address (invalid postal code format): " + address);
+        logger.info("Valid user city (invalid postal code format): " + city);
+        logger.info("Invalid user postal code format: " + invalidPostalCodeFormat);
+    }
+    //invalid user register data input method - invalid postal code format (special symbols only)
+    public void inputInvalidPostalCodeFormatIntoPostCodeInputField(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(650));
+        wait.until(ExpectedConditions.visibilityOf(registerSectionPostalCodeInputField));
+        registerSectionPostalCodeInputField.sendKeys(invalidPostalCodeFormat);
     }
 
     //used email error bar text getter

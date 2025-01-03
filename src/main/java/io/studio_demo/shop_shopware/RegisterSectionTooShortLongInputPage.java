@@ -446,7 +446,7 @@ public class RegisterSectionTooShortLongInputPage extends BasePage{
         registerSectionCityInputField.sendKeys(tooLongCity);
     }
 
-    //invalid user input data getter - too short postal code (50 digits)
+    //invalid user input data getter - too long postal code (50 digits)
     public void getInvalidUserInputTooLongPostalCodeData(){
         firstName = TestDataGenerator.getRandomFirstName();
         lastName = TestDataGenerator.getRandomLastName();

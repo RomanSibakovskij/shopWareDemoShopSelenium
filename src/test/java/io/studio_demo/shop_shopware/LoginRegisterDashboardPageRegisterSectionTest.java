@@ -447,4 +447,18 @@ public class LoginRegisterDashboardPageRegisterSectionTest extends TestMethods{
         invalidUserAccountInvalidCityFormatCreationTest(registerSectionInvalidSingularInputPage);
     }
 
+    //Test 002ae -> invalid user account creation test - invalid postal code format (special symbols only) (user account has been created - test has failed)
+    @Test
+    @DisplayName("Invalid User Account Creation Test - Invalid Postal Code Format")
+    @Tag("Invalid_User_Account_Creation")
+    @Tag("Invalid_Singular_Input_Format")
+    void invalidAccountCreationInvalidPostalCodeFormatTest(){
+        HomePage homePage = new HomePage(driver);
+        RegisterSectionInvalidSingularInputPage registerSectionInvalidSingularInputPage = new RegisterSectionInvalidSingularInputPage(driver);
+        //navigate to login & register dashboard page
+        navigateToLoginAndRegisterDashboardPageTest(homePage);
+        //invalid user account creation test - invalid postal code format (special symbols only)
+        invalidUserAccountInvalidPostalCodeFormatCreationTest(registerSectionInvalidSingularInputPage);
+    }
+
 }
