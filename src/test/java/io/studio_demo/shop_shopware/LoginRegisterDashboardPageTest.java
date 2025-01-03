@@ -176,4 +176,17 @@ public class LoginRegisterDashboardPageTest extends TestMethods{
         invalidUserAccountTooShortFirstNameCreationTest(registerSectionTooShortLongInputPage);
     }
 
+    //Test 002l -> invalid user account creation test - too last name
+    @Test
+    @DisplayName("Invalid User Account Creation Test - Too Last Name")
+    @Tag("Invalid_User_Account_Creation")
+    @Tag("Too_Short_Singular_Input")
+    void invalidAccountCreationTooShortLastNameTest(){
+        HomePage homePage = new HomePage(driver);
+        RegisterSectionTooShortLongInputPage registerSectionTooShortLongInputPage = new RegisterSectionTooShortLongInputPage(driver);
+        //navigate to login & register dashboard page
+        navigateToLoginAndRegisterDashboardPageTest(homePage);
+        //invalid user account creation test - too short last name
+        invalidUserAccountTooShortLastNameCreationTest(registerSectionTooShortLongInputPage);
+    }
 }

@@ -47,6 +47,7 @@ public class RegisterSectionTooShortLongInputPage extends BasePage{
 
     //too short singular input data
     private String tooShortFirstName;
+    private String tooShortLastName;
 
     public RegisterSectionTooShortLongInputPage(WebDriver driver) {super(driver);}
 
@@ -112,6 +113,33 @@ public class RegisterSectionTooShortLongInputPage extends BasePage{
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(650));
         wait.until(ExpectedConditions.visibilityOf(registerSectionFirstNameInputField));
         registerSectionFirstNameInputField.sendKeys(tooShortFirstName);
+    }
+
+    //invalid user input data getter - too short first name (3 chars)
+    public void getInvalidUserInputTooShortLastNameData(){
+        firstName = TestDataGenerator.getRandomFirstName();
+        tooShortLastName = "Kgr";
+        email = TestDataGenerator.generateRandomEmailAddress(8);
+        password = TestDataGenerator.generateRandomPassword();
+        address = TestDataGenerator.generateRandomAddress(6);
+        city = TestDataGenerator.getRandomCity();
+        postalCode = TestDataGenerator.getRandomPostalCode();
+
+        System.out.println("Generated user register input data (too short last name): " + "\n");
+
+        logger.info("Valid user first name (too short last name): " + firstName);
+        logger.info("Too short user last name: " + tooShortLastName);
+        logger.info("Valid user email (too short last name): " + email);
+        logger.info("Valid user password (too short last name): " + password);
+        logger.info("Valid user address (too short last name): " + address);
+        logger.info("Valid user city (too short last name): " + city);
+        logger.info("Valid user postal code (too short last name): " + postalCode);
+    }
+    //invalid user register data input method - too short last name (3 chars is usually too short)
+    public void inputTooShortLastNameIntoLastNameInputField(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(650));
+        wait.until(ExpectedConditions.visibilityOf(registerSectionLastNameInputField));
+        registerSectionLastNameInputField.sendKeys(tooShortLastName);
     }
 
 }

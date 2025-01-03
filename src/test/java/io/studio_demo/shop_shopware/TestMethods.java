@@ -596,6 +596,55 @@ public class TestMethods extends BaseTest{
         //capture screenshot after invalid user account creation (too short first name)
         captureScreenshot(driver, "Invalid Male User Account Creation Test Result - Too Short First Name");
     }
+    //invalid user creation test method - too short last name (3 chars) (the form has no input display errors so the screenshots are being used as proof of the test run)
+    protected void invalidUserAccountTooShortLastNameCreationTest(RegisterSectionTooShortLongInputPage registerSectionTooShortLongInputPage){
+        HomePage homePage = new HomePage(driver);
+        LoginRegisterDashboardRegisterSectionPage loginRegisterDashboardRegisterSectionPage = new LoginRegisterDashboardRegisterSectionPage(driver);
+        //general page web element assert
+        isGeneralPageWebElementDisplayed(homePage);
+        //general page text element assert
+        isGeneralPageTextElementAsExpected(homePage);
+        //login and register dashboard page web element assert
+        isLoginRegisterDashboardPageWebElementDisplayed();
+        //login and register dashboard page text element assert
+        isLoginRegisterDashboardPageTextElementMatchExpectations();
+        //invalid user register input data getter (too short first name - 3 chars)
+        registerSectionTooShortLongInputPage.getInvalidUserInputTooShortLastNameData();
+        //click 'Salutations' dropdown menu
+        loginRegisterDashboardRegisterSectionPage.clickSalutationDropdownMenu();
+        //select 'Mr.' option
+        loginRegisterDashboardRegisterSectionPage.selectMrSalutation();
+        //input valid first name
+        registerSectionTooShortLongInputPage.inputFirstNameIntoFirstNameInputField();
+        //input too short last name (3 chars)
+        registerSectionTooShortLongInputPage.inputTooShortLastNameIntoLastNameInputField();
+        //capture screenshot before invalid data input
+        captureScreenshot(driver, "Invalid User Account Creation - Too Short Last Name");
+        //input valid email address
+        registerSectionTooShortLongInputPage.inputEmailIntoEmailInputField();
+        //input valid password
+        registerSectionTooShortLongInputPage.inputPasswordIntoPasswordInputField();
+        //input valid address
+        registerSectionTooShortLongInputPage.inputAddressIntoAddressInputField();
+        //input valid city
+        registerSectionTooShortLongInputPage.inputCityIntoCityInputField();
+        //input valid postal code
+        registerSectionTooShortLongInputPage.inputPostalCodeIntoPostCodeInputField();
+        //click country dropdown method
+        loginRegisterDashboardRegisterSectionPage.clickCountryDropdownMenu();
+        //select 'United States' option
+        loginRegisterDashboardRegisterSectionPage.selectUSOption();
+        //click state dropdown menu (appears after country selection)
+        loginRegisterDashboardRegisterSectionPage.clickStateDropdownMenu();
+        //select 'Illinois' state option
+        loginRegisterDashboardRegisterSectionPage.selectIllinoisOption();
+        //capture screenshot after invalid data input
+        captureScreenshot(driver, "Invalid Male User Account Creation Data Input - Too Short Last Name");
+        //click 'Continue' button
+        loginRegisterDashboardRegisterSectionPage.clickContinueButton();
+        //capture screenshot after invalid user account creation (too short last name)
+        captureScreenshot(driver, "Invalid Male User Account Creation Test Result - Too Short Last Name");
+    }
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
