@@ -58,8 +58,26 @@ public class ShoppingCartPageTest extends TestMethods{
     void addClothingProductsToCartGuestTest(){
         //add 'Clothing' products to cart (as a guest)
         addClothingProductsToCartTest();
-        //add 'Clothing' product to check out test (as a guest)
+        //add 'Clothing' products to check out test (as a guest)
         addProductToCheckoutTest();
+    }
+
+    //Test 006d -> add 'Clothing' products to check out test (as a registered user)
+    @Test
+    @DisplayName("Add 'Clothing' Products To Checkout Test (as a registered user)")
+    @Tag("Add_Multiple_Products_To_Checkout")
+    @Tag("Test_As_A_Reg_User")
+    void addClothingProductsToCartRegisteredUserTest(){
+        HomePage homePage = new HomePage(driver);
+        LoginRegisterDashboardRegisterSectionPage loginRegisterDashboardRegisterSectionPage = new LoginRegisterDashboardRegisterSectionPage(driver);
+        //navigate to login & register dashboard page
+        navigateToLoginAndRegisterDashboardPageTest(homePage);
+        //valid user account creation test
+        validUserAccountCreationTest(loginRegisterDashboardRegisterSectionPage);
+        //add 'Clothing' products to cart (as a registered user)
+        addClothingProductsToCartRegUserTest();
+        //add 'Clothing' products to check out test (as a registered user)
+        addProductToCheckoutRegUserTest();
     }
 
 }
