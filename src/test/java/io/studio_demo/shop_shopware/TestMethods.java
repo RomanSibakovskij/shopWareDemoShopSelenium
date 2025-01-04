@@ -1980,7 +1980,7 @@ public class TestMethods extends BaseTest{
     //singular product addition to check out tests
 
     //add 'Free Time & Electronics' product to check out test method (guest) (guest and registered user share this method as it's the same for both parties)
-    protected void addFreeTimeAndElectronicsProductToCheckoutTest(){
+    protected void addProductToCheckoutTest(){
         HomePage homePage = new HomePage(driver);
         ShoppingCartPage shoppingCartPage = new ShoppingCartPage(driver);
         //click 'Shipping details' link
@@ -2038,7 +2038,7 @@ public class TestMethods extends BaseTest{
         captureScreenshot(driver, "Free Time And Electronics Test Result - Product Removed From Cart");
     }
     //add 'Free Time & Electronics' product to check out test method (guest) (guest and registered user share this method as it's the same for both parties)
-    protected void addFreeTimeAndElectronicsProductToCheckoutRegUserTest(){
+    protected void addProductToCheckoutRegUserTest(){
         HomePage homePage = new HomePage(driver);
         ShoppingCartPage shoppingCartPage = new ShoppingCartPage(driver);
         //click 'Shipping details' link

@@ -15,7 +15,7 @@ public class ShoppingCartPageTest extends TestMethods{
         //add 'Free Time & Electronics' product to cart test (as a guest)
         addFreeTimeAndElectronicsProductToCartTest();
         //add 'Free Time & Electronics' product to check out test (as a guest)
-        addFreeTimeAndElectronicsProductToCheckoutTest();
+        addProductToCheckoutTest();
     }
 
     //Test 006a -> remove 'Free Time & Electronics' product from shopping cart page test (as a guest)
@@ -45,7 +45,21 @@ public class ShoppingCartPageTest extends TestMethods{
         //add 'Free Time & Electronics' product to cart (as a registered user)
         addFreeTimeAndElectronicsProductToCartRegUserTest();
         //add 'Free Time & Electronics' product to check out test (as a registered user)
-        addFreeTimeAndElectronicsProductToCheckoutRegUserTest();
+        addProductToCheckoutRegUserTest();
+    }
+
+    //multiple products addition to check out tests
+
+    //Test 006c -> add 'Clothing' products to check out test (as a guest)
+    @Test
+    @DisplayName("Add 'Clothing' Products To Checkout Test (as a guest)")
+    @Tag("Add_Multiple_Products_To_Checkout")
+    @Tag("Test_As_A_Guest")
+    void addClothingProductsToCartGuestTest(){
+        //add 'Clothing' products to cart (as a guest)
+        addClothingProductsToCartTest();
+        //add 'Clothing' product to check out test (as a guest)
+        addProductToCheckoutTest();
     }
 
 }

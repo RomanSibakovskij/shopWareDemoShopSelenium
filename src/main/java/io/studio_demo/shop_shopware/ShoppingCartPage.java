@@ -74,10 +74,17 @@ public class ShoppingCartPage extends BasePage{
     public ShoppingCartPage(WebDriver driver) {super(driver);}
 
     //click 'Shipping details' link method
-    public void clickShippingDetailsLink(){shippingDetailsLink.click();}
+    public void clickShippingDetailsLink(){
+        JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
+        jsExecutor.executeScript("arguments[0].scrollIntoView(true);", shippingDetailsLink);
+        jsExecutor.executeScript("arguments[0].click();",shippingDetailsLink);//js click (common click fails throws ElementClickInterceptedException for some reason)
+    }
 
     //click shipping country dropdown menu
-    public void clickShippingDetailsCountryDropdownMenu(){shippingDetailsCountryDropdownMenu.click();}
+    public void clickShippingDetailsCountryDropdownMenu(){
+        JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
+        jsExecutor.executeScript("arguments[0].click();",shippingDetailsCountryDropdownMenu);//js click (common click fails throws ElementClickInterceptedException for some reason)
+    }
     //select 'United States' option
     public void selectUSCountryOption(){usCountryOption.click();}
 
