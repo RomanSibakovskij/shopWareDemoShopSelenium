@@ -30,4 +30,22 @@ public class ShoppingCartPageTest extends TestMethods{
         removeFreeTimeAndElectronicsProductFromCartPageTest();
     }
 
+    //Test 006b -> add 'Free Time & Electronics' product to check out test (as a registered user)
+    @Test
+    @DisplayName("Add 'Free Time & Electronics' Product To Checkout Test (as a registered user)")
+    @Tag("Add_Singular_Product_To_Checkout")
+    @Tag("Test_As_A_Reg_User")
+    void addFreeTimeProductToCartRegUserTest(){
+        HomePage homePage = new HomePage(driver);
+        LoginRegisterDashboardRegisterSectionPage loginRegisterDashboardRegisterSectionPage = new LoginRegisterDashboardRegisterSectionPage(driver);
+        //navigate to login & register dashboard page
+        navigateToLoginAndRegisterDashboardPageTest(homePage);
+        //valid user account creation test
+        validUserAccountCreationTest(loginRegisterDashboardRegisterSectionPage);
+        //add 'Free Time & Electronics' product to cart (as a registered user)
+        addFreeTimeAndElectronicsProductToCartRegUserTest();
+        //add 'Free Time & Electronics' product to check out test (as a registered user)
+        addFreeTimeAndElectronicsProductToCheckoutRegUserTest();
+    }
+
 }

@@ -1989,6 +1989,8 @@ public class TestMethods extends BaseTest{
         isGeneralPageWebElementDisplayed(homePage);
         //general page text element assert
         isGeneralPageTextElementAsExpected(homePage);
+        //assert shopping cart shipping country dropdown menu is displayed (registered user doesn't have this menu)
+        assertTrue(shoppingCartPage.isShippingCountryDropdownMenuDisplayed(), "The shopping cart shipping country dropdown menu isn't displayed");
         //shopping cart page web element assert
         isShoppingCartPageWebElementDisplayed();
         //shopping cart text element assert
@@ -2018,6 +2020,8 @@ public class TestMethods extends BaseTest{
         isGeneralPageWebElementDisplayed(homePage);
         //general page text element assert
         isGeneralPageTextElementAsExpected(homePage);
+        //assert shopping cart shipping country dropdown menu is displayed (registered user doesn't have this menu)
+        assertTrue(shoppingCartPage.isShippingCountryDropdownMenuDisplayed(), "The shopping cart shipping country dropdown menu isn't displayed");
         //shopping cart page web element assert
         isShoppingCartPageWebElementDisplayed();
         //shopping cart text element assert
@@ -2032,6 +2036,29 @@ public class TestMethods extends BaseTest{
         assertEquals("Your shopping cart is empty.", shoppingCartPage.getProductRemovalSuccessMessage(), "The product removal success message doesn't match expectations or the product removal failed.");
         //capture screenshot of the test result
         captureScreenshot(driver, "Free Time And Electronics Test Result - Product Removed From Cart");
+    }
+    //add 'Free Time & Electronics' product to check out test method (guest) (guest and registered user share this method as it's the same for both parties)
+    protected void addFreeTimeAndElectronicsProductToCheckoutRegUserTest(){
+        HomePage homePage = new HomePage(driver);
+        ShoppingCartPage shoppingCartPage = new ShoppingCartPage(driver);
+        //click 'Shipping details' link
+        shoppingCartPage.clickShippingDetailsLink();
+        //general page web element assert
+        isGeneralPageWebElementDisplayed(homePage);
+        //general page text element assert
+        isGeneralPageTextElementAsExpected(homePage);
+        //shopping cart page web element assert
+        isShoppingCartPageWebElementDisplayed();
+        //shopping cart text element assert
+        isShoppingCartPageTextElementAsExpected();
+        //capture screenshot of the shopping cart page
+        captureScreenshot(driver, "Free Time And Electronics Test - Shopping Cart Page (registered user)");
+        //log shopping cart page data
+        logShoppingCartProductData();
+        //click 'Go to Checkout' button
+        shoppingCartPage.clickGoToCheckoutButton();
+        //capture screenshot of the test result
+        captureScreenshot(driver, "Free Time And Electronics Test Result - Added Product To Checkout (registered user)");
     }
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -2302,8 +2329,6 @@ public class TestMethods extends BaseTest{
         assertTrue(shoppingCartPage.isProductNumberAcceptButtonDisplayed(), "The shopping cart product number accept button isn't displayed");
         //assert shopping cart shipping details link is displayed
         assertTrue(shoppingCartPage.isShippingDetailsLinkDisplayed(), "The shopping cart shipping details link isn't displayed");
-        //assert shopping cart shipping country dropdown menu is displayed
-        assertTrue(shoppingCartPage.isShippingCountryDropdownMenuDisplayed(), "The shopping cart shipping country dropdown menu isn't displayed");
         //assert shopping cart shipping payment method dropdown menu is displayed
         assertTrue(shoppingCartPage.isShippingPaymentMethodDropdownMenuDisplayed(), "The shopping cart shipping payment method dropdown menu isn't displayed");
         //assert shopping cart shipping method dropdown menu is displayed
