@@ -22,7 +22,7 @@ public class CheckoutGuestNoSingularInputPage extends BasePage{
     @FindBy(xpath = "//div[@class='checkout-main']//input[@id='billingAddressAddressZipcode']")
     private WebElement postalCodeInputField;
 
-    //valid guest user data getter
+    //valid guest user data
     private String guestFirstName;
     private String guestLastName;
     private String guestEmail;

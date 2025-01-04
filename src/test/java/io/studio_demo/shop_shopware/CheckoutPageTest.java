@@ -123,7 +123,7 @@ public class CheckoutPageTest extends TestMethods{
         invalidGuestProductNoPostalCodeCheckout();
     }
 
-    //Test 007g -> invalid 'Free Time & Electronics' product check out (shipping address) test - no guest country / state (as a guest) (the checkout doesn't get aborted - test has failed)
+    //Test 007g -> invalid 'Free Time & Electronics' product check out (shipping address) test - no guest country / state (as a guest)
     @Test
     @DisplayName("Invalid 'Free Time & Electronics' Product To Checkout Test (shipping address) - No Country (as a guest)")
     @Tag("Invalid_Singular_Product_Checkout")
@@ -137,6 +137,24 @@ public class CheckoutPageTest extends TestMethods{
         addProductToCheckoutTest();
         //invalid 'Free Time & Electronics' product to check out test (shipping address) - no guest country / state (as a guest)
         invalidGuestProductNoCountryCheckout();
+    }
+
+    //too short singular input
+
+    //Test 007h -> invalid 'Free Time & Electronics' product check out (shipping address) test - too short first name (as a guest) (the checkout doesn't get aborted - test has failed)
+    @Test
+    @DisplayName("Invalid 'Free Time & Electronics' Product To Checkout Test (shipping address) - Too Short First Name (as a guest)")
+    @Tag("Invalid_Singular_Product_Checkout")
+    @Tag("Shipping_Address_Guest")
+    @Tag("Too_Short_Singular_Input")
+    @Tag("Test_As_A_Guest")
+    void invalidFreeTimeProductCheckoutTooShortFirstNameTest(){
+        //add 'Free Time & Electronics' product to cart test (as a guest)
+        addFreeTimeAndElectronicsProductToCartTest();
+        //add 'Free Time & Electronics' product to check out test (as a guest)
+        addProductToCheckoutTest();
+        //invalid 'Free Time & Electronics' product to check out test (shipping address) - too short first name (as a guest)
+        invalidGuestProductTooShortFirstNameCheckout();
     }
 
     //multiple product checkout tests
