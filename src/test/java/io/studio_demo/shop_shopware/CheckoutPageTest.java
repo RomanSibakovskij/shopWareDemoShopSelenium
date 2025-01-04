@@ -4,5 +4,5 @@ import org.junit.jupiter.api.*;
 
 public class CheckoutPageTest extends TestMethods{
 
-    
+
 }
