@@ -117,7 +117,7 @@ public class CheckoutGuestPage extends BasePage{
         logger.info("Valid guest email: " + guestEmail);
         logger.info("Valid guest address: " + guestAddress);
         logger.info("Valid guest city: " + guestCity);
-        logger.info("Valid guest postal code: " + guestPostalCode);
+        logger.info("Valid guest postal code: " + guestPostalCode + "\n");
     }
 
     //valid guest user data input methods

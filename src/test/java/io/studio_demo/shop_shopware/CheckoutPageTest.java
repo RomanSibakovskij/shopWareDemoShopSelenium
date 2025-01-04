@@ -23,6 +23,26 @@ public class CheckoutPageTest extends TestMethods{
         validGuestProductCheckout();
     }
 
+    //negative checkout (shipping address input) tests
+
+    //no singular input
+
+    //Test 007a -> invalid 'Free Time & Electronics' product check out (shipping address) test - no first name (as a guest)
+    @Test
+    @DisplayName("Invalid 'Free Time & Electronics' Product To Checkout Test (shipping address) - No First Name (as a guest)")
+    @Tag("Invalid_Singular_Product_Checkout")
+    @Tag("Shipping_Address_Guest")
+    @Tag("No_Singular_Input")
+    @Tag("Test_As_A_Guest")
+    void invalidFreeTimeProductCheckoutNoFirstNameTest(){
+        //add 'Free Time & Electronics' product to cart test (as a guest)
+        addFreeTimeAndElectronicsProductToCartTest();
+        //add 'Free Time & Electronics' product to check out test (as a guest)
+        addProductToCheckoutTest();
+        //invalid 'Free Time & Electronics' product to check out test (shipping address) - no first name (as a guest)
+        invalidGuestProductNoFirstNameCheckout();
+    }
+
     //multiple product checkout tests
 
     //Test 008 -> valid 'Clothing' products to check out (shipping address) test (as a guest)
