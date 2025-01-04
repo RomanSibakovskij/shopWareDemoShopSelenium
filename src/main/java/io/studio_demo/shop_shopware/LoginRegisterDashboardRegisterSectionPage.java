@@ -361,7 +361,6 @@ public class LoginRegisterDashboardRegisterSectionPage extends BasePage{
         wait.until(ExpectedConditions.elementToBeClickable(registerSectionContinueButton));
         JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
         jsExecutor.executeScript("arguments[0].click();", registerSectionContinueButton); //js click (common click fails throws ElementClickInterceptedException for some reason)
-
     }
 
     //register section title getter

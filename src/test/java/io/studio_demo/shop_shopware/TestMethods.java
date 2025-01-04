@@ -2061,6 +2061,53 @@ public class TestMethods extends BaseTest{
         captureScreenshot(driver, "Free Time And Electronics Test Result - Added Product To Checkout (registered user)");
     }
 
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    //valid guest checkout tests
+
+    //valid guest checkout test method
+    protected void validGuestProductCheckout(){
+        CheckoutGuestPage checkoutGuestPage = new CheckoutGuestPage(driver);
+        //check out (guest) page web element assert
+        isCheckoutGuestPageWebElementDisplayed();
+        //check out (guest) text element assert
+        isCheckoutGuestTextElementAsExpected();
+        //log check out page product data
+        logCheckoutGuestPageProductData();
+        //capture screenshot of the checkout page before data input (guest)
+        captureScreenshot(driver, "Valid Guest Product Checkout Test - Checkout Guest Page (before data input)");
+        //click salutation dropdown menu
+        checkoutGuestPage.clickSalutationDropdownMenu();
+        //select 'Mr.' option
+        checkoutGuestPage.selectMrSalutation();
+        //valid guest user data getter
+        checkoutGuestPage.getValidGuestUserData();
+        //input valid first name
+        checkoutGuestPage.inputGuestFirstNameIntoFirstNameInputField();
+        //input valid last name
+        checkoutGuestPage.inputGuestLastNameIntoLastNameInputField();
+        //input valid email
+        checkoutGuestPage.inputGuestEmailIntoEmailInputField();
+        //input valid address
+        checkoutGuestPage.inputGuestAddressIntoAddressInputField();
+        //input valid city
+        checkoutGuestPage.inputGuestCityIntoCityInputField();
+        //input valid postal code
+        checkoutGuestPage.inputGuestPostalCodeIntoPostCodeInputField();
+        //click country dropdown menu
+        checkoutGuestPage.clickGuestCountryDropdownMenu();
+        //select 'United States' option
+        checkoutGuestPage.selectUSOption();
+        //click state dropdown menu
+        checkoutGuestPage.clickGuestStateDropdownMenu();
+        //select 'Illinois' option
+        checkoutGuestPage.selectIllinoisOption();
+        //click 'Continue' button
+        checkoutGuestPage.clickContinueButton();
+        //capture screenshot of the test result
+        captureScreenshot(driver, "Valid Guest Product Checkout Test Result - Product Has Checked Out");
+    }
+
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     //general page web element assert test method(all pages have the (header/footer) same ones except for checkout page)
@@ -2335,6 +2382,75 @@ public class TestMethods extends BaseTest{
         assertTrue(shoppingCartPage.isShippingMethodDropdownMenuDisplayed(), "The shopping cart shipping method dropdown menu isn't displayed");
     }
 
+    //guest checkout page web element assert test method
+    protected void isCheckoutGuestPageWebElementDisplayed(){
+        CheckoutGuestPage checkoutGuestPage = new CheckoutGuestPage(driver);
+        //assert login link is displayed
+        assertTrue(checkoutGuestPage.isLoginLinkDisplayed(), "The login link isn't displayed");
+        //assert shipping info section title is displayed
+        assertTrue(checkoutGuestPage.isShippingInfoSectionTitleDisplayed(), "The shipping info section title isn't displayed");
+        //assert your info subsection title is displayed
+        assertTrue(checkoutGuestPage.isYourInfoSubsectionTitleDisplayed(), "The your info subsection title isn't displayed");
+        //assert salutation dropdown menu is displayed
+        assertTrue(checkoutGuestPage.isSalutationDropdownMenuDisplayed(), "The salutation dropdown menu isn't displayed");
+        //assert first name input field is displayed
+        assertTrue(checkoutGuestPage.isFirstNameInputFieldDisplayed(), "The first name input field isn't displayed");
+        //assert last name input field is displayed
+        assertTrue(checkoutGuestPage.isLastNameInputFieldDisplayed(), "The last name input field isn't displayed");
+        //assert email input field is displayed
+        assertTrue(checkoutGuestPage.isEmailInputFieldDisplayed(), "The email input field isn't displayed");
+        //assert 'create customer account' checkbox is displayed
+        assertTrue(checkoutGuestPage.isCreateCustomerAccountCheckboxDisplayed(), "The 'create customer account' checkbox isn't displayed");
+        //assert address subsection title is displayed
+        assertTrue(checkoutGuestPage.isAddressSubsectionTitleDisplayed(), "The address subsection title isn't displayed");
+        //assert address input field is displayed
+        assertTrue(checkoutGuestPage.isStreetAddressInputFieldDisplayed(), "The address input field isn't displayed");
+        //assert city input field is displayed
+        assertTrue(checkoutGuestPage.isCityInputFieldDisplayed(), "The city input field isn't displayed");
+        //assert postal code input field is displayed
+        assertTrue(checkoutGuestPage.isPostalCodeInputFieldDisplayed(), "The postal code input field isn't displayed");
+        //assert country dropdown menu is displayed
+        assertTrue(checkoutGuestPage.isCountryDropdownMenuDisplayed(), "The country dropdown menu isn't displayed");
+        //assert shipping/billing address mismatch checkbox is displayed
+        assertTrue(checkoutGuestPage.isShippingBillingAddressMismatchCheckboxDisplayed(), "The shipping billing address mismatch checkbox isn't displayed");
+        //assert privacy subsection title is displayed
+        assertTrue(checkoutGuestPage.isPrivacySubsectionTitleDisplayed(), "The privacy subsection title isn't displayed");
+        //assert data protection information link is displayed
+        assertTrue(checkoutGuestPage.isDataProtectionInformationLinkDisplayed(), "The data information protection link isn't displayed");
+        //assert general terms link is displayed
+        assertTrue(checkoutGuestPage.isGeneralTermsLinkDisplayed(), "The general terms link isn't displayed");
+        //assert privacy text is displayed
+        assertTrue(checkoutGuestPage.isPrivacyTextDisplayed(), "The privacy text isn't displayed");
+        //assert 'Continue' button is displayed
+        assertTrue(checkoutGuestPage.isContinueButtonDisplayed(), "The 'Continue' button isn't displayed");
+        //assert summary section title is displayed
+        assertTrue(checkoutGuestPage.isSummarySectionTitleDisplayed(), "The summary section title isn't displayed");
+        //assert summary total price is displayed
+        assertTrue(checkoutGuestPage.isSummaryTotalPriceDisplayed(), "The summary total price isn't displayed");
+        //assert summary shipping cost is displayed
+        assertTrue(checkoutGuestPage.isSummaryShippingCostDisplayed(), "The summary shipping cost isn't displayed");
+        //assert summary grand total is displayed
+        assertTrue(checkoutGuestPage.isSummaryGrandTotalPriceDisplayed(), "The summary grand total price isn't displayed");
+        //assert summary net total price is displayed
+        assertTrue(checkoutGuestPage.isSummaryNetTotalPriceDisplayed(), "The summary net total price isn't displayed");
+        //assert summary VAT price is displayed
+        assertTrue(checkoutGuestPage.isSummaryVATPriceDisplayed(), "The summary VAT price isn't displayed");
+        //assert shopping cart section title is displayed
+        assertTrue(checkoutGuestPage.isShoppingCartSectionTitleDisplayed(), "The shopping cart section title isn't displayed");
+        //assert shopping cart product image placeholder (as a list) is displayed
+        assertTrue(checkoutGuestPage.isShoppingCartProductImagePlaceholderDisplayed(), "The shopping cart product image placeholder isn't displayed");
+        //assert shopping cart product remove button (as a list) is displayed
+        assertTrue(checkoutGuestPage.isShoppingCartProductRemoveButtonDisplayed(), "The shopping cart product remove button isn't displayed");
+        //assert shopping cart product title link (as a list) is displayed
+        assertTrue(checkoutGuestPage.isShoppingCartProductTitleLinkDisplayed(), "The shopping cart product title link isn't displayed");
+        //assert shopping cart product description (as a list) is displayed
+        assertTrue(checkoutGuestPage.isShoppingCartProductDescriptionDisplayed(), "The shopping cart product description isn't displayed");
+        //assert shopping cart product quantity (as a list) is displayed
+        assertTrue(checkoutGuestPage.isShoppingCartProductQuantityDisplayed(), "The shopping cart product quantity isn't displayed");
+        //assert shopping cart product unit price (as a list) is displayed //not every product has them
+        //assertTrue(checkoutGuestPage.isShoppingCartProductUnitPriceDisplayed(), "The shopping cart product unit price isn't displayed");
+    }
+
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     //general page text element assert method
@@ -2412,6 +2528,25 @@ public class TestMethods extends BaseTest{
         assertEquals("Summary", shoppingCartPage.getSummarySubsectionTitle(), "The summary subsection title doesn't match expectations");
     }
 
+    //guest checkout page text element assert method
+    protected void isCheckoutGuestTextElementAsExpected(){
+        CheckoutGuestPage checkoutGuestPage = new CheckoutGuestPage(driver);
+        //assert shipping info section title matches expectations
+        assertEquals("Shipping information", checkoutGuestPage.getShippingInfoSectionTitle(), "The shipping information section title doesn't match expectations");
+        //assert your info subsection title matches expectations
+        assertEquals("Your personal details", checkoutGuestPage.getYourInfoSubsectionTitle(), "The your information subsection title doesn't match expectations");
+        //assert address subsection title matches expectations
+        assertEquals("Your address", checkoutGuestPage.getAddressInfoSubsectionTitle(), "The address subsection title doesn't match expectations");
+        //assert privacy subsection title matches expectations
+        assertEquals("Privacy", checkoutGuestPage.getPrivacySubsectionTitle(), "The privacy subsection title doesn't match expectations");
+        //assert privacy text matches expectations
+        assertEquals("By selecting continue you confirm that you have read our data protection information and accepted our general terms and conditions.", checkoutGuestPage.getPrivacyText(), "The privacy text doesn't match expectations");
+        //assert summary section title matches expectations
+        assertEquals("Summary", checkoutGuestPage.getSummarySectionTitle(), "The summary section title doesn't match expectations");
+        //assert shopping cart section title matches expectations
+        assertEquals("Shopping cart", checkoutGuestPage.getShoppingCartSectionTitle(), "The shopping cart section title doesn't match expectations");
+    }
+
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     //account overview data logger method
@@ -2467,6 +2602,29 @@ public class TestMethods extends BaseTest{
         logger.info("Summary grand total price: " + shoppingCartPage.getSummaryGrandTotalPrice() + "\n");
         logger.info("Summary net total price: " + shoppingCartPage.getSummaryNetTotalPrice() + "\n");
         logger.info("Summary VAT price: " + shoppingCartPage.getSummaryVATPrice() + "\n");
+    }
+
+    //guest checkout page product data logger method
+    protected void logCheckoutGuestPageProductData(){
+        CheckoutGuestPage checkoutGuestPage = new CheckoutGuestPage(driver);
+
+        System.out.println("Checkout guest page displayed product data:" + "\n");
+
+        logger.info("Checkout (guest) summary total price: " + checkoutGuestPage.getSummaryTotalPrice() + "\n");
+        logger.info("Checkout (guest) summary shipping price: " + checkoutGuestPage.getSummaryShippingPrice() + "\n");
+        logger.info("Checkout (guest) summary grand total price: " + checkoutGuestPage.getSummaryGrandTotalPrice() + "\n");
+        logger.info("Checkout (guest) summary net total price: " + checkoutGuestPage.getSummaryNetTotalPrice() + "\n");
+        logger.info("Checkout (guest) summary VAT price: " + checkoutGuestPage.getSummaryVATPrice() + "\n");
+
+        System.out.println("Shopping cart section data: " + "\n");
+
+        logger.info("Checkout (guest) shopping cart product title(s): " + checkoutGuestPage.getProductTitle() + "\n");
+        logger.info("Checkout (guest) shopping cart product description(s): " + checkoutGuestPage.getProductDescription() + "\n");
+        logger.info("Checkout (guest) shopping cart product quantity(ies): " + checkoutGuestPage.getProductQuantity() + "\n");
+        logger.info("Checkout (guest) shopping cart product unit price(s): " + checkoutGuestPage.getProductUnitPrice() + "\n");
+        logger.info("Checkout (guest) shopping cart total price(s): " + checkoutGuestPage.getProductTotalPrice() + "\n");
+
+        System.out.println("\n");
     }
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
