@@ -155,11 +155,35 @@ public class CheckoutGuestNoSingularInputPage extends BasePage{
         logger.info("Valid guest city (no email): " + guestCity);
         logger.info("Valid guest postal code (no email): " + guestPostalCode + "\n");
     }
-    //invalid guest user data input method - no last name
+    //invalid guest user data input method - no email
     public void inputNoEmailIntoEmailInputField(){
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(650));
         wait.until(ExpectedConditions.visibilityOf(emailInputField));
         emailInputField.sendKeys(noGuestEmail);
+    }
+
+    public void getInvalidGuestUserNoAddressData(){
+        guestFirstName = TestDataGenerator.getRandomFirstName();
+        guestLastName = TestDataGenerator.getRandomLastName();
+        guestEmail = TestDataGenerator.generateRandomEmailAddress(10);
+        noGuestAddress = "";
+        guestCity = TestDataGenerator.getRandomCity();
+        guestPostalCode = TestDataGenerator.getRandomPostalCode();
+
+        System.out.println("Generated invalid guest user data (no guest address): " + "\n");
+
+        logger.info("Valid guest first name (no guest address): " + guestFirstName);
+        logger.info("Valid guest last name (no guest address): " + guestLastName);
+        logger.info("Valid guest email (no guest address): " + guestEmail);
+        logger.info("No guest address: " + noGuestAddress);
+        logger.info("Valid guest city (no guest address): " + guestCity);
+        logger.info("Valid guest postal code (no guest address): " + guestPostalCode + "\n");
+    }
+    //invalid guest user data input method - no address
+    public void inputNoAddressIntoAddressInputField(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(650));
+        wait.until(ExpectedConditions.visibilityOf(streetAddressInputField));
+        streetAddressInputField.sendKeys(noGuestAddress);
     }
 
 
