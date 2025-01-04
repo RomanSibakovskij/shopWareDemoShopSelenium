@@ -2,7 +2,10 @@ package io.studio_demo.shop_shopware;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
 import java.util.*;
 
 public class ShoppingCartPage extends BasePage{
@@ -46,9 +49,105 @@ public class ShoppingCartPage extends BasePage{
     private WebElement summarySubsectionAcceptCouponButton;
     @FindBy(xpath = "//a[@class='btn btn-primary btn-lg begin-checkout-btn']")
     private WebElement shoppingCartGoToCheckoutButton;
+    //product number elements
+    @FindBy(xpath = "//div[@class='checkout-main']//input[@id='addProductInput']")
+    private WebElement productNumberInputField;
+    @FindBy(xpath = "//div[@class='checkout-main']//button[@id='addProductButton']")
+    private WebElement productNumberAcceptButton;
+    //shipping details elements
+    @FindBy(xpath = "//div[@class='checkout-main']//a[@class='btn btn-link cart-shipping-costs-btn']")
+    private WebElement shippingDetailsLink;
+    @FindBy(xpath = "//div[@class='checkout-main']//select[@id='countryId']")
+    private WebElement shippingDetailsCountryDropdownMenu;
+    @FindBy(xpath = "//select[@id='countryId']/option[@value='16b9ff986274403a9d8a6a74e5898687']")
+    private WebElement usCountryOption;
+    @FindBy(xpath = "//div[@class='checkout-main']//select[@id='paymentMethodId']")
+    private WebElement shippingDetailsPaymentMethodDropdownMenu;
+    @FindBy(xpath = "//div[@class='checkout-main']//select[@id='shippingMethodId']")
+    private WebElement shippingDetailsShippingMethodDropdownMenu;
 
     public ShoppingCartPage(WebDriver driver) {super(driver);}
 
+    //click 'Shipping details' link method
+    public void clickShippingDetailsLink(){shippingDetailsLink.click();}
+
+    //click shipping country dropdown menu
+    public void clickShippingDetailsCountryDropdownMenu(){shippingDetailsCountryDropdownMenu.click();}
+    //select 'United States' option
+    public void selectUSCountryOption(){usCountryOption.click();}
+
+    //click 'Go to Checkout' button method
+    public void clickGoToCheckoutButton(){shoppingCartGoToCheckoutButton.click();}
+
+    //shopping cart page title getter
+    public String getShoppingCartPageTitle() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(600));
+        wait.until(ExpectedConditions.visibilityOf(shoppingCartPageTitle));
+        return shoppingCartPageTitle.getText();
+    }
+    //summary subsection title getter
+    public String getSummarySubsectionTitle() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(600));
+        wait.until(ExpectedConditions.visibilityOf(summarySubsectionTitle));
+        return summarySubsectionTitle.getText();
+    }
+
+    //shopping cart table data getters
+    public List<String> getTableProductDescription() {
+        List<String> productDescription = new ArrayList<>();
+        for (WebElement element : shoppingCartProductDescriptionElements) {
+            productDescription.add(element.getText());
+        }
+        return productDescription;
+    }
+    public List<String> getTableProductQuantity() {
+        List<String> productQuantity = new ArrayList<>();
+        for (WebElement element : shoppingCartProductQtyInputFieldElements) {
+            productQuantity.add(element.getDomAttribute("value"));
+        }
+        return productQuantity;
+    }
+    public List<String> getTableProductUnitPrice() {
+        List<String> productUnitPrice = new ArrayList<>();
+        for (WebElement element : shoppingCartProductUnitPriceElements) {
+            productUnitPrice.add(element.getText().replace("*", ""));
+        }
+        return productUnitPrice;
+    }
+    public List<String> getTableProductSubtotalPrice() {
+        List<String> productSubtotalPrice = new ArrayList<>();
+        for (WebElement element : shoppingCartProductSubtotalPriceElements) {
+            productSubtotalPrice.add(element.getText().replace("*", ""));
+        }
+        return productSubtotalPrice;
+    }
+
+    //summary subsection data getters
+    public String getSummaryTotalPrice() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(600));
+        wait.until(ExpectedConditions.visibilityOf(summarySubsectionTotalPrice));
+        return summarySubsectionTotalPrice.getText().replace("*", "");
+    }
+    public String getSummaryShippingPrice() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(600));
+        wait.until(ExpectedConditions.visibilityOf(summarySubsectionShippingPrice));
+        return summarySubsectionShippingPrice.getText().replace("*", "");
+    }
+    public String getSummaryGrandTotalPrice() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(600));
+        wait.until(ExpectedConditions.visibilityOf(summarySubsectionGrandTotalPrice));
+        return summarySubsectionGrandTotalPrice.getText().replace("*", "");
+    }
+    public String getSummaryNetTotalPrice() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(600));
+        wait.until(ExpectedConditions.visibilityOf(summarySubsectionNetTotalPrice));
+        return summarySubsectionNetTotalPrice.getText().replace("*", "");
+    }
+    public String getSummaryVATPrice() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(600));
+        wait.until(ExpectedConditions.visibilityOf(summarySubsectionVATPrice));
+        return summarySubsectionVATPrice.getText().replace("*", "");
+    }
 
     //shopping cart page web element assert methods
     public boolean isShoppingCartPageTitleDisplayed() {return shoppingCartPageTitle.isDisplayed();}
@@ -127,4 +226,10 @@ public class ShoppingCartPage extends BasePage{
     public boolean isSummaryCouponCodeInputFieldDisplayed() {return summarySubsectionCouponCodeInputField.isDisplayed();}
     public boolean isSummaryAcceptCouponButtonDisplayed() {return summarySubsectionAcceptCouponButton.isDisplayed();}
     public boolean isGoToCheckoutButtonDisplayed() {return shoppingCartGoToCheckoutButton.isDisplayed();}
+    public boolean isProductNumberInputFieldDisplayed() {return productNumberInputField.isDisplayed();}
+    public boolean isProductNumberAcceptButtonDisplayed() {return productNumberAcceptButton.isDisplayed();}
+    public boolean isShippingDetailsLinkDisplayed() {return shippingDetailsLink.isDisplayed();}
+    public boolean isShippingCountryDropdownMenuDisplayed() {return shippingDetailsCountryDropdownMenu.isDisplayed();}
+    public boolean isShippingPaymentMethodDropdownMenuDisplayed() {return shippingDetailsPaymentMethodDropdownMenu.isDisplayed();}
+    public boolean isShippingMethodDropdownMenuDisplayed() {return shippingDetailsShippingMethodDropdownMenu.isDisplayed();}
 }

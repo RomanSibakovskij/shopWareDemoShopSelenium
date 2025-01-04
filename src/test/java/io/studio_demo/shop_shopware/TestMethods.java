@@ -1968,11 +1968,45 @@ public class TestMethods extends BaseTest{
         //log aside shopping cart data
         logAsideShoppingCartData();
         //capture screenshot of the dashboard page
-        captureScreenshot(driver, "Clothing Test - Aside Shopping Cart (guest)");
+        captureScreenshot(driver, "Clothing Test - Aside Shopping Cart (registered user)");
         //click 'Display shopping cart' link
         productsDashboardPage.clickDisplayShoppingCartLink();
         //capture screenshot of the test result
-        captureScreenshot(driver, "Clothing Test Result - Added Products to Cart (guest)");
+        captureScreenshot(driver, "Clothing Test Result - Added Products to Cart (registered user)");
+    }
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    //singular product addition to check out tests
+
+    //add 'Free Time & Electronics' product to check out test method (guest) (guest and registered user share this method as it's the same for both parties)
+    protected void addFreeTimeAndElectronicsProductToCheckoutTest(){
+        HomePage homePage = new HomePage(driver);
+        ShoppingCartPage shoppingCartPage = new ShoppingCartPage(driver);
+        //click 'Shipping details' link
+        shoppingCartPage.clickShippingDetailsLink();
+        //general page web element assert
+        isGeneralPageWebElementDisplayed(homePage);
+        //general page text element assert
+        isGeneralPageTextElementAsExpected(homePage);
+        //shopping cart page web element assert
+        isShoppingCartPageWebElementDisplayed();
+        //shopping cart text element assert
+        isShoppingCartPageTextElementAsExpected();
+        //capture screenshot of the shopping cart page
+        captureScreenshot(driver, "Free Time And Electronics Test - Shopping Cart Page");
+        //log shopping cart page data
+        logShoppingCartProductData();
+        //click country dropdown menu
+        shoppingCartPage.clickShippingDetailsCountryDropdownMenu();
+        //select 'United States' option
+        shoppingCartPage.selectUSCountryOption();
+        //click 'Shipping details' link
+        shoppingCartPage.clickShippingDetailsLink();
+        //click 'Go to Checkout' button
+        shoppingCartPage.clickGoToCheckoutButton();
+        //capture screenshot of the test result
+        captureScreenshot(driver, "Free Time And Electronics Test Result - Added Product To Checkout (guest)");
     }
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -2198,6 +2232,59 @@ public class TestMethods extends BaseTest{
         assertTrue(productsDashboardPage.isAsideShoppingCartDisplayShoppingCartLinkDisplayed(), "The aside shopping cart display shopping cart link isn't displayed");
     }
 
+    //shopping cart page web element assert test method
+    protected void isShoppingCartPageWebElementDisplayed(){
+        ShoppingCartPage shoppingCartPage = new ShoppingCartPage(driver);
+        //assert shopping cart title is displayed
+        assertTrue(shoppingCartPage.isShoppingCartPageTitleDisplayed(), "The shopping cart page title isn't displayed");
+        //assert shopping cart table product image placeholder is displayed (as a list) is displayed
+        assertTrue(shoppingCartPage.isShoppingCartTableProductImgDisplayed(), "The shopping cart table product image placeholder isn't displayed");
+        //assert shopping cart table product description is displayed (as a list) is displayed
+        assertTrue(shoppingCartPage.isShoppingCartTableProductDescriptionDisplayed(), "The shopping cart table product description isn't displayed");
+        //assert shopping cart table product qty decrease button is displayed (as a list) is displayed
+        assertTrue(shoppingCartPage.isShoppingCartTableProductQtyMinusBtnDisplayed(), "The shopping cart table product quantity decrease button isn't displayed");
+        //assert shopping cart table product qty input field is displayed (as a list) is displayed
+        assertTrue(shoppingCartPage.isShoppingCartTableProductQtyInputFieldDisplayed(), "The shopping cart table product quantity input field isn't displayed");
+        //assert shopping cart table product qty increase button is displayed (as a list) is displayed
+        assertTrue(shoppingCartPage.isShoppingCartTableProductQtyPlusBtnDisplayed(), "The shopping cart table product quantity increase button isn't displayed");
+        //assert shopping cart table product unit price is displayed (as a list) is displayed
+        assertTrue(shoppingCartPage.isShoppingCartTableProductUnitPriceDisplayed(), "The shopping cart table product unit price isn't displayed");
+        //assert shopping cart table product subtotal price is displayed (as a list) is displayed
+        assertTrue(shoppingCartPage.isShoppingCartTableProductSubtotalPriceDisplayed(), "The shopping cart table product sub total price isn't displayed");
+        //assert shopping cart table product remove button is displayed (as a list) is displayed
+        assertTrue(shoppingCartPage.isShoppingCartTableProductRemoveButtonDisplayed(), "The shopping cart table product remove button isn't displayed");
+        //assert shopping cart table product summary total price is displayed
+        assertTrue(shoppingCartPage.isSummaryTotalPriceDisplayed(), "The shopping cart summary product total price isn't displayed");
+        //assert shopping cart table product summary shipping price is displayed
+        assertTrue(shoppingCartPage.isSummaryShippingPriceDisplayed(), "The shopping cart summary product shipping price isn't displayed");
+        //assert shopping cart table product summary grand total price is displayed
+        assertTrue(shoppingCartPage.isSummaryGrandTotalPriceDisplayed(), "The shopping cart summary product grand total price isn't displayed");
+        //assert shopping cart table product summary total price is displayed
+        assertTrue(shoppingCartPage.isSummaryTotalPriceDisplayed(), "The shopping cart summary product total price isn't displayed");
+        //assert shopping cart table product summary net total price is displayed
+        assertTrue(shoppingCartPage.isSummaryNetTotalPriceDisplayed(), "The shopping cart summary product net total price isn't displayed");
+        //assert shopping cart table product summary VAT price is displayed
+        assertTrue(shoppingCartPage.isSummaryVATPriceDisplayed(), "The shopping cart summary product VAT price isn't displayed");
+        //assert shopping cart table product coupon input field is displayed
+        assertTrue(shoppingCartPage.isSummaryCouponCodeInputFieldDisplayed(), "The shopping cart summary product coupon code isn't displayed");
+        //assert shopping cart table product accept coupon is displayed
+        assertTrue(shoppingCartPage.isSummaryAcceptCouponButtonDisplayed(), "The shopping cart summary product accept coupon button isn't displayed");
+        //assert shopping cart 'Go to Checkout' button is displayed
+        assertTrue(shoppingCartPage.isGoToCheckoutButtonDisplayed(), "The shopping cart 'Go to Checkout' button isn't displayed");
+        //assert shopping cart product number input field is displayed
+        assertTrue(shoppingCartPage.isProductNumberInputFieldDisplayed(), "The shopping cart product number input field isn't displayed");
+        //assert shopping cart accept product number button is displayed
+        assertTrue(shoppingCartPage.isProductNumberAcceptButtonDisplayed(), "The shopping cart product number accept button isn't displayed");
+        //assert shopping cart shipping details link is displayed
+        assertTrue(shoppingCartPage.isShippingDetailsLinkDisplayed(), "The shopping cart shipping details link isn't displayed");
+        //assert shopping cart shipping country dropdown menu is displayed
+        assertTrue(shoppingCartPage.isShippingCountryDropdownMenuDisplayed(), "The shopping cart shipping country dropdown menu isn't displayed");
+        //assert shopping cart shipping payment method dropdown menu is displayed
+        assertTrue(shoppingCartPage.isShippingPaymentMethodDropdownMenuDisplayed(), "The shopping cart shipping payment method dropdown menu isn't displayed");
+        //assert shopping cart shipping method dropdown menu is displayed
+        assertTrue(shoppingCartPage.isShippingMethodDropdownMenuDisplayed(), "The shopping cart shipping method dropdown menu isn't displayed");
+    }
+
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     //general page text element assert method
@@ -2266,6 +2353,15 @@ public class TestMethods extends BaseTest{
         assertEquals("* Prices incl. VAT plus shipping costs", productsDashboardPage.getAsideShoppingCartPricesHint(), "The aside shopping cart prices hint doesn't match expectations");
     }
 
+    //shopping cart page text element assert method
+    protected void isShoppingCartPageTextElementAsExpected(){
+        ShoppingCartPage shoppingCartPage = new ShoppingCartPage(driver);
+        //assert aside shopping cart title matches expectations
+        assertEquals("Shopping cart", shoppingCartPage.getShoppingCartPageTitle(), "The shopping cart page title doesn't match expectations");
+        //assert aside summary subsection title matches expectations
+        assertEquals("Summary", shoppingCartPage.getSummarySubsectionTitle(), "The summary subsection title doesn't match expectations");
+    }
+
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     //account overview data logger method
@@ -2305,6 +2401,22 @@ public class TestMethods extends BaseTest{
         logger.info("Aside shopping cart product shipping costs: " + productsDashboardPage.getProductShippingCosts() + "\n");
 
         System.out.println("\n");
+    }
+
+    //shopping cart page data logger
+    protected void logShoppingCartProductData(){
+        ShoppingCartPage shoppingCartPage = new ShoppingCartPage(driver);
+        System.out.println("Shopping cart page displayed data:" + "\n");
+
+        logger.info("Shopping cart table product description(s): " + shoppingCartPage.getTableProductDescription() + "\n");
+        logger.info("Shopping cart table product quantity(ies): " + shoppingCartPage.getTableProductQuantity() + "\n");
+        logger.info("Shopping cart table product unit price(s): " + shoppingCartPage.getTableProductUnitPrice() + "\n");
+        logger.info("Shopping cart table product subtotal price(s): " + shoppingCartPage.getTableProductSubtotalPrice() + "\n");
+        logger.info("Summary total price: " + shoppingCartPage.getSummaryTotalPrice() + "\n");
+        logger.info("Summary shipping price: " + shoppingCartPage.getSummaryShippingPrice() + "\n");
+        logger.info("Summary grand total price: " + shoppingCartPage.getSummaryGrandTotalPrice() + "\n");
+        logger.info("Summary net total price: " + shoppingCartPage.getSummaryNetTotalPrice() + "\n");
+        logger.info("Summary VAT price: " + shoppingCartPage.getSummaryVATPrice() + "\n");
     }
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -113,7 +113,7 @@ public class ProductsDashboardPage extends BasePage{
     public List<String> getProductUnitPrice() {
         List<String> productUnitPrice = new ArrayList<>();
         for (WebElement element : productUnitPriceElements) {
-            productUnitPrice.add(element.getText());
+            productUnitPrice.add(element.getText().replace("*", ""));
         }
         return productUnitPrice;
     }
@@ -181,7 +181,7 @@ public class ProductsDashboardPage extends BasePage{
     public List<String> getProductTotalPriceText() {
         List<String> productPrice = new ArrayList<>();
         for (WebElement element : asideShoppingCartProductTotalPriceElements) {
-            productPrice.add(element.getText());
+            productPrice.add(element.getText().replace("*", ""));
         }
         return productPrice;
     }
@@ -189,15 +189,14 @@ public class ProductsDashboardPage extends BasePage{
     public String getProductSubtotalPrice() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(600));
         wait.until(ExpectedConditions.visibilityOf(asideShoppingCartProductSubtotalPrice));
-        return asideShoppingCartProductSubtotalPrice.getText();
+        return asideShoppingCartProductSubtotalPrice.getText().replace("*", "");
     }
     //shipping costs
     public String getProductShippingCosts() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(600));
         wait.until(ExpectedConditions.visibilityOf(asideShoppingCartShippingCosts));
-        return asideShoppingCartShippingCosts.getText();
+        return asideShoppingCartShippingCosts.getText().replace("*", "");
     }
-
 
     //aside shopping cart title
     public String getAsideShoppingCartTitle() {
