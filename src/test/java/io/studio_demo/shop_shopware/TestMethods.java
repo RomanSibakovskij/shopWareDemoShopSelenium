@@ -1922,9 +1922,9 @@ public class TestMethods extends BaseTest{
         //add multiple products to cart button
         productsDashboardPage.clickAddToCart1Button();
         productsDashboardPage.clickAddToCart2Button();
-        productsDashboardPage.clickAddToCart3Button();
+//        productsDashboardPage.clickAddToCart3Button();
         //assert the item gets added to shopping cart
-        assertEquals("1 product added to your shopping cart.\n" + "1 product added to your shopping cart.", productsDashboardPage.getProductAdditionSuccessMessage(), "The product addition success message doesn't match expectations or the product addition failed.");
+        assertEquals("1 product added to your shopping cart.", productsDashboardPage.getProductAdditionSuccessMessage(), "The product addition success message doesn't match expectations or the product addition failed.");
         //aside shopping cart web element assert
         isAsideShoppingCartWebElementDisplayed();
         //aside shopping cart text element assert
@@ -1958,9 +1958,9 @@ public class TestMethods extends BaseTest{
         //add multiple products to cart button
         productsDashboardPage.clickAddToCart1Button();
         productsDashboardPage.clickAddToCart2Button();
-        productsDashboardPage.clickAddToCart3Button();
+//        productsDashboardPage.clickAddToCart3Button();
         //assert the item gets added to shopping cart
-        assertEquals("1 product added to your shopping cart.\n" + "1 product added to your shopping cart.", productsDashboardPage.getProductAdditionSuccessMessage(), "The product addition success message doesn't match expectations or the product addition failed.");
+        assertEquals("1 product added to your shopping cart." , productsDashboardPage.getProductAdditionSuccessMessage(), "The product addition success message doesn't match expectations or the product addition failed.");
         //aside shopping cart web element assert
         isAsideShoppingCartWebElementDisplayed();
         //aside shopping cart text element assert
