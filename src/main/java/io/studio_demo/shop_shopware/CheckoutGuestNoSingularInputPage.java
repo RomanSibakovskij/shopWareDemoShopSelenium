@@ -138,5 +138,29 @@ public class CheckoutGuestNoSingularInputPage extends BasePage{
         lastNameInputField.sendKeys(noGuestLastName);
     }
 
+    public void getInvalidGuestUserNoEmailData(){
+        guestFirstName = TestDataGenerator.getRandomFirstName();
+        guestLastName = TestDataGenerator.getRandomLastName();
+        noGuestEmail = "";
+        guestAddress = TestDataGenerator.generateRandomAddress(7);
+        guestCity = TestDataGenerator.getRandomCity();
+        guestPostalCode = TestDataGenerator.getRandomPostalCode();
+
+        System.out.println("Generated invalid guest user data (no email): " + "\n");
+
+        logger.info("Valid guest first name (no email): " + guestFirstName);
+        logger.info("Valid guest last name (no email): " + guestLastName);
+        logger.info("No guest email: " + noGuestEmail);
+        logger.info("Valid guest address (no email): " + guestAddress);
+        logger.info("Valid guest city (no email): " + guestCity);
+        logger.info("Valid guest postal code (no email): " + guestPostalCode + "\n");
+    }
+    //invalid guest user data input method - no last name
+    public void inputNoEmailIntoEmailInputField(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(650));
+        wait.until(ExpectedConditions.visibilityOf(emailInputField));
+        emailInputField.sendKeys(noGuestEmail);
+    }
+
 
 }

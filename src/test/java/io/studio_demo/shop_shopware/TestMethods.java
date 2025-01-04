@@ -2202,6 +2202,51 @@ public class TestMethods extends BaseTest{
         //capture screenshot of the invalid test result
         captureScreenshot(driver, "Invalid Guest Product Checkout Test Result - No Last Name");
     }
+    //invalid guest checkout (shipping address input) test method - no email (this form has no missing singular input errors, screenshots will serve as proof of the test run)
+    protected void invalidGuestProductNoEmailCheckout(){
+        CheckoutGuestPage checkoutGuestPage = new CheckoutGuestPage(driver);
+        CheckoutGuestNoSingularInputPage checkoutGuestNoSingularInputPage = new CheckoutGuestNoSingularInputPage(driver);
+        //check out (guest) page web element assert
+        isCheckoutGuestPageWebElementDisplayed();
+        //check out (guest) text element assert
+        isCheckoutGuestTextElementAsExpected();
+        //log check out page product data
+        logCheckoutGuestPageProductData();
+        //capture screenshot of the checkout page before invalid data input (guest)
+        captureScreenshot(driver, "Invalid Guest Product Checkout Test - Checkout Guest Page (before data input)");
+        //click salutation dropdown menu
+        checkoutGuestPage.clickSalutationDropdownMenu();
+        //select 'Mr.' option
+        checkoutGuestPage.selectMrSalutation();
+        //invalid guest user data getter - no email
+        checkoutGuestNoSingularInputPage.getInvalidGuestUserNoEmailData();
+        //input valid first name
+        checkoutGuestNoSingularInputPage.inputGuestFirstNameIntoFirstNameInputField();
+        //input valid last name
+        checkoutGuestNoSingularInputPage.inputGuestLastNameIntoLastNameInputField();
+        //don't input email
+        checkoutGuestNoSingularInputPage.inputNoEmailIntoEmailInputField();
+        //capture screenshot of the checkout page after invalid data input (guest)
+        captureScreenshot(driver, "Invalid Guest Product Checkout Test - No Email");
+        //input valid address
+        checkoutGuestNoSingularInputPage.inputGuestAddressIntoAddressInputField();
+        //input valid city
+        checkoutGuestNoSingularInputPage.inputGuestCityIntoCityInputField();
+        //input valid postal code
+        checkoutGuestNoSingularInputPage.inputGuestPostalCodeIntoPostCodeInputField();
+        //click country dropdown menu
+        checkoutGuestPage.clickGuestCountryDropdownMenu();
+        //select 'United States' option
+        checkoutGuestPage.selectUSOption();
+        //click state dropdown menu
+        checkoutGuestPage.clickGuestStateDropdownMenu();
+        //select 'Illinois' option
+        checkoutGuestPage.selectIllinoisOption();
+        //click 'Continue' button
+        checkoutGuestPage.clickContinueButton();
+        //capture screenshot of the invalid test result
+        captureScreenshot(driver, "Invalid Guest Product Checkout Test Result - No Email");
+    }
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
