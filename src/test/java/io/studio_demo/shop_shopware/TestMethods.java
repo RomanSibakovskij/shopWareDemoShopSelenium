@@ -2382,6 +2382,40 @@ public class TestMethods extends BaseTest{
         //capture screenshot of the invalid test result
         captureScreenshot(driver, "Invalid Guest Product Checkout Test Result - No Postal Code");
     }
+    //invalid guest checkout (shipping address input) test method - no country/state (this form has no missing singular input errors, screenshots will serve as proof of the test run)
+    protected void invalidGuestProductNoCountryCheckout(){
+        CheckoutGuestPage checkoutGuestPage = new CheckoutGuestPage(driver);
+        //check out (guest) page web element assert
+        isCheckoutGuestPageWebElementDisplayed();
+        //check out (guest) text element assert
+        isCheckoutGuestTextElementAsExpected();
+        //log check out page product data
+        logCheckoutGuestPageProductData();
+        //capture screenshot of the checkout page before invalid data input (guest)
+        captureScreenshot(driver, "Invalid Guest Product Checkout Test - Checkout Guest Page (before data input)");
+        //click salutation dropdown menu
+        checkoutGuestPage.clickSalutationDropdownMenu();
+        //select 'Mr.' option
+        checkoutGuestPage.selectMrSalutation();
+        //valid guest user data getter
+        checkoutGuestPage.getValidGuestUserData();
+        //input valid first name
+        checkoutGuestPage.inputGuestFirstNameIntoFirstNameInputField();
+        //input valid last name
+        checkoutGuestPage.inputGuestLastNameIntoLastNameInputField();
+        //input valid email
+        checkoutGuestPage.inputGuestEmailIntoEmailInputField();
+        //input valid address
+        checkoutGuestPage.inputGuestAddressIntoAddressInputField();
+        //input valid city
+        checkoutGuestPage.inputGuestCityIntoCityInputField();
+        //input valid postal code
+        checkoutGuestPage.inputGuestPostalCodeIntoPostCodeInputField();
+        //click 'Continue' button
+        checkoutGuestPage.clickContinueButton();
+        //capture screenshot of the invalid test result
+        captureScreenshot(driver, "Invalid Guest Product Checkout Test Result - No Country And State");
+    }
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
