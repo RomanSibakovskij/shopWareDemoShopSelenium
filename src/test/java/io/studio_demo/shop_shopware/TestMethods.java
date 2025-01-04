@@ -2008,6 +2008,31 @@ public class TestMethods extends BaseTest{
         //capture screenshot of the test result
         captureScreenshot(driver, "Free Time And Electronics Test Result - Added Product To Checkout (guest)");
     }
+    //remove 'Free Time & Electronics' product from cart page test method (guest)
+    protected void removeFreeTimeAndElectronicsProductFromCartPageTest(){
+        HomePage homePage = new HomePage(driver);
+        ShoppingCartPage shoppingCartPage = new ShoppingCartPage(driver);
+        //click 'Shipping details' link
+        shoppingCartPage.clickShippingDetailsLink();
+        //general page web element assert
+        isGeneralPageWebElementDisplayed(homePage);
+        //general page text element assert
+        isGeneralPageTextElementAsExpected(homePage);
+        //shopping cart page web element assert
+        isShoppingCartPageWebElementDisplayed();
+        //shopping cart text element assert
+        isShoppingCartPageTextElementAsExpected();
+        //capture screenshot of the shopping cart page
+        captureScreenshot(driver, "Free Time And Electronics Test - Shopping Cart Page");
+        //log shopping cart page data
+        logShoppingCartProductData();
+        //click single product remove button
+        shoppingCartPage.clickSingleProductRemoveButton();
+        //assert the user gets the success message
+        assertEquals("Your shopping cart is empty.", shoppingCartPage.getProductRemovalSuccessMessage(), "The product removal success message doesn't match expectations or the product removal failed.");
+        //capture screenshot of the test result
+        captureScreenshot(driver, "Free Time And Electronics Test Result - Product Removed From Cart");
+    }
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

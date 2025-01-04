@@ -13,6 +13,8 @@ public class ShoppingCartPage extends BasePage{
     //shopping cart page web elements
     @FindBy(xpath = "//div[@class='checkout-main']//h1")
     private WebElement shoppingCartPageTitle;
+    @FindBy(xpath = "//button[@title='Remove']")
+    private WebElement shoppingCartSingleProductRemoveButton;
     //shopping cart table list elements
     @FindBy(xpath = "//div[@class='row line-item-row']//div[@class='line-item-img-container']//img")
     private List<WebElement> shoppingCartProductImagePlaceholderElements;
@@ -65,6 +67,9 @@ public class ShoppingCartPage extends BasePage{
     private WebElement shippingDetailsPaymentMethodDropdownMenu;
     @FindBy(xpath = "//div[@class='checkout-main']//select[@id='shippingMethodId']")
     private WebElement shippingDetailsShippingMethodDropdownMenu;
+    //shopping cart product removed confirmation message
+    @FindBy(xpath = "//div[@role='alert']")
+    private WebElement productRemovalSuccessMessage;
 
     public ShoppingCartPage(WebDriver driver) {super(driver);}
 
@@ -78,6 +83,9 @@ public class ShoppingCartPage extends BasePage{
 
     //click 'Go to Checkout' button method
     public void clickGoToCheckoutButton(){shoppingCartGoToCheckoutButton.click();}
+
+    //click single remove product button method
+    public void clickSingleProductRemoveButton(){shoppingCartSingleProductRemoveButton.click();}
 
     //shopping cart page title getter
     public String getShoppingCartPageTitle() {
@@ -147,6 +155,13 @@ public class ShoppingCartPage extends BasePage{
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(600));
         wait.until(ExpectedConditions.visibilityOf(summarySubsectionVATPrice));
         return summarySubsectionVATPrice.getText().replace("*", "");
+    }
+
+    //product removal success message getter
+    public String getProductRemovalSuccessMessage() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(600));
+        wait.until(ExpectedConditions.visibilityOf(productRemovalSuccessMessage));
+        return productRemovalSuccessMessage.getText();
     }
 
     //shopping cart page web element assert methods
