@@ -4,7 +4,9 @@ import org.junit.jupiter.api.*;
 
 public class ProductDashboardPageTest extends TestMethods{
 
-    //Test 005 - add 'Free Time & Electronics' product to cart test (as a guest)
+    //singular product addition to cart tests
+
+    //Test 005 -> add 'Free Time & Electronics' product to cart test (as a guest)
     @Test
     @DisplayName("Add 'Free Time & Electronics' Product To Cart Test (as a guest)")
     @Tag("Add_Singular_Product_To_Cart")
@@ -12,6 +14,22 @@ public class ProductDashboardPageTest extends TestMethods{
     void addFreeTimeProductToCartTest(){
         //add 'Free Time & Electronics' product to cart (as a guest)
         addFreeTimeAndElectronicsProductToCartTest();
+    }
+
+    //Test 005a -> add 'Free Time & Electronics' product to cart test (as a registered user)
+    @Test
+    @DisplayName("Add 'Free Time & Electronics' Product To Cart Test (as a registered user)")
+    @Tag("Add_Singular_Product_To_Cart")
+    @Tag("Test_As_A_Reg_User")
+    void addFreeTimeProductToCartRegUserTest(){
+        HomePage homePage = new HomePage(driver);
+        LoginRegisterDashboardRegisterSectionPage loginRegisterDashboardRegisterSectionPage = new LoginRegisterDashboardRegisterSectionPage(driver);
+        //navigate to login & register dashboard page
+        navigateToLoginAndRegisterDashboardPageTest(homePage);
+        //valid user account creation test
+        validUserAccountCreationTest(loginRegisterDashboardRegisterSectionPage);
+        //add 'Free Time & Electronics' product to cart (as a registered user)
+        addFreeTimeAndElectronicsProductToCartRegUserTest();
     }
 
 }
