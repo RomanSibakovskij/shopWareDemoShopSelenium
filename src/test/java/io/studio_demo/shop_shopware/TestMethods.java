@@ -1784,6 +1784,8 @@ public class TestMethods extends BaseTest{
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+    //singular product addition to cart tests
+
     //add 'Free Time & Electronics' product to cart test method (guest)
     protected void addFreeTimeAndElectronicsProductToCartTest(){
         HomePage homePage = new HomePage(driver);
@@ -1894,6 +1896,8 @@ public class TestMethods extends BaseTest{
         captureScreenshot(driver, "Free Time Electronics Product Removal From Aside Shopping Cart Test Result (guest)");
     }
 
+    //multiple products addition to cart tests
+
     //add 'Clothing' products to cart test method (guest)
     protected void addClothingProductsToCartTest(){
         HomePage homePage = new HomePage(driver);
@@ -1906,6 +1910,42 @@ public class TestMethods extends BaseTest{
         isGeneralPageTextElementAsExpected(homePage);
         //click 'Technical Cookies' button
         homePage.clickAcceptTechnicalCookies();
+        //click 'Clothing' nav link
+        homePage.clickClothingLink();
+        //assert the user gets onto correct category page
+        assertEquals("Clothing", productsDashboardPage.getProductDashboardPageTitle(), "The project dashboard page title doesn't match expectations or the user is on the wrong category page.");
+        //log displayed product data
+        logProductDashboardData();
+        //capture screenshot of the dashboard page
+        captureScreenshot(driver, "Clothing Test - Product Dashboard Page (guest)");
+        System.out.println("Size of productAddToCartButtonElements: " + productsDashboardPage.productAddToCartButtonElements.size());
+        //add multiple products to cart button
+        productsDashboardPage.clickAddToCart1Button();
+        productsDashboardPage.clickAddToCart2Button();
+        productsDashboardPage.clickAddToCart3Button();
+        //assert the item gets added to shopping cart
+        assertEquals("1 product added to your shopping cart.\n" + "1 product added to your shopping cart.", productsDashboardPage.getProductAdditionSuccessMessage(), "The product addition success message doesn't match expectations or the product addition failed.");
+        //aside shopping cart web element assert
+        isAsideShoppingCartWebElementDisplayed();
+        //aside shopping cart text element assert
+        isAsideShoppingCartTextElementAsExpected();
+        //log aside shopping cart data
+        logAsideShoppingCartData();
+        //capture screenshot of the dashboard page
+        captureScreenshot(driver, "Clothing Test - Aside Shopping Cart (guest)");
+        //click 'Display shopping cart' link
+        productsDashboardPage.clickDisplayShoppingCartLink();
+        //capture screenshot of the test result
+        captureScreenshot(driver, "Clothing Test Result - Added Products to Cart (guest)");
+    }
+    //add 'Clothing' products to cart test method (registered user)
+    protected void addClothingProductsToCartRegUserTest(){
+        HomePage homePage = new HomePage(driver);
+        ProductsDashboardPage productsDashboardPage = new ProductsDashboardPage(driver);
+        //general page web element assert
+        isGeneralPageWebElementDisplayed(homePage);
+        //general page text element assert
+        isGeneralPageTextElementAsExpected(homePage);
         //click 'Clothing' nav link
         homePage.clickClothingLink();
         //assert the user gets onto correct category page

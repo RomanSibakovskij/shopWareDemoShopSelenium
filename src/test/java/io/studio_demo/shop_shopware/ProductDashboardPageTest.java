@@ -54,4 +54,20 @@ public class ProductDashboardPageTest extends TestMethods{
         addClothingProductsToCartTest();
     }
 
+    //Test 005d -> add 'Clothing' products to cart test (as a registered user)
+    @Test
+    @DisplayName("Add 'Clothing' Products To Cart Test (as a registered user)")
+    @Tag("Add_Multiple_Products_To_Cart")
+    @Tag("Test_As_A_Reg_User")
+    void addClothingProductsToCartRegisteredUserTest(){
+        HomePage homePage = new HomePage(driver);
+        LoginRegisterDashboardRegisterSectionPage loginRegisterDashboardRegisterSectionPage = new LoginRegisterDashboardRegisterSectionPage(driver);
+        //navigate to login & register dashboard page
+        navigateToLoginAndRegisterDashboardPageTest(homePage);
+        //valid user account creation test
+        validUserAccountCreationTest(loginRegisterDashboardRegisterSectionPage);
+        //add 'Clothing' products to cart (as a registered user)
+        addClothingProductsToCartRegUserTest();
+    }
+
 }
