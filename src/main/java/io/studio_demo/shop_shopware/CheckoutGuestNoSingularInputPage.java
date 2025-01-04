@@ -210,5 +210,29 @@ public class CheckoutGuestNoSingularInputPage extends BasePage{
         cityInputField.sendKeys(noGuestCity);
     }
 
+    public void getInvalidGuestUserNoPostalCodeData(){
+        guestFirstName = TestDataGenerator.getRandomFirstName();
+        guestLastName = TestDataGenerator.getRandomLastName();
+        guestEmail = TestDataGenerator.generateRandomEmailAddress(10);
+        guestAddress = TestDataGenerator.generateRandomAddress(7);
+        guestCity = TestDataGenerator.getRandomCity();
+        noGuestPostalCode = "";
+
+        System.out.println("Generated invalid guest user data (no guest postal code): " + "\n");
+
+        logger.info("Valid guest first name (no guest postal code): " + guestFirstName);
+        logger.info("Valid guest last name (no guest postal code): " + guestLastName);
+        logger.info("Valid guest email (no guest postal code): " + guestEmail);
+        logger.info("Valid guest address (no guest postal code): " + guestAddress);
+        logger.info("Valid guest city (no guest postal code): " + guestCity);
+        logger.info("No guest postal code: " + noGuestPostalCode + "\n");
+    }
+    //invalid guest user data input method - no postal code
+    public void inputNoPostalCodeIntoPostalCodeInputField(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(650));
+        wait.until(ExpectedConditions.visibilityOf(postalCodeInputField));
+        postalCodeInputField.sendKeys(noGuestPostalCode);
+    }
+
 
 }
