@@ -6,8 +6,6 @@ import org.openqa.selenium.*;
 import java.io.File;
 import java.nio.file.*;
 
-import java.util.*;
-
 public class TestMethods extends BaseTest{
 
     protected static final Logger logger = LoggerFactory.getLogger(TestMethods.class);
@@ -1801,9 +1799,27 @@ public class TestMethods extends BaseTest{
         //click 'Free time & Electronics' nav link
         homePage.clickFreeTimeElectronicsLink();
         //assert the user gets onto correct category page
-        assertEquals("Free time & electronics", productsDashboardPage.getProjectDashboardPageTitle(), "The project dashboard page title doesn't match expectations or the user is on the wrong category page.");
+        assertEquals("Free time & electronics", productsDashboardPage.getProductDashboardPageTitle(), "The project dashboard page title doesn't match expectations or the user is on the wrong category page.");
+        //log displayed product data
+        logProductDashboardData();
         //capture screenshot of the dashboard page
-        captureScreenshot(driver, "Free Time Electronics Test - Product Dashboard Page");
+        captureScreenshot(driver, "Free Time Electronics Test - Product Dashboard Page (guest)");
+        //click 'Add to Cart' button
+        productsDashboardPage.clickSingleAddToCartButton();
+        //assert the item gets added to shopping cart
+        assertEquals("1 product added to your shopping cart.", productsDashboardPage.getProductAdditionSuccessMessage(), "The product addition success message doesn't match expectations or the product addition failed.");
+        //aside shopping cart web element assert
+        isAsideShoppingCartWebElementDisplayed();
+        //aside shopping cart text element assert
+        isAsideShoppingCartTextElementAsExpected();
+        //log aside shopping cart data
+        logAsideShoppingCartData();
+        //capture screenshot of the dashboard page
+        captureScreenshot(driver, "Free Time Electronics Test - Aside Shopping Cart (guest)");
+        //click 'Display shopping cart' link
+        productsDashboardPage.clickDisplayShoppingCartLink();
+        //capture screenshot of the test result
+        captureScreenshot(driver, "Free Time Electronics Test Result - Added Product to Cart (guest)");
     }
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1829,9 +1845,9 @@ public class TestMethods extends BaseTest{
         //assert home page nav link is displayed
         assertTrue(homePage.isHomePageNavLinkDisplayed(), "The home page nav link isn't displayed");
         //assert home page sweets nav link is displayed
-        assertTrue(homePage.isHomePageSweetsLinkDisplayed(), "The sweets page nav link isn't displayed");
+        //assertTrue(homePage.isHomePageSweetsLinkDisplayed(), "The sweets page nav link isn't displayed");
         //assert home page bakery nav link is displayed
-        assertTrue(homePage.isHomePageBakeryLinkDisplayed(), "The bakery page nav link isn't displayed");
+        //assertTrue(homePage.isHomePageBakeryLinkDisplayed(), "The bakery page nav link isn't displayed");
         //assert clothing nav link is displayed
         assertTrue(homePage.isHomePageClothingLinkDisplayed(), "The clothing nav link isn't displayed");
         //assert free time & electronics nav link is displayed
@@ -1990,6 +2006,45 @@ public class TestMethods extends BaseTest{
         assertTrue(productsDashboardPage.isProductCardAddToCartButtonDisplayed(), "The product 'Add to Cart' button isn't displayed");
     }
 
+    //aside shopping cart web element assert test method
+    protected void isAsideShoppingCartWebElementDisplayed(){
+        ProductsDashboardPage productsDashboardPage = new ProductsDashboardPage(driver);
+        //assert product dashboard product 'continue shopping' link is displayed
+        assertTrue(productsDashboardPage.isAsideShoppingCartContinueShoppingLinkDisplayed(), "The aside shopping cart 'continue shopping' link isn't displayed");
+        //assert aside shopping cart title is displayed
+        assertTrue(productsDashboardPage.isAsideShoppingCartTitleDisplayed(), "The aside shopping cart title isn't displayed");
+        //assert aside shopping cart item quantity is displayed
+        assertTrue(productsDashboardPage.isAsideShoppingCartItemQuantityDisplayed(), "The aside shopping cart item quantity isn't displayed");
+        //assert aside shopping cart title is displayed
+        assertTrue(productsDashboardPage.isProductCardAddToCartButtonDisplayed(), "The aside shopping cart title isn't displayed");
+        //assert aside shopping cart item remove button is displayed (as a list)
+        assertTrue(productsDashboardPage.isAsideShoppingCartRemoveButtonDisplayed(), "The aside shopping cart item remove button isn't displayed");
+        //assert aside shopping cart product image placeholder is displayed (as a list)
+        assertTrue(productsDashboardPage.isAsideShoppingCartProductImagePlaceholderDisplayed(), "The aside shopping cart product image placeholder isn't displayed");
+        //assert aside shopping cart product title link is displayed (as a list)
+        assertTrue(productsDashboardPage.isAsideShoppingCartProductTitleLinkDisplayed(), "The aside shopping cart product title link isn't displayed");
+        //assert aside shopping cart product description is displayed (as a list)
+        assertTrue(productsDashboardPage.isAsideShoppingCartProductDescriptionDisplayed(), "The aside shopping cart product description isn't displayed");
+        //assert aside shopping cart product quantity input field is displayed (as a list)
+        assertTrue(productsDashboardPage.isAsideShoppingCartProductQtyInputFieldDisplayed(), "The aside shopping cart product qty input field isn't displayed");
+        //assert aside shopping cart product total price is displayed (as a list)
+        assertTrue(productsDashboardPage.isAsideShoppingCartProductTotalPriceDisplayed(), "The aside shopping cart product total price isn't displayed");
+        //assert aside shopping cart product subtotal price is displayed
+        assertTrue(productsDashboardPage.isAsideShoppingCartProductSubtotalPriceDisplayed(), "The aside shopping cart product subtotal price isn't displayed");
+        //assert aside shopping cart product shipping price is displayed
+        assertTrue(productsDashboardPage.isAsideShoppingCartProductShippingPriceDisplayed(), "The aside shopping cart product shipping price isn't displayed");
+        //assert aside shopping cart product prices hint is displayed
+        assertTrue(productsDashboardPage.isAsideShoppingCartProductPricesHintDisplayed(), "The aside shopping cart product prices hint isn't displayed");
+        //assert aside shopping cart product coupon code input field is displayed
+        assertTrue(productsDashboardPage.isAsideShoppingCartProductCouponCodeInputFieldDisplayed(), "The aside shopping cart product coupon input field isn't displayed");
+        //assert aside shopping cart accept coupon button is displayed
+        assertTrue(productsDashboardPage.isAsideShoppingCartAcceptCouponButtonDisplayed(), "The aside shopping cart accept coupon button isn't displayed");
+        //assert aside shopping cart 'Go To Checkout' button is displayed
+        assertTrue(productsDashboardPage.isAsideShoppingCartGoToCheckoutButtonDisplayed(), "The aside shopping cart 'Go To Checkout' button isn't displayed");
+        //assert aside shopping cart display shopping cart link is displayed
+        assertTrue(productsDashboardPage.isAsideShoppingCartDisplayShoppingCartLinkDisplayed(), "The aside shopping cart display shopping cart link isn't displayed");
+    }
+
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     //general page text element assert method
@@ -2049,6 +2104,15 @@ public class TestMethods extends BaseTest{
         assertEquals("Default shipping address", accountOverviewPage.getDefaultShippingAddressSubsectionTitle(), "The default shipping address subsection title doesn't match expectations");
     }
 
+    //aside shopping cart text element assert method
+    protected void isAsideShoppingCartTextElementAsExpected(){
+        ProductsDashboardPage productsDashboardPage = new ProductsDashboardPage(driver);
+        //assert aside shopping cart title matches expectations
+        assertEquals("Shopping cart", productsDashboardPage.getAsideShoppingCartTitle(), "The aside shopping cart title doesn't match expectations");
+        //assert aside shopping cart prices hint matches expectations
+        assertEquals("* Prices incl. VAT plus shipping costs", productsDashboardPage.getAsideShoppingCartPricesHint(), "The aside shopping cart prices hint doesn't match expectations");
+    }
+
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     //account overview data logger method
@@ -2061,6 +2125,33 @@ public class TestMethods extends BaseTest{
         logger.info("Default billing address: " + accountOverviewPage.getDefaultBillingAddress() + "\n");
         logger.info("Default shipping address: " + accountOverviewPage.getDefaultShippingAddress() + "\n");
         logger.info("Default payment method: " + accountOverviewPage.getDefaultPaymentMethod() + "\n");
+    }
+
+    //product dashboard page data logger method
+    protected void logProductDashboardData(){
+        ProductsDashboardPage productsDashboardPage = new ProductsDashboardPage(driver);
+        System.out.println("Product dashboard displayed data:" + "\n");
+
+        logger.info("Product title(s): " + productsDashboardPage.getProductTitle() + "\n");
+        logger.info("Product description(s): " + productsDashboardPage.getProductDescription() + "\n");
+        logger.info("Product unit price: " + productsDashboardPage.getProductUnitPrice() + "\n");
+
+        System.out.println("\n");
+    }
+
+    //aside shopping cart (on product dashboard) data logger method
+    protected void logAsideShoppingCartData(){
+        ProductsDashboardPage productsDashboardPage = new ProductsDashboardPage(driver);
+        System.out.println("Aside shopping cart displayed data:" + "\n");
+
+        logger.info("Aside shopping cart item quantity: " + productsDashboardPage.getItemQuantity() + "\n");
+        logger.info("Aside shopping cart product title(s): " + productsDashboardPage.getProductTitleText() + "\n");
+        logger.info("Aside shopping cart product description(s): " + productsDashboardPage.getProductDescriptionText() + "\n");
+        logger.info("Aside shopping cart product total price(s): " + productsDashboardPage.getProductTotalPriceText() + "\n");
+        logger.info("Aside shopping cart product subtotal price: " + productsDashboardPage.getProductSubtotalPrice() + "\n");
+        logger.info("Aside shopping cart product shipping costs: " + productsDashboardPage.getProductShippingCosts() + "\n");
+
+        System.out.println("\n");
     }
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

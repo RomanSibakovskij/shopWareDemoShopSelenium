@@ -33,9 +33,9 @@ public class HomePage extends BasePage{
     private WebElement homePageSweetsLink;
     @FindBy(xpath = "//nav[@class='nav main-navigation-menu']/a[3]")
     private WebElement homePageBakeryLink;
-    @FindBy(xpath = "//nav[@class='nav main-navigation-menu']/a[4]")
+    @FindBy(xpath = "//nav[@class='nav main-navigation-menu']/a[2]")
     private WebElement homePageClothingLink;
-    @FindBy(xpath = "//nav[@class='nav main-navigation-menu']/a[5]")
+    @FindBy(xpath = "//nav[@class='nav main-navigation-menu']/a[3]")
     private WebElement homePageFreeTimeElectronicsLink;
     //main page elements
     @FindBy(xpath = "//div[@class='cms-sections']//img")
