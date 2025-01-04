@@ -91,7 +91,6 @@ public class CheckoutGuestNoSingularInputPage extends BasePage{
     //no singular input methods
 
     public void getInvalidGuestUserNoFirstNameData(){
-
         noGuestFirstName = "";
         guestLastName = TestDataGenerator.getRandomLastName();
         guestEmail = TestDataGenerator.generateRandomEmailAddress(10);
@@ -113,6 +112,30 @@ public class CheckoutGuestNoSingularInputPage extends BasePage{
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(650));
         wait.until(ExpectedConditions.visibilityOf(firstNameInputField));
         firstNameInputField.sendKeys(noGuestFirstName);
+    }
+
+    public void getInvalidGuestUserNoLastNameData(){
+        guestFirstName = TestDataGenerator.getRandomFirstName();
+        noGuestLastName = "";
+        guestEmail = TestDataGenerator.generateRandomEmailAddress(10);
+        guestAddress = TestDataGenerator.generateRandomAddress(7);
+        guestCity = TestDataGenerator.getRandomCity();
+        guestPostalCode = TestDataGenerator.getRandomPostalCode();
+
+        System.out.println("Generated invalid guest user data (no last name): " + "\n");
+
+        logger.info("Valid guest first name (no last name): " + guestFirstName);
+        logger.info("No guest last name: " + noGuestLastName);
+        logger.info("Valid guest email (no last name): " + guestEmail);
+        logger.info("Valid guest address (no last name): " + guestAddress);
+        logger.info("Valid guest city (no last name): " + guestCity);
+        logger.info("Valid guest postal code (no last name): " + guestPostalCode + "\n");
+    }
+    //invalid guest user data input method - no last name
+    public void inputNoLastNameIntoLastNameInputField(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(650));
+        wait.until(ExpectedConditions.visibilityOf(lastNameInputField));
+        lastNameInputField.sendKeys(noGuestLastName);
     }
 
 
