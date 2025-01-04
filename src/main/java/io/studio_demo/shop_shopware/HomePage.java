@@ -72,6 +72,9 @@ public class HomePage extends BasePage{
     //click 'Accept Technical Cookies' button method
     public void clickAcceptTechnicalCookies(){acceptTechnicalCookiesButton.click();}
 
+    //click 'Clothing' nav link method
+    public void clickClothingLink(){homePageClothingLink.click();}
+
     //click 'Free Time & Electronics nav link method
     public void clickFreeTimeElectronicsLink(){homePageFreeTimeElectronicsLink.click();}
 

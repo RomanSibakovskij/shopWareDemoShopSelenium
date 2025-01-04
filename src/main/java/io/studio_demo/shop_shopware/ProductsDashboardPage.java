@@ -7,6 +7,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 import java.util.*;
+import java.util.NoSuchElementException;
 
 public class ProductsDashboardPage extends BasePage{
 
@@ -40,7 +41,8 @@ public class ProductsDashboardPage extends BasePage{
     private List<WebElement> productDescriptionElements;
     @FindBy(xpath = "//div[@class='product-price-wrapper']")
     private List<WebElement> productUnitPriceElements;
-    private List<WebElement> productAddToCartButtonElements = driver.findElements(By.xpath("//button[@title='Add to shopping cart']"));
+
+    protected List<WebElement> productAddToCartButtonElements = driver.findElements(By.xpath("//div[@class='row cms-listing-row js-listing-wrapper']/div//button[@title='Add to shopping cart']"));
 
     //aside shopping cart elements(after the product has been added)
     @FindBy(xpath = "//div[@role='dialog']/div[@class='offcanvas-header']/button")
@@ -123,6 +125,30 @@ public class ProductsDashboardPage extends BasePage{
         jsExecutor.executeScript("arguments[0].scrollIntoView(true);", singleProductAddToCartButton);
         jsExecutor.executeScript("arguments[0].click();", singleProductAddToCartButton);//js click (common click fails throws ElementClickInterceptedException for some reason)
     }
+
+    //initialize elements with wait
+    private void initializeElements() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(1200));
+        wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath("//div[@class='row cms-listing-row js-listing-wrapper']/div//button[@title='Add to shopping cart']")));
+        productAddToCartButtonElements = driver.findElements(By.xpath("//div[@class='row cms-listing-row js-listing-wrapper']/div//button[@title='Add to shopping cart']"));
+        if (productAddToCartButtonElements.isEmpty()) {throw new NoSuchElementException("No 'Add to Cart' buttons found on the page");}
+    }
+    //multiple 'Add to Cart' button click index getter
+    public void clickMultipleAddToCartButtons(int productIndex) {
+
+        if (productAddToCartButtonElements == null || productAddToCartButtonElements.isEmpty()) {initializeElements();}
+
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(900));
+        WebElement button = wait.until(ExpectedConditions.elementToBeClickable(productAddToCartButtonElements.get(productIndex)));
+
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", button);
+        JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
+        jsExecutor.executeScript("arguments[0].click();",button);//js click (common click fails throws ElementClickInterceptedException for some reason)
+    }
+    public void clickAddToCart1Button(){clickMultipleAddToCartButtons(0);}
+    public void clickAddToCart2Button(){clickMultipleAddToCartButtons(1);}
+    public void clickAddToCart3Button(){clickMultipleAddToCartButtons(2);}
+
 
     //single 'Remove product from shopping cart' button method
     public void clickSingleRemoveProductFromAsideCartButton() {singleProductRemoveFromCartButton.click();}

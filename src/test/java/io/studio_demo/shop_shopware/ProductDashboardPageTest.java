@@ -42,4 +42,16 @@ public class ProductDashboardPageTest extends TestMethods{
         addFreeTimeAndElectronicsProductToCartRegUserTest();
     }
 
+    // multiple products addition to cart tests
+
+    //Test 005c -> add 'Clothing' products to cart test (as a guest)
+    @Test
+    @DisplayName("Add 'Clothing' Products To Cart Test (as a guest)")
+    @Tag("Add_Multiple_Products_To_Cart")
+    @Tag("Test_As_A_Guest")
+    void addClothingProductsToCartGuestTest(){
+        //add 'Clothing' products to cart (as a guest)
+        addClothingProductsToCartTest();
+    }
+
 }
