@@ -16,7 +16,17 @@ public class ProductDashboardPageTest extends TestMethods{
         addFreeTimeAndElectronicsProductToCartTest();
     }
 
-    //Test 005a -> add 'Free Time & Electronics' product to cart test (as a registered user)
+    //Test 005a -> remove 'Free Time & Electronics' product from aside shopping cart test (as a guest)
+    @Test
+    @DisplayName("Remove 'Free Time & Electronics' Product From Aside Cart Test (as a guest)")
+    @Tag("Add_Singular_Product_To_Cart")
+    @Tag("Test_As_A_Guest")
+    void removeFreeTimeProductFromAsideCartTest(){
+        //remove 'Free Time & Electronics' product from aside shopping cart (as a guest)
+        removeFreeTimeAndElectronicsProductFromAsideShoppingCartTest();
+    }
+
+    //Test 005b -> add 'Free Time & Electronics' product to cart test (as a registered user)
     @Test
     @DisplayName("Add 'Free Time & Electronics' Product To Cart Test (as a registered user)")
     @Tag("Add_Singular_Product_To_Cart")

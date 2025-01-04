@@ -51,6 +51,10 @@ public class ProductsDashboardPage extends BasePage{
     private WebElement asideShoppingCartItemQuantity;
     @FindBy(xpath = "//div[@role='alert']")
     private WebElement asideShoppingCartItemAdditionSuccessMessage;
+    @FindBy(xpath = "//div[@class='offcanvas-cart']/div[@role='alert']")
+    private WebElement asideShoppingCartItemRemovalSuccessMessage;
+    @FindBy(xpath = "//button[@title='Remove']")
+    private WebElement singleProductRemoveFromCartButton;
     //list elements
     private List<WebElement> asideShoppingCartRemoveButtonElements = driver.findElements(By.xpath("//button[@title='Remove']"));
 
@@ -120,6 +124,9 @@ public class ProductsDashboardPage extends BasePage{
         jsExecutor.executeScript("arguments[0].click();", singleProductAddToCartButton);//js click (common click fails throws ElementClickInterceptedException for some reason)
     }
 
+    //single 'Remove product from shopping cart' button method
+    public void clickSingleRemoveProductFromAsideCartButton() {singleProductRemoveFromCartButton.click();}
+
     //click 'Display shopping cart' link method
     public void clickDisplayShoppingCartLink() {asideShoppingCartDisplayShoppingCartLink.click();}
 
@@ -178,6 +185,12 @@ public class ProductsDashboardPage extends BasePage{
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(600));
         wait.until(ExpectedConditions.visibilityOf(asideShoppingCartItemAdditionSuccessMessage));
         return asideShoppingCartItemAdditionSuccessMessage.getText();
+    }
+    //item removal success message getter
+    public String getProductRemovalSuccessMessage() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(600));
+        wait.until(ExpectedConditions.visibilityOf(asideShoppingCartItemRemovalSuccessMessage));
+        return asideShoppingCartItemRemovalSuccessMessage.getText();
     }
     //aside shopping cart prices hint getter
     public String getAsideShoppingCartPricesHint() {

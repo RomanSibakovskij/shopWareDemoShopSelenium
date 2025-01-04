@@ -1854,6 +1854,45 @@ public class TestMethods extends BaseTest{
         //capture screenshot of the test result
         captureScreenshot(driver, "Free Time Electronics Test Result - Added Product to Cart (registered user)");
     }
+    //remove 'Free Time & Electronics' product from aside shopping cart test method (guest)
+    protected void removeFreeTimeAndElectronicsProductFromAsideShoppingCartTest(){
+        HomePage homePage = new HomePage(driver);
+        ProductsDashboardPage productsDashboardPage = new ProductsDashboardPage(driver);
+        //home page web element assert
+        isHomePageWebElementDisplayed(homePage);
+        //general page web element assert
+        isGeneralPageWebElementDisplayed(homePage);
+        //general page text element assert
+        isGeneralPageTextElementAsExpected(homePage);
+        //click 'Technical Cookies' button
+        homePage.clickAcceptTechnicalCookies();
+        //click 'Free time & Electronics' nav link
+        homePage.clickFreeTimeElectronicsLink();
+        //assert the user gets onto correct category page
+        assertEquals("Free time & electronics", productsDashboardPage.getProductDashboardPageTitle(), "The project dashboard page title doesn't match expectations or the user is on the wrong category page.");
+        //log displayed product data
+        logProductDashboardData();
+        //capture screenshot of the dashboard page
+        captureScreenshot(driver, "Free Time Electronics Test - Product Dashboard Page (guest)");
+        //click 'Add to Cart' button
+        productsDashboardPage.clickSingleAddToCartButton();
+        //assert the item gets added to shopping cart
+        assertEquals("1 product added to your shopping cart.", productsDashboardPage.getProductAdditionSuccessMessage(), "The product addition success message doesn't match expectations or the product addition failed.");
+        //aside shopping cart web element assert
+        isAsideShoppingCartWebElementDisplayed();
+        //aside shopping cart text element assert
+        isAsideShoppingCartTextElementAsExpected();
+        //log aside shopping cart data
+        logAsideShoppingCartData();
+        //capture screenshot of the dashboard page
+        captureScreenshot(driver, "Free Time Electronics Test - Aside Shopping Cart Before Product Removal (guest)");
+        //click 'Remove product from aside shopping cart' button
+        productsDashboardPage.clickSingleRemoveProductFromAsideCartButton();
+        //assert the item gets removed from aside shopping cart
+        assertEquals("Your shopping cart is empty.", productsDashboardPage.getProductRemovalSuccessMessage(), "The product removal success message doesn't match expectations or the product removal failed.");
+        //capture screenshot of the test result
+        captureScreenshot(driver, "Free Time Electronics Product Removal From Aside Shopping Cart Test Result (guest)");
+    }
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
