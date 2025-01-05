@@ -237,12 +237,12 @@ public class CheckoutGuestPage extends BasePage{
     public String getSummaryTotalPrice() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(600));
         wait.until(ExpectedConditions.visibilityOf(summaryTotalPrice));
-        return summaryTotalPrice.getText();
+        return summaryTotalPrice.getText().replace("*", "");
     }
     public String getSummaryShippingPrice() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(600));
         wait.until(ExpectedConditions.visibilityOf(summaryShippingCost));
-        return summaryShippingCost.getText();
+        return summaryShippingCost.getText().replace("*", "");
     }
     public String getSummaryGrandTotalPrice() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(600));
@@ -252,12 +252,12 @@ public class CheckoutGuestPage extends BasePage{
     public String getSummaryNetTotalPrice() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(600));
         wait.until(ExpectedConditions.visibilityOf(summaryNetTotalPrice));
-        return summaryNetTotalPrice.getText();
+        return summaryNetTotalPrice.getText().replace("*", "");
     }
     public String getSummaryVATPrice() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(600));
         wait.until(ExpectedConditions.visibilityOf(summaryVATPrice));
-        return summaryVATPrice.getText();
+        return summaryVATPrice.getText().replace("*", "");
     }
 
     public List<String> getProductTitle() {

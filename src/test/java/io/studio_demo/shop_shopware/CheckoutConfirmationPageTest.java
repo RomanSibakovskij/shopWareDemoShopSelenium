@@ -27,9 +27,9 @@ public class CheckoutConfirmationPageTest extends TestMethods{
     //Test 009a -> valid 'Free Time & Electronics' product check out submission confirmation test  (as a registered user)
     @Test
     @DisplayName("Valid 'Free Time & Electronics' Product Checkout Submission Confirmation Test (as a registered user)")
-    @Tag("Add_Singular_Product_To_Checkout")
+    @Tag("Valid_Singular_Product_Checkout_Confirmation")
     @Tag("Test_As_A_Reg_User")
-    void addFreeTimeProductToCartRegUserTest(){
+    void validFreeTimeProductCheckoutConfirmationRegUserTest(){
         HomePage homePage = new HomePage(driver);
         LoginRegisterDashboardRegisterSectionPage loginRegisterDashboardRegisterSectionPage = new LoginRegisterDashboardRegisterSectionPage(driver);
         //navigate to login & register dashboard page
@@ -40,6 +40,24 @@ public class CheckoutConfirmationPageTest extends TestMethods{
         addFreeTimeAndElectronicsProductToCartRegUserTest();
         //add 'Free Time & Electronics' product to check out test (as a registered user)
         addProductToCheckoutRegUserTest();
+        //valid 'Free Time & Electronics' product to check out submission confirmation test (as a guest) -> registered user and guest share the same test method
+        validOrderCheckoutConfirmationTest();
+    }
+
+    //multiple products check out submission confirmation tests (guest and registered user are on the same page after shopping cart)
+
+    //Test 009b -> valid 'Clothing' products check out submission confirmation test (as a guest)
+    @Test
+    @DisplayName("Valid 'Clothing' Products Checkout Submission Confirmation Test (as a guest)")
+    @Tag("Valid_Multiple_Products_Checkout_Confirmation")
+    @Tag("Test_As_A_Guest")
+    void validClothingProductsCheckoutConfirmationTest(){
+        //add 'Clothing' products to cart (as a guest)
+        addClothingProductsToCartTest();
+        //add 'Clothing' products to check out test (as a guest)
+        addProductToCheckoutTest();
+        //valid 'Free Time & Electronics' product to check out test (shipping address) (as a guest)
+        validGuestProductCheckout();
         //valid 'Free Time & Electronics' product to check out submission confirmation test (as a guest) -> registered user and guest share the same test method
         validOrderCheckoutConfirmationTest();
     }
