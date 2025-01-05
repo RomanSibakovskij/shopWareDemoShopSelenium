@@ -153,8 +153,24 @@ public class CheckoutPageTest extends TestMethods{
         addFreeTimeAndElectronicsProductToCartTest();
         //add 'Free Time & Electronics' product to check out test (as a guest)
         addProductToCheckoutTest();
-        //invalid 'Free Time & Electronics' product to check out test (shipping address) - too short first name (as a guest)
+        //invalid 'Free Time & Electronics' product to check out test (shipping address) - too short first name (as a guest) (1 char)
         invalidGuestProductTooShortFirstNameCheckout();
+    }
+
+    //Test 007i -> invalid 'Free Time & Electronics' product check out (shipping address) test - too short last name (as a guest) (the checkout doesn't get aborted - test has failed)
+    @Test
+    @DisplayName("Invalid 'Free Time & Electronics' Product To Checkout Test (shipping address) - Too Short Last Name (as a guest)")
+    @Tag("Invalid_Singular_Product_Checkout")
+    @Tag("Shipping_Address_Guest")
+    @Tag("Too_Short_Singular_Input")
+    @Tag("Test_As_A_Guest")
+    void invalidFreeTimeProductCheckoutTooShortLastNameTest(){
+        //add 'Free Time & Electronics' product to cart test (as a guest)
+        addFreeTimeAndElectronicsProductToCartTest();
+        //add 'Free Time & Electronics' product to check out test (as a guest)
+        addProductToCheckoutTest();
+        //invalid 'Free Time & Electronics' product to check out test (shipping address) - too short last name (as a guest) (3 chars)
+        invalidGuestProductTooShortLastNameCheckout();
     }
 
     //multiple product checkout tests

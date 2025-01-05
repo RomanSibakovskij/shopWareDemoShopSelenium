@@ -32,6 +32,7 @@ public class CheckoutGuestTooShortLongInputPage extends BasePage{
 
     //too short singular input data
     private String tooShortGuestFirstName;
+    private String tooShortGuestLastName;
 
     public CheckoutGuestTooShortLongInputPage(WebDriver driver) {super(driver);}
 
@@ -70,7 +71,7 @@ public class CheckoutGuestTooShortLongInputPage extends BasePage{
     //too short singular input methods
 
     public void getInvalidGuestUserTooShortFirstNameData(){
-        tooShortGuestFirstName = "";
+        tooShortGuestFirstName = "G";
         guestLastName = TestDataGenerator.getRandomLastName();
         guestEmail = TestDataGenerator.generateRandomEmailAddress(10);
         guestAddress = TestDataGenerator.generateRandomAddress(7);
@@ -86,11 +87,35 @@ public class CheckoutGuestTooShortLongInputPage extends BasePage{
         logger.info("Valid guest city (too short first name): " + guestCity);
         logger.info("Valid guest postal code (too short first name): " + guestPostalCode + "\n");
     }
-    //invalid guest user data input method - too short first name
+    //invalid guest user data input method - too short first name (1 char)
     public void inputTooShortFirstNameIntoFirstNameInputField(){
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(650));
         wait.until(ExpectedConditions.visibilityOf(firstNameInputField));
         firstNameInputField.sendKeys(tooShortGuestFirstName);
+    }
+
+    public void getInvalidGuestUserTooShortLastNameData(){
+        guestFirstName = TestDataGenerator.getRandomFirstName();
+        tooShortGuestLastName = "Ghd";
+        guestEmail = TestDataGenerator.generateRandomEmailAddress(10);
+        guestAddress = TestDataGenerator.generateRandomAddress(7);
+        guestCity = TestDataGenerator.getRandomCity();
+        guestPostalCode = TestDataGenerator.getRandomPostalCode();
+
+        System.out.println("Generated invalid guest user data (too short last name): " + "\n");
+
+        logger.info("Valid guest first name (too short last name): " + guestFirstName);
+        logger.info("Too short guest last name: " + tooShortGuestLastName);
+        logger.info("Valid guest email (too short last name): " + guestEmail);
+        logger.info("Valid guest address (too short last name): " + guestAddress);
+        logger.info("Valid guest city (too short last name): " + guestCity);
+        logger.info("Valid guest postal code (too short last name): " + guestPostalCode + "\n");
+    }
+    //invalid guest user data input method - too short last name (3 chars)
+    public void inputTooShortLastNameIntoLastNameInputField(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(650));
+        wait.until(ExpectedConditions.visibilityOf(lastNameInputField));
+        lastNameInputField.sendKeys(tooShortGuestLastName);
     }
 
 
