@@ -296,7 +296,6 @@ public class CheckoutGuestPage extends BasePage{
         return productTotalPrice;
     }
 
-
     //checkout guest page web element assert test methods
     public boolean isLoginLinkDisplayed() {return loginLink.isDisplayed();}
     public boolean isShippingInfoSectionTitleDisplayed() {return shippingInfoSectionTitle.isDisplayed();}

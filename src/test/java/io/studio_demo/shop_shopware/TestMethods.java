@@ -3426,6 +3426,24 @@ public class TestMethods extends BaseTest{
         //capture screenshot of the invalid test result
         captureScreenshot(driver, "Invalid Checkout Confirmation Test Result - No Accept Of the Terms - Checkout Submission Confirmation Unsuccessful");
     }
+    //invalid order checkout confirmation test method - remove 'Free Time & Electronics' product before order submission
+    protected void invalidOrderCheckoutConfirmationRemoveFreeTimeProductTest(){
+        CheckoutConfirmationPage checkoutConfirmationPage = new CheckoutConfirmationPage(driver);
+        //checkout confirmation page web element
+        isCheckoutConfirmationPageWebElementDisplayed();
+        //checkout confirmation page text element assert
+        isCheckoutConfirmationTextElementAsExpected();
+        //log checkout confirmation page data
+        logCheckoutConfirmationPageProductData();
+        //click 'Terms and Conditions' checkbox
+        checkoutConfirmationPage.clickTermsConditionsCheckbox();
+        //click 'Remove product' button
+        checkoutConfirmationPage.clickRemoveProductButton();
+        //assert the product removal message appears as expected
+        assertEquals("Your shopping cart is empty.", checkoutConfirmationPage.getProductRemovalSuccessMessage(),"The product removal message doesn't match expectations or the product removal failed");
+        //capture screenshot of the invalid test result
+        captureScreenshot(driver, "Invalid Checkout Confirmation Test Result - Remove Product Before Checkout Confirmation - Checkout Submission Confirmation Unsuccessful");
+    }
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

@@ -92,6 +92,12 @@ public class CheckoutConfirmationPage extends BasePage {
     private WebElement summaryVATPrice;
     @FindBy(xpath = "//button[@class='btn btn-primary btn-lg']")
     private WebElement submitOrderButton;
+    //single product remove button web element
+    @FindBy(xpath = "//div[@class='confirm-product']//div[@class='line-item-remove']//button")
+    private WebElement singleRemoveProductButton;
+    //single product remove button web element
+    @FindBy(xpath = "//div[@role='alert']")
+    private WebElement productRemovalSuccessMessage;
 
     public CheckoutConfirmationPage(WebDriver driver) {super(driver);}
 
@@ -262,6 +268,21 @@ public class CheckoutConfirmationPage extends BasePage {
         wait.until(ExpectedConditions.elementToBeClickable(submitOrderButton));
         JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
         jsExecutor.executeScript("arguments[0].click();", submitOrderButton); //js click (common click fails throws ElementClickInterceptedException for some reason)
+    }
+
+    //remove product button click method
+    public void clickRemoveProductButton(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(700));
+        wait.until(ExpectedConditions.elementToBeClickable(singleRemoveProductButton));
+        JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
+        jsExecutor.executeScript("arguments[0].click();", singleRemoveProductButton); //js click (common click fails throws ElementClickInterceptedException for some reason)
+    }
+
+    //product removal success message getter
+    public String getProductRemovalSuccessMessage() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(700));
+        wait.until(ExpectedConditions.visibilityOf(productRemovalSuccessMessage));
+        return productRemovalSuccessMessage.getText();
     }
 
     //checkout page web element assert methods
