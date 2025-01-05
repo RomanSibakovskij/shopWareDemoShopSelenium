@@ -37,6 +37,7 @@ public class CheckoutGuestInvalidSingularInputPage extends BasePage{
     private String invalidFirstNameFormat;
     private String invalidLastNameFormat;
     private String invalidEmailFormat;
+    private String invalidAddressFormat;
 
     //existing email input
     private String existingEmail;
@@ -179,6 +180,30 @@ public class CheckoutGuestInvalidSingularInputPage extends BasePage{
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(650));
         wait.until(ExpectedConditions.visibilityOf(emailInputField));
         emailInputField.sendKeys(existingEmail);
+    }
+
+    public void getInvalidGuestUserInvalidAddressData(){
+        guestFirstName = TestDataGenerator.getRandomFirstName();
+        guestLastName = TestDataGenerator.getRandomLastName();
+        guestEmail = TestDataGenerator.generateRandomEmailAddress(10);
+        invalidAddressFormat = "!@!@$##%%&&^(&)*()(&*^%^$%#@$#@!#!@$@#$%&^*&(*)(&*^&%";
+        guestCity = TestDataGenerator.getRandomCity();
+        guestPostalCode = TestDataGenerator.getRandomPostalCode();
+
+        System.out.println("Generated invalid guest user data (invalid street address format): " + "\n");
+
+        logger.info("Valid guest first name (invalid street address format): " + guestFirstName);
+        logger.info("Valid guest last name (invalid street address format): " + guestLastName);
+        logger.info("Valid guest email (invalid street address format): " + guestEmail);
+        logger.info("Invalid guest address: " + invalidAddressFormat);
+        logger.info("Valid guest city (invalid street address format): " + guestCity);
+        logger.info("Valid guest postal code (invalid street address format): " + guestPostalCode + "\n");
+    }
+    //invalid guest user data input method - invalid street address format (special symbols only)
+    public void inputInvalidAddressIntoAddressInputField(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(650));
+        wait.until(ExpectedConditions.visibilityOf(streetAddressInputField));
+        streetAddressInputField.sendKeys(invalidAddressFormat);
     }
 
 }

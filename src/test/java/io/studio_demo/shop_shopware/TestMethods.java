@@ -3184,7 +3184,7 @@ public class TestMethods extends BaseTest{
         //capture screenshot of the invalid test result
         captureScreenshot(driver, "Invalid Guest Product Checkout Test Result - Invalid Email Format");
     }
-    //invalid guest checkout (shipping address input) test method - existing email address (this form doesn't have an invalid email address input error, so the screenshots are being used as proof for the test run)
+    //invalid guest checkout (shipping address input) test method - existing email address (this form doesn't have an invalid email address input error, so the screenshots are being used as proof for the test run) (checkout doesn't get aborted)
     protected void invalidGuestProductExistingEmailCheckout(){
         CheckoutGuestPage checkoutGuestPage = new CheckoutGuestPage(driver);
         CheckoutGuestInvalidSingularInputPage checkoutGuestInvalidSingularInputPage = new CheckoutGuestInvalidSingularInputPage(driver);
@@ -3234,6 +3234,57 @@ public class TestMethods extends BaseTest{
         }
         //capture screenshot of the invalid test result
         captureScreenshot(driver, "Invalid Guest Product Checkout Test Result - Existing Email Address");
+    }
+    //invalid guest checkout (shipping address input) test method - invalid street address format (this form doesn't have an invalid email address input error, so the screenshots are being used as proof for the test run) (checkout doesn't get aborted)
+    protected void invalidGuestProductInvalidAddressCheckout(){
+        CheckoutGuestPage checkoutGuestPage = new CheckoutGuestPage(driver);
+        CheckoutGuestInvalidSingularInputPage checkoutGuestInvalidSingularInputPage = new CheckoutGuestInvalidSingularInputPage(driver);
+        //check out (guest) page web element assert
+        isCheckoutGuestPageWebElementDisplayed();
+        //check out (guest) text element assert
+        isCheckoutGuestTextElementAsExpected();
+        //log check out page product data
+        logCheckoutGuestPageProductData();
+        //capture screenshot of the checkout page before invalid data input (guest)
+        captureScreenshot(driver, "Invalid Guest Product Checkout Test - Checkout Guest Page (before data input)");
+        //click salutation dropdown menu
+        checkoutGuestPage.clickSalutationDropdownMenu();
+        //select 'Mr.' option
+        checkoutGuestPage.selectMrSalutation();
+        //invalid guest user data getter - invalid street address (special symbols only)
+        checkoutGuestInvalidSingularInputPage.getInvalidGuestUserInvalidAddressData();
+        //input valid first name format
+        checkoutGuestInvalidSingularInputPage.inputGuestFirstNameIntoFirstNameInputField();
+        //input valid last name format
+        checkoutGuestInvalidSingularInputPage.inputGuestLastNameIntoLastNameInputField();
+        //input valid email address
+        checkoutGuestInvalidSingularInputPage.inputGuestEmailIntoEmailInputField();
+        //input invalid street address format (special symbols only)
+        checkoutGuestInvalidSingularInputPage.inputInvalidAddressIntoAddressInputField();
+        //capture screenshot of the checkout page after invalid data input (guest)
+        captureScreenshot(driver, "Invalid Guest Product Checkout Test - Invalid Street Address Format");
+        //input valid city
+        checkoutGuestInvalidSingularInputPage.inputGuestCityIntoCityInputField();
+        //input valid postal code
+        checkoutGuestInvalidSingularInputPage.inputGuestPostalCodeIntoPostCodeInputField();
+        //click country dropdown menu
+        checkoutGuestPage.clickGuestCountryDropdownMenu();
+        //select 'United States' option
+        checkoutGuestPage.selectUSOption();
+        //click state dropdown menu
+        checkoutGuestPage.clickGuestStateDropdownMenu();
+        //select 'Illinois' option
+        checkoutGuestPage.selectIllinoisOption();
+        //click 'Continue' button
+        checkoutGuestPage.clickContinueButton();
+        //assert the user gets an expected error, log the issue if it doesn't appear
+        try {
+            assertEquals("Unfortunately, something went wrong.", checkoutGuestInvalidSingularInputPage.getInvalidSingularInputError(), "The invalid singular input error doesn't match expectations.");
+        } catch (Exception e) {
+            logger.warn("There's no invalid input error message for invalid street address format input", e);
+        }
+        //capture screenshot of the invalid test result
+        captureScreenshot(driver, "Invalid Guest Product Checkout Test Result - Invalid Street Address Format");
     }
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
