@@ -8,6 +8,22 @@ import java.time.Duration;
 
 public class CheckoutGuestInvalidSingularInputPage extends BasePage{
 
+    //input form web elements
+    @FindBy(xpath = "//div[@class='checkout-main']//input[@id='personalFirstName']")
+    private WebElement firstNameInputField;
+    @FindBy(xpath = "//div[@class='checkout-main']//input[@id='personalLastName']")
+    private WebElement lastNameInputField;
+    @FindBy(xpath = "//div[@class='checkout-main']//input[@id='personalMail']")
+    private WebElement emailInputField;
+    @FindBy(xpath = "//div[@class='checkout-main']//input[@id='billingAddressAddressStreet']")
+    private WebElement streetAddressInputField;
+    @FindBy(xpath = "//div[@class='checkout-main']//input[@id='billingAddressAddressCity']")
+    private WebElement cityInputField;
+    @FindBy(xpath = "//div[@class='checkout-main']//input[@id='billingAddressAddressZipcode']")
+    private WebElement postalCodeInputField;
+    //invalid singular input error message web element
+    @FindBy(xpath = "//div[@role='alert']")
+    private WebElement invalidSingularInputError;
 
     public CheckoutGuestInvalidSingularInputPage(WebDriver driver) {super(driver);}
 
