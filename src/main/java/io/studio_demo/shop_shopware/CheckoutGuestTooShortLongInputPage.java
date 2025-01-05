@@ -46,6 +46,7 @@ public class CheckoutGuestTooShortLongInputPage extends BasePage{
     private String tooLongGuestLastName;
     private String tooLongGuestEmail;
     private String tooLongGuestAddress;
+    private String tooLongGuestCity;
 
     public CheckoutGuestTooShortLongInputPage(WebDriver driver) {super(driver);}
 
@@ -330,6 +331,30 @@ public class CheckoutGuestTooShortLongInputPage extends BasePage{
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(650));
         wait.until(ExpectedConditions.visibilityOf(streetAddressInputField));
         streetAddressInputField.sendKeys(tooLongGuestAddress);
+    }
+
+    public void getInvalidGuestUserTooLongCityData(){
+        guestFirstName = TestDataGenerator.getRandomFirstName();
+        guestLastName = TestDataGenerator.getRandomLastName();
+        guestEmail = TestDataGenerator.generateRandomEmailAddress(10);
+        guestAddress = TestDataGenerator.generateRandomAddress(7);
+        tooLongGuestCity = "Dxsdsxhkuiksfssdfsdfsretrjyuloipvlmjhkjhnxvdfsadfsdfhjyuooipkuyjhtgrfsdeghfgjjlhjnbfbvddfhggkjuiuyfd";
+        guestPostalCode = TestDataGenerator.getRandomPostalCode();
+
+        System.out.println("Generated invalid guest user data (too long city): " + "\n");
+
+        logger.info("Valid guest first name (too long city): " + guestFirstName);
+        logger.info("Valid guest last name (too long city): " + tooShortGuestLastName);
+        logger.info("Valid guest email (too long city): " + guestEmail);
+        logger.info("Valid guest address (too long city): " + guestAddress);
+        logger.info("Too long guest city: " + tooLongGuestCity);
+        logger.info("Valid guest postal code (too long city): " + guestPostalCode + "\n");
+    }
+    //invalid guest user data input method - too short city (100 chars)
+    public void inputTooLongCityIntoCityInputField(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(650));
+        wait.until(ExpectedConditions.visibilityOf(cityInputField));
+        cityInputField.sendKeys(tooLongGuestCity);
     }
 
 }

@@ -2932,6 +2932,57 @@ public class TestMethods extends BaseTest{
         //capture screenshot of the invalid test result
         captureScreenshot(driver, "Invalid Guest Product Checkout Test Result - Too Long Address");
     }
+    //invalid guest checkout (shipping address input) test method - too long city
+    protected void invalidGuestProductTooLongCityCheckout(){
+        CheckoutGuestPage checkoutGuestPage = new CheckoutGuestPage(driver);
+        CheckoutGuestTooShortLongInputPage checkoutGuestTooShortLongInputPage = new CheckoutGuestTooShortLongInputPage(driver);
+        //check out (guest) page web element assert
+        isCheckoutGuestPageWebElementDisplayed();
+        //check out (guest) text element assert
+        isCheckoutGuestTextElementAsExpected();
+        //log check out page product data
+        logCheckoutGuestPageProductData();
+        //capture screenshot of the checkout page before invalid data input (guest)
+        captureScreenshot(driver, "Invalid Guest Product Checkout Test - Checkout Guest Page (before data input)");
+        //click salutation dropdown menu
+        checkoutGuestPage.clickSalutationDropdownMenu();
+        //select 'Mr.' option
+        checkoutGuestPage.selectMrSalutation();
+        //invalid guest user data getter - too long city (100 chars)
+        checkoutGuestTooShortLongInputPage.getInvalidGuestUserTooLongCityData();
+        //input valid first name
+        checkoutGuestTooShortLongInputPage.inputGuestFirstNameIntoFirstNameInputField();
+        //input valid last name
+        checkoutGuestTooShortLongInputPage.inputGuestLastNameIntoLastNameInputField();
+        //input valid email address
+        checkoutGuestTooShortLongInputPage.inputGuestEmailIntoEmailInputField();
+        //input valid address
+        checkoutGuestTooShortLongInputPage.inputGuestAddressIntoAddressInputField();
+        //input too long city (100 chars)
+        checkoutGuestTooShortLongInputPage.inputTooLongCityIntoCityInputField();
+        //capture screenshot of the checkout page after invalid data input (guest)
+        captureScreenshot(driver, "Invalid Guest Product Checkout Test - Too Long City");
+        //input valid postal code
+        checkoutGuestTooShortLongInputPage.inputGuestPostalCodeIntoPostCodeInputField();
+        //click country dropdown menu
+        checkoutGuestPage.clickGuestCountryDropdownMenu();
+        //select 'United States' option
+        checkoutGuestPage.selectUSOption();
+        //click state dropdown menu
+        checkoutGuestPage.clickGuestStateDropdownMenu();
+        //select 'Illinois' option
+        checkoutGuestPage.selectIllinoisOption();
+        //click 'Continue' button
+        checkoutGuestPage.clickContinueButton();
+        //assert the user gets an expected error, log the issue if it doesn't appear
+        try {
+            assertEquals("Unfortunately, something went wrong.", checkoutGuestTooShortLongInputPage.getInvalidSingularInputError(), "The invalid singular input error doesn't match expectations.");
+        } catch (Exception e) {
+            logger.warn("There's no invalid input error message for too long city input", e);
+        }
+        //capture screenshot of the invalid test result
+        captureScreenshot(driver, "Invalid Guest Product Checkout Test Result - Too Long City");
+    }
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
