@@ -47,6 +47,7 @@ public class CheckoutGuestTooShortLongInputPage extends BasePage{
     private String tooLongGuestEmail;
     private String tooLongGuestAddress;
     private String tooLongGuestCity;
+    private String tooLongGuestPostalCode;
 
     public CheckoutGuestTooShortLongInputPage(WebDriver driver) {super(driver);}
 
@@ -226,7 +227,7 @@ public class CheckoutGuestTooShortLongInputPage extends BasePage{
         logger.info("Valid guest email (too short postal code): " + guestEmail);
         logger.info("Valid guest address (too short postal code): " + guestAddress);
         logger.info("Valid guest city (too short postal code): " + guestCity);
-        logger.info("Too short guest postal code (too short postal code): " + tooShortGuestPostalCode + "\n");
+        logger.info("Too short guest postal code: " + tooShortGuestPostalCode + "\n");
     }
     //invalid guest user data input method - too short postal code (2 digits)
     public void inputTooShortPostalCodeIntoPostalCodeInputField(){
@@ -355,6 +356,30 @@ public class CheckoutGuestTooShortLongInputPage extends BasePage{
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(650));
         wait.until(ExpectedConditions.visibilityOf(cityInputField));
         cityInputField.sendKeys(tooLongGuestCity);
+    }
+
+    public void getInvalidGuestUserTooLongPostalCodeData(){
+        guestFirstName = TestDataGenerator.getRandomFirstName();
+        guestLastName = TestDataGenerator.getRandomLastName();
+        guestEmail = TestDataGenerator.generateRandomEmailAddress(10);
+        guestAddress = TestDataGenerator.generateRandomAddress(7);
+        guestCity = TestDataGenerator.getRandomCity();
+        tooLongGuestPostalCode = "13234534575868865565342354658798798676435425346756";
+
+        System.out.println("Generated invalid guest user data (too long postal code): " + "\n");
+
+        logger.info("Valid guest first name (too long postal code): " + guestFirstName);
+        logger.info("Valid guest last name (too long postal code): " + tooShortGuestLastName);
+        logger.info("Valid guest email (too long postal code): " + guestEmail);
+        logger.info("Valid guest address (too long postal code): " + guestAddress);
+        logger.info("Valid guest city (too long postal code): " + guestCity);
+        logger.info("Too long guest postal code: " + tooLongGuestPostalCode + "\n");
+    }
+    //invalid guest user data input method - too long postal code (50 digits)
+    public void inputTooLongPostalCodeIntoPostalCodeInputField(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(650));
+        wait.until(ExpectedConditions.visibilityOf(postalCodeInputField));
+        postalCodeInputField.sendKeys(tooLongGuestPostalCode);
     }
 
 }
