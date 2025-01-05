@@ -3412,6 +3412,21 @@ public class TestMethods extends BaseTest{
         captureScreenshot(driver, "Valid Checkout Confirmation Test Result - Checkout Submission Confirmation Successful");
     }
 
+    //invalid order checkout confirmation test method - don't click 'Terms and Conditions' checkbox
+    protected void invalidOrderCheckoutConfirmationNoAgreeToTermsTest(){
+        CheckoutConfirmationPage checkoutConfirmationPage = new CheckoutConfirmationPage(driver);
+        //checkout confirmation page web element
+        isCheckoutConfirmationPageWebElementDisplayed();
+        //checkout confirmation page text element assert
+        isCheckoutConfirmationTextElementAsExpected();
+        //log checkout confirmation page data
+        logCheckoutConfirmationPageProductData();
+        //click 'Submit order' button
+        checkoutConfirmationPage.clickSubmitOrderButton();
+        //capture screenshot of the invalid test result
+        captureScreenshot(driver, "Invalid Checkout Confirmation Test Result - No Accept Of the Terms - Checkout Submission Confirmation Unsuccessful");
+    }
+
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     //general page web element assert test method(all pages have the (header/footer) same ones except for checkout page)
