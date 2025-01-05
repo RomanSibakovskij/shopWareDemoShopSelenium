@@ -38,6 +38,7 @@ public class CheckoutGuestInvalidSingularInputPage extends BasePage{
     private String invalidLastNameFormat;
     private String invalidEmailFormat;
     private String invalidAddressFormat;
+    private String invalidCityFormat;
 
     //existing email input
     private String existingEmail;
@@ -204,6 +205,30 @@ public class CheckoutGuestInvalidSingularInputPage extends BasePage{
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(650));
         wait.until(ExpectedConditions.visibilityOf(streetAddressInputField));
         streetAddressInputField.sendKeys(invalidAddressFormat);
+    }
+
+    public void getInvalidGuestUserInvalidCityData(){
+        guestFirstName = TestDataGenerator.getRandomFirstName();
+        guestLastName = TestDataGenerator.getRandomLastName();
+        guestEmail = TestDataGenerator.generateRandomEmailAddress(10);
+        guestAddress = TestDataGenerator.generateRandomAddress(7);
+        invalidCityFormat = "!@$%#$^*&(*&%$^%#$@#!$#%$^%";
+        guestPostalCode = TestDataGenerator.getRandomPostalCode();
+
+        System.out.println("Generated invalid guest user data (invalid city format): " + "\n");
+
+        logger.info("Valid guest first name (invalid city format): " + guestFirstName);
+        logger.info("Valid guest last name (invalid city format): " + guestLastName);
+        logger.info("Valid guest email (invalid city format): " + guestEmail);
+        logger.info("Valid guest address (invalid city format): " + guestAddress);
+        logger.info("Invalid guest city format: " + invalidCityFormat);
+        logger.info("Valid guest postal code (invalid city format): " + guestPostalCode + "\n");
+    }
+    //invalid guest user data input method - invalid city format (special symbols only)
+    public void inputInvalidCityIntoCityInputField(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(650));
+        wait.until(ExpectedConditions.visibilityOf(cityInputField));
+        cityInputField.sendKeys(invalidCityFormat);
     }
 
 }

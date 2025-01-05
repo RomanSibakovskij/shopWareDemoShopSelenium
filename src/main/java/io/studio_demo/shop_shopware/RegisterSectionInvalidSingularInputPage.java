@@ -232,15 +232,15 @@ public class RegisterSectionInvalidSingularInputPage extends BasePage{
         invalidCityFormat = "!@$%#$^*&(*&%$^%#$@#!$#%$^%";
         postalCode = TestDataGenerator.getRandomPostalCode();
 
-        System.out.println("Generated user register input data (too long city): " + "\n");
+        System.out.println("Generated user register input data (invalid city format): " + "\n");
 
-        logger.info("Valid user first name (too long city): " + firstName);
-        logger.info("Valid user last name (too long city): " + lastName);
-        logger.info("Valid user email (too long city): " + email);
-        logger.info("Valid user password (too long city): " + password);
-        logger.info("Valid user address (too long city): " + address);
+        logger.info("Valid user first name (invalid city format): " + firstName);
+        logger.info("Valid user last name (invalid city format): " + lastName);
+        logger.info("Valid user email (invalid city format): " + email);
+        logger.info("Valid user password (invalid city format): " + password);
+        logger.info("Valid user address (invalid city format): " + address);
         logger.info("Invalid user city format: " + invalidCityFormat);
-        logger.info("Valid user postal code (too long city): " + postalCode);
+        logger.info("Valid user postal code (invalid city format): " + postalCode);
     }
     //invalid user register data input method - invalid city format (special symbols only)
     public void inputInvalidCityFormatIntoCityInputField(){

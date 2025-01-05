@@ -199,7 +199,7 @@ public class CheckoutGuestTooShortLongInputPage extends BasePage{
         System.out.println("Generated invalid guest user data (too short city): " + "\n");
 
         logger.info("Valid guest first name (too short city): " + guestFirstName);
-        logger.info("Valid guest last name (too short city): " + tooShortGuestLastName);
+        logger.info("Valid guest last name (too short city): " + guestLastName);
         logger.info("Valid guest email (too short city): " + guestEmail);
         logger.info("Valid guest address (too short city): " + guestAddress);
         logger.info("Too short guest city: " + tooShortGuestCity);
@@ -223,7 +223,7 @@ public class CheckoutGuestTooShortLongInputPage extends BasePage{
         System.out.println("Generated invalid guest user data (too short postal code): " + "\n");
 
         logger.info("Valid guest first name (too short postal code): " + guestFirstName);
-        logger.info("Valid guest last name (too short postal code): " + tooShortGuestLastName);
+        logger.info("Valid guest last name (too short postal code): " + guestLastName);
         logger.info("Valid guest email (too short postal code): " + guestEmail);
         logger.info("Valid guest address (too short postal code): " + guestAddress);
         logger.info("Valid guest city (too short postal code): " + guestCity);
@@ -297,7 +297,7 @@ public class CheckoutGuestTooShortLongInputPage extends BasePage{
         System.out.println("Generated invalid guest user data (too long email address): " + "\n");
 
         logger.info("Valid guest first name (too long email address): " + guestFirstName);
-        logger.info("Valid guest last name (too long email address): " + tooShortGuestLastName);
+        logger.info("Valid guest last name (too long email address): " + guestLastName);
         logger.info("Too long guest email: " + tooLongGuestEmail);
         logger.info("Valid guest address (too long email address): " + guestAddress);
         logger.info("Valid guest city (too long email address): " + guestCity);
@@ -321,7 +321,7 @@ public class CheckoutGuestTooShortLongInputPage extends BasePage{
         System.out.println("Generated invalid guest user data (too long street address): " + "\n");
 
         logger.info("Valid guest first name (too long street address): " + guestFirstName);
-        logger.info("Valid guest last name (too long street address): " + tooShortGuestLastName);
+        logger.info("Valid guest last name (too long street address): " + guestLastName);
         logger.info("Valid guest email (too long street address): " + guestEmail);
         logger.info("Too long guest address: " + tooLongGuestAddress);
         logger.info("Valid guest city (too long street address): " + guestCity);
@@ -345,7 +345,7 @@ public class CheckoutGuestTooShortLongInputPage extends BasePage{
         System.out.println("Generated invalid guest user data (too long city): " + "\n");
 
         logger.info("Valid guest first name (too long city): " + guestFirstName);
-        logger.info("Valid guest last name (too long city): " + tooShortGuestLastName);
+        logger.info("Valid guest last name (too long city): " + guestLastName);
         logger.info("Valid guest email (too long city): " + guestEmail);
         logger.info("Valid guest address (too long city): " + guestAddress);
         logger.info("Too long guest city: " + tooLongGuestCity);
@@ -369,7 +369,7 @@ public class CheckoutGuestTooShortLongInputPage extends BasePage{
         System.out.println("Generated invalid guest user data (too long postal code): " + "\n");
 
         logger.info("Valid guest first name (too long postal code): " + guestFirstName);
-        logger.info("Valid guest last name (too long postal code): " + tooShortGuestLastName);
+        logger.info("Valid guest last name (too long postal code): " + guestLastName);
         logger.info("Valid guest email (too long postal code): " + guestEmail);
         logger.info("Valid guest address (too long postal code): " + guestAddress);
         logger.info("Valid guest city (too long postal code): " + guestCity);
