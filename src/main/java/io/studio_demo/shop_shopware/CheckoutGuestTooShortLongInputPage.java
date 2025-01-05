@@ -44,6 +44,7 @@ public class CheckoutGuestTooShortLongInputPage extends BasePage{
     //too long singular input data
     private String tooLongGuestFirstName;
     private String tooLongGuestLastName;
+    private String tooLongGuestEmail;
 
     public CheckoutGuestTooShortLongInputPage(WebDriver driver) {super(driver);}
 
@@ -153,7 +154,7 @@ public class CheckoutGuestTooShortLongInputPage extends BasePage{
         logger.info("Valid guest city (too short email address): " + guestCity);
         logger.info("Valid guest postal code (too short email address): " + guestPostalCode + "\n");
     }
-    //invalid guest user data input method - too short last name (1 char - name, domain)
+    //invalid guest user data input method - too short email (1 char - name, domain)
     public void inputTooShortEmailIntoEmailInputField(){
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(650));
         wait.until(ExpectedConditions.visibilityOf(emailInputField));
@@ -280,6 +281,30 @@ public class CheckoutGuestTooShortLongInputPage extends BasePage{
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(650));
         wait.until(ExpectedConditions.visibilityOf(lastNameInputField));
         lastNameInputField.sendKeys(tooLongGuestLastName);
+    }
+
+    public void getInvalidGuestUserTooLongEmailData(){
+        guestFirstName = TestDataGenerator.getRandomFirstName();
+        guestLastName = TestDataGenerator.getRandomLastName();
+        tooLongGuestEmail = TestDataGenerator.generateRandomEmailAddress(100);
+        guestAddress = TestDataGenerator.generateRandomAddress(7);
+        guestCity = TestDataGenerator.getRandomCity();
+        guestPostalCode = TestDataGenerator.getRandomPostalCode();
+
+        System.out.println("Generated invalid guest user data (too long email address): " + "\n");
+
+        logger.info("Valid guest first name (too long email address): " + guestFirstName);
+        logger.info("Valid guest last name (too long email address): " + tooShortGuestLastName);
+        logger.info("Too long guest email: " + tooLongGuestEmail);
+        logger.info("Valid guest address (too long email address): " + guestAddress);
+        logger.info("Valid guest city (too long email address): " + guestCity);
+        logger.info("Valid guest postal code (too long email address): " + guestPostalCode + "\n");
+    }
+    //invalid guest user data input method - too long email (100 chars - name)
+    public void inputTooLongEmailIntoEmailInputField(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(650));
+        wait.until(ExpectedConditions.visibilityOf(emailInputField));
+        emailInputField.sendKeys(tooLongGuestEmail);
     }
 
 }
