@@ -38,6 +38,9 @@ public class CheckoutGuestInvalidSingularInputPage extends BasePage{
     private String invalidLastNameFormat;
     private String invalidEmailFormat;
 
+    //existing email input
+    private String existingEmail;
+
 
     public CheckoutGuestInvalidSingularInputPage(WebDriver driver) {super(driver);}
 
@@ -152,6 +155,30 @@ public class CheckoutGuestInvalidSingularInputPage extends BasePage{
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(650));
         wait.until(ExpectedConditions.visibilityOf(emailInputField));
         emailInputField.sendKeys(invalidEmailFormat);
+    }
+
+    public void getInvalidGuestUserExistingEmailData(){
+        guestFirstName = TestDataGenerator.getRandomFirstName();
+        guestLastName = TestDataGenerator.getRandomLastName();
+        existingEmail = "m0@example.com";
+        guestAddress = TestDataGenerator.generateRandomAddress(7);
+        guestCity = TestDataGenerator.getRandomCity();
+        guestPostalCode = TestDataGenerator.getRandomPostalCode();
+
+        System.out.println("Generated invalid guest user data (existing email address): " + "\n");
+
+        logger.info("Valid guest first name (existing email address): " + guestFirstName);
+        logger.info("Valid guest last name (existing email address): " + guestLastName);
+        logger.info("Existing email address: " + existingEmail);
+        logger.info("Valid guest address (existing email address): " + guestAddress);
+        logger.info("Valid guest city (existing email address): " + guestCity);
+        logger.info("Valid guest postal code (existing email address): " + guestPostalCode + "\n");
+    }
+    //invalid guest user data input method - existing email (already used in manual testing)
+    public void inputExistingEmailIntoEmailInputField(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(650));
+        wait.until(ExpectedConditions.visibilityOf(emailInputField));
+        emailInputField.sendKeys(existingEmail);
     }
 
 }

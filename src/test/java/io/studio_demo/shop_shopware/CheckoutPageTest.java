@@ -385,6 +385,22 @@ public class CheckoutPageTest extends TestMethods{
         invalidGuestProductInvalidEmailCheckout();
     }
 
+    //Test 007w -> invalid 'Free Time & Electronics' product check out (shipping address) test - existing email address (as a guest) (the checkout doesn't get aborted - test has failed)
+    @Test
+    @DisplayName("Invalid 'Free Time & Electronics' Product To Checkout Test (shipping address) - Existing Email (as a guest)")
+    @Tag("Invalid_Singular_Product_Checkout")
+    @Tag("Shipping_Address_Guest")
+    @Tag("Existing_Singular_Input")
+    @Tag("Test_As_A_Guest")
+    void invalidFreeTimeProductCheckoutExistingEmailTest(){
+        //add 'Free Time & Electronics' product to cart test (as a guest)
+        addFreeTimeAndElectronicsProductToCartTest();
+        //add 'Free Time & Electronics' product to check out test (as a guest)
+        addProductToCheckoutTest();
+        //invalid 'Free Time & Electronics' product to check out test (shipping address) - existing email address (as a guest) (used beforehand in manual testing)
+        invalidGuestProductExistingEmailCheckout();
+    }
+
     //multiple product checkout tests
 
     //Test 008 -> valid 'Clothing' products to check out (shipping address) test (as a guest)
