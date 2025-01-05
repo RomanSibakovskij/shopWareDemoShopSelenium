@@ -151,7 +151,7 @@ public class CheckoutGuestTooShortLongInputPage extends BasePage{
         System.out.println("Generated invalid guest user data (too short email address): " + "\n");
 
         logger.info("Valid guest first name (too short email address): " + guestFirstName);
-        logger.info("Valid guest last name (too short email address): " + tooShortGuestLastName);
+        logger.info("Valid guest last name (too short email address): " + guestLastName);
         logger.info("Too short guest email: " + tooShortGuestEmail);
         logger.info("Valid guest address (too short email address): " + guestAddress);
         logger.info("Valid guest city (too short email address): " + guestCity);

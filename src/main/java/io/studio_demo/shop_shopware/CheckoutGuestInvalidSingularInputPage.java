@@ -36,6 +36,7 @@ public class CheckoutGuestInvalidSingularInputPage extends BasePage{
     //invalid singular input data format
     private String invalidFirstNameFormat;
     private String invalidLastNameFormat;
+    private String invalidEmailFormat;
 
 
     public CheckoutGuestInvalidSingularInputPage(WebDriver driver) {super(driver);}
@@ -127,6 +128,30 @@ public class CheckoutGuestInvalidSingularInputPage extends BasePage{
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(650));
         wait.until(ExpectedConditions.visibilityOf(lastNameInputField));
         lastNameInputField.sendKeys(invalidLastNameFormat);
+    }
+
+    public void getInvalidGuestUserInvalidEmailData(){
+        guestFirstName = TestDataGenerator.getRandomFirstName();
+        guestLastName = TestDataGenerator.getRandomLastName();
+        invalidEmailFormat = "maker343yahoo.com";
+        guestAddress = TestDataGenerator.generateRandomAddress(7);
+        guestCity = TestDataGenerator.getRandomCity();
+        guestPostalCode = TestDataGenerator.getRandomPostalCode();
+
+        System.out.println("Generated invalid guest user data (invalid email address format): " + "\n");
+
+        logger.info("Valid guest first name (invalid email address format): " + guestFirstName);
+        logger.info("Valid guest last name (invalid email address format): " + guestLastName);
+        logger.info("Invalid guest email format: " + invalidEmailFormat);
+        logger.info("Valid guest address (invalid email address format): " + guestAddress);
+        logger.info("Valid guest city (invalid email address format): " + guestCity);
+        logger.info("Valid guest postal code (invalid email address format): " + guestPostalCode + "\n");
+    }
+    //invalid guest user data input method - invalid email format (missing '@')
+    public void inputInvalidEmailIntoEmailInputField(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(650));
+        wait.until(ExpectedConditions.visibilityOf(emailInputField));
+        emailInputField.sendKeys(invalidEmailFormat);
     }
 
 }

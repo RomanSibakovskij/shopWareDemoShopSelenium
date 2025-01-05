@@ -369,6 +369,22 @@ public class CheckoutPageTest extends TestMethods{
         invalidGuestProductInvalidLastNameCheckout();
     }
 
+    //Test 007v -> invalid 'Free Time & Electronics' product check out (shipping address) test - invalid email address format (as a guest)
+    @Test
+    @DisplayName("Invalid 'Free Time & Electronics' Product To Checkout Test (shipping address) - Invalid Email Address Format (as a guest)")
+    @Tag("Invalid_Singular_Product_Checkout")
+    @Tag("Shipping_Address_Guest")
+    @Tag("Invalid_Singular_Input_Format")
+    @Tag("Test_As_A_Guest")
+    void invalidFreeTimeProductCheckoutInvalidEmailTest(){
+        //add 'Free Time & Electronics' product to cart test (as a guest)
+        addFreeTimeAndElectronicsProductToCartTest();
+        //add 'Free Time & Electronics' product to check out test (as a guest)
+        addProductToCheckoutTest();
+        //invalid 'Free Time & Electronics' product to check out test (shipping address) - invalid email address (as a guest) (missing '@')
+        invalidGuestProductInvalidEmailCheckout();
+    }
+
     //multiple product checkout tests
 
     //Test 008 -> valid 'Clothing' products to check out (shipping address) test (as a guest)
