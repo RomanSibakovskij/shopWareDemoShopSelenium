@@ -35,6 +35,7 @@ public class CheckoutGuestTooShortLongInputPage extends BasePage{
     private String tooShortGuestLastName;
     private String tooShortGuestEmail;
     private String tooShortGuestAddress;
+    private String tooShortGuestCity;
 
     public CheckoutGuestTooShortLongInputPage(WebDriver driver) {super(driver);}
 
@@ -156,7 +157,7 @@ public class CheckoutGuestTooShortLongInputPage extends BasePage{
 
         logger.info("Valid guest first name (too short street address): " + guestFirstName);
         logger.info("Valid guest last name (too short street address): " + tooShortGuestLastName);
-        logger.info("Valid guest email: " + guestEmail);
+        logger.info("Valid guest email (too short street address): " + guestEmail);
         logger.info("Too short guest address: " + tooShortGuestAddress);
         logger.info("Valid guest city (too short street address): " + guestCity);
         logger.info("Valid guest postal code (too short street address): " + guestPostalCode + "\n");
@@ -166,6 +167,30 @@ public class CheckoutGuestTooShortLongInputPage extends BasePage{
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(650));
         wait.until(ExpectedConditions.visibilityOf(streetAddressInputField));
         streetAddressInputField.sendKeys(tooShortGuestAddress);
+    }
+
+    public void getInvalidGuestUserTooShortCityData(){
+        guestFirstName = TestDataGenerator.getRandomFirstName();
+        guestLastName = TestDataGenerator.getRandomLastName();
+        guestEmail = TestDataGenerator.generateRandomEmailAddress(10);
+        guestAddress = TestDataGenerator.generateRandomAddress(7);
+        tooShortGuestCity = "X";
+        guestPostalCode = TestDataGenerator.getRandomPostalCode();
+
+        System.out.println("Generated invalid guest user data (too short city): " + "\n");
+
+        logger.info("Valid guest first name (too short city): " + guestFirstName);
+        logger.info("Valid guest last name (too short city): " + tooShortGuestLastName);
+        logger.info("Valid guest email (too short city): " + guestEmail);
+        logger.info("Valid guest address (too short city): " + guestAddress);
+        logger.info("Too short guest city: " + tooShortGuestCity);
+        logger.info("Valid guest postal code (too short city): " + guestPostalCode + "\n");
+    }
+    //invalid guest user data input method - too short city (1 char)
+    public void inputTooShortCityIntoCityInputField(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(650));
+        wait.until(ExpectedConditions.visibilityOf(cityInputField));
+        cityInputField.sendKeys(tooShortGuestCity);
     }
 
 
