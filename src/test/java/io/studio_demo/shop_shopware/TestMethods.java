@@ -2108,7 +2108,7 @@ public class TestMethods extends BaseTest{
         captureScreenshot(driver, "Valid Guest Product Checkout Test Result - Product Has Checked Out");
     }
 
-    //invalid guest checkout tests (shipping address input)
+    //invalid guest checkout tests (shipping address input) - guest branch is only tested, the registered user goes straight for order confirmation omitting shipping address block
 
     //no singular input
 
@@ -2508,6 +2508,51 @@ public class TestMethods extends BaseTest{
         checkoutGuestPage.clickContinueButton();
         //capture screenshot of the invalid test result
         captureScreenshot(driver, "Invalid Guest Product Checkout Test Result - Too Short Last Name");
+    }
+    //invalid guest checkout (shipping address input) test method - too short email (this form has no missing singular input errors, screenshots will serve as proof of the test run)
+    protected void invalidGuestProductTooShortEmailCheckout(){
+        CheckoutGuestPage checkoutGuestPage = new CheckoutGuestPage(driver);
+        CheckoutGuestTooShortLongInputPage checkoutGuestTooShortLongInputPage = new CheckoutGuestTooShortLongInputPage(driver);
+        //check out (guest) page web element assert
+        isCheckoutGuestPageWebElementDisplayed();
+        //check out (guest) text element assert
+        isCheckoutGuestTextElementAsExpected();
+        //log check out page product data
+        logCheckoutGuestPageProductData();
+        //capture screenshot of the checkout page before invalid data input (guest)
+        captureScreenshot(driver, "Invalid Guest Product Checkout Test - Checkout Guest Page (before data input)");
+        //click salutation dropdown menu
+        checkoutGuestPage.clickSalutationDropdownMenu();
+        //select 'Mr.' option
+        checkoutGuestPage.selectMrSalutation();
+        //invalid guest user data getter - too short email address (1 char - name, domain)
+        checkoutGuestTooShortLongInputPage.getInvalidGuestUserTooShortEmailData();
+        //input valid first name
+        checkoutGuestTooShortLongInputPage.inputGuestFirstNameIntoFirstNameInputField();
+        //input valid last name
+        checkoutGuestTooShortLongInputPage.inputGuestLastNameIntoLastNameInputField();
+        //input too short email
+        checkoutGuestTooShortLongInputPage.inputTooShortEmailIntoEmailInputField();
+        //capture screenshot of the checkout page after invalid data input (guest)
+        captureScreenshot(driver, "Invalid Guest Product Checkout Test - Too Short Email");
+        //input valid address
+        checkoutGuestTooShortLongInputPage.inputGuestAddressIntoAddressInputField();
+        //input valid city
+        checkoutGuestTooShortLongInputPage.inputGuestCityIntoCityInputField();
+        //input valid postal code
+        checkoutGuestTooShortLongInputPage.inputGuestPostalCodeIntoPostCodeInputField();
+        //click country dropdown menu
+        checkoutGuestPage.clickGuestCountryDropdownMenu();
+        //select 'United States' option
+        checkoutGuestPage.selectUSOption();
+        //click state dropdown menu
+        checkoutGuestPage.clickGuestStateDropdownMenu();
+        //select 'Illinois' option
+        checkoutGuestPage.selectIllinoisOption();
+        //click 'Continue' button
+        checkoutGuestPage.clickContinueButton();
+        //capture screenshot of the invalid test result
+        captureScreenshot(driver, "Invalid Guest Product Checkout Test Result - Too Short Email");
     }
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

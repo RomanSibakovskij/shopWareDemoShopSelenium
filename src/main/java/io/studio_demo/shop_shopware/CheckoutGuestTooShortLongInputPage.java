@@ -33,6 +33,7 @@ public class CheckoutGuestTooShortLongInputPage extends BasePage{
     //too short singular input data
     private String tooShortGuestFirstName;
     private String tooShortGuestLastName;
+    private String tooShortGuestEmail;
 
     public CheckoutGuestTooShortLongInputPage(WebDriver driver) {super(driver);}
 
@@ -116,6 +117,30 @@ public class CheckoutGuestTooShortLongInputPage extends BasePage{
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(650));
         wait.until(ExpectedConditions.visibilityOf(lastNameInputField));
         lastNameInputField.sendKeys(tooShortGuestLastName);
+    }
+
+    public void getInvalidGuestUserTooShortEmailData(){
+        guestFirstName = TestDataGenerator.getRandomFirstName();
+        guestLastName = TestDataGenerator.getRandomLastName();
+        tooShortGuestEmail = "j@g.com";
+        guestAddress = TestDataGenerator.generateRandomAddress(7);
+        guestCity = TestDataGenerator.getRandomCity();
+        guestPostalCode = TestDataGenerator.getRandomPostalCode();
+
+        System.out.println("Generated invalid guest user data (too short email address): " + "\n");
+
+        logger.info("Valid guest first name (too short email address): " + guestFirstName);
+        logger.info("Valid guest last name (too short email address): " + tooShortGuestLastName);
+        logger.info("Too short guest email: " + tooShortGuestEmail);
+        logger.info("Valid guest address (too short email address): " + guestAddress);
+        logger.info("Valid guest city (too short email address): " + guestCity);
+        logger.info("Valid guest postal code (too short email address): " + guestPostalCode + "\n");
+    }
+    //invalid guest user data input method - too short last name (1 char - name, domain)
+    public void inputTooShortEmailIntoEmailInputField(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(650));
+        wait.until(ExpectedConditions.visibilityOf(emailInputField));
+        emailInputField.sendKeys(tooShortGuestEmail);
     }
 
 
