@@ -213,7 +213,7 @@ public class CheckoutConfirmationPage extends BasePage {
     public List<String> getProductSubTotalPrice() {
         List<String> productSubTotalPrice = new ArrayList<>();
         for (WebElement element : checkoutProductSubtotalPriceElements) {
-            productSubTotalPrice.add(element.getText());
+            productSubTotalPrice.add(element.getText().replace("*", ""));
         }
         return productSubTotalPrice;
     }
@@ -222,31 +222,31 @@ public class CheckoutConfirmationPage extends BasePage {
     public String getSummaryTotalPrice() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(700));
         wait.until(ExpectedConditions.visibilityOf(summaryTotalPrice));
-        return summaryTotalPrice.getText();
+        return summaryTotalPrice.getText().replace("*", "");
     }
     //order shipping price getter
     public String getSummaryShippingPrice() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(700));
         wait.until(ExpectedConditions.visibilityOf(summaryShippingPrice));
-        return summaryShippingPrice.getText();
+        return summaryShippingPrice.getText().replace("*", "");
     }
     //order summary grand total price getter
     public String getSummaryGrandTotalPrice() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(700));
         wait.until(ExpectedConditions.visibilityOf(summaryGrandTotalPrice));
-        return summaryGrandTotalPrice.getText();
+        return summaryGrandTotalPrice.getText().replace("*", "");
     }
     //order summary net total price getter
     public String getSummaryNetTotalPrice() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(700));
         wait.until(ExpectedConditions.visibilityOf(summaryNetTotalPrice));
-        return summaryNetTotalPrice.getText();
+        return summaryNetTotalPrice.getText().replace("*", "");
     }
     //order summary price with VAT getter
     public String getSummaryPriceWithVAT() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(700));
         wait.until(ExpectedConditions.visibilityOf(summaryVATPrice));
-        return summaryVATPrice.getText();
+        return summaryVATPrice.getText().replace("*", "");
     }
 
     //click 'Terms and conditions' checkbox method
@@ -260,7 +260,8 @@ public class CheckoutConfirmationPage extends BasePage {
     public void clickSubmitOrderButton() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(700));
         wait.until(ExpectedConditions.elementToBeClickable(submitOrderButton));
-        submitOrderButton.click();
+        JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
+        jsExecutor.executeScript("arguments[0].click();", submitOrderButton); //js click (common click fails throws ElementClickInterceptedException for some reason)
     }
 
     //checkout page web element assert methods
