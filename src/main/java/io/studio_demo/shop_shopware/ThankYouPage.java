@@ -63,6 +63,148 @@ public class ThankYouPage extends BasePage{
 
     public ThankYouPage(WebDriver driver) {super(driver);}
 
+    //shipping address section title getter
+    public String getShippingAddressSectionTitle() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(700));
+        wait.until(ExpectedConditions.visibilityOf(shippingAddressSectionTitle));
+        return shippingAddressSectionTitle.getText();
+    }
+    //billing address section title getter
+    public String getBillingAddressSectionTitle() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(700));
+        wait.until(ExpectedConditions.visibilityOf(billingAddressSectionTitle));
+        return billingAddressSectionTitle.getText();
+    }
+    //information section title getter
+    public String getInformationSectionTitle() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(700));
+        wait.until(ExpectedConditions.visibilityOf(informationSectionTitle));
+        return informationSectionTitle.getText();
+    }
+    //summary section title getter
+    public String getSummarySectionTitle() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(700));
+        wait.until(ExpectedConditions.visibilityOf(summarySectionTitle));
+        return summarySectionTitle.getText();
+    }
+
+    //thank you page data getters
+
+    //order confirmation message getter
+    public String getThankYouPageOrderConfirmation() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(700));
+        wait.until(ExpectedConditions.visibilityOf(thankYouPageConfirmationMessage));
+        return thankYouPageConfirmationMessage.getText();
+    }
+    //order number message getter
+    public String getThankYouPageOrderNumber() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(700));
+        wait.until(ExpectedConditions.visibilityOf(thankYouPageOrderNumber));
+        return thankYouPageOrderNumber.getText();
+    }
+    //order confirmation report getter
+    public String getThankYouPageOrderConfirmationReport() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(700));
+        wait.until(ExpectedConditions.visibilityOf(thankYouPageOrderConfirmationEmailReport));
+        return thankYouPageOrderConfirmationEmailReport.getText();
+    }
+    //order confirmation message getter
+    public String getShippingAddressData() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(700));
+        wait.until(ExpectedConditions.visibilityOf(shippingAddressData));
+        return shippingAddressData.getText();
+    }
+    //billing address data getter
+    public String getBillingAddressData() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(700));
+        wait.until(ExpectedConditions.visibilityOf(billingAddressData));
+        return billingAddressData.getText();
+    }
+    //payment method data getter
+    public String getPaymentMethodData() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(700));
+        wait.until(ExpectedConditions.visibilityOf(paymentMethodData));
+        return paymentMethodData.getText();
+    }
+    //shipping method data getter
+    public String getShippingMethodData() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(700));
+        wait.until(ExpectedConditions.visibilityOf(shippingMethodData));
+        return shippingMethodData.getText();
+    }
+
+    //product title link getter
+    public List<String> getProductTitleLink() {
+        List<String> productTitle = new ArrayList<>();
+        for (WebElement element : productTableTitleLinkElements) {
+            productTitle.add(element.getText());
+        }
+        return productTitle;
+    }
+    //product title description getter
+    public List<String> getProductDescription() {
+        List<String> productDescription = new ArrayList<>();
+        for (WebElement element : productTableDescriptionElements) {
+            productDescription.add(element.getText());
+        }
+        return productDescription;
+    }
+    //product quantity getter
+    public List<String> getProductQuantity() {
+        List<String> productQuantity = new ArrayList<>();
+        for (WebElement element : productTableQuantityElements) {
+            productQuantity.add(element.getText());
+        }
+        return productQuantity;
+    }
+    //product VAT price getter
+    public List<String> getProductVATPrice() {
+        List<String> productVATPrice = new ArrayList<>();
+        for (WebElement element : productTableVATPriceElements) {
+            productVATPrice.add(element.getText());
+        }
+        return productVATPrice;
+    }
+    //product sub total price getter
+    public List<String> getProductSubtotalPrice() {
+        List<String> productSubtotalPrice = new ArrayList<>();
+        for (WebElement element : productTableSubtotalPriceElements) {
+            productSubtotalPrice.add(element.getText().replace("*", ""));
+        }
+        return productSubtotalPrice;
+    }
+
+    //summary total price getter
+    public String getSummaryTotalPrice() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(700));
+        wait.until(ExpectedConditions.visibilityOf(summaryTotalPrice));
+        return summaryTotalPrice.getText().replace("*", "");
+    }
+    //summary shipping price getter
+    public String getSummaryShippingPrice() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(700));
+        wait.until(ExpectedConditions.visibilityOf(summaryShippingPrice));
+        return summaryShippingPrice.getText().replace("*", "");
+    }
+    //summary grand total price getter
+    public String getSummaryGrandTotalPrice() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(700));
+        wait.until(ExpectedConditions.visibilityOf(summaryGrandTotalPrice));
+        return summaryGrandTotalPrice.getText().replace("*", "");
+    }
+    //summary net total price getter
+    public String getSummaryNetTotalPrice() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(700));
+        wait.until(ExpectedConditions.visibilityOf(summaryNetTotalPrice));
+        return summaryNetTotalPrice.getText();
+    }
+    //summary VAT price getter
+    public String getSummaryVATPrice() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(700));
+        wait.until(ExpectedConditions.visibilityOf(summaryVATPrice));
+        return summaryVATPrice.getText();
+    }
+
     //thank you page web element assert methods
     public boolean isThankYouPageConfirmationMessageDisplayed() {return thankYouPageConfirmationMessage.isDisplayed();}
     public boolean isThankYouPageOrderNumberDisplayed() {return thankYouPageOrderNumber.isDisplayed();}
@@ -72,8 +214,8 @@ public class ThankYouPage extends BasePage{
     public boolean isBillingAddressSectionTitleDisplayed() {return billingAddressSectionTitle.isDisplayed();}
     public boolean isBillingAddressDataDisplayed() {return billingAddressData.isDisplayed();}
     public boolean isInformationSectionTitleDisplayed() {return informationSectionTitle.isDisplayed();}
-    public boolean isPaymentMethodDisplayed() {return paymentMethodData.isDisplayed();}
-    public boolean isShippingMethodDisplayed() {return shippingMethodData.isDisplayed();}
+    public boolean isPaymentMethodDataDisplayed() {return paymentMethodData.isDisplayed();}
+    public boolean isShippingMethodDataDisplayed() {return shippingMethodData.isDisplayed();}
 
     public boolean isThankYouPageTableProductImgPlaceholderDisplayed() {
         for (WebElement element : productTableImgPlaceholderElements) {
@@ -91,7 +233,7 @@ public class ThankYouPage extends BasePage{
         }
         return true;
     }
-    public boolean isTankYouTableProductDescriptionDisplayed() {
+    public boolean isThankYouPageTableProductDescriptionDisplayed() {
         for (WebElement element : productTableDescriptionElements) {
             if (!element.isDisplayed()) {
                 return false;
@@ -99,7 +241,7 @@ public class ThankYouPage extends BasePage{
         }
         return true;
     }
-    public boolean isTankYouTableProductQuantityDisplayed() {
+    public boolean isThankYouPageTableProductQuantityDisplayed() {
         for (WebElement element : productTableQuantityElements) {
             if (!element.isDisplayed()) {
                 return false;
@@ -107,7 +249,7 @@ public class ThankYouPage extends BasePage{
         }
         return true;
     }
-    public boolean isTankYouTableProductVATPriceDisplayed() {
+    public boolean isThankYouPageTableProductVATPriceDisplayed() {
         for (WebElement element : productTableVATPriceElements) {
             if (!element.isDisplayed()) {
                 return false;
@@ -115,7 +257,7 @@ public class ThankYouPage extends BasePage{
         }
         return true;
     }
-    public boolean isTankYouTableProductSubtotalPriceDisplayed() {
+    public boolean isThankYouPageTableProductSubtotalPriceDisplayed() {
         for (WebElement element : productTableSubtotalPriceElements) {
             if (!element.isDisplayed()) {
                 return false;

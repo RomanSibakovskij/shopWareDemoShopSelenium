@@ -22,6 +22,8 @@ public class CheckoutConfirmationPageTest extends TestMethods{
         validGuestProductCheckout();
         //valid 'Free Time & Electronics' product to check out submission confirmation test (as a guest) -> registered user and guest share the same test method
         validOrderCheckoutConfirmationTest();
+        //final order confirmation test -> registered user and guest get onto same page
+        thankYouPageSubmittedOrderConfirmation();
     }
 
     //Test 009a -> valid 'Free Time & Electronics' product check out submission confirmation test  (as a registered user)
@@ -42,6 +44,8 @@ public class CheckoutConfirmationPageTest extends TestMethods{
         addProductToCheckoutRegUserTest();
         //valid 'Free Time & Electronics' product to check out submission confirmation test (as a guest) -> registered user and guest share the same test method
         validOrderCheckoutConfirmationTest();
+        //final order confirmation test -> registered user and guest get onto same page
+        thankYouPageSubmittedOrderConfirmation();
     }
 
     //multiple products check out submission confirmation tests (guest and registered user are on the same page after shopping cart)
@@ -60,6 +64,8 @@ public class CheckoutConfirmationPageTest extends TestMethods{
         validGuestProductCheckout();
         //valid 'Free Time & Electronics' product to check out submission confirmation test (as a guest) -> registered user and guest share the same test method
         validOrderCheckoutConfirmationTest();
+        //final order confirmation test -> registered user and guest get onto same page
+        thankYouPageSubmittedOrderConfirmation();
     }
 
     //Test 009c -> valid 'Clothing' products check out submission confirmation test (as a registered user)
@@ -80,6 +86,8 @@ public class CheckoutConfirmationPageTest extends TestMethods{
         addProductToCheckoutRegUserTest();
         //valid 'Free Time & Electronics' product to check out submission confirmation test (as a guest) -> registered user and guest share the same test method
         validOrderCheckoutConfirmationTest();
+        //final order confirmation test -> registered user and guest get onto same page
+        thankYouPageSubmittedOrderConfirmation();
     }
 
     //negative checkout confirmation test

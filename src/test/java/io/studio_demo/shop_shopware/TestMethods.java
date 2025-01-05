@@ -3445,6 +3445,20 @@ public class TestMethods extends BaseTest{
         captureScreenshot(driver, "Invalid Checkout Confirmation Test Result - Remove Product Before Checkout Confirmation - Checkout Submission Confirmation Unsuccessful");
     }
 
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    //thank you page order confirmation test method (guest and registered user get onto the same page so there's no need for additional submitted order assertions)
+    protected void thankYouPageSubmittedOrderConfirmation(){
+        //thank you page web element assert
+        isThankYouPageWebElementDisplayed();
+        //thank you text element assert
+        isThankYouPageTextElementAsExpected();
+        //log thank you page displayed data
+        logThankYouPageProductOrderData();
+        //capture screenshot of the order confirmation
+        captureScreenshot(driver, "Thank You Page Final Submitted Order Confirmation");
+    }
+
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     //general page web element assert test method(all pages have the (header/footer) same ones except for checkout page)
@@ -3784,8 +3798,14 @@ public class TestMethods extends BaseTest{
         assertTrue(checkoutGuestPage.isShoppingCartProductDescriptionDisplayed(), "The shopping cart product description isn't displayed");
         //assert shopping cart product quantity (as a list) is displayed
         assertTrue(checkoutGuestPage.isShoppingCartProductQuantityDisplayed(), "The shopping cart product quantity isn't displayed");
+        //assert shopping cart product total price (as a list) is displayed
+        assertTrue(checkoutGuestPage.isShoppingCartProductTotalPriceDisplayed(), "The shopping cart product total price isn't displayed");
         //assert shopping cart product unit price (as a list) is displayed //not every product has them
-        //assertTrue(checkoutGuestPage.isShoppingCartProductUnitPriceDisplayed(), "The shopping cart product unit price isn't displayed");
+        if(checkoutGuestPage.isShoppingCartProductUnitPriceDisplayed()) {
+            assertTrue(checkoutGuestPage.isShoppingCartProductUnitPriceDisplayed(), "The shopping cart product unit price isn't displayed");
+        } else {
+            logger.warn("Set product has no product unit price data available");
+        }
     }
 
     //checkout confirmation page web element test assert method
@@ -3863,6 +3883,64 @@ public class TestMethods extends BaseTest{
         assertTrue(checkoutConfirmationPage.isSummaryVATPriceDisplayed(), "The check out summary VAT price isn't displayed");
         //assert check out 'submit order' button is displayed
         assertTrue(checkoutConfirmationPage.isSubmitOrderButtonDisplayed(), "The check out 'submit order' button isn't displayed");
+    }
+
+    //thank you page web element assert test method
+    protected void isThankYouPageWebElementDisplayed(){
+        ThankYouPage thankYouPage = new ThankYouPage(driver);
+        CheckoutConfirmationPage checkoutConfirmationPage = new CheckoutConfirmationPage(driver);
+        //assert header contact text is displayed
+        assertTrue(checkoutConfirmationPage.isHeaderContactTextDisplayed(), "The header contact text isn't displayed");
+        //assert header contact link is displayed
+        assertTrue(checkoutConfirmationPage.isHeaderContactNumberLinkDisplayed(), "The header contact number link isn't displayed");
+        //assert header 'Back to Shop' button is displayed
+        assertTrue(checkoutConfirmationPage.isHeaderBackToShopButtonDisplayed(), "The header 'Back to Shop' button isn't displayed");
+        //assert thank you order confirmation message is displayed
+        assertTrue(checkoutConfirmationPage.isCheckoutConfirmationTitleDisplayed(), "The thank you page order confirmation message isn't displayed");
+        //assert thank you order confirmation message is displayed
+        assertTrue(thankYouPage.isThankYouPageConfirmationMessageDisplayed(), "The thank you page order confirmation message isn't displayed");
+        //assert thank you order number is displayed
+        assertTrue(thankYouPage.isThankYouPageOrderNumberDisplayed(), "The thank you page order number isn't displayed");
+        //assert thank you order confirmation email report is displayed
+        assertTrue(thankYouPage.isThankYouOrderConfirmationEmailReportDisplayed(), "The confirmation email report isn't displayed");
+        //assert shipping address section title is displayed
+        assertTrue(thankYouPage.isShippingAddressSectionTitleDisplayed(), "The shipping address section title isn't displayed");
+        //assert shipping address data is displayed
+        assertTrue(thankYouPage.isShippingAddressDataDisplayed(), "The shipping address data isn't displayed");
+        //assert billing address section title is displayed
+        assertTrue(thankYouPage.isBillingAddressSectionTitleDisplayed(), "The billing address section title isn't displayed");
+        //assert billing address data is displayed
+        assertTrue(thankYouPage.isBillingAddressDataDisplayed(), "The billing address data isn't displayed");
+        //assert information section title is displayed
+        assertTrue(thankYouPage.isInformationSectionTitleDisplayed(), "The information section title isn't displayed");
+        //assert payment method is displayed
+        assertTrue(thankYouPage.isPaymentMethodDataDisplayed(), "The payment method data isn't displayed");
+        //assert shipping method is displayed
+        assertTrue(thankYouPage.isShippingMethodDataDisplayed(), "The shipping method data isn't displayed");
+        //assert thank you product table image placeholder (as a list) is displayed
+        assertTrue(thankYouPage.isThankYouPageTableProductImgPlaceholderDisplayed(), "The thank you page product table image placeholder isn't displayed");
+        //assert thank you product table title link (as a list) is displayed
+        assertTrue(thankYouPage.isThankYouPageTableProductTitleLinkDisplayed(), "The thank you page product table title link isn't displayed");
+        //assert thank you product table description (of the product) (as a list) is displayed
+        assertTrue(thankYouPage.isThankYouPageTableProductDescriptionDisplayed(), "The thank you page product table product description isn't displayed");
+        //assert thank you product table quantity (of the product) (as a list) is displayed
+        assertTrue(thankYouPage.isThankYouPageTableProductQuantityDisplayed(), "The thank you page product table product quantity isn't displayed");
+        //assert thank you product table VAT price (as a list) is displayed
+        assertTrue(thankYouPage.isThankYouPageTableProductVATPriceDisplayed(), "The thank you page product table VAT price isn't displayed");
+        //assert thank you product table subtotal price (as a list) is displayed
+        assertTrue(thankYouPage.isThankYouPageTableProductSubtotalPriceDisplayed(), "The thank you page product table subtotal price isn't displayed");
+        //assert summary section title is displayed
+        assertTrue(thankYouPage.isSummarySectionTitleDisplayed(), "The summary section title isn't displayed");
+        //assert summary total price is displayed
+        assertTrue(thankYouPage.isSummaryTotalPriceDisplayed(), "The summary total price isn't displayed");
+        //assert summary shipping price is displayed
+        assertTrue(thankYouPage.isSummaryShippingPriceDisplayed(), "The summary shipping price isn't displayed");
+        //assert summary grand total price is displayed
+        assertTrue(thankYouPage.isSummaryGrandTotalPriceDisplayed(), "The summary grand total price isn't displayed");
+        //assert summary net total price is displayed
+        assertTrue(thankYouPage.isSummaryNetTotalPriceDisplayed(), "The summary net total price isn't displayed");
+        //assert summary VAT price is displayed
+        assertTrue(thankYouPage.isSummaryVATPriceDisplayed(), "The summary VAT price isn't displayed");
     }
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -3982,6 +4060,22 @@ public class TestMethods extends BaseTest{
         assertEquals("Shipping method", checkoutConfirmationPage.getShippingMethodSectionTitle(), "The shipping method section doesn't match expectations");
     }
 
+    //thank you page text element assert method
+    protected void isThankYouPageTextElementAsExpected(){
+        ThankYouPage thankYouPage = new ThankYouPage(driver);
+        CheckoutConfirmationPage checkoutConfirmationPage = new CheckoutConfirmationPage(driver);
+        //assert header contact text matches expectations
+        assertEquals("Questions regarding your order?\n" + "12345-123456789 Daily from 7:30 am to 10:00 pm", checkoutConfirmationPage.getHeaderContactText(), "The header contact text doesn't match expectations");
+        //assert shipping address section title matches expectations
+        assertEquals("Shipping address", thankYouPage.getShippingAddressSectionTitle(), "The shipping address section title doesn't match expectations");
+        //assert billing address section title matches expectations
+        assertEquals("Billing address", thankYouPage.getBillingAddressSectionTitle(), "The billing address section title doesn't match expectations");
+        //assert information section title matches expectations
+        assertEquals("Information", thankYouPage.getInformationSectionTitle(), "The information section title doesn't match expectations");
+        //assert summary section title matches expectations
+        assertEquals("Summary", thankYouPage.getSummarySectionTitle(), "The summary section title doesn't match expectations");
+    }
+
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     //account overview data logger method
@@ -4085,6 +4179,37 @@ public class TestMethods extends BaseTest{
         logger.info("Order summary grand total price: " + checkoutConfirmationPage.getSummaryGrandTotalPrice() + "\n");
         logger.info("Order summary net total price: " + checkoutConfirmationPage.getSummaryNetTotalPrice() + "\n");
         logger.info("Order summary price with VAT: " + checkoutConfirmationPage.getSummaryPriceWithVAT() + "\n");
+    }
+
+    //thank you page data logger method
+    protected void logThankYouPageProductOrderData(){
+        ThankYouPage thankYouPage = new ThankYouPage(driver);
+
+        System.out.println("Thank you page displayed order data:" + "\n");
+
+        logger.info("Order confirmation message: " + thankYouPage.getThankYouPageOrderConfirmation() + "\n");
+        logger.info("Order number: " + thankYouPage.getThankYouPageOrderNumber() + "\n");
+        logger.info("Order confirmation report: " + thankYouPage.getThankYouPageOrderConfirmationReport() + "\n");
+        logger.info("Shipping address: " + thankYouPage.getShippingAddressData() + "\n");
+        logger.info("Billing address: " + thankYouPage.getBillingAddressData() + "\n");
+        logger.info("Payment method: " + thankYouPage.getPaymentMethodData() + "\n");
+        logger.info("Shipping method: " + thankYouPage.getShippingMethodData() + "\n");
+
+        System.out.println("Confirmed product table data: " + "\n");
+
+        logger.info("Confirmed product title(s): " + thankYouPage.getProductTitleLink() + "\n");
+        logger.info("Confirmed product description(s): " + thankYouPage.getProductDescription() + "\n");
+        logger.info("Confirmed product quantity(ies): " + thankYouPage.getProductQuantity() + "\n");
+        logger.info("Confirmed product VAT price: " + thankYouPage.getProductVATPrice() + "\n");
+        logger.info("Confirmed product subtotal price: " + thankYouPage.getProductSubtotalPrice());
+
+        System.out.println("Confirmed order summary data: " + "\n");
+
+        logger.info("Confirmed order summary total price: " + thankYouPage.getSummaryTotalPrice() + "\n");
+        logger.info("Confirmed order summary shipping price: " + thankYouPage.getSummaryShippingPrice() + "\n");
+        logger.info("Confirmed order summary grand total price: " + thankYouPage.getSummaryGrandTotalPrice() + "\n");
+        logger.info("Confirmed order summary net total price: " + thankYouPage.getSummaryNetTotalPrice() + "\n");
+        logger.info("Confirmed order summary VAT price: " + thankYouPage.getSummaryVATPrice() + "\n");
     }
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
