@@ -24,6 +24,26 @@ public class CheckoutConfirmationPageTest extends TestMethods{
         validOrderCheckoutConfirmationTest();
     }
 
+    //Test 009a -> valid 'Free Time & Electronics' product check out submission confirmation test  (as a registered user)
+    @Test
+    @DisplayName("Valid 'Free Time & Electronics' Product Checkout Submission Confirmation Test (as a registered user)")
+    @Tag("Add_Singular_Product_To_Checkout")
+    @Tag("Test_As_A_Reg_User")
+    void addFreeTimeProductToCartRegUserTest(){
+        HomePage homePage = new HomePage(driver);
+        LoginRegisterDashboardRegisterSectionPage loginRegisterDashboardRegisterSectionPage = new LoginRegisterDashboardRegisterSectionPage(driver);
+        //navigate to login & register dashboard page
+        navigateToLoginAndRegisterDashboardPageTest(homePage);
+        //valid user account creation test
+        validUserAccountCreationTest(loginRegisterDashboardRegisterSectionPage);
+        //add 'Free Time & Electronics' product to cart (as a registered user)
+        addFreeTimeAndElectronicsProductToCartRegUserTest();
+        //add 'Free Time & Electronics' product to check out test (as a registered user)
+        addProductToCheckoutRegUserTest();
+        //valid 'Free Time & Electronics' product to check out submission confirmation test (as a guest) -> registered user and guest share the same test method
+        validOrderCheckoutConfirmationTest();
+    }
+
     //negative checkout confirmation test
 
     //Test 009d -> invalid 'Free Time & Electronics' product check out submission confirmation test - don't click 'Terms and Conditions' checkbox (as a guest)
