@@ -34,6 +34,7 @@ public class CheckoutGuestTooShortLongInputPage extends BasePage{
     private String tooShortGuestFirstName;
     private String tooShortGuestLastName;
     private String tooShortGuestEmail;
+    private String tooShortGuestAddress;
 
     public CheckoutGuestTooShortLongInputPage(WebDriver driver) {super(driver);}
 
@@ -141,6 +142,30 @@ public class CheckoutGuestTooShortLongInputPage extends BasePage{
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(650));
         wait.until(ExpectedConditions.visibilityOf(emailInputField));
         emailInputField.sendKeys(tooShortGuestEmail);
+    }
+
+    public void getInvalidGuestUserTooShortAddressData(){
+        guestFirstName = TestDataGenerator.getRandomFirstName();
+        guestLastName = TestDataGenerator.getRandomLastName();
+        guestEmail = TestDataGenerator.generateRandomEmailAddress(10);
+        tooShortGuestAddress = "F";
+        guestCity = TestDataGenerator.getRandomCity();
+        guestPostalCode = TestDataGenerator.getRandomPostalCode();
+
+        System.out.println("Generated invalid guest user data (too short street address): " + "\n");
+
+        logger.info("Valid guest first name (too short street address): " + guestFirstName);
+        logger.info("Valid guest last name (too short street address): " + tooShortGuestLastName);
+        logger.info("Valid guest email: " + guestEmail);
+        logger.info("Too short guest address: " + tooShortGuestAddress);
+        logger.info("Valid guest city (too short street address): " + guestCity);
+        logger.info("Valid guest postal code (too short street address): " + guestPostalCode + "\n");
+    }
+    //invalid guest user data input method - too short address (1 char)
+    public void inputTooShortAddressIntoAddressInputField(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(650));
+        wait.until(ExpectedConditions.visibilityOf(streetAddressInputField));
+        streetAddressInputField.sendKeys(tooShortGuestAddress);
     }
 
 
