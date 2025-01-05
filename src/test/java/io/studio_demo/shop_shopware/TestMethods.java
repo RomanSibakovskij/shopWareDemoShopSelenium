@@ -3088,6 +3088,57 @@ public class TestMethods extends BaseTest{
         //capture screenshot of the invalid test result
         captureScreenshot(driver, "Invalid Guest Product Checkout Test Result - Invalid First Name Format");
     }
+    //invalid guest checkout (shipping address input) test method - invalid last name format
+    protected void invalidGuestProductInvalidLastNameCheckout(){
+        CheckoutGuestPage checkoutGuestPage = new CheckoutGuestPage(driver);
+        CheckoutGuestInvalidSingularInputPage checkoutGuestInvalidSingularInputPage = new CheckoutGuestInvalidSingularInputPage(driver);
+        //check out (guest) page web element assert
+        isCheckoutGuestPageWebElementDisplayed();
+        //check out (guest) text element assert
+        isCheckoutGuestTextElementAsExpected();
+        //log check out page product data
+        logCheckoutGuestPageProductData();
+        //capture screenshot of the checkout page before invalid data input (guest)
+        captureScreenshot(driver, "Invalid Guest Product Checkout Test - Checkout Guest Page (before data input)");
+        //click salutation dropdown menu
+        checkoutGuestPage.clickSalutationDropdownMenu();
+        //select 'Mr.' option
+        checkoutGuestPage.selectMrSalutation();
+        //invalid guest user data getter - invalid last name format (numbers and special symbols)
+        checkoutGuestInvalidSingularInputPage.getInvalidGuestUserInvalidLastNameData();
+        //input valid first name format
+        checkoutGuestInvalidSingularInputPage.inputGuestFirstNameIntoFirstNameInputField();
+        //input invalid last name format (numbers and special symbols)
+        checkoutGuestInvalidSingularInputPage.inputInvalidLastNameIntoLastNameInputField();
+        //capture screenshot of the checkout page after invalid data input (guest)
+        captureScreenshot(driver, "Invalid Guest Product Checkout Test - Invalid Last Name Format");
+        //input valid email
+        checkoutGuestInvalidSingularInputPage.inputGuestEmailIntoEmailInputField();
+        //input valid address
+        checkoutGuestInvalidSingularInputPage.inputGuestAddressIntoAddressInputField();
+        //input valid city
+        checkoutGuestInvalidSingularInputPage.inputGuestCityIntoCityInputField();
+        //input valid postal code
+        checkoutGuestInvalidSingularInputPage.inputGuestPostalCodeIntoPostCodeInputField();
+        //click country dropdown menu
+        checkoutGuestPage.clickGuestCountryDropdownMenu();
+        //select 'United States' option
+        checkoutGuestPage.selectUSOption();
+        //click state dropdown menu
+        checkoutGuestPage.clickGuestStateDropdownMenu();
+        //select 'Illinois' option
+        checkoutGuestPage.selectIllinoisOption();
+        //click 'Continue' button
+        checkoutGuestPage.clickContinueButton();
+        //assert the user gets an expected error, log the issue if it doesn't appear
+        try {
+            assertEquals("Unfortunately, something went wrong.", checkoutGuestInvalidSingularInputPage.getInvalidSingularInputError(), "The invalid singular input error doesn't match expectations.");
+        } catch (Exception e) {
+            logger.warn("There's no invalid input error message for invalid last name format input", e);
+        }
+        //capture screenshot of the invalid test result
+        captureScreenshot(driver, "Invalid Guest Product Checkout Test Result - Invalid Last Name Format");
+    }
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

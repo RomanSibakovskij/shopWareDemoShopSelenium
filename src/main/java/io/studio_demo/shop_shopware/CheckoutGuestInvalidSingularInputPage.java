@@ -35,6 +35,7 @@ public class CheckoutGuestInvalidSingularInputPage extends BasePage{
 
     //invalid singular input data format
     private String invalidFirstNameFormat;
+    private String invalidLastNameFormat;
 
 
     public CheckoutGuestInvalidSingularInputPage(WebDriver driver) {super(driver);}
@@ -102,6 +103,30 @@ public class CheckoutGuestInvalidSingularInputPage extends BasePage{
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(650));
         wait.until(ExpectedConditions.visibilityOf(firstNameInputField));
         firstNameInputField.sendKeys(invalidFirstNameFormat);
+    }
+
+    public void getInvalidGuestUserInvalidLastNameData(){
+        guestFirstName = TestDataGenerator.getRandomFirstName();
+        invalidLastNameFormat = "65756%^^$%$%^$2312312313&%^&*()*(";
+        guestEmail = TestDataGenerator.generateRandomEmailAddress(10);
+        guestAddress = TestDataGenerator.generateRandomAddress(7);
+        guestCity = TestDataGenerator.getRandomCity();
+        guestPostalCode = TestDataGenerator.getRandomPostalCode();
+
+        System.out.println("Generated invalid guest user data (invalid last name format): " + "\n");
+
+        logger.info("Valid guest first name (invalid last name format): " + guestFirstName);
+        logger.info("Invalid guest last name format: " + invalidLastNameFormat);
+        logger.info("Valid guest email (invalid last name format): " + guestEmail);
+        logger.info("Valid guest address (invalid last name format): " + guestAddress);
+        logger.info("Valid guest city (invalid last name format): " + guestCity);
+        logger.info("Valid guest postal code (invalid last name format): " + guestPostalCode + "\n");
+    }
+    //invalid guest user data input method - invalid last name format (numbers and special symbols)
+    public void inputInvalidLastNameIntoLastNameInputField(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(650));
+        wait.until(ExpectedConditions.visibilityOf(lastNameInputField));
+        lastNameInputField.sendKeys(invalidLastNameFormat);
     }
 
 }
