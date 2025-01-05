@@ -43,6 +43,7 @@ public class CheckoutGuestTooShortLongInputPage extends BasePage{
 
     //too long singular input data
     private String tooLongGuestFirstName;
+    private String tooLongGuestLastName;
 
     public CheckoutGuestTooShortLongInputPage(WebDriver driver) {super(driver);}
 
@@ -255,6 +256,30 @@ public class CheckoutGuestTooShortLongInputPage extends BasePage{
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(650));
         wait.until(ExpectedConditions.visibilityOf(firstNameInputField));
         firstNameInputField.sendKeys(tooLongGuestFirstName);
+    }
+
+    public void getInvalidGuestUserTooLongLastNameData(){
+        guestFirstName = TestDataGenerator.getRandomFirstName();
+        tooLongGuestLastName = "Vhgghghkuiksfssdfsdfsretrjyuloipvlmjhkjhnxvdfsadfsdfhjyuooipkuyjhtgrfsdeghfgjjlhjnbfbvddfhggkjuiuyfdrtyujgdffg";
+        guestEmail = TestDataGenerator.generateRandomEmailAddress(10);
+        guestAddress = TestDataGenerator.generateRandomAddress(7);
+        guestCity = TestDataGenerator.getRandomCity();
+        guestPostalCode = TestDataGenerator.getRandomPostalCode();
+
+        System.out.println("Generated invalid guest user data (too long last name): " + "\n");
+
+        logger.info("Valid guest first name (too long last name): " + guestFirstName);
+        logger.info("Too long guest last name: " + tooLongGuestLastName);
+        logger.info("Valid guest email (too long last name): " + guestEmail);
+        logger.info("Valid guest address (too long last name): " + guestAddress);
+        logger.info("Valid guest city (too long last name): " + guestCity);
+        logger.info("Valid guest postal code (too long last name): " + guestPostalCode + "\n");
+    }
+    //invalid guest user data input method - too long last name (110 chars)
+    public void inputTooLongLastNameIntoLastNameInputField(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(650));
+        wait.until(ExpectedConditions.visibilityOf(lastNameInputField));
+        lastNameInputField.sendKeys(tooLongGuestLastName);
     }
 
 }

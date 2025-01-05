@@ -2692,7 +2692,7 @@ public class TestMethods extends BaseTest{
 
     //too long singular input tests
 
-    //invalid guest checkout (shipping address input) test method - too long first name 
+    //invalid guest checkout (shipping address input) test method - too long first name
     protected void invalidGuestProductTooLongFirstNameCheckout(){
         CheckoutGuestPage checkoutGuestPage = new CheckoutGuestPage(driver);
         CheckoutGuestTooShortLongInputPage checkoutGuestTooShortLongInputPage = new CheckoutGuestTooShortLongInputPage(driver);
@@ -2738,6 +2738,53 @@ public class TestMethods extends BaseTest{
         assertEquals("Unfortunately, something went wrong.", checkoutGuestTooShortLongInputPage.getInvalidSingularInputError(), "The invalid singular input error doesn't match expectations.");
         //capture screenshot of the invalid test result
         captureScreenshot(driver, "Invalid Guest Product Checkout Test Result - Too Long First Name");
+    }
+    //invalid guest checkout (shipping address input) test method - too long last name
+    protected void invalidGuestProductTooLongLastNameCheckout(){
+        CheckoutGuestPage checkoutGuestPage = new CheckoutGuestPage(driver);
+        CheckoutGuestTooShortLongInputPage checkoutGuestTooShortLongInputPage = new CheckoutGuestTooShortLongInputPage(driver);
+        //check out (guest) page web element assert
+        isCheckoutGuestPageWebElementDisplayed();
+        //check out (guest) text element assert
+        isCheckoutGuestTextElementAsExpected();
+        //log check out page product data
+        logCheckoutGuestPageProductData();
+        //capture screenshot of the checkout page before invalid data input (guest)
+        captureScreenshot(driver, "Invalid Guest Product Checkout Test - Checkout Guest Page (before data input)");
+        //click salutation dropdown menu
+        checkoutGuestPage.clickSalutationDropdownMenu();
+        //select 'Mr.' option
+        checkoutGuestPage.selectMrSalutation();
+        //invalid guest user data getter - too long last name (110 chars)
+        checkoutGuestTooShortLongInputPage.getInvalidGuestUserTooLongLastNameData();
+        //input valid first name
+        checkoutGuestTooShortLongInputPage.inputGuestFirstNameIntoFirstNameInputField();
+        //input too long last name (110 chars)
+        checkoutGuestTooShortLongInputPage.inputTooLongLastNameIntoLastNameInputField();
+        //capture screenshot of the checkout page after invalid data input (guest)
+        captureScreenshot(driver, "Invalid Guest Product Checkout Test - Too Long Last Name");
+        //input valid email
+        checkoutGuestTooShortLongInputPage.inputGuestEmailIntoEmailInputField();
+        //input valid address
+        checkoutGuestTooShortLongInputPage.inputGuestAddressIntoAddressInputField();
+        //input valid city
+        checkoutGuestTooShortLongInputPage.inputGuestCityIntoCityInputField();
+        //input valid postal code
+        checkoutGuestTooShortLongInputPage.inputGuestPostalCodeIntoPostCodeInputField();
+        //click country dropdown menu
+        checkoutGuestPage.clickGuestCountryDropdownMenu();
+        //select 'United States' option
+        checkoutGuestPage.selectUSOption();
+        //click state dropdown menu
+        checkoutGuestPage.clickGuestStateDropdownMenu();
+        //select 'Illinois' option
+        checkoutGuestPage.selectIllinoisOption();
+        //click 'Continue' button
+        checkoutGuestPage.clickContinueButton();
+        //assert the user gets an expected error
+        assertEquals("Unfortunately, something went wrong.", checkoutGuestTooShortLongInputPage.getInvalidSingularInputError(), "The invalid singular input error doesn't match expectations.");
+        //capture screenshot of the invalid test result
+        captureScreenshot(driver, "Invalid Guest Product Checkout Test Result - Too Long Last Name");
     }
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
