@@ -45,6 +45,7 @@ public class CheckoutGuestTooShortLongInputPage extends BasePage{
     private String tooLongGuestFirstName;
     private String tooLongGuestLastName;
     private String tooLongGuestEmail;
+    private String tooLongGuestAddress;
 
     public CheckoutGuestTooShortLongInputPage(WebDriver driver) {super(driver);}
 
@@ -305,6 +306,30 @@ public class CheckoutGuestTooShortLongInputPage extends BasePage{
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(650));
         wait.until(ExpectedConditions.visibilityOf(emailInputField));
         emailInputField.sendKeys(tooLongGuestEmail);
+    }
+
+    public void getInvalidGuestUserTooLongAddressData(){
+        guestFirstName = TestDataGenerator.getRandomFirstName();
+        guestLastName = TestDataGenerator.getRandomLastName();
+        guestEmail = TestDataGenerator.generateRandomEmailAddress(10);
+        tooLongGuestAddress = TestDataGenerator.generateRandomAddress(100);
+        guestCity = TestDataGenerator.getRandomCity();
+        guestPostalCode = TestDataGenerator.getRandomPostalCode();
+
+        System.out.println("Generated invalid guest user data (too long street address): " + "\n");
+
+        logger.info("Valid guest first name (too long street address): " + guestFirstName);
+        logger.info("Valid guest last name (too long street address): " + tooShortGuestLastName);
+        logger.info("Valid guest email (too long street address): " + guestEmail);
+        logger.info("Too long guest address: " + tooLongGuestAddress);
+        logger.info("Valid guest city (too long street address): " + guestCity);
+        logger.info("Valid guest postal code (too long street address): " + guestPostalCode + "\n");
+    }
+    //invalid guest user data input method - too long street address (100 chars)
+    public void inputTooLongAddressIntoAddressInputField(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(650));
+        wait.until(ExpectedConditions.visibilityOf(streetAddressInputField));
+        streetAddressInputField.sendKeys(tooLongGuestAddress);
     }
 
 }

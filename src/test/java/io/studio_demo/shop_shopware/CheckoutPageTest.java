@@ -287,6 +287,22 @@ public class CheckoutPageTest extends TestMethods{
         invalidGuestProductTooLongEmailCheckout();
     }
 
+    //Test 007q -> invalid 'Free Time & Electronics' product check out (shipping address) test - too long street address (as a guest)  (the checkout doesn't get aborted - test has failed)
+    @Test
+    @DisplayName("Invalid 'Free Time & Electronics' Product To Checkout Test (shipping address) - Too Long Address (as a guest)")
+    @Tag("Invalid_Singular_Product_Checkout")
+    @Tag("Shipping_Address_Guest")
+    @Tag("Too_Long_Singular_Input")
+    @Tag("Test_As_A_Guest")
+    void invalidFreeTimeProductCheckoutTooLongAddressTest(){
+        //add 'Free Time & Electronics' product to cart test (as a guest)
+        addFreeTimeAndElectronicsProductToCartTest();
+        //add 'Free Time & Electronics' product to check out test (as a guest)
+        addProductToCheckoutTest();
+        //invalid 'Free Time & Electronics' product to check out test (shipping address) - too long street address (as a guest) (100 chars)
+        invalidGuestProductTooLongAddressCheckout();
+    }
+
     //multiple product checkout tests
 
     //Test 008 -> valid 'Clothing' products to check out (shipping address) test (as a guest)
