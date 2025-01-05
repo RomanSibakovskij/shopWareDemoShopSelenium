@@ -3389,6 +3389,29 @@ public class TestMethods extends BaseTest{
         captureScreenshot(driver, "Invalid Guest Product Checkout Test Result - Invalid Postal Code Format");
     }
 
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    //order checkout confirmation test methods
+
+    //valid order checkout confirmation test method
+    protected void validOrderCheckoutConfirmationTest(){
+        CheckoutConfirmationPage checkoutConfirmationPage = new CheckoutConfirmationPage(driver);
+        //checkout confirmation page web element
+        isCheckoutConfirmationPageWebElementDisplayed();
+        //checkout confirmation page text element assert
+        isCheckoutConfirmationTextElementAsExpected();
+        //log checkout confirmation page data
+        logCheckoutConfirmationPageProductData();
+        //click 'Terms and Conditions' checkbox
+        checkoutConfirmationPage.clickTermsConditionsCheckbox();
+        //capture screenshot of the checkout confirmation page
+        captureScreenshot(driver, "Valid Checkout Confirmation Test - Checkout Confirmation Page Data");
+        //click 'Submit order' button
+        checkoutConfirmationPage.clickSubmitOrderButton();
+        //capture screenshot of the test result
+        captureScreenshot(driver, "Valid Checkout Confirmation Test Result - Checkout Submission Confirmation Successful");
+    }
+
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     //general page web element assert test method(all pages have the (header/footer) same ones except for checkout page)
@@ -3905,6 +3928,27 @@ public class TestMethods extends BaseTest{
         assertEquals("Shopping cart", checkoutGuestPage.getShoppingCartSectionTitle(), "The shopping cart section title doesn't match expectations");
     }
 
+    //checkout confirmation page text element assert method
+    protected void isCheckoutConfirmationTextElementAsExpected(){
+        CheckoutConfirmationPage checkoutConfirmationPage = new CheckoutConfirmationPage(driver);
+        //assert header contact text matches expectations
+        assertEquals("Questions regarding your order?\n" + "12345-123456789 Daily from 7:30 am to 10:00 pm", checkoutConfirmationPage.getHeaderContactText(), "The header contact text doesn't match expectations");
+        //assert terms and conditions section title matches expectations
+        assertEquals("Terms and conditions and cancellation policy", checkoutConfirmationPage.getTermsConditionsSectionTitle(), "The terms and conditions section title doesn't match expectations");
+        //assert terms and conditions policy text matches expectations
+        assertEquals("Please note our cancellation policy.", checkoutConfirmationPage.getTermsConditionsPolicyTextDescription(), "The terms and conditions policy text doesn't match expectations");
+        //assert terms and conditions description matches expectations
+        assertEquals("I have read and accepted the general terms and conditions.", checkoutConfirmationPage.getTermsConditionsDescription(), "The terms and conditions description doesn't match expectations");
+        //assert shipping address section title matches expectations
+        assertEquals("Shipping address", checkoutConfirmationPage.getShippingAddressSectionTitle(), "The shipping address section title doesn't match expectations");
+        //assert billing address section title matches expectations
+        assertEquals("Billing address", checkoutConfirmationPage.getBillingAddressSectionTitle(), "The billing address section title doesn't match expectations");
+        //assert payment method section title matches expectations
+        assertEquals("Payment method", checkoutConfirmationPage.getPaymentMethodSectionTitle(), "The payment method section title doesn't match expectations");
+        //assert shipping method section title matches expectations
+        assertEquals("Shipping method", checkoutConfirmationPage.getShippingMethodSectionTitle(), "The shipping method section doesn't match expectations");
+    }
+
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     //account overview data logger method
@@ -3983,6 +4027,31 @@ public class TestMethods extends BaseTest{
         logger.info("Checkout (guest) shopping cart total price(s): " + checkoutGuestPage.getProductTotalPrice() + "\n");
 
         System.out.println("\n");
+    }
+
+    //check out confirmation page data logger method
+    protected void logCheckoutConfirmationPageProductData(){
+        CheckoutConfirmationPage checkoutConfirmationPage = new CheckoutConfirmationPage(driver);
+
+        System.out.println("Checkout confirmation page displayed product data:" + "\n");
+
+        logger.info("Order shipping address data: " + checkoutConfirmationPage.getShippingAddressData() + "\n");
+        logger.info("Order billing address data: " + checkoutConfirmationPage.getBillingAddressData() + "\n");
+        logger.info("Order payment method data: " + checkoutConfirmationPage.getPaymentMethodData() + "\n");
+        logger.info("Order shipping method data: " + checkoutConfirmationPage.getShippingMethodData() + "\n");
+
+        System.out.println("Order table and summary displayed data: " + "\n");
+
+        logger.info("Ordered product title(s): " + checkoutConfirmationPage.getProductTitleLink() + "\n");
+        logger.info("Ordered product description(s): " + checkoutConfirmationPage.getProductDescription() + "\n");
+        logger.info("Ordered product quantity(ies): " + checkoutConfirmationPage.getProductQuantity() + "\n");
+        logger.info("Ordered product price with VAT: " + checkoutConfirmationPage.getProductPriceWithVAT() + "\n");
+        logger.info("Order product sub total price(s): " + checkoutConfirmationPage.getProductSubTotalPrice() + "\n");
+        logger.info("Order summary total price: " + checkoutConfirmationPage.getSummaryTotalPrice() + "\n");
+        logger.info("Order summary shipping price: " + checkoutConfirmationPage.getSummaryShippingPrice() + "\n");
+        logger.info("Order summary grand total price: " + checkoutConfirmationPage.getSummaryGrandTotalPrice() + "\n");
+        logger.info("Order summary net total price: " + checkoutConfirmationPage.getSummaryNetTotalPrice() + "\n");
+        logger.info("Order summary price with VAT: " + checkoutConfirmationPage.getSummaryPriceWithVAT() + "\n");
     }
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

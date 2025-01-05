@@ -5,6 +5,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.*;
 
 import java.time.Duration;
+import java.util.ArrayList;
 import java.util.List;
 
 public class CheckoutConfirmationPage extends BasePage {
@@ -93,6 +94,174 @@ public class CheckoutConfirmationPage extends BasePage {
     private WebElement submitOrderButton;
 
     public CheckoutConfirmationPage(WebDriver driver) {super(driver);}
+
+    //header contact text getter
+    public String getHeaderContactText() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(700));
+        wait.until(ExpectedConditions.visibilityOf(headerContactText));
+        return headerContactText.getText();
+    }
+    //checkout confirmation page title getter
+    public String getCheckoutConfirmationPageTitle() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(700));
+        wait.until(ExpectedConditions.visibilityOf(checkoutConfirmPageTitle));
+        return checkoutConfirmPageTitle.getText();
+    }
+    //terms and conditions section title getter
+    public String getTermsConditionsSectionTitle() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(700));
+        wait.until(ExpectedConditions.visibilityOf(termsConditionsSectionTitle));
+        return termsConditionsSectionTitle.getText();
+    }
+    //terms and conditions policy text getter
+    public String getTermsConditionsPolicyTextDescription() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(700));
+        wait.until(ExpectedConditions.visibilityOf(termsConditionsCancellationPolicyDescText));
+        return termsConditionsCancellationPolicyDescText.getText();
+    }
+    //terms and conditions description getter
+    public String getTermsConditionsDescription() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(700));
+        wait.until(ExpectedConditions.visibilityOf(termsConditionsDescriptionText));
+        return termsConditionsDescriptionText.getText();
+    }
+    //shipping address section title getter
+    public String getShippingAddressSectionTitle() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(700));
+        wait.until(ExpectedConditions.visibilityOf(shippingAddressSectionTitle));
+        return shippingAddressSectionTitle.getText();
+    }
+    //billing address section title getter
+    public String getBillingAddressSectionTitle() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(700));
+        wait.until(ExpectedConditions.visibilityOf(billingAddressSectionTitle));
+        return billingAddressSectionTitle.getText();
+    }
+    //payment method section title getter
+    public String getPaymentMethodSectionTitle() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(700));
+        wait.until(ExpectedConditions.visibilityOf(paymentMethodSectionTitle));
+        return paymentMethodSectionTitle.getText();
+    }
+    //shipping method section title getter
+    public String getShippingMethodSectionTitle() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(700));
+        wait.until(ExpectedConditions.visibilityOf(shippingMethodSectionTitle));
+        return shippingMethodSectionTitle.getText();
+    }
+
+
+
+    //shipping address data getter
+    public String getShippingAddressData() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(700));
+        wait.until(ExpectedConditions.visibilityOf(shippingAddressData));
+        return shippingAddressData.getText();
+    }
+    //billing address data getter
+    public String getBillingAddressData() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(700));
+        wait.until(ExpectedConditions.visibilityOf(billingAddressData));
+        return billingAddressData.getText();
+    }
+    //checkout confirmation page title getter
+    public String getPaymentMethodData() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(700));
+        wait.until(ExpectedConditions.visibilityOf(paymentMethodData));
+        return paymentMethodData.getText();
+    }
+    //shipping method data getter
+    public String getShippingMethodData() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(700));
+        wait.until(ExpectedConditions.visibilityOf(shippingMethodData));
+        return shippingMethodData.getText();
+    }
+
+    //product title link getter
+    public List<String> getProductTitleLink() {
+        List<String> productTitle = new ArrayList<>();
+        for (WebElement element : checkoutProductTitleLinkElements) {
+            productTitle.add(element.getText());
+        }
+        return productTitle;
+    }
+    //product description getter
+    public List<String> getProductDescription() {
+        List<String> productDescription = new ArrayList<>();
+        for (WebElement element : checkoutProductDescriptionElements) {
+            productDescription.add(element.getText());
+        }
+        return productDescription;
+    }
+    //product quantity getter
+    public List<String> getProductQuantity() {
+        List<String> productQuantity = new ArrayList<>();
+        for (WebElement element : checkoutProductQtyInputFieldElements) {
+            productQuantity.add(element.getDomAttribute("value"));
+        }
+        return productQuantity;
+    }
+    //product price with VAT getter
+    public List<String> getProductPriceWithVAT() {
+        List<String> productPriceWithVAT = new ArrayList<>();
+        for (WebElement element : checkoutProductPriceWithVATElements) {
+            productPriceWithVAT.add(element.getText());
+        }
+        return productPriceWithVAT;
+    }
+    //product sub total price getter
+    public List<String> getProductSubTotalPrice() {
+        List<String> productSubTotalPrice = new ArrayList<>();
+        for (WebElement element : checkoutProductSubtotalPriceElements) {
+            productSubTotalPrice.add(element.getText());
+        }
+        return productSubTotalPrice;
+    }
+
+    //order summary total getter
+    public String getSummaryTotalPrice() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(700));
+        wait.until(ExpectedConditions.visibilityOf(summaryTotalPrice));
+        return summaryTotalPrice.getText();
+    }
+    //order shipping price getter
+    public String getSummaryShippingPrice() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(700));
+        wait.until(ExpectedConditions.visibilityOf(summaryShippingPrice));
+        return summaryShippingPrice.getText();
+    }
+    //order summary grand total price getter
+    public String getSummaryGrandTotalPrice() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(700));
+        wait.until(ExpectedConditions.visibilityOf(summaryGrandTotalPrice));
+        return summaryGrandTotalPrice.getText();
+    }
+    //order summary net total price getter
+    public String getSummaryNetTotalPrice() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(700));
+        wait.until(ExpectedConditions.visibilityOf(summaryNetTotalPrice));
+        return summaryNetTotalPrice.getText();
+    }
+    //order summary price with VAT getter
+    public String getSummaryPriceWithVAT() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(700));
+        wait.until(ExpectedConditions.visibilityOf(summaryVATPrice));
+        return summaryVATPrice.getText();
+    }
+
+    //click 'Terms and conditions' checkbox method
+    public void clickTermsConditionsCheckbox() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(700));
+        wait.until(ExpectedConditions.elementToBeClickable(termsConditionsCheckbox));
+        termsConditionsCheckbox.click();
+    }
+
+    //click 'Submit order' button method
+    public void clickSubmitOrderButton() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(700));
+        wait.until(ExpectedConditions.elementToBeClickable(submitOrderButton));
+        submitOrderButton.click();
+    }
 
     //checkout page web element assert methods
     public boolean isHeaderContactTextDisplayed() {return headerContactText.isDisplayed();}
