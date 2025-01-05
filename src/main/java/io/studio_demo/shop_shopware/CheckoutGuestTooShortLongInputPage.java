@@ -36,6 +36,7 @@ public class CheckoutGuestTooShortLongInputPage extends BasePage{
     private String tooShortGuestEmail;
     private String tooShortGuestAddress;
     private String tooShortGuestCity;
+    private int tooShortGuestPostalCode;
 
     public CheckoutGuestTooShortLongInputPage(WebDriver driver) {super(driver);}
 
@@ -191,6 +192,30 @@ public class CheckoutGuestTooShortLongInputPage extends BasePage{
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(650));
         wait.until(ExpectedConditions.visibilityOf(cityInputField));
         cityInputField.sendKeys(tooShortGuestCity);
+    }
+
+    public void getInvalidGuestUserTooShortPostalCodeData(){
+        guestFirstName = TestDataGenerator.getRandomFirstName();
+        guestLastName = TestDataGenerator.getRandomLastName();
+        guestEmail = TestDataGenerator.generateRandomEmailAddress(10);
+        guestAddress = TestDataGenerator.generateRandomAddress(7);
+        guestCity = TestDataGenerator.getRandomCity();
+        tooShortGuestPostalCode = 42;
+
+        System.out.println("Generated invalid guest user data (too short postal code): " + "\n");
+
+        logger.info("Valid guest first name (too short postal code): " + guestFirstName);
+        logger.info("Valid guest last name (too short postal code): " + tooShortGuestLastName);
+        logger.info("Valid guest email (too short postal code): " + guestEmail);
+        logger.info("Valid guest address (too short postal code): " + guestAddress);
+        logger.info("Valid guest city (too short postal code): " + guestCity);
+        logger.info("Too short guest postal code (too short postal code): " + tooShortGuestPostalCode + "\n");
+    }
+    //invalid guest user data input method - too short postal code (2 digits)
+    public void inputTooShortPostalCodeIntoPostalCodeInputField(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(650));
+        wait.until(ExpectedConditions.visibilityOf(postalCodeInputField));
+        postalCodeInputField.sendKeys(String.valueOf(tooShortGuestPostalCode));
     }
 
 

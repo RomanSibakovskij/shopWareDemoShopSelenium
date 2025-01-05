@@ -305,7 +305,7 @@ public class RegisterSectionTooShortLongInputPage extends BasePage{
         logger.info("Valid user city (too long first name): " + city);
         logger.info("Valid user postal code (too long first name): " + postalCode);
     }
-    //invalid user register data input method - too short first name (100 char is usually too long)
+    //invalid user register data input method - too long first name (100 char is usually too long)
     public void inputTooLongFirstNameIntoFirstNameInputField(){
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(650));
         wait.until(ExpectedConditions.visibilityOf(registerSectionFirstNameInputField));
