@@ -39,6 +39,7 @@ public class CheckoutGuestInvalidSingularInputPage extends BasePage{
     private String invalidEmailFormat;
     private String invalidAddressFormat;
     private String invalidCityFormat;
+    private String invalidPostalCodeFormat;
 
     //existing email input
     private String existingEmail;
@@ -229,6 +230,30 @@ public class CheckoutGuestInvalidSingularInputPage extends BasePage{
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(650));
         wait.until(ExpectedConditions.visibilityOf(cityInputField));
         cityInputField.sendKeys(invalidCityFormat);
+    }
+
+    public void getInvalidGuestUserInvalidPostalCodeData(){
+        guestFirstName = TestDataGenerator.getRandomFirstName();
+        guestLastName = TestDataGenerator.getRandomLastName();
+        guestEmail = TestDataGenerator.generateRandomEmailAddress(10);
+        guestAddress = TestDataGenerator.generateRandomAddress(7);
+        guestCity = TestDataGenerator.getRandomCity();
+        invalidPostalCodeFormat = "!#@#%#$%^&%^*&^%^";
+
+        System.out.println("Generated invalid guest user data (invalid postal code format): " + "\n");
+
+        logger.info("Valid guest first name (invalid postal code format): " + guestFirstName);
+        logger.info("Valid guest last name (invalid postal code format): " + guestLastName);
+        logger.info("Valid guest email (invalid postal code format): " + guestEmail);
+        logger.info("Valid guest address (invalid postal code format): " + guestAddress);
+        logger.info("Valid guest city (invalid postal code format): " + guestCity);
+        logger.info("Invalid guest postal code format: " + invalidPostalCodeFormat + "\n");
+    }
+    //invalid guest user data input method - invalid postal code format (special symbols only)
+    public void inputInvalidPostalCodeIntoPostalCodeInputField(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(650));
+        wait.until(ExpectedConditions.visibilityOf(postalCodeInputField));
+        postalCodeInputField.sendKeys(invalidPostalCodeFormat);
     }
 
 }

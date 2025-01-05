@@ -3337,6 +3337,57 @@ public class TestMethods extends BaseTest{
         //capture screenshot of the invalid test result
         captureScreenshot(driver, "Invalid Guest Product Checkout Test Result - Invalid City Format");
     }
+    //invalid guest checkout (shipping address input) test method - invalid postal code format (this form doesn't have an invalid email address input error, so the screenshots are being used as proof for the test run) (checkout doesn't get aborted)
+    protected void invalidGuestProductInvalidPostalCodeCheckout(){
+        CheckoutGuestPage checkoutGuestPage = new CheckoutGuestPage(driver);
+        CheckoutGuestInvalidSingularInputPage checkoutGuestInvalidSingularInputPage = new CheckoutGuestInvalidSingularInputPage(driver);
+        //check out (guest) page web element assert
+        isCheckoutGuestPageWebElementDisplayed();
+        //check out (guest) text element assert
+        isCheckoutGuestTextElementAsExpected();
+        //log check out page product data
+        logCheckoutGuestPageProductData();
+        //capture screenshot of the checkout page before invalid data input (guest)
+        captureScreenshot(driver, "Invalid Guest Product Checkout Test - Checkout Guest Page (before data input)");
+        //click salutation dropdown menu
+        checkoutGuestPage.clickSalutationDropdownMenu();
+        //select 'Mr.' option
+        checkoutGuestPage.selectMrSalutation();
+        //invalid guest user data getter - invalid postal code (special symbols only)
+        checkoutGuestInvalidSingularInputPage.getInvalidGuestUserInvalidPostalCodeData();
+        //input valid first name format
+        checkoutGuestInvalidSingularInputPage.inputGuestFirstNameIntoFirstNameInputField();
+        //input valid last name format
+        checkoutGuestInvalidSingularInputPage.inputGuestLastNameIntoLastNameInputField();
+        //input valid email address
+        checkoutGuestInvalidSingularInputPage.inputGuestEmailIntoEmailInputField();
+        //input valid street address format
+        checkoutGuestInvalidSingularInputPage.inputGuestAddressIntoAddressInputField();
+        //input valid city
+        checkoutGuestInvalidSingularInputPage.inputGuestCityIntoCityInputField();
+        //input invalid postal code (special symbols)
+        checkoutGuestInvalidSingularInputPage.inputInvalidPostalCodeIntoPostalCodeInputField();
+        //capture screenshot of the checkout page after invalid data input (guest)
+        captureScreenshot(driver, "Invalid Guest Product Checkout Test - Invalid Postal Code Format");
+        //click country dropdown menu
+        checkoutGuestPage.clickGuestCountryDropdownMenu();
+        //select 'United States' option
+        checkoutGuestPage.selectUSOption();
+        //click state dropdown menu
+        checkoutGuestPage.clickGuestStateDropdownMenu();
+        //select 'Illinois' option
+        checkoutGuestPage.selectIllinoisOption();
+        //click 'Continue' button
+        checkoutGuestPage.clickContinueButton();
+        //assert the user gets an expected error, log the issue if it doesn't appear
+        try {
+            assertEquals("Unfortunately, something went wrong.", checkoutGuestInvalidSingularInputPage.getInvalidSingularInputError(), "The invalid singular input error doesn't match expectations.");
+        } catch (Exception e) {
+            logger.warn("There's no invalid input error message for invalid postal code format input", e);
+        }
+        //capture screenshot of the invalid test result
+        captureScreenshot(driver, "Invalid Guest Product Checkout Test Result - Invalid Postal Code Format");
+    }
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

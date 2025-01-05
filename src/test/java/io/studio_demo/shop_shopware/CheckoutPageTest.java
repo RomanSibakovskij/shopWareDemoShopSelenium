@@ -433,6 +433,22 @@ public class CheckoutPageTest extends TestMethods{
         invalidGuestProductInvalidCityCheckout();
     }
 
+    //Test 007z -> invalid 'Free Time & Electronics' product check out (shipping address) test - invalid postal code format (as a guest) (the checkout doesn't get aborted - test has failed)
+    @Test
+    @DisplayName("Invalid 'Free Time & Electronics' Product To Checkout Test (shipping address) - Invalid Postal Code Format (as a guest)")
+    @Tag("Invalid_Singular_Product_Checkout")
+    @Tag("Shipping_Address_Guest")
+    @Tag("Invalid_Singular_Input_Format")
+    @Tag("Test_As_A_Guest")
+    void invalidFreeTimeProductCheckoutInvalidPostalCodeTest(){
+        //add 'Free Time & Electronics' product to cart test (as a guest)
+        addFreeTimeAndElectronicsProductToCartTest();
+        //add 'Free Time & Electronics' product to check out test (as a guest)
+        addProductToCheckoutTest();
+        //invalid 'Free Time & Electronics' product to check out test (shipping address) - invalid postal code format (as a guest) (special symbols only)
+        invalidGuestProductInvalidPostalCodeCheckout();
+    }
+
     //multiple product checkout tests
 
     //Test 008 -> valid 'Clothing' products to check out (shipping address) test (as a guest)
