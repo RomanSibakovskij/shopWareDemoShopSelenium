@@ -237,7 +237,7 @@ public class CheckoutPageTest extends TestMethods{
         invalidGuestProductTooShortPostalCodeCheckout();
     }
 
-    //too short singular input
+    //too long singular input
 
     //Test 007n -> invalid 'Free Time & Electronics' product check out (shipping address) test - too long first name (as a guest)
     @Test
@@ -319,7 +319,7 @@ public class CheckoutPageTest extends TestMethods{
         invalidGuestProductTooLongCityCheckout();
     }
 
-    //Test 007s -> invalid 'Free Time & Electronics' product check out (shipping address) test - too long postal code (as a guest)  (the checkout doesn't get aborted - test has failed)
+    //Test 007s -> invalid 'Free Time & Electronics' product check out (shipping address) test - too long postal code (as a guest) (the checkout doesn't get aborted - test has failed)
     @Test
     @DisplayName("Invalid 'Free Time & Electronics' Product To Checkout Test (shipping address) - Too Long Postal Code (as a guest)")
     @Tag("Invalid_Singular_Product_Checkout")
@@ -333,6 +333,24 @@ public class CheckoutPageTest extends TestMethods{
         addProductToCheckoutTest();
         //invalid 'Free Time & Electronics' product to check out test (shipping address) - too long postal code (as a guest) (50 digits)
         invalidGuestProductTooLongPostalCodeCheckout();
+    }
+
+    //invalid singular input format
+
+    //Test 007t -> invalid 'Free Time & Electronics' product check out (shipping address) test - invalid first name format (as a guest) (the checkout doesn't get aborted - test has failed)
+    @Test
+    @DisplayName("Invalid 'Free Time & Electronics' Product To Checkout Test (shipping address) - Invalid First Name Format (as a guest)")
+    @Tag("Invalid_Singular_Product_Checkout")
+    @Tag("Shipping_Address_Guest")
+    @Tag("Invalid_Singular_Input_Format")
+    @Tag("Test_As_A_Guest")
+    void invalidFreeTimeProductCheckoutInvalidFirstNameTest(){
+        //add 'Free Time & Electronics' product to cart test (as a guest)
+        addFreeTimeAndElectronicsProductToCartTest();
+        //add 'Free Time & Electronics' product to check out test (as a guest)
+        addProductToCheckoutTest();
+        //invalid 'Free Time & Electronics' product to check out test (shipping address) - invalid first name (as a guest) (numbers and special symbols)
+        invalidGuestProductInvalidFirstNameCheckout();
     }
 
     //multiple product checkout tests
