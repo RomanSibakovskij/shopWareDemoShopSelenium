@@ -3732,6 +3732,83 @@ public class TestMethods extends BaseTest{
         //assertTrue(checkoutGuestPage.isShoppingCartProductUnitPriceDisplayed(), "The shopping cart product unit price isn't displayed");
     }
 
+    //checkout confirmation page web element test assert method
+    protected void isCheckoutConfirmationPageWebElementDisplayed(){
+        CheckoutConfirmationPage checkoutConfirmationPage = new CheckoutConfirmationPage(driver);
+        //assert header contact text is displayed
+        assertTrue(checkoutConfirmationPage.isHeaderContactTextDisplayed(), "The header contact text isn't displayed");
+        //assert header contact link is displayed
+        assertTrue(checkoutConfirmationPage.isHeaderContactNumberLinkDisplayed(), "The header contact number link isn't displayed");
+        //assert header 'Back to Shop' button is displayed
+        assertTrue(checkoutConfirmationPage.isHeaderBackToShopButtonDisplayed(), "The header 'Back to Shop' button isn't displayed");
+        //assert check out confirmation page title is displayed
+        assertTrue(checkoutConfirmationPage.isCheckoutConfirmationTitleDisplayed(), "The checkout confirmation page title isn't displayed");
+        //assert terms and conditions section title is displayed
+        assertTrue(checkoutConfirmationPage.isTermsConditionsSectionTitleDisplayed(), "The terms and conditions section title isn't displayed");
+        //assert terms and conditions cancellation policy text description is displayed
+        assertTrue(checkoutConfirmationPage.isTermsConditionsCancellationPolicyTextDescDisplayed(), "The terms and conditions cancellation policy text description isn't displayed");
+        //assert terms and conditions cancellation policy link is displayed
+        assertTrue(checkoutConfirmationPage.isTermsConditionsCancellationPolicyLinkDisplayed(), "The terms and conditions cancellation policy link isn't displayed");
+        //assert terms and conditions link is displayed
+        assertTrue(checkoutConfirmationPage.isTermsConditionsLinkDisplayed(), "The terms and conditions link isn't displayed");
+        //assert terms and conditions checkbox is displayed
+        assertTrue(checkoutConfirmationPage.isTermsConditionsCheckboxDisplayed(), "The terms and conditions checkbox isn't displayed");
+        //assert terms and conditions description text is displayed
+        assertTrue(checkoutConfirmationPage.isTermsConditionsDescriptionTextDisplayed(), "The terms and conditions descriptions text isn't displayed");
+        //assert shipping address section title is displayed
+        assertTrue(checkoutConfirmationPage.isShippingAddressSectionTitleDisplayed(), "The shipping address section title isn't displayed");
+        //assert shipping address data is displayed
+        assertTrue(checkoutConfirmationPage.isShippingAddressDataDisplayed(), "The shipping address data isn't displayed");
+        //assert 'change shipping address' button is displayed
+        assertTrue(checkoutConfirmationPage.isChangeShippingAddressButtonDisplayed(), "The 'Change shipping address' button isn't displayed");
+        //assert billing address section title is displayed
+        assertTrue(checkoutConfirmationPage.isBillingAddressSectionTitleDisplayed(), "The billing address section title isn't displayed");
+        //assert billing address data is displayed
+        assertTrue(checkoutConfirmationPage.isBillingAddressDataDisplayed(), "The billing address data isn't displayed");
+        //assert 'change billing address' button is displayed
+        assertTrue(checkoutConfirmationPage.isChangeBillingAddressButtonDisplayed(), "The 'Change billing address' button isn't displayed");
+        //assert payment method section title is displayed
+        assertTrue(checkoutConfirmationPage.isPaymentMethodSectionTitleDisplayed(), "The payment method section title isn't displayed");
+        //assert payment method data is displayed
+        assertTrue(checkoutConfirmationPage.isPaymentMethodDataDisplayed(), "The payment method data isn't displayed");
+        //assert shipping method section title is displayed
+        assertTrue(checkoutConfirmationPage.isShippingMethodSectionTitleDisplayed(), "The shipping method section title isn't displayed");
+        //assert shipping method data is displayed
+        assertTrue(checkoutConfirmationPage.isShippingMethodDataDisplayed(), "The shipping method data isn't displayed");
+        //assert check out product image placeholder (as a list) is displayed
+        assertTrue(checkoutConfirmationPage.isCheckoutProductImgPlaceholderDisplayed(), "The check out product image placeholder isn't displayed");
+        //assert check out product title link (as a list) is displayed
+        assertTrue(checkoutConfirmationPage.isCheckoutProductTitleLinkDisplayed(), "The check out product title link isn't displayed");
+        //assert check out product description (as a list) is displayed
+        assertTrue(checkoutConfirmationPage.isCheckoutProductDescriptionDisplayed(), "The check out product description isn't displayed");
+        //assert check out product quantity decrease button (as a list) is displayed
+        assertTrue(checkoutConfirmationPage.isCheckoutProductQtyDecreaseButtonDisplayed(), "The check out product quantity decrease button isn't displayed");
+        //assert check out product quantity input field (as a list) is displayed
+        assertTrue(checkoutConfirmationPage.isCheckoutProductQtyInputFieldDisplayed(), "The check out product quantity input field isn't displayed");
+        //assert check out product quantity increase button (as a list) is displayed
+        assertTrue(checkoutConfirmationPage.isCheckoutProductQtyIncreaseButtonDisplayed(), "The check out product quantity increase button isn't displayed");
+        //assert check out product price with VAT (as a list) is displayed
+        assertTrue(checkoutConfirmationPage.isCheckoutProductPriceWithVATDisplayed(), "The check out product price with VAT isn't displayed");
+        //assert check out product subtotal price (as a list) is displayed
+        assertTrue(checkoutConfirmationPage.isCheckoutProductSubtotalPriceDisplayed(), "The check out product subtotal price isn't displayed");
+        //assert check out product remove button (as a list) is displayed
+        assertTrue(checkoutConfirmationPage.isCheckoutProductRemoveButtonDisplayed(), "The check out product remove button isn't displayed");
+        //assert check out summary section title is displayed
+        assertTrue(checkoutConfirmationPage.isSummarySectionTitleDisplayed(), "The check out summary section title isn't displayed");
+        //assert check out summary total price is displayed
+        assertTrue(checkoutConfirmationPage.isSummaryTotalPriceDisplayed(), "The check out summary total price isn't displayed");
+        //assert check out summary shipping price is displayed
+        assertTrue(checkoutConfirmationPage.isSummaryShippingPriceDisplayed(), "The check out summary shipping price isn't displayed");
+        //assert check out summary grand total price is displayed
+        assertTrue(checkoutConfirmationPage.isSummaryGrandTotalPriceDisplayed(), "The check out summary grand total price isn't displayed");
+        //assert check out summary net price is displayed
+        assertTrue(checkoutConfirmationPage.isSummaryNetTotalPriceDisplayed(), "The check out summary net price isn't displayed");
+        //assert check out summary VAT price is displayed
+        assertTrue(checkoutConfirmationPage.isSummaryVATPriceDisplayed(), "The check out summary VAT price isn't displayed");
+        //assert check out 'submit order' button is displayed
+        assertTrue(checkoutConfirmationPage.isSubmitOrderButtonDisplayed(), "The check out 'submit order' button isn't displayed");
+    }
+
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     //general page text element assert method
