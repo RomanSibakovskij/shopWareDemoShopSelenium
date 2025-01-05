@@ -21,6 +21,9 @@ public class CheckoutGuestTooShortLongInputPage extends BasePage{
     private WebElement cityInputField;
     @FindBy(xpath = "//div[@class='checkout-main']//input[@id='billingAddressAddressZipcode']")
     private WebElement postalCodeInputField;
+    //invalid singular input error message web element
+    @FindBy(xpath = "//div[@role='alert']")
+    private WebElement invalidSingularInputError;
 
     //valid guest user data
     private String guestFirstName;
@@ -37,6 +40,9 @@ public class CheckoutGuestTooShortLongInputPage extends BasePage{
     private String tooShortGuestAddress;
     private String tooShortGuestCity;
     private int tooShortGuestPostalCode;
+
+    //too long singular input data
+    private String tooLongGuestFirstName;
 
     public CheckoutGuestTooShortLongInputPage(WebDriver driver) {super(driver);}
 
@@ -70,6 +76,13 @@ public class CheckoutGuestTooShortLongInputPage extends BasePage{
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(650));
         wait.until(ExpectedConditions.visibilityOf(postalCodeInputField));
         postalCodeInputField.sendKeys(String.valueOf(guestPostalCode));
+    }
+
+    //invalid singular input error getter
+    public String getInvalidSingularInputError(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(650));
+        wait.until(ExpectedConditions.visibilityOf(invalidSingularInputError));
+        return invalidSingularInputError.getText();
     }
 
     //too short singular input methods
@@ -218,5 +231,30 @@ public class CheckoutGuestTooShortLongInputPage extends BasePage{
         postalCodeInputField.sendKeys(String.valueOf(tooShortGuestPostalCode));
     }
 
+    //too long singular input methods
+
+    public void getInvalidGuestUserTooLongFirstNameData(){
+        tooLongGuestFirstName = "Rsfssdfsdfsretrjyuloipvlmjhkjhnxvdfsadfsdfhjyuooipkuyjhtgrfsdeghfgjjlhjnbfbvddfhggkjuiuyfdrtyujgdffg";
+        guestLastName = TestDataGenerator.getRandomLastName();
+        guestEmail = TestDataGenerator.generateRandomEmailAddress(10);
+        guestAddress = TestDataGenerator.generateRandomAddress(7);
+        guestCity = TestDataGenerator.getRandomCity();
+        guestPostalCode = TestDataGenerator.getRandomPostalCode();
+
+        System.out.println("Generated invalid guest user data (too long first name): " + "\n");
+
+        logger.info("Too long guest first name: " + tooLongGuestFirstName);
+        logger.info("Valid guest last name (too long first name): " + guestLastName);
+        logger.info("Valid guest email (too long first name): " + guestEmail);
+        logger.info("Valid guest address (too long first name): " + guestAddress);
+        logger.info("Valid guest city (too long first name): " + guestCity);
+        logger.info("Valid guest postal code (too long first name): " + guestPostalCode + "\n");
+    }
+    //invalid guest user data input method - too short first name (100 chars)
+    public void inputTooLongFirstNameIntoFirstNameInputField(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(650));
+        wait.until(ExpectedConditions.visibilityOf(firstNameInputField));
+        firstNameInputField.sendKeys(tooLongGuestFirstName);
+    }
 
 }
